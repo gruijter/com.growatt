@@ -1,6 +1,6 @@
 {
   "id": "com.growatt",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -45,5 +45,5 @@
   "copyright": "R.M. de Gruijter (rmdegruijter@gmail.com)",
   "license": "GPL-3.0-or-later",
   "homeyCommunityTopicId": 134233,
-  "support": "https://homey.app/support"
+  "support": "https://github.com/gruijter/com.growatt/issues"
 }
