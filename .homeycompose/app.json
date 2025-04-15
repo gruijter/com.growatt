@@ -1,0 +1,49 @@
+{
+  "id": "com.growatt",
+  "version": "1.0.2",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "Growatt"
+  },
+  "description": {
+    "en": "Smart energy for a green future.",
+    "nl": "Slimme energie voor een groene toekomst."
+  },
+  "brandColor": "#80B645",
+  "tags": {
+    "en": [
+      "Growatt",
+      "Inverter",
+      "Solar",
+      "Solar panels",
+      "PV"
+    ],
+    "nl": [
+      "Growatt",
+      "Omvormer",
+      "Zonnepanelen",
+      "PV"
+    ]
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "R.M. de Gruijter"
+  },
+  "copyright": "R.M. de Gruijter (rmdegruijter@gmail.com)",
+  "license": "GPL-3.0-or-later",
+  "homeyCommunityTopicId": 134233,
+  "support": "https://homey.app/support"
+}

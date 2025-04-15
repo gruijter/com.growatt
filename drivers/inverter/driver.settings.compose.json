@@ -1,0 +1,99 @@
+[
+	{
+		"type": "group",
+		"label": {
+				"en": "Inverter information",
+				"nl:": "Omvormer informatie"
+		},
+		"children": [
+			{
+				"id": "plantName",
+				"type": "label",
+				"label": {
+						"en": "Plant name",
+						"nl": "Plant naam"
+				},
+				"value": ""
+			},
+			{
+				"id": "plantId",
+				"type": "label",
+				"label": {
+						"en": "Plant ID",
+						"nl": "Plant ID"
+				},
+				"value": ""
+			},
+			{
+				"id": "model",
+				"type": "label",
+				"label": {
+						"en": "Model",
+						"nl": "Model"
+				},
+				"value": ""
+			},
+			{
+				"id": "type",
+				"type": "label",
+				"label": {
+						"en": "Type"
+				},
+				"value": ""
+			},
+			{
+				"id": "nominalPower",
+				"type": "label",
+				"label": {
+						"en": "Nominal power",
+						"nl": "Nominaal vermogen"
+				},
+				"value": ""
+			},
+			{
+				"id": "serial",
+				"type": "label",
+				"label": {
+						"en": "Serial number",
+						"nl": "Serienummer"
+				},
+				"value": ""
+			},
+			{
+				"id": "dataLogger",
+				"type": "label",
+				"label": {
+						"en": "Data logger serial number",
+						"nl": "Data logger serienummer"
+				},
+				"value": ""
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Server settings",
+				"nl": "Server instellingen"
+		},
+		"children": [
+			{
+				"id": "username",
+				"type": "text",
+				"label": {
+						"en": "Username",
+						"nl": "Gebruikersnaam"
+				},
+				"value": ""
+			},
+			{
+					"id": "password",
+					"type": "password",
+					"label": {
+							"en": "Password"
+					},
+					"value": ""
+			}
+		]
+	}
+]

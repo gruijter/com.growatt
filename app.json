@@ -1,0 +1,218 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.growatt",
+  "version": "1.0.2",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "Growatt"
+  },
+  "description": {
+    "en": "Smart energy for a green future.",
+    "nl": "Slimme energie voor een groene toekomst."
+  },
+  "brandColor": "#80B645",
+  "tags": {
+    "en": [
+      "Growatt",
+      "Inverter",
+      "Solar",
+      "Solar panels",
+      "PV"
+    ],
+    "nl": [
+      "Growatt",
+      "Omvormer",
+      "Zonnepanelen",
+      "PV"
+    ]
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "R.M. de Gruijter"
+  },
+  "copyright": "R.M. de Gruijter (rmdegruijter@gmail.com)",
+  "license": "GPL-3.0-or-later",
+  "homeyCommunityTopicId": 134233,
+  "support": "https://homey.app/support",
+  "drivers": [
+    {
+      "name": {
+        "en": "Solar inverter",
+        "nl": "PV omvormer"
+      },
+      "class": "solarpanel",
+      "capabilities": [
+        "measure_power",
+        "meter_power",
+        "meter_power.month",
+        "meter_power.today"
+      ],
+      "capabilitiesOptions": {
+        "meter_power.month": {
+          "title": {
+            "en": "Energy this month",
+            "nl": "Energie deze maand"
+          }
+        },
+        "meter_power.today": {
+          "title": {
+            "en": "Energy today",
+            "nl": "Energie vandaag"
+          }
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/inverter/assets/images/small.png",
+        "large": "/drivers/inverter/assets/images/large.png",
+        "xlarge": "/drivers/inverter/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "usernameLabel": {
+              "en": "Username",
+              "nl": "Gebruikersnaam"
+            },
+            "passwordLabel": {
+              "en": "Password",
+              "nl": "Wachtwoord"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "inverter",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Inverter information",
+            "nl:": "Omvormer informatie"
+          },
+          "children": [
+            {
+              "id": "plantName",
+              "type": "label",
+              "label": {
+                "en": "Plant name",
+                "nl": "Plant naam"
+              },
+              "value": ""
+            },
+            {
+              "id": "plantId",
+              "type": "label",
+              "label": {
+                "en": "Plant ID",
+                "nl": "Plant ID"
+              },
+              "value": ""
+            },
+            {
+              "id": "model",
+              "type": "label",
+              "label": {
+                "en": "Model",
+                "nl": "Model"
+              },
+              "value": ""
+            },
+            {
+              "id": "type",
+              "type": "label",
+              "label": {
+                "en": "Type"
+              },
+              "value": ""
+            },
+            {
+              "id": "nominalPower",
+              "type": "label",
+              "label": {
+                "en": "Nominal power",
+                "nl": "Nominaal vermogen"
+              },
+              "value": ""
+            },
+            {
+              "id": "serial",
+              "type": "label",
+              "label": {
+                "en": "Serial number",
+                "nl": "Serienummer"
+              },
+              "value": ""
+            },
+            {
+              "id": "dataLogger",
+              "type": "label",
+              "label": {
+                "en": "Data logger serial number",
+                "nl": "Data logger serienummer"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Server settings",
+            "nl": "Server instellingen"
+          },
+          "children": [
+            {
+              "id": "username",
+              "type": "text",
+              "label": {
+                "en": "Username",
+                "nl": "Gebruikersnaam"
+              },
+              "value": ""
+            },
+            {
+              "id": "password",
+              "type": "password",
+              "label": {
+                "en": "Password"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

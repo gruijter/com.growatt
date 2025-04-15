@@ -1,0 +1,15 @@
+{
+  "1.0.0": {
+    "en": "Initial release"
+  },
+  "1.0.1": {
+    "en": "Readme updated. Set device unavailable on error."
+  },
+  "1.0.2": {
+    "en": "Added detection for type 'inv'."
+  },
+  "1.0.3": {
+    "en": "Added Energy meter for today and this month. Polling fixed setting 1 minute. Better error message display for UI. Added additional logging during pairing."
+  }
+}
+

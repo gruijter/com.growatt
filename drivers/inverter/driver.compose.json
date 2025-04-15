@@ -1,0 +1,58 @@
+{
+  "name": {
+    "en": "Solar inverter",
+    "nl": "PV omvormer"
+  },
+  "class": "solarpanel",
+  "capabilities": [
+    "measure_power",
+    "meter_power",
+    "meter_power.month",
+    "meter_power.today"
+  ],
+  "capabilitiesOptions": {
+    "meter_power.month": {
+      "title": {
+        "en": "Energy this month",
+        "nl": "Energie deze maand"
+      }
+    },
+    "meter_power.today": {
+      "title": {
+        "en": "Energy today",
+        "nl": "Energie vandaag"
+      }
+    }
+  },
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "connectivity": ["cloud"],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "login_credentials",
+      "template": "login_credentials",
+      "options": {
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
+        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" }
+      }
+    },
+		{
+			"id": "list_devices",
+			"template": "list_devices",
+			"navigation": {
+				"next": "add_devices"
+			}
+		},
+		{
+			"id": "add_devices",
+			"template": "add_devices"
+		}
+	]
+}
