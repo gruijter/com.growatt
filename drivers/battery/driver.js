@@ -51,7 +51,7 @@ module.exports = class MyDriver extends Homey.Driver {
         faultlog: true,
         // totalData: false,
         // statusData: false,
-        // historyLast: true,
+        // historyLast: false,
         // historyAll: false,
         // chartLastArray: false,
       };
@@ -74,28 +74,28 @@ module.exports = class MyDriver extends Homey.Driver {
 
       const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
       const deviceList = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
-      const inverters = deviceList.filter((device) => ['inverter', 'inv', 'tlx', 'tlxh'].includes(device.growattType));
+      const batteries = deviceList
+        // .filter((device) => ['tlxh'].includes(device.growattType)) // 'inverter', 'inv', 'tlx',
+        .filter((device) => device.historyLast && (device.historyLast.bdc1Temp1 || device.historyLast.bdc2Temp1 || device.historyLast.bdc1DischargeTotal));
 
-      const devices = inverters.map((device) => ({
-        name: device.deviceData.alias,
+      const devices = batteries.map((device) => ({
+        name: `Bat_${device.deviceData.plantName}`,
         data: {
-          id: device.deviceData.sn,
+          id: `${device.deviceData.sn}`,
         },
         capabilities: [
           'measure_power',
-          'meter_power',
-          'meter_power.month',
-          'meter_power.today',
+          'measure_battery',
         ],
         settings: {
           username,
           password,
           interval: 1,
-          type: device.deviceData.deviceTypeName,
-          model: device.deviceData.deviceModel,
-          serial: device.deviceData.sn,
-          nominalPower: device.deviceData.nominalPower,
-          dataLogger: device.deviceData.datalogSn,
+          // type: device.deviceData.deviceTypeName,
+          // model: device.deviceData.deviceModel,
+          // serial: device.deviceData.sn,
+          // nominalPower: device.deviceData.nominalPower,
+          // dataLogger: device.deviceData.datalogSn,
           plantId: device.deviceData.plantId,
           plantName: device.deviceData.plantName,
         },

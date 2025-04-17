@@ -1,0 +1,46 @@
+{
+  "name": {
+    "en": "battery"
+  },
+  "class": "battery",
+  "capabilities": [
+    "measure_power",
+    "measure_battery"
+  ],
+  "capabilitiesOptions": {
+  },
+  "energy": {
+    "homeBattery": true
+  },
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "connectivity": ["cloud"],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "login_credentials",
+      "template": "login_credentials",
+      "options": {
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
+        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" }
+      }
+    },
+		{
+			"id": "list_devices",
+			"template": "list_devices",
+			"navigation": {
+				"next": "add_devices"
+			}
+		},
+		{
+			"id": "add_devices",
+			"template": "add_devices"
+		}
+	]
+}

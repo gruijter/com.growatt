@@ -159,29 +159,24 @@ module.exports = class MyDevice extends Homey.Device {
 
   async handleDeviceData(device) {
     // check if data is new
-    if (!device.deviceData || device.deviceData.lastUpdateTime === this.lastUpdateTime) return;
-    this.lastUpdateTime = device.deviceData.lastUpdateTime;
+    if (!device.historyLast || device.historyLast.createTime === this.lastCreateTime) return;
+    this.lastCreateTime = device.historyLast.createTime;
     const values = {
-      measure_power: Number(device.deviceData.pac), // device.historyLast.ppv,
-      meter_power: Number(device.deviceData.eTotal),
-      'meter_power.today': Number(device.deviceData.eToday),
-      'meter_power.month': Number(device.deviceData.eMonth),
+      measure_power: device.historyLast.bdc1ChargePower - device.historyLast.bdc1DischargePower,
+      measure_battery: device.historyLast.bdc1Soc,
     };
+
     // set the capability values
     for (const [capability, value] of Object.entries(values)) {
       this.setCapability(capability, value).catch((error) => this.error(error));
     }
-    // this.setCapability('measure_power', Number(device.deviceData.pac)).catch((error) => this.error(error));
-    // this.setCapability('meter_power', Number(device.deviceData.eTotal)).catch((error) => this.error(error));
-    // this.setCapability('meter_power.month', Number(device.deviceData.eMonth)).catch((error) => this.error(error));
-    // this.setCapability('meter_power.today', Number(device.deviceData.eToday)).catch((error) => this.error(error));
     // set settings that have changed
     const newSettings = {
-      type: device.deviceData.deviceTypeName,
-      model: device.deviceData.deviceModel,
-      serial: device.deviceData.sn,
-      nominalPower: device.deviceData.nominalPower,
-      dataLogger: device.deviceData.datalogSn,
+      // type: device.deviceData.deviceTypeName,
+      // model: device.deviceData.deviceModel,
+      // serial: device.deviceData.sn,
+      // nominalPower: device.deviceData.nominalPower,
+      // dataLogger: device.deviceData.datalogSn,
       plantId: device.deviceData.plantId,
       plantName: device.deviceData.plantName,
     };

@@ -10,6 +10,9 @@
   },
   "1.0.3": {
     "en": "Added Energy meter for today and this month. Polling fixed setting 1 minute. Better error message display for UI. Added additional logging during pairing."
+  },
+  "1.1.0": {
+    "en": "Added inverter detection for type 'tlxh'. Added Meter driver. Added Battery driver."
   }
 }
 
