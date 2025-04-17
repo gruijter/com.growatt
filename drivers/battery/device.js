@@ -144,7 +144,7 @@ module.exports = class MyDevice extends Homey.Device {
       const info = await this.api.getAllPlantData(options);
       const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
       const deviceList = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
-      const device = deviceList.filter((device) => device.deviceData.sn === this.getData().id)[0];
+      const device = deviceList.filter((device) => device.deviceData && (device.deviceData.sn === this.getData().id))[0];
       if (!device) throw Error('Device data not found');
       await this.handleDeviceData(device);
       this.busy = false;

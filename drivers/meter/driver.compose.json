@@ -1,6 +1,7 @@
 {
   "name": {
-    "en": "meter"
+    "en": "Meter",
+    "nl": "Meter"
   },
   "class": "other",
   "capabilities": [

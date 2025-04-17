@@ -13,6 +13,9 @@
   },
   "1.1.0": {
     "en": "Added inverter detection for type 'tlxh'. Added Meter driver. Added Battery driver."
+  },
+  "1.1.1": {
+    "en": "Fixed PV values. Fixed error when multiple devices per plant."
   }
 }
 

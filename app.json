@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.growatt",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "compatibility": ">=12.2.0",
   "sdk": 3,
   "platforms": [
@@ -50,7 +50,8 @@
   "drivers": [
     {
       "name": {
-        "en": "battery"
+        "en": "Battery",
+        "nl": "Batterij"
       },
       "class": "battery",
       "capabilities": [
@@ -111,7 +112,6 @@
       "capabilities": [
         "measure_power",
         "meter_power",
-        "meter_power.month",
         "meter_power.today"
       ],
       "capabilitiesOptions": {
@@ -270,7 +270,8 @@
     },
     {
       "name": {
-        "en": "meter"
+        "en": "Meter",
+        "nl": "Meter"
       },
       "class": "other",
       "capabilities": [

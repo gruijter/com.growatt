@@ -7,7 +7,6 @@
   "capabilities": [
     "measure_power",
     "meter_power",
-    "meter_power.month",
     "meter_power.today"
   ],
   "capabilitiesOptions": {

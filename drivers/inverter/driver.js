@@ -77,15 +77,15 @@ module.exports = class MyDriver extends Homey.Driver {
       const inverters = deviceList.filter((device) => ['inverter', 'inv', 'tlx', 'tlxh'].includes(device.growattType));
 
       const devices = inverters.map((device) => ({
-        name: device.deviceData.alias,
+        name: `PV_${device.deviceData.plantName}`,
         data: {
           id: device.deviceData.sn,
         },
         capabilities: [
           'measure_power',
           'meter_power',
-          'meter_power.month',
           'meter_power.today',
+          // 'meter_power.month',
         ],
         settings: {
           username,

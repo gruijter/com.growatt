@@ -144,7 +144,7 @@ module.exports = class MyDevice extends Homey.Device {
       const info = await this.api.getAllPlantData(options);
       const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
       const deviceList = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
-      const device = deviceList.filter((device) => device.deviceData.sn === this.getData().id)[0];
+      const device = deviceList.filter((device) => device.deviceData && (device.deviceData.sn === this.getData().id))[0];
       if (!device) throw Error('Device data not found');
       await this.handleDeviceData(device);
       this.busy = false;
@@ -162,10 +162,10 @@ module.exports = class MyDevice extends Homey.Device {
     if (!device.deviceData || device.deviceData.lastUpdateTime === this.lastUpdateTime) return;
     this.lastUpdateTime = device.deviceData.lastUpdateTime;
     const values = {
-      measure_power: Number(device.deviceData.pac), // device.historyLast.ppv,
-      meter_power: Number(device.deviceData.eTotal),
-      'meter_power.today': Number(device.deviceData.eToday),
-      'meter_power.month': Number(device.deviceData.eMonth),
+      measure_power: device.historyLast.ppv,
+      meter_power: device.historyLast.epvTotal,
+      'meter_power.today': device.historyLast.epv1Today + device.historyLast.epv2Today + device.historyLast.epv3Today + device.historyLast.epv4Today,
+      // 'meter_power.month': Number(device.deviceData.eMonth),
     };
     // set the capability values
     for (const [capability, value] of Object.entries(values)) {

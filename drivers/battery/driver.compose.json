@@ -1,6 +1,7 @@
 {
   "name": {
-    "en": "battery"
+    "en": "Battery",
+    "nl": "Batterij"
   },
   "class": "battery",
   "capabilities": [
