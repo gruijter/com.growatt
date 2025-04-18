@@ -56,25 +56,25 @@ module.exports = class MyDriver extends Homey.Driver {
         // chartLastArray: false,
       };
       info = await this.api.getAllPlantData(options);
-      // this.log(info);
-      const flattenObject = (obj, parent = '', res = {}) => {
-        Object.keys(obj).forEach((key) => {
-          const propName = parent ? `${parent}.${key}` : key;
-          if (typeof obj[key] === 'object' && obj[key] !== null) {
-            flattenObject(obj[key], propName, res);
-          } else {
-            res[propName] = obj[key];
-          }
-        });
-        return res;
-      };
-      const flattenedInfo = flattenObject(info);
-      this.log('Flattened info:', flattenedInfo);
+      this.log(JSON.stringify(info));
+      // const flattenObject = (obj, parent = '', res = {}) => {
+      //   Object.keys(obj).forEach((key) => {
+      //     const propName = parent ? `${parent}.${key}` : key;
+      //     if (typeof obj[key] === 'object' && obj[key] !== null) {
+      //       flattenObject(obj[key], propName, res);
+      //     } else {
+      //       res[propName] = obj[key];
+      //     }
+      //   });
+      //   return res;
+      // };
+      // const flattenedInfo = flattenObject(info);
+      // this.log('Flattened info:', flattenedInfo);
       // console.dir(info, { depth: null });
 
       const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
       const deviceList = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
-      const inverters = deviceList.filter((device) => ['inverter', 'inv', 'tlx', 'tlxh'].includes(device.growattType));
+      const inverters = deviceList.filter((device) => ['inverter', 'inv', 'tlx', 'tlxh', 'mix', 'max'].includes(device.growattType));
 
       const devices = inverters.map((device) => ({
         name: `PV_${device.deviceData.plantName}`,

@@ -1,2 +1,2 @@
-Verbind je Growatt-omvormer met Homey en krijg gedetailleerd inzicht in je zonne-energieproductie. 
+Verbind je Growatt-omvormer met Homey en krijg gedetailleerd inzicht in je zonne-energieproductie en batterij gebruik. 
 Houd je huidige stroomopbrengst bij, evenals je dagelijkse, maandelijkse, jaarlijkse en totale opwekking. Met de GroWatt-app voor Homey kun je deze gegevens gebruiken om je energieverbruik te optimaliseren, Flows te maken en de prestaties van je systeem bij te houden — allemaal op één plek.

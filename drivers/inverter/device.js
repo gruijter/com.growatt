@@ -147,6 +147,7 @@ module.exports = class MyDevice extends Homey.Device {
       const device = deviceList.filter((device) => device.deviceData && (device.deviceData.sn === this.getData().id))[0];
       if (!device) throw Error('Device data not found');
       await this.handleDeviceData(device);
+      if ((Date.now() - this.lastPoll) > 15 * 60 * 1000) throw Error('No updates from device');
       this.busy = false;
     } catch (error) {
       const msg = error.message && error.message.includes('"msg":') ? JSON.parse(error.message).msg : error;
@@ -160,11 +161,13 @@ module.exports = class MyDevice extends Homey.Device {
   async handleDeviceData(device) {
     // check if data is new
     if (!device.deviceData || device.deviceData.lastUpdateTime === this.lastUpdateTime) return;
+    this.lastPoll = Date.now();
     this.lastUpdateTime = device.deviceData.lastUpdateTime;
+    const meterToday = (device.historyLast.epv1Today ?? 0) + (device.historyLast.epv2Today ?? 0) + (device.historyLast.epv3Today ?? 0) + (device.historyLast.epv4Today ?? 0);
     const values = {
       measure_power: device.historyLast.ppv,
       meter_power: device.historyLast.epvTotal,
-      'meter_power.today': device.historyLast.epv1Today + device.historyLast.epv2Today + device.historyLast.epv3Today + device.historyLast.epv4Today,
+      'meter_power.today': meterToday,
       // 'meter_power.month': Number(device.deviceData.eMonth),
     };
     // set the capability values

@@ -147,6 +147,7 @@ module.exports = class MyDevice extends Homey.Device {
       const device = deviceList.filter((device) => device.deviceData && (device.deviceData.sn === this.getData().id))[0];
       if (!device) throw Error('Device data not found');
       await this.handleDeviceData(device);
+      if ((Date.now() - this.lastPoll) > 15 * 60 * 1000) throw Error('No updates from device');
       this.busy = false;
     } catch (error) {
       const msg = error.message && error.message.includes('"msg":') ? JSON.parse(error.message).msg : error;
@@ -160,16 +161,17 @@ module.exports = class MyDevice extends Homey.Device {
   async handleDeviceData(device) {
     // check if data is new
     if (!device.historyLast || device.historyLast.createTime === this.lastCreateTime) return;
+    this.lastPoll = Date.now();
     this.lastCreateTime = device.historyLast.createTime;
     const values = {
-      measure_power: device.historyLast.pacToUserTotal - device.historyLast.pacToGridTotal,
+      measure_power: (device.historyLast.pacToUserTotal ?? 0) - (device.historyLast.pacToGridTotal ?? 0),
       measure_frequency: device.historyLast.fac,
       'measure_voltage.1': device.historyLast.vac1,
       'measure_voltage.2': device.historyLast.vac2,
       'measure_voltage.3': device.historyLast.vac3,
-      'meter_power.imported': device.historyLast.etoUserTotal,
-      'meter_power.exported': device.historyLast.etoGridTotal,
-      meter_power: device.historyLast.etoUserTotal - device.historyLast.etoGridTotal,
+      'meter_power.imported': device.historyLast.etoUserTotal ?? 0,
+      'meter_power.exported': (device.historyLast.etoGridTotal || device.historyLast.etogridTotal) ?? 0,
+      meter_power: (device.historyLast.etoUserTotal ?? 0) - (device.historyLast.etoGridTotal ?? 0),
     };
 
     // set the capability values

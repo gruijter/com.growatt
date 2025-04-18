@@ -56,20 +56,20 @@ module.exports = class MyDriver extends Homey.Driver {
         // chartLastArray: false,
       };
       info = await this.api.getAllPlantData(options);
-      // this.log(info);
-      const flattenObject = (obj, parent = '', res = {}) => {
-        Object.keys(obj).forEach((key) => {
-          const propName = parent ? `${parent}.${key}` : key;
-          if (typeof obj[key] === 'object' && obj[key] !== null) {
-            flattenObject(obj[key], propName, res);
-          } else {
-            res[propName] = obj[key];
-          }
-        });
-        return res;
-      };
-      const flattenedInfo = flattenObject(info);
-      this.log('Flattened info:', flattenedInfo);
+      this.log(JSON.stringify(info));
+      // const flattenObject = (obj, parent = '', res = {}) => {
+      //   Object.keys(obj).forEach((key) => {
+      //     const propName = parent ? `${parent}.${key}` : key;
+      //     if (typeof obj[key] === 'object' && obj[key] !== null) {
+      //       flattenObject(obj[key], propName, res);
+      //     } else {
+      //       res[propName] = obj[key];
+      //     }
+      //   });
+      //   return res;
+      // };
+      // const flattenedInfo = flattenObject(info);
+      // this.log('Flattened info:', flattenedInfo);
       // console.dir(info, { depth: null });
 
       const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
@@ -78,28 +78,47 @@ module.exports = class MyDriver extends Homey.Driver {
         // .filter((device) => ['tlxh'].includes(device.growattType)) // 'inverter', 'inv', 'tlx',
         .filter((device) => device.historyLast && (device.historyLast.bdc1Temp1 || device.historyLast.bdc2Temp1 || device.historyLast.bdc1DischargeTotal));
 
-      const devices = batteries.map((device) => ({
-        name: `Bat_${device.deviceData.plantName}`,
-        data: {
-          id: `${device.deviceData.sn}`,
-        },
-        capabilities: [
-          'measure_power',
-          'measure_battery',
-        ],
-        settings: {
-          username,
-          password,
-          interval: 1,
-          // type: device.deviceData.deviceTypeName,
-          // model: device.deviceData.deviceModel,
-          // serial: device.deviceData.sn,
-          // nominalPower: device.deviceData.nominalPower,
-          // dataLogger: device.deviceData.datalogSn,
-          plantId: device.deviceData.plantId,
-          plantName: device.deviceData.plantName,
-        },
-      }));
+      const devices = [];
+      for (const device of batteries) {
+        devices.push({
+          name: `Bat1_${device.deviceData.plantName}`,
+          data: {
+            id: `${device.deviceData.sn}_1`,
+          },
+          capabilities: [
+            'measure_power',
+            'measure_battery',
+          ],
+          settings: {
+            username,
+            password,
+            interval: 1,
+            bat: 1,
+            plantId: device.deviceData.plantId,
+            plantName: device.deviceData.plantName,
+          },
+        });
+        if (device.historyLast.bdc2Temp1 || device.historyLast.bdc2DischargeTotal) {
+          devices.push({
+            name: `Bat2_${device.deviceData.plantName}`,
+            data: {
+              id: `${device.deviceData.sn}_2`,
+            },
+            capabilities: [
+              'measure_power',
+              'measure_battery',
+            ],
+            settings: {
+              username,
+              password,
+              interval: 1,
+              bat: 2,
+              plantId: device.deviceData.plantId,
+              plantName: device.deviceData.plantName,
+            },
+          });
+        }
+      }
       return Promise.all(devices);
     });
   }

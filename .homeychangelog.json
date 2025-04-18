@@ -16,6 +16,9 @@
   },
   "1.1.1": {
     "en": "Fixed PV values. Fixed error when multiple devices per plant."
+  },
+  "1.1.2": {
+    "en": "Added detection for type 'mix' and 'max'. Added second battery detection. Added detection of no new data coming in. Fix meter and PV for type 'mix'"
   }
 }
 

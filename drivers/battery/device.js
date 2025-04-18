@@ -144,9 +144,10 @@ module.exports = class MyDevice extends Homey.Device {
       const info = await this.api.getAllPlantData(options);
       const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
       const deviceList = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
-      const device = deviceList.filter((device) => device.deviceData && (device.deviceData.sn === this.getData().id))[0];
+      const device = deviceList.filter((device) => device.deviceData && (this.getData().id.includes(device.deviceData.sn)))[0];
       if (!device) throw Error('Device data not found');
       await this.handleDeviceData(device);
+      if ((Date.now() - this.lastPoll) > 15 * 60 * 1000) throw Error('No updates from device');
       this.busy = false;
     } catch (error) {
       const msg = error.message && error.message.includes('"msg":') ? JSON.parse(error.message).msg : error;
@@ -160,10 +161,12 @@ module.exports = class MyDevice extends Homey.Device {
   async handleDeviceData(device) {
     // check if data is new
     if (!device.historyLast || device.historyLast.createTime === this.lastCreateTime) return;
+    this.lastPoll = Date.now();
     this.lastCreateTime = device.historyLast.createTime;
+    const bdc = this.settings.bat || 1;
     const values = {
-      measure_power: device.historyLast.bdc1ChargePower - device.historyLast.bdc1DischargePower,
-      measure_battery: device.historyLast.bdc1Soc,
+      measure_power: device.historyLast[`bdc${bdc}ChargePower`] - device.historyLast[`bdc${bdc}DischargePower`],
+      measure_battery: device.historyLast[`bdc${bdc}Soc`],
     };
 
     // set the capability values
