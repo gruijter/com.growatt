@@ -103,7 +103,7 @@ module.exports = class MyDevice extends Homey.Device {
   }
 
   startPolling(int) {
-    const interval = int || 2;
+    const interval = 5; // int || 5;
     this.log(`Start polling ${this.getName()} @ ${interval} minute interval`);
     this.stopPolling();
     this.doPoll().catch((error) => this.error(error));

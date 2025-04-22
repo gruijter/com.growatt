@@ -92,7 +92,7 @@ module.exports = class MyDriver extends Homey.Driver {
           settings: {
             username,
             password,
-            interval: 1,
+            interval: 5,
             bat: 1,
             plantId: device.deviceData.plantId,
             plantName: device.deviceData.plantName,

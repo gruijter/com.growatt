@@ -19,6 +19,9 @@
   },
   "1.1.2": {
     "en": "Added detection for type 'mix' and 'max'. Added second battery detection. Added detection of no new data coming in. Fix meter and PV for type 'mix'"
+  },
+  "1.1.3": {
+    "en": "New driver icons. Reduced polling to 5 minutes interval."
   }
 }
 
