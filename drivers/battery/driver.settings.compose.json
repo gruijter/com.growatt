@@ -1,0 +1,55 @@
+[
+	{
+		"type": "group",
+		"label": {
+				"en": "Battery information",
+				"nl": "Batterij informatie"
+		},
+		"children": [
+			{
+				"id": "plantName",
+				"type": "label",
+				"label": {
+						"en": "Plant name",
+						"nl": "Plant naam"
+				},
+				"value": ""
+			},
+			{
+				"id": "plantId",
+				"type": "label",
+				"label": {
+						"en": "Plant ID",
+						"nl": "Plant ID"
+				},
+				"value": ""
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Server settings",
+				"nl": "Server instellingen"
+		},
+		"children": [
+			{
+				"id": "username",
+				"type": "text",
+				"label": {
+						"en": "Username",
+						"nl": "Gebruikersnaam"
+				},
+				"value": ""
+			},
+			{
+					"id": "password",
+					"type": "password",
+					"label": {
+							"en": "Password"
+					},
+					"value": ""
+			}
+		]
+	}
+]

@@ -21,12 +21,9 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 
 const Homey = require('homey');
 
-const Growatt = require('growatt');
-
 module.exports = class MyDriver extends Homey.Driver {
 
   async onInit() {
-    this.api = new Growatt();
     this.log('Growatt driver has been initialized');
   }
 
@@ -36,47 +33,21 @@ module.exports = class MyDriver extends Homey.Driver {
     let info = false;
 
     session.setHandler('login', async (data) => {
-      username = data.username;
-      password = data.password;
-      return this.api.login(username, password).catch(this.error);
+      try {
+        username = data.username;
+        password = data.password;
+        info = await this.homey.app.pollAccount({ username, password });
+        return Promise.resolve(info);
+      } catch (error) {
+        const msg = error.message && error.message.includes('"msg":') ? JSON.parse(error.message).msg : error;
+        this.error(error);
+        return Promise.reject(msg);
+      }
     });
 
     session.setHandler('list_devices', async () => {
-      const options = {
-        // plantId: '',
-        // plantData: false,
-        // deviceData: false,
-        // deviceTyp: false,
-        // weather: false,
-        faultlog: true,
-        // totalData: false,
-        // statusData: false,
-        // historyLast: false,
-        // historyAll: false,
-        // chartLastArray: false,
-      };
-      info = await this.api.getAllPlantData(options);
       this.log(JSON.stringify(info));
-      // const flattenObject = (obj, parent = '', res = {}) => {
-      //   Object.keys(obj).forEach((key) => {
-      //     const propName = parent ? `${parent}.${key}` : key;
-      //     if (typeof obj[key] === 'object' && obj[key] !== null) {
-      //       flattenObject(obj[key], propName, res);
-      //     } else {
-      //       res[propName] = obj[key];
-      //     }
-      //   });
-      //   return res;
-      // };
-      // const flattenedInfo = flattenObject(info);
-      // this.log('Flattened info:', flattenedInfo);
-      // console.dir(info, { depth: null });
-
-      const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
-      const deviceList = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
-      const batteries = deviceList
-        // .filter((device) => ['tlxh'].includes(device.growattType)) // 'inverter', 'inv', 'tlx',
-        .filter((device) => device.historyLast && (device.historyLast.bdc1Temp1 || device.historyLast.bdc2Temp1 || device.historyLast.bdc1DischargeTotal));
+      const batteries = info.filter((device) => device.historyLast && (device.historyLast.bdc1Temp1 || device.historyLast.bdc2Temp1 || device.historyLast.bdc1DischargeTotal));
 
       const devices = [];
       for (const device of batteries) {
@@ -92,7 +63,6 @@ module.exports = class MyDriver extends Homey.Driver {
           settings: {
             username,
             password,
-            interval: 5,
             bat: 1,
             plantId: device.deviceData.plantId,
             plantName: device.deviceData.plantName,
@@ -111,7 +81,6 @@ module.exports = class MyDriver extends Homey.Driver {
             settings: {
               username,
               password,
-              interval: 1,
               bat: 2,
               plantId: device.deviceData.plantId,
               plantName: device.deviceData.plantName,

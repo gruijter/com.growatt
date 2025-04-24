@@ -22,6 +22,9 @@
   },
   "1.1.3": {
     "en": "New driver icons. Reduced polling to 5 minutes interval."
+  },
+  "1.2.0": {
+    "en": "Improved PV Inverter detection. Added settings to Battery and Meter. Reduced polling to 15 minutes interval. Implemented combined session handling for reduced API calls."
   }
 }
 

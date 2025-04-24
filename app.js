@@ -20,11 +20,112 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 'use strict';
 
 const Homey = require('homey');
+const Growatt = require('growatt');
 
 module.exports = class MyApp extends Homey.App {
 
   async onInit() {
+    this.accounts = {}; // { username__passWord: { username, password } }; // is filled by Homey devices
+    this.apiSessions = {}; // username__passWord: apiSession
+    this.everyXminutes(15); // start poll emitter
     this.log('Growatt app has been initialized');
+  }
+
+  async onUninit() {
+    this.log('app onUninit called');
+    this.homey.removeAllListeners('plantInfo');
+    this.homey.removeAllListeners('errorInfo');
+  }
+
+  everyXminutes(interval) {
+    let timeoutId;
+    const scheduleNextXminutes = () => {
+      if (timeoutId) {
+        this.homey.clearTimeout(timeoutId); // Clear any existing timeout
+      }
+      const now = new Date();
+      const nextXminutes = new Date(now);
+      const currentMinutes = now.getMinutes();
+      const nextMultipleOfX = currentMinutes % interval === 0 ? currentMinutes + interval : Math.ceil(currentMinutes / interval) * interval;
+      nextXminutes.setMinutes(nextMultipleOfX, 0, 0);
+      const timeToNextXminutes = nextXminutes - now;
+      // console.log('everyXminutes starts in', timeToNextXminutes / 1000);
+      timeoutId = this.homey.setTimeout(() => {
+        this.everyXminutesHandler().catch(this.error);
+        scheduleNextXminutes(); // Schedule the next X minutes
+      }, timeToNextXminutes);
+    };
+    scheduleNextXminutes();
+    this.log('everyXminutes job started');
+  }
+
+  async everyXminutesHandler() {
+    this.log('everyXminutesHandler called');
+    await this.getAccounts().catch(this.error);
+    for (const [key, account] of Object.entries(this.accounts)) {
+      this.log(`Processing account: ${key}`);
+      await this.pollAccount(account).catch(this.error);
+    }
+  }
+
+  async getAccounts() {
+    try {
+      const inverters = this.homey.drivers.getDriver('inverter').getDevices();
+      const batteries = this.homey.drivers.getDriver('battery').getDevices();
+      const meters = this.homey.drivers.getDriver('meter').getDevices();
+      const devices = [...inverters, ...batteries, ...meters];
+      devices.forEach((device) => {
+        const { username, password } = device.getSettings();
+        this.accounts[`${username}__${password}`] = { username, password };
+      });
+      return Promise.resolve(this.accounts);
+    } catch (error) {
+      this.error(error);
+      return Promise.reject(error);
+    }
+  }
+
+  async pollAccount(account) {
+    try {
+      // check if session is connected
+      const sessionName = `${account.username}__${account.password}`;
+      if (!this.apiSessions[sessionName]) {
+        this.apiSessions[sessionName] = new Growatt();
+        this.log('New session created for', `${account.username}__${account.password}`);
+      }
+      if (!this.apiSessions[sessionName].isConnected()) {
+        let result = await this.apiSessions[sessionName].login(account.username, account.password);
+        if (!result.result === 1) result = await this.apiSessions[sessionName].login(account.username, account.password); // retry once
+        if (!result.result === 1) Error('Login failed');
+        this.log('Logged in', `${account.username}__${account.password}`);
+      }
+      const options = {
+        // plantId: plantIdAccount.plantId,
+        // plantData: false,
+        // deviceData: false,
+        // deviceTyp: false,
+        weather: false,
+        // faultlog: false,
+        // totalData: false,
+        // statusData: false,
+        // historyLast: true,
+        // historyAll: false,
+        // chartLastArray: false,
+      };
+      let info = await this.apiSessions[sessionName].getAllPlantData(options).catch(this.error);
+      if (!info) { // retry once
+        await this.apiSessions[sessionName].login(account.username, account.password);
+        info = await this.api.getAllPlantData(options);
+      }
+      const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
+      const plantInfo = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
+      this.homey.emit('plantInfo', plantInfo); // emit info to devices
+      return Promise.resolve(plantInfo); // return info to driver
+    } catch (error) {
+      this.error(error);
+      this.homey.emit('errorInfo', { account, error }); // emit error to devices
+      return Promise.reject(error); // return info to driver
+    }
   }
 
 };
