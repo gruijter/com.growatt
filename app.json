@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.growatt",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "compatibility": ">=12.2.0",
   "sdk": 3,
   "platforms": [
@@ -19,6 +19,7 @@
   "tags": {
     "en": [
       "Growatt",
+      "shine",
       "Inverter",
       "Solar",
       "Solar panels",
@@ -26,6 +27,7 @@
     ],
     "nl": [
       "Growatt",
+      "shine",
       "Omvormer",
       "Zonnepanelen",
       "PV"
@@ -86,7 +88,8 @@
             "passwordLabel": {
               "en": "Password",
               "nl": "Wachtwoord"
-            }
+            },
+            "logo": "../assets/images/small.png"
           }
         },
         {
@@ -207,7 +210,8 @@
             "passwordLabel": {
               "en": "Password",
               "nl": "Wachtwoord"
-            }
+            },
+            "logo": "../assets/images/small.png"
           }
         },
         {
@@ -402,7 +406,8 @@
             "passwordLabel": {
               "en": "Password",
               "nl": "Wachtwoord"
-            }
+            },
+            "logo": "../assets/images/small.png"
           }
         },
         {

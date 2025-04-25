@@ -69,7 +69,8 @@
       "template": "login_credentials",
       "options": {
         "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
-        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" }
+        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" },
+        "logo": "../assets/images/small.png"
       }
     },
 		{

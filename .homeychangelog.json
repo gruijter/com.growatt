@@ -25,6 +25,9 @@
   },
   "1.2.0": {
     "en": "Improved PV Inverter detection. Added settings to Battery and Meter. Reduced polling to 15 minutes interval. Implemented combined session handling for reduced API calls."
+  },
+  "1.2.1": {
+    "en": "Added login images. Fixed 'Cannot read properties of undefined (reading 'getAllPlantData')'. Auto logout on failure. Reduced bytes transfer."
   }
 }
 

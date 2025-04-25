@@ -60,10 +60,9 @@ module.exports = class MyApp extends Homey.App {
   }
 
   async everyXminutesHandler() {
-    this.log('everyXminutesHandler called');
     await this.getAccounts().catch(this.error);
     for (const [key, account] of Object.entries(this.accounts)) {
-      this.log(`Processing account: ${key}`);
+      this.log(`Fetching account data: ${key}`);
       await this.pollAccount(account).catch(this.error);
     }
   }
@@ -86,9 +85,9 @@ module.exports = class MyApp extends Homey.App {
   }
 
   async pollAccount(account) {
+    const sessionName = `${account.username}__${account.password}`;
     try {
       // check if session is connected
-      const sessionName = `${account.username}__${account.password}`;
       if (!this.apiSessions[sessionName]) {
         this.apiSessions[sessionName] = new Growatt();
         this.log('New session created for', `${account.username}__${account.password}`);
@@ -106,7 +105,7 @@ module.exports = class MyApp extends Homey.App {
         // deviceTyp: false,
         weather: false,
         // faultlog: false,
-        // totalData: false,
+        totalData: false,
         // statusData: false,
         // historyLast: true,
         // historyAll: false,
@@ -114,16 +113,18 @@ module.exports = class MyApp extends Homey.App {
       };
       let info = await this.apiSessions[sessionName].getAllPlantData(options).catch(this.error);
       if (!info) { // retry once
+        this.log(`retrying login ${account.username}__${account.password}`);
         await this.apiSessions[sessionName].login(account.username, account.password);
-        info = await this.api.getAllPlantData(options);
+        info = await this.apiSessions[sessionName].getAllPlantData(options);
       }
       const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
       const plantInfo = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
       this.homey.emit('plantInfo', plantInfo); // emit info to devices
       return Promise.resolve(plantInfo); // return info to driver
     } catch (error) {
-      this.error(error);
+      // this.error(error);
       this.homey.emit('errorInfo', { account, error }); // emit error to devices
+      await this.apiSessions[sessionName].logout().catch(this.error);
       return Promise.reject(error); // return info to driver
     }
   }
