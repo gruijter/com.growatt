@@ -28,6 +28,7 @@ module.exports = class MyApp extends Homey.App {
     this.accounts = {}; // { username__passWord: { username, password } }; // is filled by Homey devices
     this.apiSessions = {}; // username__passWord: apiSession
     this.everyXminutes(15); // start poll emitter
+    this.registerFlowListeners(); // register flow listeners
     this.log('Growatt app has been initialized');
   }
 
@@ -127,6 +128,12 @@ module.exports = class MyApp extends Homey.App {
       await this.apiSessions[sessionName].logout().catch(this.error);
       return Promise.reject(error); // return info to driver
     }
+  }
+
+  registerFlowListeners() {
+    // action cards
+    const forcePoll = this.homey.flow.getActionCard('force_poll');
+    forcePoll.registerRunListener((args) => this.everyXminutesHandler(true, 'flow').catch(this.error));
   }
 
 };

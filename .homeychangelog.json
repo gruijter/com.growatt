@@ -28,6 +28,9 @@
   },
   "1.2.1": {
     "en": "Added login images. Fixed 'Cannot read properties of undefined (reading 'getAllPlantData')'. Auto logout on failure. Reduced bytes transfer."
+  },
+  "1.2.2": {
+    "en": "Added Flow card to force immediate poll."
   }
 }
 
