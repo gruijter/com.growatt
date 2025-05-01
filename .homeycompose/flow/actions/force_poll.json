@@ -1,10 +1,10 @@
 {
     "title": {
-      "en": "Force a server poll",
-      "nl": "Forceer een server poll"
+      "en": "Get status update",
+      "nl": "Haal status update op"
     },
     "hint": {
-      "en": "This will try to update the status of all devices immediately. Carefull: too many polls will cause the server to temporarily block you.",
-      "nl": "Dit zal proberen de status van alle apparaten onmiddellijk bij te werken. Let op: te veel polls zullen ervoor zorgen dat de server je tijdelijk blokkeert."
+      "en": "This will try to update the status of all devices immediately. Carefull: too many updates will cause the server to temporarily block you.",
+      "nl": "Dit zal proberen de status van alle apparaten onmiddellijk bij te werken. Let op: te veel updates zullen ervoor zorgen dat de server je tijdelijk blokkeert."
     }
 }

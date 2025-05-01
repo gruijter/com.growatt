@@ -27,7 +27,7 @@ module.exports = class MyApp extends Homey.App {
   async onInit() {
     this.accounts = {}; // { username__passWord: { username, password } }; // is filled by Homey devices
     this.apiSessions = {}; // username__passWord: apiSession
-    this.everyXminutes(15); // start poll emitter
+    this.everyXminutes(10); // start poll emitter
     this.registerFlowListeners(); // register flow listeners
     this.log('Growatt app has been initialized');
   }

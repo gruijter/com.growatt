@@ -31,6 +31,9 @@
   },
   "1.2.2": {
     "en": "Added Flow card to force immediate poll."
+  },
+  "1.2.3": {
+    "en": "Increased polling to 10 minutes interval. Changed description of poll Flow card."
   }
 }
 

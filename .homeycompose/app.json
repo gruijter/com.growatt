@@ -1,6 +1,6 @@
 {
   "id": "com.growatt",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "compatibility": ">=12.2.0",
   "sdk": 3,
   "platforms": [
