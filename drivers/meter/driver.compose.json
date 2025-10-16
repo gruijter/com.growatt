@@ -68,8 +68,12 @@
       "id": "login_credentials",
       "template": "login_credentials",
       "options": {
+        "title": {
+          "en": "Get your API token in the ShinePhone app"
+        },
         "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
-        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" },
+        "passwordLabel": { "en": "API Token", "nl": "API Token" },
+        "passwordPlaceholder": { "en": "My account>User name>API Token" },
         "logo": "../assets/images/small.png"
       }
     },

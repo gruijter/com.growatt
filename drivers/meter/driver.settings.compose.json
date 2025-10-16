@@ -23,6 +23,41 @@
 						"nl": "Plant ID"
 				},
 				"value": ""
+			},
+			{
+				"id": "model",
+				"type": "label",
+				"label": {
+						"en": "Model",
+						"nl": "Model"
+				},
+				"value": ""
+			},
+			{
+				"id": "deviceType",
+				"type": "label",
+				"label": {
+						"en": "Device type"
+				},
+				"value": ""
+			},
+			{
+				"id": "deviceSn",
+				"type": "label",
+				"label": {
+						"en": "Device serial number",
+						"nl": "Apparaat serienummer"
+				},
+				"value": ""
+			},
+			{
+				"id": "dataLogger",
+				"type": "label",
+				"label": {
+						"en": "Data logger serial number",
+						"nl": "Data logger serienummer"
+				},
+				"value": ""
 			}
 		]
 	},
@@ -43,10 +78,14 @@
 				"value": ""
 			},
 			{
-					"id": "password",
+					"id": "token",
 					"type": "password",
 					"label": {
-							"en": "Password"
+							"en": "API token"
+					},
+					"hint": {
+						"en": "Get your API token in the ShinePhone app: My account > click on user name > API Token.",
+						"nl": ""
 					},
 					"value": ""
 			}

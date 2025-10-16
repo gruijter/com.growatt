@@ -34,6 +34,9 @@
   },
   "1.2.3": {
     "en": "Increased polling to 10 minutes interval. Changed description of poll Flow card."
+  },
+  "2.0.0": {
+    "en": "Full rewrite to official Growatt api. Added power limiting through inverter."
   }
 }
 

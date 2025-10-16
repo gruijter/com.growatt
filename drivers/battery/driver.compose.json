@@ -9,6 +9,27 @@
     "measure_battery"
   ],
   "capabilitiesOptions": {
+    "meter_power.charged": {
+      "title": {
+        "en": "Charged energy",
+        "nl": "Geladen energie"
+      },
+      "decimals": 2
+    },
+    "meter_power.discharged": {
+      "title": {
+        "en": "Discharged energy",
+        "nl": "Ontladen energie"
+      },
+      "decimals": 2
+    },
+    "dim.active_power": {
+      "title": {
+        "en": "Maximum power",
+        "nl": "Maximaal vermogen"
+      },
+      "uiComponent": "slider"
+    }
   },
   "energy": {
     "homeBattery": true
@@ -28,8 +49,12 @@
       "id": "login_credentials",
       "template": "login_credentials",
       "options": {
+        "title": {
+          "en": "Get your API token in the ShinePhone app"
+        },
         "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
-        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" },
+        "passwordLabel": { "en": "API Token", "nl": "API Token" },
+        "passwordPlaceholder": { "en": "My account>User name>API Token" },
         "logo": "../assets/images/small.png"
       }
     },

@@ -34,28 +34,19 @@
 				"value": ""
 			},
 			{
-				"id": "type",
+				"id": "deviceType",
 				"type": "label",
 				"label": {
-						"en": "Type"
+						"en": "Device type"
 				},
 				"value": ""
 			},
 			{
-				"id": "nominalPower",
+				"id": "deviceSn",
 				"type": "label",
 				"label": {
-						"en": "Nominal power",
-						"nl": "Nominaal vermogen"
-				},
-				"value": ""
-			},
-			{
-				"id": "serial",
-				"type": "label",
-				"label": {
-						"en": "Serial number",
-						"nl": "Serienummer"
+						"en": "Device serial number",
+						"nl": "Apparaat serienummer"
 				},
 				"value": ""
 			},
@@ -87,10 +78,14 @@
 				"value": ""
 			},
 			{
-					"id": "password",
+					"id": "token",
 					"type": "password",
 					"label": {
-							"en": "Password"
+							"en": "API token"
+					},
+					"hint": {
+						"en": "Get your API token in the ShinePhone app: My account > click on user name > API Token.",
+						"nl": ""
 					},
 					"value": ""
 			}

@@ -20,21 +20,22 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 'use strict';
 
 const Homey = require('homey');
-const Growatt = require('growatt');
+// const growattMap = require('./lib/growattMap');
+const Api = require('./lib/growatt');
 
 module.exports = class MyApp extends Homey.App {
 
   async onInit() {
-    this.accounts = {}; // { username__passWord: { username, password } }; // is filled by Homey devices
-    this.apiSessions = {}; // username__passWord: apiSession
-    this.everyXminutes(10); // start poll emitter
+    this.devices = {};// { serial: { username, token, serial, type } }; is filled by Homey devices through getSessions
+    this.apiSessions = {}; // username__token: apiSession
+    this.everyXminutes(5); // start poll emitter
     this.registerFlowListeners(); // register flow listeners
     this.log('Growatt app has been initialized');
   }
 
   async onUninit() {
     this.log('app onUninit called');
-    this.homey.removeAllListeners('plantInfo');
+    this.homey.removeAllListeners('lastData');
     this.homey.removeAllListeners('errorInfo');
   }
 
@@ -61,79 +62,117 @@ module.exports = class MyApp extends Homey.App {
   }
 
   async everyXminutesHandler() {
-    await this.getAccounts().catch(this.error);
-    for (const [key, account] of Object.entries(this.accounts)) {
-      this.log(`Fetching account data: ${key}`);
-      await this.pollAccount(account).catch(this.error);
+    await this.getDevices().catch(this.error);
+    for (const [, device] of Object.entries(this.devices)) {
+      await this.pollDevice(device).catch(this.error);
     }
   }
 
-  async getAccounts() {
+  getSession(device) {
+    const sessionName = `${device.username}__${device.token}`;
+    // check if session is connected
+    if (!this.apiSessions[sessionName]) {
+      this.apiSessions[sessionName] = new Api({ user_name: device.username, token: device.token });
+      this.log('New session created for', `${device.username}__${device.token}`);
+    }
+    return this.apiSessions[sessionName];
+  }
+
+  async getDevices() {
     try {
       const inverters = this.homey.drivers.getDriver('inverter').getDevices();
-      const batteries = this.homey.drivers.getDriver('battery').getDevices();
       const meters = this.homey.drivers.getDriver('meter').getDevices();
-      const devices = [...inverters, ...batteries, ...meters];
+      const batteries = this.homey.drivers.getDriver('battery').getDevices();
+      const devices = [...inverters, ...meters, ...batteries];
       devices.forEach((device) => {
-        const { username, password } = device.getSettings();
-        this.accounts[`${username}__${password}`] = { username, password };
+        const {
+          username, token, deviceSn, deviceType,
+        } = device.getSettings();
+        this.devices[`${deviceSn}`] = {
+          username, token, deviceSn, deviceType,
+        };
       });
-      return Promise.resolve(this.accounts);
+      return Promise.resolve(this.devices);
     } catch (error) {
       this.error(error);
       return Promise.reject(error);
     }
   }
 
-  async pollAccount(account) {
-    const sessionName = `${account.username}__${account.password}`;
+  async pollDevice(device) {
     try {
-      // check if session is connected
-      if (!this.apiSessions[sessionName]) {
-        this.apiSessions[sessionName] = new Growatt();
-        this.log('New session created for', `${account.username}__${account.password}`);
-      }
-      if (!this.apiSessions[sessionName].isConnected()) {
-        let result = await this.apiSessions[sessionName].login(account.username, account.password);
-        if (!result.result === 1) result = await this.apiSessions[sessionName].login(account.username, account.password); // retry once
-        if (!result.result === 1) Error('Login failed');
-        this.log('Logged in', `${account.username}__${account.password}`);
-      }
-      const options = {
-        // plantId: plantIdAccount.plantId,
-        // plantData: false,
-        // deviceData: false,
-        // deviceTyp: false,
-        weather: false,
-        // faultlog: false,
-        totalData: false,
-        // statusData: false,
-        // historyLast: true,
-        // historyAll: false,
-        // chartLastArray: false,
-      };
-      let info = await this.apiSessions[sessionName].getAllPlantData(options).catch(this.error);
-      if (!info) { // retry once
-        this.log(`retrying login ${account.username}__${account.password}`);
-        await this.apiSessions[sessionName].login(account.username, account.password);
-        info = await this.apiSessions[sessionName].getAllPlantData(options);
-      }
-      const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
-      const plantInfo = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
-      this.homey.emit('plantInfo', plantInfo); // emit info to devices
-      return Promise.resolve(plantInfo); // return info to driver
+      const session = this.getSession(device);
+      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
+      this.log('Fetching last data for', `${device.username} ${device.deviceSn}, ${device.deviceType}`);
+      const lastData = await session.getLastData(options);
+      // console.dir(lastData, { depth: null, colors: true });
+      this.homey.emit('lastData', lastData); // emit info to devices
+      return Promise.resolve(lastData); // return info to driver
     } catch (error) {
-      // this.error(error);
-      this.homey.emit('errorInfo', { account, error }); // emit error to devices
-      await this.apiSessions[sessionName].logout().catch(this.error);
+      this.homey.emit('errorInfo', { device, error }); // emit error to devices
       return Promise.reject(error); // return info to driver
     }
   }
 
+  async setOnOff(device, value) {
+    try {
+      const session = this.getSession(device);
+      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType, value };
+      this.log(`Setting onOff to ${value} for ${device.username} ${device.deviceSn} ${device.deviceType}`);
+      const onOff = await session.setOnOff(options);
+      return Promise.resolve(onOff);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  async setActivePower(device, value) {
+    try {
+      const session = this.getSession(device);
+      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType, value };
+      this.log(`Setting active power to ${value} for ${device.username} ${device.deviceSn} ${device.deviceType}`);
+      const result = await session.setActivePower(options);
+      return Promise.resolve(result);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  async getActivePower(device) {
+    try {
+      const session = this.getSession(device);
+      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
+      // this.log(`Getting active power for ${device.username} ${device.deviceSn} ${device.deviceType}`);
+      const result = await session.getActivePower(options);
+      return Promise.resolve(result);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   registerFlowListeners() {
-    // action cards
-    const forcePoll = this.homey.flow.getActionCard('force_poll');
-    forcePoll.registerRunListener((args) => this.everyXminutesHandler(true, 'flow').catch(this.error));
+    // custom action cards
+    const actionListeners = [];
+    const actionList = Homey.manifest.flow.actions;
+    actionList.forEach((action, index) => {
+      this.log('setting up flow action listener', action.id);
+      actionListeners[index] = this.homey.flow.getActionCard(action.id);
+      actionListeners[index].registerRunListener(async (args) => {
+        try {
+          // special case for force poll
+          if (action.id === 'force_poll') {
+            args.device.log(`Flow action ${action.id} called.`);
+            this.everyXminutesHandler().catch(this.error);
+            return;
+          }
+          // all other actions
+          args.device.log(`Flow action ${action.id} called with value ${args.val}`);
+          await args.device.handleFlowAction({ action: action.id, val: args.val });
+        } catch (error) {
+          this.error(error);
+        }
+      });
+    });
   }
 
 };

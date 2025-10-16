@@ -27,32 +27,4 @@ module.exports = class MyDevice extends Device {
     await super.onInit();
   }
 
-  async handleDeviceData(device) {
-    // check if data is new
-    if (!device || !device.historyLast || device.historyLast.createTime === this.lastCreateTime) return;
-    await this.setAvailable();
-    this.lastPoll = Date.now();
-    this.lastCreateTime = device.historyLast.createTime;
-    const values = {
-      measure_power: (device.historyLast.pacToUserTotal ?? 0) - (device.historyLast.pacToGridTotal ?? 0),
-      measure_frequency: device.historyLast.fac,
-      'measure_voltage.1': device.historyLast.vac1,
-      'measure_voltage.2': device.historyLast.vac2,
-      'measure_voltage.3': device.historyLast.vac3,
-      'meter_power.imported': device.historyLast.etoUserTotal ?? 0,
-      'meter_power.exported': (device.historyLast.etoGridTotal || device.historyLast.etogridTotal) ?? 0,
-      meter_power: (device.historyLast.etoUserTotal ?? 0) - (device.historyLast.etoGridTotal ?? 0),
-    };
-    // set the capability values
-    for (const [capability, value] of Object.entries(values)) {
-      this.setCapability(capability, value).catch((error) => this.error(error));
-    }
-    // set settings that have changed
-    const newSettings = {
-      plantId: device.deviceData.plantId,
-      plantName: device.deviceData.plantName,
-    };
-    for (const [key, value] of Object.entries(newSettings)) this.setSetting(key, value);
-  }
-
 };

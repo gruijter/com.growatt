@@ -1,0 +1,25 @@
+{
+  "title": {
+    "en": "The curtailment level changed",
+    "nl": "Het begrenzingsniveau is gewijzigd"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=inverter|battery&capabilities=dim.active_power"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "dim.active_power",
+      "type": "number",
+      "title": {
+        "en": "Curtailment level",
+        "nl": "Begrenzingsniveau"
+      },
+      "example": 53
+    }
+  ]
+}
