@@ -61,7 +61,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=inverter|battery&capabilities=dim.active_power"
+            "filter": "driver_id=inverter2|battery2&capabilities=dim.active_power"
           }
         ],
         "tokens": [
@@ -93,7 +93,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=inverter&capabilities=dim.active_power"
+            "filter": "driver_id=inverter2&capabilities=dim.active_power"
           },
           {
             "name": "val",
@@ -135,7 +135,9 @@
       "class": "battery",
       "capabilities": [
         "measure_power",
-        "measure_battery"
+        "measure_battery",
+        "battery_charging_state",
+        "charge_setpoint"
       ],
       "capabilitiesOptions": {
         "meter_power.charged": {
@@ -154,14 +156,16 @@
         },
         "dim.active_power": {
           "title": {
-            "en": "Maximum power",
-            "nl": "Maximaal vermogen"
+            "en": "Maximum AC power",
+            "nl": "Maximaal AC vermogen"
           },
           "uiComponent": "slider"
         }
       },
       "energy": {
-        "homeBattery": true
+        "homeBattery": true,
+        "meterPowerImportedCapability": "meter_power.charged",
+        "meterPowerExportedCapability": "meter_power.discharged"
       },
       "platforms": [
         "local",
@@ -171,9 +175,9 @@
         "cloud"
       ],
       "images": {
-        "small": "/drivers/battery/assets/images/small.png",
-        "large": "/drivers/battery/assets/images/large.png",
-        "xlarge": "/drivers/battery/assets/images/xlarge.png"
+        "small": "/drivers/battery2/assets/images/small.png",
+        "large": "/drivers/battery2/assets/images/large.png",
+        "xlarge": "/drivers/battery2/assets/images/xlarge.png"
       },
       "pair": [
         {
@@ -209,7 +213,7 @@
           "template": "add_devices"
         }
       ],
-      "id": "battery",
+      "id": "battery2",
       "settings": [
         {
           "type": "group",
@@ -325,8 +329,8 @@
         },
         "dim.active_power": {
           "title": {
-            "en": "Maximum power",
-            "nl": "Maximaal vermogen"
+            "en": "Maximum AC power",
+            "nl": "Maximaal AC vermogen"
           },
           "uiComponent": "slider"
         }
@@ -339,9 +343,9 @@
         "cloud"
       ],
       "images": {
-        "small": "/drivers/inverter/assets/images/small.png",
-        "large": "/drivers/inverter/assets/images/large.png",
-        "xlarge": "/drivers/inverter/assets/images/xlarge.png"
+        "small": "/drivers/inverter2/assets/images/small.png",
+        "large": "/drivers/inverter2/assets/images/large.png",
+        "xlarge": "/drivers/inverter2/assets/images/xlarge.png"
       },
       "pair": [
         {
@@ -377,7 +381,7 @@
           "template": "add_devices"
         }
       ],
-      "id": "inverter",
+      "id": "inverter2",
       "settings": [
         {
           "type": "group",
@@ -536,9 +540,9 @@
         "cloud"
       ],
       "images": {
-        "small": "/drivers/meter/assets/images/small.png",
-        "large": "/drivers/meter/assets/images/large.png",
-        "xlarge": "/drivers/meter/assets/images/xlarge.png"
+        "small": "/drivers/meter2/assets/images/small.png",
+        "large": "/drivers/meter2/assets/images/large.png",
+        "xlarge": "/drivers/meter2/assets/images/xlarge.png"
       },
       "pair": [
         {
@@ -574,7 +578,7 @@
           "template": "add_devices"
         }
       ],
-      "id": "meter",
+      "id": "meter2",
       "settings": [
         {
           "type": "group",
@@ -670,5 +674,36 @@
         }
       ]
     }
-  ]
+  ],
+  "capabilities": {
+    "charge_setpoint": {
+      "type": "number",
+      "title": {
+        "en": "Target Power",
+        "nl": "Doelvermogen",
+        "da": "Mål effekt",
+        "de": "Zielleistung",
+        "es": "Potencia objetivo",
+        "fr": "Puissance cible",
+        "it": "Potenza target",
+        "no": "Mål effekt",
+        "sv": "Måleffekt",
+        "pl": "Docelowa moc",
+        "ru": "Целевая мощность",
+        "ko": "목표 전력"
+      },
+      "units": {
+        "en": "%"
+      },
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "decimals": 0,
+      "getable": true,
+      "setable": true,
+      "insights": true,
+      "uiComponent": "slider",
+      "icon": "./assets/charge_setpoint.svg"
+    }
+  }
 }

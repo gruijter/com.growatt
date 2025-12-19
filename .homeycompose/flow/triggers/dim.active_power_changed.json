@@ -8,7 +8,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=inverter|battery&capabilities=dim.active_power"
+      "filter": "driver_id=inverter2|battery2&capabilities=dim.active_power"
     }
   ],
   "tokens": [

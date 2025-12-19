@@ -34,6 +34,9 @@ module.exports = class MyDevice extends Homey.Device {
       await this.setAvailable();
       this.deviceType = this.getSettings().deviceType;
       this.deviceSn = this.getSettings().deviceSn;
+      // check for capability migration
+      await this.migrate();
+      await this.initSpecials();
       this.startListeners();
       // start polling non-lastData
       await this.startPolling();
@@ -44,6 +47,76 @@ module.exports = class MyDevice extends Homey.Device {
       this.setUnavailable(msg).catch(this.error);
       this.restarting = false;
       this.restartDevice(60 * 1000).catch((error) => this.error(error));
+    }
+  }
+
+  async migrate() {
+    try {
+      this.log(`checking device migration for ${this.getName()}`);
+
+      // migrate from v1 to v2
+      // const settings = this.getSettings() || {};
+      // if (settings.username && settings.username !== '' && (!settings.sn_dongle || settings.sn_dongle === '')) {
+      //   this.log('migrating authentication settings from v1', this.getName());
+      //   await this.setSettings({
+      //     sn_dongle: settings.username,
+      //     password_dongle: settings.password,
+      //     use_local_connection: true,
+      //     username: '',
+      //     password: '',
+      //   }).catch(this.error);
+      //   const newSettings = this.getSettings();
+      //   await this.sessy.login(newSettings);
+      // }
+
+      // if (!settings.sn_sessy || settings.sn_sessy === '') {
+      //   const sysInfo = await this.sessy.getSystemInfo().catch(() => { });
+      //   if (sysInfo && sysInfo.sessy_serial) {
+      //     this.log('Setting Sessy S/N', this.getName(), sysInfo.sessy_serial);
+      //     await this.setSettings({ sn_sessy: sysInfo.sessy_serial }).catch(this.error);
+      //   }
+      // }
+
+      // migrate max charge/discharge settings
+      // if (this.getSettings().power_max && (!this.getSettings().power_max_charge || !this.getSettings().power_max_discharge)) {
+      //   const maxCharge = this.getSettings().power_max;
+      //   const maxDisCharge = maxCharge > 1800 ? 1800 : maxCharge;
+      //   this.log('migrating max (dis)charge settings', maxCharge, maxDisCharge);
+      //   await this.setSettings({ power_max_charge: maxCharge }).catch(this.error);
+      //   await this.setSettings({ power_max_discharge: maxDisCharge }).catch(this.error);
+      // }
+
+      // store the capability states before migration
+      const sym = Object.getOwnPropertySymbols(this).find((s) => String(s) === 'Symbol(state)');
+      const state = this[sym];
+      // check and repair incorrect capability(order)
+      const correctCaps = Object.keys(growattMap[`${this.driver.id}Map`][this.deviceType]);
+      for (let index = 0; index <= correctCaps.length; index += 1) {
+        const caps = this.getCapabilities();
+        const newCap = correctCaps[index];
+        if (caps[index] !== newCap) {
+          this.setUnavailable('Migrating. Please wait...').catch(this.error);
+          // remove all caps from here
+          for (let i = index; i < caps.length; i += 1) {
+            this.log(`removing capability ${caps[i]} for ${this.getName()}`);
+            await this.removeCapability(caps[i])
+              .catch((error) => this.log(error));
+            await setTimeoutPromise(2 * 1000); // wait a bit for Homey to settle
+          }
+          // add the new cap
+          if (newCap !== undefined) {
+            this.log(`adding capability ${newCap} for ${this.getName()}`);
+            await this.addCapability(newCap);
+            // restore capability state
+            if (state[newCap]) this.log(`${this.getName()} restoring value ${newCap} to ${state[newCap]}`);
+            // else this.log(`${this.getName()} has gotten a new capability ${newCap}!`);
+            if (state[newCap] !== undefined) await this.setCapability(newCap, state[newCap]).catch(this.error);
+            await setTimeoutPromise(2 * 1000); // wait a bit for Homey to settle
+          }
+        }
+      }
+    } catch (error) {
+      this.error(error);
     }
   }
 
@@ -180,6 +253,25 @@ module.exports = class MyDevice extends Homey.Device {
       throw (Error(`${action} not supported for this device`));
     } catch (error) {
       return Promise.reject(error);
+    }
+  }
+
+  // special handling for certain device types
+  async initSpecials() {
+    try {
+      // set remote power control ON
+      if (this.getCapabilities().includes('charge_setpoint')) {
+        this.log('Setting control authority ON for', this.getName());
+        await this.homey.app.setVPP(this.getSettings(), { setType: 'set_param_1', value: '1' })
+          .catch((error) => this.error(error));
+        this.log('Setting remote power control ON for', this.getName());
+        await this.homey.app.setVPP(this.getSettings(), { setType: 'set_param_25', value: '1' })
+          .catch((error) => this.error(error));
+      }
+      return Promise.resolve(true);
+    } catch (error) {
+      this.error('Failed to init special settings', error);
+      return Promise.resolve(true);
     }
   }
 

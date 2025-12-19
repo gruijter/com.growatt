@@ -37,6 +37,9 @@
   },
   "2.0.0": {
     "en": "Full rewrite to official Growatt api. Added power limiting through inverter."
+  },
+  "2.1.0": {
+    "en": "Added battery charge/discharge control. Added battery_charging_state. Added capability migration from older app versions."
   }
 }
 

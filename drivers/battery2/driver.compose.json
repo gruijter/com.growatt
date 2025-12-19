@@ -1,28 +1,42 @@
 {
   "name": {
-    "en": "Solar inverter",
-    "nl": "PV omvormer"
+    "en": "Battery",
+    "nl": "Batterij"
   },
-  "class": "solarpanel",
+  "class": "battery",
   "capabilities": [
     "measure_power",
-    "meter_power",
-    "meter_power.today"
+    "measure_battery",
+    "battery_charging_state",
+    "charge_setpoint"
   ],
   "capabilitiesOptions": {
-    "meter_power.today": {
+    "meter_power.charged": {
       "title": {
-        "en": "Energy today",
-        "nl": "Energie vandaag"
-      }
+        "en": "Charged energy",
+        "nl": "Geladen energie"
+      },
+      "decimals": 2
+    },
+    "meter_power.discharged": {
+      "title": {
+        "en": "Discharged energy",
+        "nl": "Ontladen energie"
+      },
+      "decimals": 2
     },
     "dim.active_power": {
       "title": {
-        "en": "Maximum power",
-        "nl": "Maximaal vermogen"
+        "en": "Maximum AC power",
+        "nl": "Maximaal AC vermogen"
       },
       "uiComponent": "slider"
     }
+  },
+  "energy": {
+    "homeBattery": true,
+    "meterPowerImportedCapability": "meter_power.charged",
+    "meterPowerExportedCapability": "meter_power.discharged"
   },
   "platforms": [
     "local",

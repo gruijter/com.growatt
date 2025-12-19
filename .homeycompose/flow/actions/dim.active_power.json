@@ -12,7 +12,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=inverter&capabilities=dim.active_power"
+      "filter": "driver_id=inverter2&capabilities=dim.active_power"
     },
     {
       "name": "val",

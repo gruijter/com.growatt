@@ -80,9 +80,9 @@ module.exports = class MyApp extends Homey.App {
 
   async getDevices() {
     try {
-      const inverters = this.homey.drivers.getDriver('inverter').getDevices();
-      const meters = this.homey.drivers.getDriver('meter').getDevices();
-      const batteries = this.homey.drivers.getDriver('battery').getDevices();
+      const inverters = this.homey.drivers.getDriver('inverter2').getDevices();
+      const meters = this.homey.drivers.getDriver('meter2').getDevices();
+      const batteries = this.homey.drivers.getDriver('battery2').getDevices();
       const devices = [...inverters, ...meters, ...batteries];
       devices.forEach((device) => {
         const {
@@ -126,6 +126,18 @@ module.exports = class MyApp extends Homey.App {
     }
   }
 
+  async getActivePower(device) {
+    try {
+      const session = this.getSession(device);
+      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
+      // this.log(`Getting active power for ${device.username} ${device.deviceSn} ${device.deviceType}`);
+      const result = await session.getActivePower(options);
+      return Promise.resolve(result);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   async setActivePower(device, value) {
     try {
       const session = this.getSession(device);
@@ -138,12 +150,36 @@ module.exports = class MyApp extends Homey.App {
     }
   }
 
-  async getActivePower(device) {
+  async getChargeSetpoint(device) {
     try {
       const session = this.getSession(device);
       const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
-      // this.log(`Getting active power for ${device.username} ${device.deviceSn} ${device.deviceType}`);
-      const result = await session.getActivePower(options);
+      // console.log(`Getting charge setpoint for ${device.username} ${device.deviceSn} ${device.deviceType}`);
+      const result = await session.getChargeSetpoint(options);
+      return Promise.resolve(result);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  async setChargeSetpoint(device, value) {
+    try {
+      const session = this.getSession(device);
+      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType, value };
+      this.log(`Setting Charge Setpoint power to ${value.value} for ${device.username} ${device.deviceSn} ${device.deviceType}`);
+      const result = await session.setChargeSetpoint(options);
+      return Promise.resolve(result);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  async setVPP(device, value) {
+    try {
+      const session = this.getSession(device);
+      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType, value };
+      this.log(`Setting VPP parameter ${value.setType} power to ${value.value} for ${device.username} ${device.deviceSn} ${device.deviceType}`);
+      const result = await session.setVPP(options);
       return Promise.resolve(result);
     } catch (error) {
       return Promise.reject(error);

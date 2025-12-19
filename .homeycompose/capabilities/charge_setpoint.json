@@ -1,0 +1,29 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Target Power",
+    "nl": "Doelvermogen",
+    "da": "Mål effekt",
+    "de": "Zielleistung",
+    "es": "Potencia objetivo",
+    "fr": "Puissance cible",
+    "it": "Potenza target",
+    "no": "Mål effekt",
+    "sv": "Måleffekt",
+    "pl": "Docelowa moc",
+    "ru": "Целевая мощность",
+    "ko": "목표 전력"
+  },
+  "units": {
+    "en": "%"
+  },
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "decimals": 0,
+  "getable": true,
+  "setable": true,
+  "insights": true,
+  "uiComponent": "slider",
+  "icon": "./assets/charge_setpoint.svg"
+}
