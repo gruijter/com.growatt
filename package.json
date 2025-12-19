@@ -1,9 +1,9 @@
 {
   "name": "com.growatt",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "app.js",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
@@ -12,5 +12,8 @@
     "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.11",
     "eslint": "^7.32.0",
     "eslint-config-athom": "^3.1.5"
+  },
+  "dependencies": {
+    "growatt": "^0.7.7"
   }
 }

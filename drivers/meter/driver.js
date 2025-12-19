@@ -1,0 +1,85 @@
+/*
+Copyright 2025, Robin de Gruijter (rmdegruijter@gmail.com)
+
+This file is part of com.growatt.
+
+com.growatt is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+com.growatt is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+'use strict';
+
+const Homey = require('homey');
+
+module.exports = class MyDriver extends Homey.Driver {
+
+  async onInit() {
+    // check if any v1 devices are in use
+    if (this.getDevices().length) {
+      this.log('Deprecated Growatt Meter device(s) detected.');
+      await this.homey.notifications.createNotification({
+        excerpt: 'Deprecated Growatt Meter device(s) detected. Please remove these devices and re-add them.',
+      });
+    }
+    this.log(`${this.id} v1 driver has been initialized`);
+  }
+
+  async onPair(session) {
+    let username = '';
+    let password = '';
+    let info = false;
+
+    session.setHandler('login', async (data) => {
+      try {
+        username = data.username;
+        password = data.password;
+        info = await this.homey.app.pollAccountV1({ username, password });
+        return Promise.resolve(info);
+      } catch (error) {
+        const msg = error.message && error.message.includes('"msg":') ? JSON.parse(error.message).msg : error;
+        this.error(error);
+        return Promise.reject(msg);
+      }
+    });
+
+    session.setHandler('list_devices', async () => {
+      this.log(JSON.stringify(info));
+      const meters = info.filter((device) => device.historyLast && (device.historyLast.fac || device.historyLast.pacToGridTotal || device.historyLast.etoGridTotal));
+
+      const devices = meters.map((device) => ({
+        name: `Meter ${device.deviceData.plantName}`,
+        data: {
+          id: `${device.deviceData.sn}`,
+        },
+        capabilities: [
+          'measure_power',
+          'meter_power',
+          'measure_frequency',
+          'measure_voltage.1',
+          'measure_voltage.2',
+          'measure_voltage.3',
+          'meter_power.imported',
+          'meter_power.exported',
+        ],
+        settings: {
+          username,
+          password,
+          plantId: device.deviceData.plantId,
+          plantName: device.deviceData.plantName,
+        },
+      }));
+      return Promise.all(devices);
+    });
+  }
+
+};

@@ -20,8 +20,8 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 'use strict';
 
 const Homey = require('homey');
-// const growattMap = require('./lib/growattMap');
-const Api = require('./lib/growatt');
+const Growatt = require('growatt'); // v1 API
+const Api = require('./lib/growatt'); // v2 API
 
 module.exports = class MyApp extends Homey.App {
 
@@ -30,6 +30,12 @@ module.exports = class MyApp extends Homey.App {
     this.apiSessions = {}; // username__token: apiSession
     this.everyXminutes(5); // start poll emitter
     this.registerFlowListeners(); // register flow listeners
+
+    // DEPRECATED V1
+    this.accountsV1 = {}; // { username__passWord: { username, password } }; // is filled by Homey devices
+    this.apiSessionsV1 = {}; // username__passWord: apiSession
+    this.everyXminutesV1(10); // start poll emitter
+
     this.log('Growatt app has been initialized');
   }
 
@@ -37,6 +43,11 @@ module.exports = class MyApp extends Homey.App {
     this.log('app onUninit called');
     this.homey.removeAllListeners('lastData');
     this.homey.removeAllListeners('errorInfo');
+
+    // DEPRECATED V1
+    this.homey.removeAllListeners('plantInfoV1');
+    this.homey.removeAllListeners('errorInfoV1');
+
   }
 
   everyXminutes(interval) {
@@ -199,6 +210,10 @@ module.exports = class MyApp extends Homey.App {
           if (action.id === 'force_poll') {
             args.device.log(`Flow action ${action.id} called.`);
             this.everyXminutesHandler().catch(this.error);
+
+            // DEPRECATED V1
+            this.everyXminutesHandlerV1().catch(this.error);
+
             return;
           }
           // all other actions
@@ -209,6 +224,99 @@ module.exports = class MyApp extends Homey.App {
         }
       });
     });
+  }
+
+  // DEPRECATED V1
+  everyXminutesV1(interval) {
+    let timeoutIdV1;
+    const scheduleNextXminutes = () => {
+      if (timeoutIdV1) {
+        this.homey.clearTimeout(timeoutIdV1); // Clear any existing timeout
+      }
+      const now = new Date();
+      const nextXminutes = new Date(now);
+      const currentMinutes = now.getMinutes();
+      const nextMultipleOfX = currentMinutes % interval === 0 ? currentMinutes + interval : Math.ceil(currentMinutes / interval) * interval;
+      nextXminutes.setMinutes(nextMultipleOfX, 0, 0);
+      const timeToNextXminutes = nextXminutes - now;
+      // console.log('everyXminutes starts in', timeToNextXminutes / 1000);
+      timeoutIdV1 = this.homey.setTimeout(() => {
+        this.everyXminutesHandlerV1().catch(this.error);
+        scheduleNextXminutes(); // Schedule the next X minutes
+      }, timeToNextXminutes);
+    };
+    scheduleNextXminutes();
+    this.log('everyXminutesV1 job started');
+  }
+
+  async everyXminutesHandlerV1() {
+    await this.getAccountsV1().catch(this.error);
+    for (const [key, account] of Object.entries(this.accountsV1)) {
+      this.log(`Fetching account data V1: ${key}`);
+      await this.pollAccountV1(account).catch(this.error);
+    }
+  }
+
+  async getAccountsV1() {
+    try {
+      const inverters = this.homey.drivers.getDriver('inverter').getDevices();
+      const batteries = this.homey.drivers.getDriver('battery').getDevices();
+      const meters = this.homey.drivers.getDriver('meter').getDevices();
+      const devices = [...inverters, ...batteries, ...meters];
+      devices.forEach((device) => {
+        const { username, password } = device.getSettings();
+        this.accountsV1[`${username}__${password}`] = { username, password };
+      });
+      return Promise.resolve(this.accountsV1);
+    } catch (error) {
+      this.error(error);
+      return Promise.reject(error);
+    }
+  }
+
+  async pollAccountV1(account) {
+    const sessionName = `${account.username}__${account.password}`;
+    try {
+      // check if session is connected
+      if (!this.apiSessionsV1[sessionName]) {
+        this.apiSessionsV1[sessionName] = new Growatt();
+        this.log('New V1 session created for', `${account.username}__${account.password}`);
+      }
+      if (!this.apiSessionsV1[sessionName].isConnected()) {
+        let result = await this.apiSessionsV1[sessionName].login(account.username, account.password);
+        if (!result.result === 1) result = await this.apiSessionsV1[sessionName].login(account.username, account.password); // retry once
+        if (!result.result === 1) Error('Login V1 failed');
+        this.log('V1 Logged in', `${account.username}__${account.password}`);
+      }
+      const options = {
+        // plantId: plantIdAccount.plantId,
+        // plantData: false,
+        // deviceData: false,
+        // deviceTyp: false,
+        weather: false,
+        // faultlog: false,
+        totalData: false,
+        // statusData: false,
+        // historyLast: true,
+        // historyAll: false,
+        // chartLastArray: false,
+      };
+      let info = await this.apiSessionsV1[sessionName].getAllPlantData(options).catch(() => null);
+      if (!info) { // retry once
+        this.log(`V1 retrying login ${account.username}__${account.password}`);
+        await this.apiSessionsV1[sessionName].login(account.username, account.password);
+        info = await this.apiSessionsV1[sessionName].getAllPlantData(options);
+      }
+      const plantArray = Object.entries(info).map(([plantId, plantObject]) => ({ ...plantObject }));
+      const plantInfo = plantArray.flatMap((plant) => Object.entries(plant.devices).map(([deviceName, deviceObject]) => ({ ...deviceObject })));
+      this.homey.emit('plantInfoV1', plantInfo); // emit info to devices
+      return Promise.resolve(plantInfo); // return info to driver
+    } catch (error) {
+      // this.error(error);
+      this.homey.emit('errorInfoV1', { account, error }); // emit error to devices
+      await this.apiSessionsV1[sessionName].logout().catch(this.error);
+      return Promise.reject(error); // return info to driver
+    }
   }
 
 };
