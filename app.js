@@ -28,6 +28,7 @@ module.exports = class MyApp extends Homey.App {
   async onInit() {
     this.devices = {};// { serial: { username, token, serial, type } }; is filled by Homey devices through getSessions
     this.apiSessions = {}; // username__token: apiSession
+    this.deviceCache = {}; // { deviceSn: { timestamp, data } }
     this.everyXminutes(5); // start poll emitter
     this.registerFlowListeners(); // register flow listeners
 
@@ -112,16 +113,26 @@ module.exports = class MyApp extends Homey.App {
 
   async pollDevice(device) {
     try {
+      const now = Date.now();
+      const cacheKey = `${device.deviceSn}_${device.deviceType}`;
+      const cached = this.deviceCache[cacheKey];
+      if (cached && (now - cached.timestamp < 5 * 60 * 1000)) {
+        this.log('Returning cached data for', `${device.username} ${device.deviceSn} ${device.deviceType}`);
+        this.homey.emit('lastData', cached.data);
+        return Promise.resolve(cached.data);
+      }
       const session = this.getSession(device);
       const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
       this.log('Fetching last data for', `${device.username} ${device.deviceSn}, ${device.deviceType}`);
       const lastData = await session.getLastData(options);
       // console.dir(lastData, { depth: null, colors: true });
       this.homey.emit('lastData', lastData); // emit info to devices
+      this.deviceCache[cacheKey] = { timestamp: now, data: lastData };
       return Promise.resolve(lastData); // return info to driver
     } catch (error) {
-      this.homey.emit('errorInfo', { device, error }); // emit error to devices
-      return Promise.reject(error); // return info to driver
+      const msg = error.message || error;
+      this.homey.emit('errorInfo', { device, error: msg }); // emit error to devices
+      return Promise.reject(msg); // return info to driver
     }
   }
 
@@ -133,7 +144,7 @@ module.exports = class MyApp extends Homey.App {
       const onOff = await session.setOnOff(options);
       return Promise.resolve(onOff);
     } catch (error) {
-      return Promise.reject(error);
+      return Promise.reject(error.message || error);
     }
   }
 
@@ -145,7 +156,7 @@ module.exports = class MyApp extends Homey.App {
       const result = await session.getActivePower(options);
       return Promise.resolve(result);
     } catch (error) {
-      return Promise.reject(error);
+      return Promise.reject(error.message || error);
     }
   }
 
@@ -157,7 +168,7 @@ module.exports = class MyApp extends Homey.App {
       const result = await session.setActivePower(options);
       return Promise.resolve(result);
     } catch (error) {
-      return Promise.reject(error);
+      return Promise.reject(error.message || error);
     }
   }
 
@@ -169,7 +180,7 @@ module.exports = class MyApp extends Homey.App {
       const result = await session.getChargeSetpoint(options);
       return Promise.resolve(result);
     } catch (error) {
-      return Promise.reject(error);
+      return Promise.reject(error.message || error);
     }
   }
 
@@ -181,7 +192,7 @@ module.exports = class MyApp extends Homey.App {
       const result = await session.setChargeSetpoint(options);
       return Promise.resolve(result);
     } catch (error) {
-      return Promise.reject(error);
+      return Promise.reject(error.message || error);
     }
   }
 
@@ -193,7 +204,7 @@ module.exports = class MyApp extends Homey.App {
       const result = await session.setVPP(options);
       return Promise.resolve(result);
     } catch (error) {
-      return Promise.reject(error);
+      return Promise.reject(error.message || error);
     }
   }
 

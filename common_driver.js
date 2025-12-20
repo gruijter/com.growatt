@@ -44,9 +44,7 @@ module.exports = class MyDriver extends Homey.Driver {
         info = await growatt.getPlantListUser();
         return Promise.resolve(info);
       } catch (error) {
-        const msg = error.message && error.message.includes('"message":') ? JSON.parse(error.message).message : error;
-        this.error(error);
-        return Promise.reject(msg);
+        return Promise.reject(error.message || error);
       }
     });
 
@@ -58,13 +56,7 @@ module.exports = class MyDriver extends Homey.Driver {
       const devices = [];
       for (const site of sites) {
         // get device data
-        // const deviceList1 = await growatt.getDeviceList({ plant_id: site.plant_id }).catch(this.error);
-        const deviceList2 = await growatt.getDeviceList2({ plant_id: site.plant_id }).catch((error) => {
-          this.error(error);
-          let err = error;
-          if (err.message && err.message.toUpperCase().includes('FREQUENTLY_ACCESS')) err = new Error('Wait at least 5 minutes before retrying');
-          throw err;
-        });
+        const deviceList2 = await growatt.getDeviceList2({ plant_id: site.plant_id });
         // console.dir(deviceList2, { depth: null });
         const list = deviceList2?.data;
         if (!list || !Array.isArray(list)) continue;
@@ -72,9 +64,15 @@ module.exports = class MyDriver extends Homey.Driver {
         for (const dev of list) {
           if (validTypes.includes(dev.deviceType)) {
             // const devInfo = await growatt.getDeviceInfo({ deviceSn: dev.deviceSn, deviceType: dev.deviceType }).catch(this.error);
-            // const dev1 = deviceList1?.devices?.find((d) => d.device_sn === dev.deviceSn);
-            // console.log(dev1);
-            const capabilities = Object.keys(growattMap[`${this.id}Map`][dev.deviceType]);
+            // console.log(devInfo);
+
+            // set the capablities based on growattMap
+            const caps = Object.keys(growattMap[`${this.id}Map`][dev.deviceType]);
+            let capabilities = [...caps];
+            // remove fake second battery capabilities
+            if (this.id === 'battery2') capabilities = capabilities.filter((cap) => !cap.includes('.bat2'));
+
+            // add device
             const device = {
               name: `${site.name} ${dev.deviceSn}`,
               data: {
@@ -96,6 +94,41 @@ module.exports = class MyDriver extends Homey.Driver {
               },
             };
             devices.push(device);
+
+            // add second battery device
+            if (this.id === 'battery2') {
+              const lastData = await this.homey.app.pollDevice({
+                username, token, deviceSn: dev.deviceSn, deviceType: dev.deviceType,
+              }).catch(() => this.error);
+              if (lastData) {
+                const thisDeviceTypeData = lastData[dev.deviceType] || [];
+                const devData = thisDeviceTypeData.filter((d) => d.serialNum === dev.deviceSn)[0];
+                if (devData && Object.keys(devData).some((d) => d.startsWith('bdc2'))) {
+                  const device = {
+                    name: `${site.name} ${dev.deviceSn}_2`,
+                    data: {
+                      id: `${dev.deviceSn}.bat2`,
+                    },
+                    capabilities,
+                    settings: {
+                      username,
+                      token,
+                      deviceType: `${dev.deviceType}`,
+                      deviceSn: `${dev.deviceSn}`,
+                      dataLogger: `${dev.datalogSn}`,
+                      // model: `${dev1?.model}`,
+                      plantId: `${site.plant_id}`,
+                      plantName: `${site.name}`,
+                      // deviceId: `${dev1?.device_id}`,
+                      // deviceTypeNr: `${dev1?.type}`,
+                      // nominalPower: `${devInfo?.pmax}` || '',
+                    },
+                  };
+                  devices.push(device);
+                }
+              }
+            }
+
           }
         }
       }
@@ -104,37 +137,35 @@ module.exports = class MyDriver extends Homey.Driver {
     });
   }
 
-  // poll one or multiple plants from one client
-  async pollPlants({ client, psIdList, pointIdList }) {
-    try {
-      // console.log('pollPlants called', psIdList, pointIdList);
-      const data = await client.getPlantRealTimeData({ psIdList, pointIdList });
-      const plantInfo = data?.result_data?.device_point_list || [];
-      return Promise.resolve(plantInfo);
-    } catch (error) {
-      this.error(error);
-      return Promise.reject(error);
-    }
-  }
+  // // poll one or multiple plants from one client
+  // async pollPlants({ client, psIdList, pointIdList }) {
+  //   try {
+  //     // console.log('pollPlants called', psIdList, pointIdList);
+  //     const data = await client.getPlantRealTimeData({ psIdList, pointIdList });
+  //     const plantInfo = data?.result_data?.device_point_list || [];
+  //     return Promise.resolve(plantInfo);
+  //   } catch (error) {
+  //     return Promise.reject(error.message || error);
+  //   }
+  // }
 
-  // poll one or multiple devices from one client
-  async pollDeviceType({
-    client,
-    psKeyList,
-    pointIdList,
-    deviceType,
-  }) {
-    try {
-      if (deviceType === 'plant') throw new Error('Device type "plant" should not be used in pollDeviceType, use pollPlants instead');
-      // console.log('pollDevices called', deviceType, psKeyList, pointIdList);
-      // deviceData
-      const data = await client.getDeviceRealTimeData({ deviceType, psKeyList, pointIdList });
-      const deviceInfo = data?.result_data?.device_point_list || [];
-      return Promise.resolve(deviceInfo);
-    } catch (error) {
-      this.error(error);
-      return Promise.reject(error);
-    }
-  }
+  // // poll one or multiple devices from one client
+  // async pollDeviceType({
+  //   client,
+  //   psKeyList,
+  //   pointIdList,
+  //   deviceType,
+  // }) {
+  //   try {
+  //     if (deviceType === 'plant') throw new Error('Device type "plant" should not be used in pollDeviceType, use pollPlants instead');
+  //     // console.log('pollDevices called', deviceType, psKeyList, pointIdList);
+  //     // deviceData
+  //     const data = await client.getDeviceRealTimeData({ deviceType, psKeyList, pointIdList });
+  //     const deviceInfo = data?.result_data?.device_point_list || [];
+  //     return Promise.resolve(deviceInfo);
+  //   } catch (error) {
+  //     return Promise.reject(error.message || error);
+  //   }
+  // }
 
 };

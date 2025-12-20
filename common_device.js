@@ -42,9 +42,8 @@ module.exports = class MyDevice extends Homey.Device {
       await this.startPolling();
       this.log(this.getName(), 'has been initialized');
     } catch (error) {
-      const msg = error.message && error.message.includes('"message":') ? JSON.parse(error.message).message : error;
       this.error(error);
-      this.setUnavailable(msg).catch(this.error);
+      this.setUnavailable(error.message || error).catch(this.error);
       this.restarting = false;
       this.restartDevice(60 * 1000).catch((error) => this.error(error));
     }
@@ -90,7 +89,11 @@ module.exports = class MyDevice extends Homey.Device {
       const sym = Object.getOwnPropertySymbols(this).find((s) => String(s) === 'Symbol(state)');
       const state = this[sym];
       // check and repair incorrect capability(order)
-      const correctCaps = Object.keys(growattMap[`${this.driver.id}Map`][this.deviceType]);
+      const caps = Object.keys(growattMap[`${this.driver.id}Map`][this.deviceType]);
+      let correctCaps = [...caps];
+      // remove fake second battery capabilities
+      if (this.driver.id === 'battery2') correctCaps = correctCaps.filter((cap) => !cap.includes('.bat2'));
+
       for (let index = 0; index <= correctCaps.length; index += 1) {
         const caps = this.getCapabilities();
         const newCap = correctCaps[index];
@@ -225,7 +228,7 @@ module.exports = class MyDevice extends Homey.Device {
       this.busy = false;
     } catch (error) {
       this.busy = false;
-      this.error('Poll error', error.message);
+      this.error('Poll error', error.message || error);
     }
   }
 
@@ -233,7 +236,21 @@ module.exports = class MyDevice extends Homey.Device {
     await this.setAvailable();
     this.lastPoll = Date.now();
     // map the data to homey capabilities
-    const capFuncs = growattMap[`${this.driver.id}Map`][this.deviceType];
+    let capFuncs = { ...growattMap[`${this.driver.id}Map`][this.deviceType] };
+    // remove the .bat2 capFuncs when 1st battery, replace capFuncs when 2nd battery
+    if (this.driver.id === 'battery2') {
+      if (this.getData().id.includes('.bat2')) {
+        const batCaps = Object.keys(capFuncs).filter((cap) => cap.includes('.bat2'));
+        for (const cap of batCaps) {
+          const newCap = cap.replace('.bat2', '');
+          capFuncs[newCap] = capFuncs[cap];
+        }
+      }
+      capFuncs = Object.fromEntries(Object.entries(capFuncs).filter(([cap]) => !cap.includes('.bat2')));
+    }
+    console.log(this.getName(), this.getData());
+    console.dir(capFuncs, { depth: null });
+    // set capabilities
     for (const [cap, func] of Object.entries(capFuncs)) this.setCapability(cap, func[0](data)).catch((error) => this.error(error));
     // set settings that have changed
     // const newSettings = {
@@ -291,8 +308,7 @@ module.exports = class MyDevice extends Homey.Device {
     this.eventListenerErrorInfo = ({ device, error }) => {
       if (device.deviceSn === this.deviceSn) {
         this.error(this.getName(), error);
-        const msg = error.message && error.message.includes('"message":') ? JSON.parse(error.message).message : error;
-        this.setUnavailable(msg).catch((error) => this.error(error));
+        this.setUnavailable(error.message || error).catch((error) => this.error(error));
       }
     };
     this.homey.on('errorInfo', this.eventListenerErrorInfo);
