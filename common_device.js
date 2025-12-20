@@ -248,8 +248,6 @@ module.exports = class MyDevice extends Homey.Device {
       }
       capFuncs = Object.fromEntries(Object.entries(capFuncs).filter(([cap]) => !cap.includes('.bat2')));
     }
-    console.log(this.getName(), this.getData());
-    console.dir(capFuncs, { depth: null });
     // set capabilities
     for (const [cap, func] of Object.entries(capFuncs)) this.setCapability(cap, func[0](data)).catch((error) => this.error(error));
     // set settings that have changed

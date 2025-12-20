@@ -42,9 +42,9 @@ module.exports = class MyDriver extends Homey.Driver {
         token = data.password;
         growatt = new Api({ user_name: username, token });
         info = await growatt.getPlantListUser();
-        return Promise.resolve(info);
+        return info;
       } catch (error) {
-        return Promise.reject(error.message || error);
+        throw error.message || error;
       }
     });
 
@@ -133,7 +133,7 @@ module.exports = class MyDriver extends Homey.Driver {
         }
       }
       this.log(devices);
-      return Promise.all(devices);
+      return devices;
     });
   }
 
