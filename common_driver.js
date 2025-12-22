@@ -41,9 +41,17 @@ module.exports = class MyDriver extends Homey.Driver {
         username = data.username;
         token = data.password;
         growatt = new Api({ user_name: username, token });
-        info = await growatt.getPlantListUser();
+        info = await growatt.getPlantListUser().catch(this.error);
+        if (!info) {
+          const userInfo = await growatt.checkUser();
+          let errorMessage = '';
+          if (!userInfo.userNameExists) errorMessage = 'User does not exist';
+          errorMessage = 'API Problem. Please contact service.nl@growatt.com to fix your account';
+          throw Error(errorMessage);
+        }
         return info;
       } catch (error) {
+        this.error(error);
         throw error.message || error;
       }
     });
