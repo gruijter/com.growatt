@@ -40,6 +40,8 @@
   },
   "2.1.0": {
     "en": "Added battery charge/discharge control. Added battery_charging_state. Added capability migration from older app versions."
+  },
+  "2.2.0": {
+    "en": "Added v1>v2 migration path. Added more devices support. Added second battery support. Reduced 'TOO_FREQUENT' request errors. Improved Inverter curtailment UX. Improved pairing feedback on API issues."
   }
 }
-
