@@ -1,11 +1,11 @@
 {
   "title": {
-    "en": "Power curtailment",
-    "nl": "Vermogen begrenzing"
+    "en": "Limit AC power",
+    "nl": "Beperk AC vermogen"
   },
   "titleFormatted": {
-    "en": "Limit inverter power to [[val]]",
-    "nl": "Begrens omvormer vermogen naar [[val]]"
+    "en": "Limit inverter AC power to [[val]]",
+    "nl": "Begrens omvormer AC vermogen naar [[val]]"
   },
   "highlight": true,
   "args": [
@@ -18,8 +18,8 @@
       "name": "val",
       "type": "range",
       "title": {
-        "en": "Curtailment level",
-        "nl": "Begrenzingsniveau"
+        "en": "Limit",
+        "nl": "Limiet"
       },
       "min": 0,
       "max": 1,

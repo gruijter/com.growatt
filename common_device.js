@@ -52,38 +52,7 @@ module.exports = class MyDevice extends Homey.Device {
   async migrate() {
     try {
       this.log(`checking device migration for ${this.getName()}`);
-
-      // migrate from v1 to v2
-      // const settings = this.getSettings() || {};
-      // if (settings.username && settings.username !== '' && (!settings.sn_dongle || settings.sn_dongle === '')) {
-      //   this.log('migrating authentication settings from v1', this.getName());
-      //   await this.setSettings({
-      //     sn_dongle: settings.username,
-      //     password_dongle: settings.password,
-      //     use_local_connection: true,
-      //     username: '',
-      //     password: '',
-      //   }).catch(this.error);
-      //   const newSettings = this.getSettings();
-      //   await this.sessy.login(newSettings);
-      // }
-
-      // if (!settings.sn_sessy || settings.sn_sessy === '') {
-      //   const sysInfo = await this.sessy.getSystemInfo().catch(() => { });
-      //   if (sysInfo && sysInfo.sessy_serial) {
-      //     this.log('Setting Sessy S/N', this.getName(), sysInfo.sessy_serial);
-      //     await this.setSettings({ sn_sessy: sysInfo.sessy_serial }).catch(this.error);
-      //   }
-      // }
-
-      // migrate max charge/discharge settings
-      // if (this.getSettings().power_max && (!this.getSettings().power_max_charge || !this.getSettings().power_max_discharge)) {
-      //   const maxCharge = this.getSettings().power_max;
-      //   const maxDisCharge = maxCharge > 1800 ? 1800 : maxCharge;
-      //   this.log('migrating max (dis)charge settings', maxCharge, maxDisCharge);
-      //   await this.setSettings({ power_max_charge: maxCharge }).catch(this.error);
-      //   await this.setSettings({ power_max_discharge: maxDisCharge }).catch(this.error);
-      // }
+      let migrated = false;
 
       // store the capability states before migration
       const sym = Object.getOwnPropertySymbols(this).find((s) => String(s) === 'Symbol(state)');
@@ -93,11 +62,11 @@ module.exports = class MyDevice extends Homey.Device {
       let correctCaps = [...caps];
       // remove fake second battery capabilities
       if (this.driver.id === 'battery2') correctCaps = correctCaps.filter((cap) => !cap.includes('.bat2'));
-
       for (let index = 0; index <= correctCaps.length; index += 1) {
         const caps = this.getCapabilities();
         const newCap = correctCaps[index];
         if (caps[index] !== newCap) {
+          migrated = true;
           this.setUnavailable('Migrating. Please wait...').catch(this.error);
           // remove all caps from here
           for (let i = index; i < caps.length; i += 1) {
@@ -118,12 +87,13 @@ module.exports = class MyDevice extends Homey.Device {
           }
         }
       }
+      if (migrated) this.restartDevice(1000).catch((error) => this.error(error));
     } catch (error) {
       this.error(error);
     }
   }
 
-  async startPolling(interval = 15) {
+  async startPolling(interval = 60) {
     // Check if any key in growattMap.nonLastDataMap is included in this.getCapabilities()
     const capabilities = this.getCapabilities();
     const hasMatchingName = Object.keys(growattMap.nonLastDataMap).some((cap) => capabilities.includes(cap));

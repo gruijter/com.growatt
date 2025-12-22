@@ -15,13 +15,6 @@
         "en": "Energy today",
         "nl": "Energie vandaag"
       }
-    },
-    "dim.active_power": {
-      "title": {
-        "en": "Maximum AC power",
-        "nl": "Maximaal AC vermogen"
-      },
-      "uiComponent": "slider"
     }
   },
   "platforms": [

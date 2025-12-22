@@ -24,13 +24,6 @@
         "nl": "Ontladen energie"
       },
       "decimals": 2
-    },
-    "dim.active_power": {
-      "title": {
-        "en": "Maximum AC power",
-        "nl": "Maximaal AC vermogen"
-      },
-      "uiComponent": "slider"
     }
   },
   "energy": {
