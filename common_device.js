@@ -34,10 +34,13 @@ module.exports = class MyDevice extends Homey.Device {
       await this.setAvailable();
       this.deviceType = this.getSettings().deviceType;
       this.deviceSn = this.getSettings().deviceSn;
+      this.growatt = this.homey.app.getSession(this.getSettings());
       // check for capability migration
       await this.migrate();
-      await this.initSpecials();
+      // await this.initSpecials(); // battery charge/discharge trials
       this.startListeners();
+      // poll lastData once when (re)started
+      await this.pollLastData();
       // start polling non-lastData
       await this.startPolling();
       this.log(this.getName(), 'has been initialized');
@@ -46,6 +49,15 @@ module.exports = class MyDevice extends Homey.Device {
       this.setUnavailable(error.message || error).catch(this.error);
       this.restarting = false;
       this.restartDevice(60 * 1000).catch((error) => this.error(error));
+    }
+  }
+
+  async pollLastData() {
+    try {
+      const lastData = await this.growatt.getLastData({ deviceSn: this.deviceSn, deviceType: this.deviceType });
+      this.homey.emit('lastData', lastData);
+    } catch (error) {
+      this.error(error);
     }
   }
 
@@ -93,7 +105,7 @@ module.exports = class MyDevice extends Homey.Device {
     }
   }
 
-  async startPolling(interval = 60) {
+  async startPolling(interval = 20) {
     // Check if any key in growattMap.nonLastDataMap is included in this.getCapabilities()
     const capabilities = this.getCapabilities();
     const hasMatchingName = Object.keys(growattMap.nonLastDataMap).some((cap) => capabilities.includes(cap));
@@ -128,7 +140,8 @@ module.exports = class MyDevice extends Homey.Device {
     this.log('added', this.getName());
     // poll lastData once when newly added
     await this.homey.app.getDevices().catch((error) => this.error(error));
-    await this.homey.app.pollDevice(this.getSettings()).catch((error) => this.error(error));
+    if (!this.growatt) this.growatt = this.homey.app.getSession(this.getSettings());
+    await this.pollLastData();
   }
 
   async onSettings({ oldSettings, newSettings, changedKeys }) {
@@ -152,7 +165,7 @@ module.exports = class MyDevice extends Homey.Device {
   }
 
   async setCapability(capability, value) {
-    if (this.hasCapability(capability) && value !== undefined) {
+    if (this.hasCapability(capability) && value !== undefined && value !== null) {
       await this.setCapabilityValue(capability, value).catch((error) => {
         this.log(error, capability, value);
       });
@@ -184,14 +197,23 @@ module.exports = class MyDevice extends Homey.Device {
       for (const cap of capabilities) {
         if (growattMap.nonLastDataMap[cap]) {
           // console.log(`Polling ${cap} for ${this.getName()}`);
-          const dev = this.getSettings();
-          const data = await this.homey.app[`${growattMap.nonLastDataMap[cap]}`](dev);
-          if (data !== undefined && data !== null) {
-            this.setAvailable().catch((error) => this.error(error));
-            // map the data to homey capability
-            const capFunc = growattMap[`${this.driver.id}Map`][this.deviceType][cap][0];
-            const value = capFunc(data);
-            this.setCapability(cap, value).catch((error) => this.error(error));
+          try {
+            const method = growattMap.nonLastDataMap[cap];
+            const data = await this.growatt[method]({ deviceSn: this.deviceSn, deviceType: this.deviceType });
+            if (data !== undefined && data !== null) {
+              this.setAvailable().catch((error) => this.error(error));
+              // map the data to homey capability
+              const capFunc = growattMap[`${this.driver.id}Map`][this.deviceType][cap][0];
+              const value = capFunc(data);
+              this.setCapability(cap, value).catch((error) => this.error(error));
+            }
+          } catch (error) {
+            const errMsg = error.message || error;
+            if (errMsg === 'zfdyh_Read_failure' || errMsg === 'READ_DEVICE_PARAM_FAIL') {
+              this.log(`Error polling ${cap}`, errMsg);
+            } else {
+              this.error(`Error polling ${cap}`, errMsg);
+            }
           }
         }
       }
@@ -232,7 +254,7 @@ module.exports = class MyDevice extends Homey.Device {
       const mapFunc = growattMap[`${this.driver.id}Map`][this.deviceType][action][1];
       if (mapFunc) {
         const { call, value } = mapFunc(val);
-        await this.homey.app[call](this.getSettings(), value);
+        await this.growatt[call]({ deviceSn: this.deviceSn, deviceType: this.deviceType, value });
         return Promise.resolve(true);
       }
       throw (Error(`${action} not supported for this device`));
@@ -242,23 +264,23 @@ module.exports = class MyDevice extends Homey.Device {
   }
 
   // special handling for certain device types
-  async initSpecials() {
-    try {
-      // set remote power control ON
-      if (this.getCapabilities().includes('charge_setpoint')) {
-        this.log('Setting control authority ON for', this.getName());
-        await this.homey.app.setVPP(this.getSettings(), { setType: 'set_param_1', value: '1' })
-          .catch((error) => this.error(error));
-        this.log('Setting remote power control ON for', this.getName());
-        await this.homey.app.setVPP(this.getSettings(), { setType: 'set_param_25', value: '1' })
-          .catch((error) => this.error(error));
-      }
-      return Promise.resolve(true);
-    } catch (error) {
-      this.error('Failed to init special settings', error);
-      return Promise.resolve(true);
-    }
-  }
+  // async initSpecials() {
+  //   try {
+  //     // set remote power control ON
+  //     if (this.getCapabilities().includes('charge_setpoint')) {
+  //       this.log('Setting control authority ON for', this.getName());
+  //       await this.growatt.setVPP({ deviceSn: this.deviceSn, deviceType: this.deviceType, value: { setType: 'set_param_1', value: '1' } })
+  //         .catch((error) => this.error(error));
+  //       this.log('Setting remote power control ON for', this.getName());
+  //       await this.growatt.setVPP({ deviceSn: this.deviceSn, deviceType: this.deviceType, value: { setType: 'set_param_25', value: '1' } })
+  //         .catch((error) => this.error(error));
+  //     }
+  //     return Promise.resolve(true);
+  //   } catch (error) {
+  //     this.error('Failed to init special settings', error);
+  //     return Promise.resolve(true);
+  //   }
+  // }
 
   // start listeners
   startListeners() {
@@ -268,7 +290,7 @@ module.exports = class MyDevice extends Homey.Device {
     this.eventListenerLastData = (lastData) => {
       if (!lastData) return;
       const thisDeviceTypeData = lastData[`${this.deviceType}`] || [];
-      const device = thisDeviceTypeData.filter((device) => device.serialNum === this.deviceSn)[0];
+      const device = thisDeviceTypeData.find((device) => (device.serialNum || device.deviceSn) === this.deviceSn);
       if (device) this.handleData(device).catch((error) => this.error(error));
       if ((Date.now() - this.lastPoll) > 61 * 60 * 1000) this.setUnavailable('No updates from device').catch((error) => this.error(error));
     };
@@ -295,7 +317,8 @@ module.exports = class MyDevice extends Homey.Device {
             this.log(`${this.getName()} adding capability listener ${cap}`);
             this.registerCapabilityListener(cap, (val) => {
               const { call, value } = mapFunc(val);
-              this.homey.app[call](this.getSettings(), value).catch((error) => this.error(error));
+              return this.growatt[call]({ deviceSn: this.deviceSn, deviceType: this.deviceType, value })
+                .catch((error) => this.error(error));
             });
             this.capabilityListeners[cap] = true;
           }

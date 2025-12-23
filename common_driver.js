@@ -22,7 +22,6 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 
 const Homey = require('homey');
 const growattMap = require('./lib/growattMap');
-const Api = require('./lib/growatt');
 
 module.exports = class MyDriver extends Homey.Driver {
 
@@ -40,8 +39,14 @@ module.exports = class MyDriver extends Homey.Driver {
       try {
         username = data.username;
         token = data.password;
-        growatt = new Api({ user_name: username, token });
-        info = await growatt.getPlantListUser().catch(this.error);
+        growatt = this.homey.app.getSession({ username, token });
+        try {
+          info = await growatt.getPlantListUser();
+        } catch (e) {
+          const msg = e.message || e;
+          if (msg === 'Too many requests. Wait 5 minutes.') throw e;
+          this.error(e);
+        }
         if (!info) {
           const userInfo = await growatt.checkUser();
           let errorMessage = '';
@@ -105,12 +110,15 @@ module.exports = class MyDriver extends Homey.Driver {
 
             // add second battery device
             if (this.id === 'battery2') {
-              const lastData = await this.homey.app.pollDevice({
-                username, token, deviceSn: dev.deviceSn, deviceType: dev.deviceType,
-              }).catch(() => this.error);
+              const lastData = await growatt.getLastData({
+                deviceSn: dev.deviceSn, deviceType: dev.deviceType,
+              }).catch((e) => {
+                this.error(e);
+                return null;
+              });
               if (lastData) {
                 const thisDeviceTypeData = lastData[dev.deviceType] || [];
-                const devData = thisDeviceTypeData.filter((d) => d.serialNum === dev.deviceSn)[0];
+                const devData = thisDeviceTypeData.find((d) => (d.serialNum || d.deviceSn) === dev.deviceSn);
                 if (devData && Object.keys(devData).some((d) => d.startsWith('bdc2'))) {
                   const device = {
                     name: `${site.name} ${dev.deviceSn}_2`,

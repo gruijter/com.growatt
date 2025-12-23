@@ -28,7 +28,6 @@ module.exports = class MyApp extends Homey.App {
   async onInit() {
     this.devices = {};// { serial: { username, token, serial, type } }; is filled by Homey devices through getSessions
     this.apiSessions = {}; // username__token: apiSession
-    this.deviceCache = {}; // { deviceSn: { timestamp, data } }
     this.everyXminutes(5); // start poll emitter
     this.registerFlowListeners(); // register flow listeners
 
@@ -51,6 +50,42 @@ module.exports = class MyApp extends Homey.App {
 
   }
 
+  // get or create API session, centralized for all drivers and devices
+  getSession(device) {
+    const username = device.username || '';
+    const token = device.token || '';
+    const sessionName = `${username}__${token}`;
+    // check if session is connected
+    if (!this.apiSessions[sessionName]) {
+      this.apiSessions[sessionName] = new Api({ user_name: username, token });
+      this.log('New session created for', `${username}__${token}`);
+    }
+    return this.apiSessions[sessionName];
+  }
+
+  // helper to fetch all Homey devices and settings
+  async getDevices() {
+    try {
+      const inverters = this.homey.drivers.getDriver('inverter2').getDevices();
+      const meters = this.homey.drivers.getDriver('meter2').getDevices();
+      const batteries = this.homey.drivers.getDriver('battery2').getDevices();
+      const devices = [...inverters, ...meters, ...batteries];
+      devices.forEach((device) => {
+        const {
+          username, token, deviceSn, deviceType,
+        } = device.getSettings();
+        this.devices[`${deviceSn}`] = {
+          username, token, deviceSn, deviceType,
+        };
+      });
+      return Promise.resolve(this.devices);
+    } catch (error) {
+      this.error(error);
+      return Promise.reject(error);
+    }
+  }
+
+  // poll getLastData, centralized for all devices every X minutes
   everyXminutes(interval) {
     let timeoutId;
     const scheduleNextXminutes = () => {
@@ -80,54 +115,14 @@ module.exports = class MyApp extends Homey.App {
     }
   }
 
-  getSession(device) {
-    const sessionName = `${device.username}__${device.token}`;
-    // check if session is connected
-    if (!this.apiSessions[sessionName]) {
-      this.apiSessions[sessionName] = new Api({ user_name: device.username, token: device.token });
-      this.log('New session created for', `${device.username}__${device.token}`);
-    }
-    return this.apiSessions[sessionName];
-  }
-
-  async getDevices() {
-    try {
-      const inverters = this.homey.drivers.getDriver('inverter2').getDevices();
-      const meters = this.homey.drivers.getDriver('meter2').getDevices();
-      const batteries = this.homey.drivers.getDriver('battery2').getDevices();
-      const devices = [...inverters, ...meters, ...batteries];
-      devices.forEach((device) => {
-        const {
-          username, token, deviceSn, deviceType,
-        } = device.getSettings();
-        this.devices[`${deviceSn}`] = {
-          username, token, deviceSn, deviceType,
-        };
-      });
-      return Promise.resolve(this.devices);
-    } catch (error) {
-      this.error(error);
-      return Promise.reject(error);
-    }
-  }
-
   async pollDevice(device) {
     try {
-      const now = Date.now();
-      const cacheKey = `${device.deviceSn}_${device.deviceType}`;
-      const cached = this.deviceCache[cacheKey];
-      if (cached && (now - cached.timestamp < 5 * 60 * 1000)) {
-        this.log('Returning cached data for', `${device.username} ${device.deviceSn} ${device.deviceType}`);
-        this.homey.emit('lastData', cached.data);
-        return Promise.resolve(cached.data);
-      }
       const session = this.getSession(device);
       const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
       this.log('Fetching last data for', `${device.username} ${device.deviceSn}, ${device.deviceType}`);
       const lastData = await session.getLastData(options);
       // console.dir(lastData, { depth: null, colors: true });
       this.homey.emit('lastData', lastData); // emit info to devices
-      this.deviceCache[cacheKey] = { timestamp: now, data: lastData };
       return Promise.resolve(lastData); // return info to driver
     } catch (error) {
       const msg = error.message || error;
@@ -136,78 +131,7 @@ module.exports = class MyApp extends Homey.App {
     }
   }
 
-  async setOnOff(device, value) {
-    try {
-      const session = this.getSession(device);
-      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType, value };
-      this.log(`Setting onOff to ${value} for ${device.username} ${device.deviceSn} ${device.deviceType}`);
-      const onOff = await session.setOnOff(options);
-      return Promise.resolve(onOff);
-    } catch (error) {
-      return Promise.reject(error.message || error);
-    }
-  }
-
-  async getActivePower(device) {
-    try {
-      const session = this.getSession(device);
-      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
-      // this.log(`Getting active power for ${device.username} ${device.deviceSn} ${device.deviceType}`);
-      const result = await session.getActivePower(options);
-      return Promise.resolve(result);
-    } catch (error) {
-      return Promise.reject(error.message || error);
-    }
-  }
-
-  async setActivePower(device, value) {
-    try {
-      const session = this.getSession(device);
-      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType, value };
-      this.log(`Setting active power to ${value} for ${device.username} ${device.deviceSn} ${device.deviceType}`);
-      const result = await session.setActivePower(options);
-      return Promise.resolve(result);
-    } catch (error) {
-      return Promise.reject(error.message || error);
-    }
-  }
-
-  async getChargeSetpoint(device) {
-    try {
-      const session = this.getSession(device);
-      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
-      // console.log(`Getting charge setpoint for ${device.username} ${device.deviceSn} ${device.deviceType}`);
-      const result = await session.getChargeSetpoint(options);
-      return Promise.resolve(result);
-    } catch (error) {
-      return Promise.reject(error.message || error);
-    }
-  }
-
-  async setChargeSetpoint(device, value) {
-    try {
-      const session = this.getSession(device);
-      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType, value };
-      this.log(`Setting Charge Setpoint power to ${value.value} for ${device.username} ${device.deviceSn} ${device.deviceType}`);
-      const result = await session.setChargeSetpoint(options);
-      return Promise.resolve(result);
-    } catch (error) {
-      return Promise.reject(error.message || error);
-    }
-  }
-
-  async setVPP(device, value) {
-    try {
-      const session = this.getSession(device);
-      const options = { deviceSn: device.deviceSn, deviceType: device.deviceType, value };
-      this.log(`Setting VPP parameter ${value.setType} power to ${value.value} for ${device.username} ${device.deviceSn} ${device.deviceType}`);
-      const result = await session.setVPP(options);
-      return Promise.resolve(result);
-    } catch (error) {
-      return Promise.reject(error.message || error);
-    }
-  }
-
+  // register flow card listeners
   registerFlowListeners() {
     // custom action cards
     const actionListeners = [];
