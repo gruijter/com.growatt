@@ -290,7 +290,7 @@ module.exports = class MyDevice extends Homey.Device {
     this.eventListenerLastData = (lastData) => {
       if (!lastData) return;
       const thisDeviceTypeData = lastData[`${this.deviceType}`] || [];
-      const device = thisDeviceTypeData.find((device) => (device.serialNum || device.deviceSn) === this.deviceSn);
+      const device = thisDeviceTypeData.find((device) => (device.serialNum || device.deviceSn || device.inverterId) === this.deviceSn);
       if (device) this.handleData(device).catch((error) => this.error(error));
       if ((Date.now() - this.lastPoll) > 61 * 60 * 1000) this.setUnavailable('No updates from device').catch((error) => this.error(error));
     };

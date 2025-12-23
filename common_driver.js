@@ -75,6 +75,14 @@ module.exports = class MyDriver extends Homey.Driver {
         if (!list || !Array.isArray(list)) continue;
         // add devices as Homey device when it is a valid type
         for (const dev of list) {
+          if (!dev.deviceSn && dev.serialNum) dev.deviceSn = dev.serialNum;
+          if (!dev.deviceSn && dev.inverterId) dev.deviceSn = dev.inverterId;
+          if (!dev.deviceSn && dev.mixSn) dev.deviceSn = dev.mixSn;
+          if (!dev.deviceSn && dev.spaSn) dev.deviceSn = dev.spaSn;
+          if (!dev.deviceSn && dev.hpsSn) dev.deviceSn = dev.hpsSn;
+          if (!dev.deviceSn && dev.tlxSn) dev.deviceSn = dev.tlxSn;
+          if (!dev.deviceSn && dev.maxSn) dev.deviceSn = dev.maxSn;
+          if (!dev.deviceSn && dev.pcsSn) dev.deviceSn = dev.pcsSn;
           if (validTypes.includes(dev.deviceType)) {
             // const devInfo = await growatt.getDeviceInfo({ deviceSn: dev.deviceSn, deviceType: dev.deviceType }).catch(this.error);
             // console.log(devInfo);

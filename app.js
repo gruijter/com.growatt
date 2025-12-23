@@ -121,11 +121,28 @@ module.exports = class MyApp extends Homey.App {
       const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
       this.log('Fetching last data for', `${device.username} ${device.deviceSn}, ${device.deviceType}`);
       const lastData = await session.getLastData(options);
+      if (lastData) {
+        Object.values(lastData).forEach((list) => {
+          if (Array.isArray(list)) {
+            list.forEach((d) => {
+              if (d.serialNum && !d.deviceSn) d.deviceSn = d.serialNum;
+              if (d.inverterId && !d.deviceSn) d.deviceSn = d.inverterId;
+              if (d.mixSn && !d.deviceSn) d.deviceSn = d.mixSn;
+              if (d.spaSn && !d.deviceSn) d.deviceSn = d.spaSn;
+              if (d.hpsSn && !d.deviceSn) d.deviceSn = d.hpsSn;
+              if (d.tlxSn && !d.deviceSn) d.deviceSn = d.tlxSn;
+              if (d.maxSn && !d.deviceSn) d.deviceSn = d.maxSn;
+              if (d.pcsSn && !d.deviceSn) d.deviceSn = d.pcsSn;
+            });
+          }
+        });
+      }
       // console.dir(lastData, { depth: null, colors: true });
       this.homey.emit('lastData', lastData); // emit info to devices
       return Promise.resolve(lastData); // return info to driver
     } catch (error) {
       const msg = error.message || error;
+      this.log('Error fetching last data for', `${device.username} ${device.deviceSn}: ${msg}`);
       this.homey.emit('errorInfo', { device, error: msg }); // emit error to devices
       return Promise.reject(msg); // return info to driver
     }
