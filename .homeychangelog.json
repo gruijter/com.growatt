@@ -46,5 +46,8 @@
   },
   "2.2.1": {
     "en": "Fixed Noah support. Reduced 'TOO_FREQUENT' request errors. Improved pairing feedback on API issues."
+  },
+  "2.2.2": {
+    "en": "Fixed inconsistent api inv deviceSn naming."
   }
 }
