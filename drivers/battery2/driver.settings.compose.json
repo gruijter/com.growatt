@@ -58,6 +58,19 @@
 						"nl": "Data logger serienummer"
 				},
 				"value": ""
+			},
+			{
+				"id": "nominalPower",
+				"type": "number",
+				"label": {
+					"en": "Nominal Power (W)",
+					"nl": "Nominaal vermogen (W)"
+				},
+				"hint": {
+					"en": "Maximum AC output in Watts. Used to calculate Target Power percentages for the API.",
+					"nl": "Maximum AC output in Watt. Wordt gebruikt om het Doelvermogen percentage voor de API te berekenen."
+				},
+				"value": 3000
 			}
 		]
 	},
