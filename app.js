@@ -32,6 +32,12 @@ module.exports = class MyApp extends Homey.App {
     this.pendingPolls = {}; // prevents concurrent polling
     this.registerFlowListeners(); // register flow listeners
 
+    // Trigger initial grouped poll 15 seconds after app boot to allow devices to initialize
+    this.homey.setTimeout(() => {
+      this.log('Performing initial grouped poll');
+      this.everyXminutesHandler().catch(this.error);
+    }, 15000);
+
     // DEPRECATED V1
     this.accountsV1 = {}; // { username__passWord: { username, password } }; // is filled by Homey devices
     this.apiSessionsV1 = {}; // username__passWord: apiSession
