@@ -1,0 +1,36 @@
+Here are the corresponded registers of parameters:
+
+set_param_1:30100  => 0? CONTROL AUTHORITY 1 (ENABLE)
+set_param_2:30101
+set_param_3:0
+set_param_4:30115
+set_param_5:30151
+set_param_6:30154
+set_param_7:30155
+set_param_8:30156
+set_param_9:30157
+set_param_10:30160
+set_param_11:30161
+set_param_12:30162
+set_param_13:30200
+set_param_14:30201  => 0? EXPORT LIMITATION POWER (import -100 ... +100 export)
+set_param_15:30202
+set_param_16:30203
+set_param_17:30204
+set_param_18:30205
+set_param_19:30206
+set_param_20:30207
+set_param_21:30208
+set_param_22:30404
+set_param_23:30405
+set_param_24:30406
+set_param_25:30407  => 1. REMOTE POWER CONTROL 1 (ENABLE)
+set_param_26:30408  => 2. REMOTE POWER CONTROL CHARGING TIME (1-1440 minutes)
+set_param_27:30409  => 3. REMOTE (DIS)CHARGE POWER (discharge -100 ... +100 charge)
+set_param_28:30410
+set_param_29:30475
+set_param_30:30496
+set_param_31:30497
+set_param_32:30498
+set_param_33:30499
+set_param_34:30411
