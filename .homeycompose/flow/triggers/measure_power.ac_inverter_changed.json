@@ -8,7 +8,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "capabilities=measure_power.ac_inverter"
+      "filter": "driver_id=inverter2&group&capabilities=measure_power.ac_inverter"
     }
   ],
   "tokens": [

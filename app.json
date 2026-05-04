@@ -61,7 +61,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=measure_power.ac_inverter"
+            "filter": "driver_id=inverter2&group&capabilities=measure_power.ac_inverter"
           }
         ],
         "tokens": [
@@ -87,7 +87,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=measure_power.dc_solar"
+            "filter": "driver_id=inverter2&group&capabilities=measure_power.dc_solar"
           }
         ],
         "tokens": [
@@ -113,7 +113,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=meter_power.today"
+            "filter": "driver_id=inverter2&capabilities=meter_power.today"
           }
         ],
         "tokens": [

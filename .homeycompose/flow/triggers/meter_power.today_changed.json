@@ -8,7 +8,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "capabilities=meter_power.today"
+      "filter": "driver_id=inverter2&capabilities=meter_power.today"
     }
   ],
   "tokens": [
