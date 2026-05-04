@@ -7,7 +7,8 @@
   "capabilities": [
     "measure_power",
     "meter_power",
-    "meter_power.today"
+    "meter_power.today",
+    "target_power"
   ],
   "capabilitiesOptions": {
     "meter_power.today": {
@@ -35,6 +36,9 @@
         "en": "Inverter Power (AC)",
         "nl": "Omvormer vermogen (AC)"
       },
+      "decimals": 0
+    },
+    "target_power": {
       "decimals": 0
     }
   },
