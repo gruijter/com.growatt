@@ -15,6 +15,18 @@
         "en": "Energy today",
         "nl": "Energie vandaag"
       }
+    },
+    "measure_power.dc_solar": {
+      "title": {
+        "en": "Solar Power (DC)",
+        "nl": "Zonne-energie (DC)"
+      }
+    },
+    "measure_power.ac_inverter": {
+      "title": {
+        "en": "Inverter Power (AC)",
+        "nl": "Omvormer vermogen (AC)"
+      }
     }
   },
   "platforms": [
