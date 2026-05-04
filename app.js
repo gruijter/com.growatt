@@ -70,6 +70,7 @@ module.exports = class MyApp extends Homey.App {
       const meters = this.homey.drivers.getDriver('meter2').getDevices();
       const batteries = this.homey.drivers.getDriver('battery2').getDevices();
       const devices = [...inverters, ...meters, ...batteries];
+      this.devices = {}; // Clear old state to prevent polling deleted devices
       devices.forEach((device) => {
         const {
           username, token, deviceSn, deviceType,
