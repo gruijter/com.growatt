@@ -15,6 +15,9 @@
     "meter_power.exported"
   ],
   "capabilitiesOptions": {
+    "measure_power": {
+      "decimals": 0
+    },
     "measure_voltage.1": {
       "title": {
         "en": "Voltage phase 1",

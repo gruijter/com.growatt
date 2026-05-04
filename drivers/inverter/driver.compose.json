@@ -11,6 +11,9 @@
     "meter_power.today"
   ],
   "capabilitiesOptions": {
+    "measure_power": {
+      "decimals": 0
+    },
     "meter_power.month": {
       "title": {
         "en": "Energy this month",

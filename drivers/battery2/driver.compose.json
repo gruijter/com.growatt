@@ -11,6 +11,16 @@
     "charge_setpoint"
   ],
   "capabilitiesOptions": {
+    "measure_power": {
+      "decimals": 0
+    },
+    "measure_power.bat2": {
+      "title": {
+        "en": "Battery 2 Power",
+        "nl": "Batterij 2 Vermogen"
+      },
+      "decimals": 0
+    },
     "meter_power.charged": {
       "title": {
         "en": "Charged energy",

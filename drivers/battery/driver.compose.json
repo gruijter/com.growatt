@@ -10,6 +10,16 @@
     "measure_battery"
   ],
   "capabilitiesOptions": {
+    "measure_power": {
+      "decimals": 0
+    },
+    "measure_power.bat2": {
+      "title": {
+        "en": "Battery 2 Power",
+        "nl": "Batterij 2 Vermogen"
+      },
+      "decimals": 0
+    }
   },
   "energy": {
     "homeBattery": true
