@@ -423,15 +423,28 @@
               "value": ""
             },
             {
-              "id": "nominalPower",
+              "id": "maxChargePower",
               "type": "number",
               "label": {
-                "en": "Max Charge/Discharge Power (W)",
-                "nl": "Max laad/ontlaad vermogen (W)"
+                "en": "Max Charge Power (W)",
+                "nl": "Max laadvermogen (W)"
               },
               "hint": {
-                "en": "Maximum battery power in Watts. Used to calculate Target Power percentages for the API.",
-                "nl": "Maximum batterijvermogen in Watt. Wordt gebruikt om het Doelvermogen percentage voor de API te berekenen."
+                "en": "Maximum battery charging power in Watts.",
+                "nl": "Maximum batterij laadvermogen in Watt."
+              },
+              "value": 3000
+            },
+            {
+              "id": "maxDischargePower",
+              "type": "number",
+              "label": {
+                "en": "Max Discharge Power (W)",
+                "nl": "Max ontlaadvermogen (W)"
+              },
+              "hint": {
+                "en": "Maximum battery discharging power in Watts.",
+                "nl": "Maximum batterij ontlaadvermogen in Watt."
               },
               "value": 3000
             }
@@ -689,7 +702,8 @@
       "capabilities": [
         "measure_power",
         "meter_power",
-        "meter_power.today"
+        "meter_power.today",
+        "target_power"
       ],
       "capabilitiesOptions": {
         "meter_power.today": {
@@ -717,6 +731,9 @@
             "en": "Inverter Power (AC)",
             "nl": "Omvormer vermogen (AC)"
           },
+          "decimals": 0
+        },
+        "target_power": {
           "decimals": 0
         }
       },
@@ -836,8 +853,8 @@
                 "nl": "Nominaal vermogen (W)"
               },
               "hint": {
-                "en": "Maximum AC output in Watts. Used to calculate Target Power percentages for the API.",
-                "nl": "Maximum AC output in Watt. Wordt gebruikt om het Doelvermogen percentage voor de API te berekenen."
+                "en": "Maximum inverter AC output in Watts.",
+                "nl": "Maximum omvormer AC output in Watt."
               },
               "value": 3000
             }
