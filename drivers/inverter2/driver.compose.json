@@ -16,6 +16,12 @@
         "nl": "Energie vandaag"
       }
     },
+    "measure_power": {
+      "title": {
+        "en": "Solar Power (AC)",
+        "nl": "Zonne-energie (AC)"
+      }
+    },
     "measure_power.dc_solar": {
       "title": {
         "en": "Solar Power (DC)",

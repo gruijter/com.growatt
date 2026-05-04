@@ -76,6 +76,84 @@
           }
         ],
         "id": "dim.active_power_changed"
+      },
+      {
+        "title": {
+          "en": "Inverter power (AC) changed",
+          "nl": "Omvormer vermogen (AC) is gewijzigd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "capabilities=measure_power.ac_inverter"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_power.ac_inverter",
+            "type": "number",
+            "title": {
+              "en": "Inverter power (AC)",
+              "nl": "Omvormer vermogen (AC)"
+            },
+            "example": 1450
+          }
+        ],
+        "id": "measure_power.ac_inverter_changed"
+      },
+      {
+        "title": {
+          "en": "Solar power (DC) changed",
+          "nl": "Zonne-energie (DC) is gewijzigd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "capabilities=measure_power.dc_solar"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_power.dc_solar",
+            "type": "number",
+            "title": {
+              "en": "Solar power (DC)",
+              "nl": "Zonne-energie (DC)"
+            },
+            "example": 1500
+          }
+        ],
+        "id": "measure_power.dc_solar_changed"
+      },
+      {
+        "title": {
+          "en": "Energy today changed",
+          "nl": "Energie vandaag is gewijzigd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "capabilities=meter_power.today"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_power.today",
+            "type": "number",
+            "title": {
+              "en": "Energy today",
+              "nl": "Energie vandaag"
+            },
+            "example": 12.5
+          }
+        ],
+        "id": "meter_power.today_changed"
       }
     ],
     "actions": [
@@ -597,6 +675,24 @@
           "title": {
             "en": "Energy today",
             "nl": "Energie vandaag"
+          }
+        },
+        "measure_power": {
+          "title": {
+            "en": "Solar Power (AC)",
+            "nl": "Zonne-energie (AC)"
+          }
+        },
+        "measure_power.dc_solar": {
+          "title": {
+            "en": "Solar Power (DC)",
+            "nl": "Zonne-energie (DC)"
+          }
+        },
+        "measure_power.ac_inverter": {
+          "title": {
+            "en": "Inverter Power (AC)",
+            "nl": "Omvormer vermogen (AC)"
           }
         }
       },
