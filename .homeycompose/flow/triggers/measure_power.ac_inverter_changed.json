@@ -1,0 +1,25 @@
+{
+  "title": {
+    "en": "Inverter power (AC) changed",
+    "nl": "Omvormer vermogen (AC) is gewijzigd"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "capabilities=measure_power.ac_inverter"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "measure_power.ac_inverter",
+      "type": "number",
+      "title": {
+        "en": "Inverter power (AC)",
+        "nl": "Omvormer vermogen (AC)"
+      },
+      "example": 1450
+    }
+  ]
+}

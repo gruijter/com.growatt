@@ -1,0 +1,25 @@
+{
+  "title": {
+    "en": "Solar power (DC) changed",
+    "nl": "Zonne-energie (DC) is gewijzigd"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "capabilities=measure_power.dc_solar"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "measure_power.dc_solar",
+      "type": "number",
+      "title": {
+        "en": "Solar power (DC)",
+        "nl": "Zonne-energie (DC)"
+      },
+      "example": 1500
+    }
+  ]
+}
