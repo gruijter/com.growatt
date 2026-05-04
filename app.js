@@ -61,11 +61,14 @@ module.exports = class MyApp extends Homey.App {
   getSession(device) {
     const username = device.username || '';
     const token = device.token || '';
+    const host = device.host || 'openapi.growatt.com';
     const sessionName = `${username}__${token}`;
     // check if session is connected
     if (!this.apiSessions[sessionName]) {
-      this.apiSessions[sessionName] = new Api({ user_name: username, token });
-      this.log('New session created for', `${username}__${token}`);
+      this.apiSessions[sessionName] = new Api({ user_name: username, token, host });
+      this.log('New session created for', `${username}__${token}`, 'on', host);
+    } else {
+      this.apiSessions[sessionName].host = host; // update host if auto-discovery found a new one
     }
     return this.apiSessions[sessionName];
   }
@@ -80,10 +83,10 @@ module.exports = class MyApp extends Homey.App {
       this.devices = {}; // Clear old state to prevent polling deleted devices
       devices.forEach((device) => {
         const {
-          username, token, deviceSn, deviceType,
+          username, token, host, deviceSn, deviceType,
         } = device.getSettings();
         this.devices[`${deviceSn}`] = {
-          username, token, deviceSn, deviceType,
+          username, token, host, deviceSn, deviceType,
         };
       });
       return Promise.resolve(this.devices);

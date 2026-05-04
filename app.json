@@ -216,7 +216,18 @@
         "measure_power",
         "measure_battery"
       ],
-      "capabilitiesOptions": {},
+      "capabilitiesOptions": {
+        "measure_power": {
+          "decimals": 0
+        },
+        "measure_power.bat2": {
+          "title": {
+            "en": "Battery 2 Power",
+            "nl": "Batterij 2 Vermogen"
+          },
+          "decimals": 0
+        }
+      },
       "energy": {
         "homeBattery": true
       },
@@ -330,6 +341,16 @@
         "charge_setpoint"
       ],
       "capabilitiesOptions": {
+        "measure_power": {
+          "decimals": 0
+        },
+        "measure_power.bat2": {
+          "title": {
+            "en": "Battery 2 Power",
+            "nl": "Batterij 2 Vermogen"
+          },
+          "decimals": 0
+        },
         "meter_power.charged": {
           "title": {
             "en": "Charged energy",
@@ -505,6 +526,9 @@
         "meter_power.today"
       ],
       "capabilitiesOptions": {
+        "measure_power": {
+          "decimals": 0
+        },
         "meter_power.month": {
           "title": {
             "en": "Energy this month",
@@ -681,19 +705,22 @@
           "title": {
             "en": "Solar Power (AC)",
             "nl": "Zonne-energie (AC)"
-          }
+          },
+          "decimals": 0
         },
         "measure_power.dc_solar": {
           "title": {
             "en": "Solar Power (DC)",
             "nl": "Zonne-energie (DC)"
-          }
+          },
+          "decimals": 0
         },
         "measure_power.ac_inverter": {
           "title": {
             "en": "Inverter Power (AC)",
             "nl": "Omvormer vermogen (AC)"
-          }
+          },
+          "decimals": 0
         }
       },
       "platforms": [
@@ -856,6 +883,9 @@
         "meter_power.exported"
       ],
       "capabilitiesOptions": {
+        "measure_power": {
+          "decimals": 0
+        },
         "measure_voltage.1": {
           "title": {
             "en": "Voltage phase 1",
@@ -1008,6 +1038,9 @@
         "meter_power.exported"
       ],
       "capabilitiesOptions": {
+        "measure_power": {
+          "decimals": 0
+        },
         "measure_voltage.1": {
           "title": {
             "en": "Voltage phase 1",

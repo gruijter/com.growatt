@@ -88,6 +88,37 @@
 						"nl": ""
 					},
 					"value": ""
+			},
+			{
+				"id": "host",
+				"type": "dropdown",
+				"label": {
+					"en": "API Server",
+					"nl": "API Server"
+				},
+				"value": "openapi.growatt.com",
+				"values": [
+					{
+						"id": "openapi.growatt.com",
+						"label": { "en": "Global (openapi.growatt.com)" }
+					},
+					{
+						"id": "openapi-us.growatt.com",
+						"label": { "en": "North America (openapi-us.growatt.com)" }
+					},
+					{
+						"id": "openapi-au.growatt.com",
+						"label": { "en": "Australia / NZ (openapi-au.growatt.com)" }
+					},
+					{
+						"id": "openapi-cn.growatt.com",
+						"label": { "en": "China (openapi-cn.growatt.com)" }
+					},
+					{
+						"id": "ess-server.atesspower.com",
+						"label": { "en": "Atess (ess-server.atesspower.com)" }
+					}
+				]
 			}
 		]
 	}
