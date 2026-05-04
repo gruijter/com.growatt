@@ -29,6 +29,7 @@ module.exports = class MyApp extends Homey.App {
     this.devices = {};// { serial: { username, token, serial, type } }; is filled by Homey devices through getSessions
     this.apiSessions = {}; // username__token: apiSession
     this.everyXminutes(5); // start poll emitter
+    this.pendingPolls = {}; // prevents concurrent polling
     this.registerFlowListeners(); // register flow listeners
 
     // DEPRECATED V1
@@ -111,39 +112,70 @@ module.exports = class MyApp extends Homey.App {
 
   async everyXminutesHandler() {
     await this.getDevices().catch(this.error);
-    for (const [, device] of Object.entries(this.devices)) {
-      await this.pollDevice(device).catch(this.error);
+
+    // Group by session and deviceType to query multiple SNs in one API call
+    const groups = {};
+    for (const device of Object.values(this.devices)) {
+      const key = `${device.username}__${device.token}__${device.deviceType}`;
+      if (!groups[key]) {
+        groups[key] = {
+          sessionDevice: device,
+          sns: new Set(),
+        };
+      }
+      groups[key].sns.add(device.deviceSn);
+    }
+
+    for (const group of Object.values(groups)) {
+      const repDevice = { ...group.sessionDevice, deviceSn: Array.from(group.sns).join(',') };
+      await this.pollDevice(repDevice).catch(this.error);
+      // Small delay between group requests to prevent burst rate limiting
+      await new Promise((resolve) => this.homey.setTimeout(resolve, 2000));
     }
   }
 
   async pollDevice(device) {
     try {
+      const cacheKey = `${device.deviceSn}_${device.deviceType}`;
+      if (this.pendingPolls[cacheKey]) {
+        return await this.pendingPolls[cacheKey];
+      }
+
       const session = this.getSession(device);
       const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
       this.log('Fetching last data for', `${device.username} ${device.deviceSn}, ${device.deviceType}`);
-      const lastData = await session.getLastData(options);
-      if (lastData) {
-        Object.values(lastData).forEach((list) => {
-          if (Array.isArray(list)) {
-            list.forEach((d) => {
-              if (d.serialNum && !d.deviceSn) d.deviceSn = d.serialNum;
-              if (d.inverterId && !d.deviceSn) d.deviceSn = d.inverterId;
-              if (d.mixSn && !d.deviceSn) d.deviceSn = d.mixSn;
-              if (d.spaSn && !d.deviceSn) d.deviceSn = d.spaSn;
-              if (d.hpsSn && !d.deviceSn) d.deviceSn = d.hpsSn;
-              if (d.tlxSn && !d.deviceSn) d.deviceSn = d.tlxSn;
-              if (d.maxSn && !d.deviceSn) d.deviceSn = d.maxSn;
-              if (d.pcsSn && !d.deviceSn) d.deviceSn = d.pcsSn;
-            });
-          }
-        });
-      }
-      // console.dir(lastData, { depth: null, colors: true });
-      this.homey.emit('lastData', lastData); // emit info to devices
-      return Promise.resolve(lastData); // return info to driver
+
+      const pollPromise = (async () => {
+        const lastData = await session.getLastData(options);
+        if (lastData) {
+          Object.values(lastData).forEach((list) => {
+            if (Array.isArray(list)) {
+              list.forEach((d) => {
+                if (d.serialNum && !d.deviceSn) d.deviceSn = d.serialNum;
+                if (d.inverterId && !d.deviceSn) d.deviceSn = d.inverterId;
+                if (d.mixSn && !d.deviceSn) d.deviceSn = d.mixSn;
+                if (d.spaSn && !d.deviceSn) d.deviceSn = d.spaSn;
+                if (d.hpsSn && !d.deviceSn) d.deviceSn = d.hpsSn;
+                if (d.tlxSn && !d.deviceSn) d.deviceSn = d.tlxSn;
+                if (d.maxSn && !d.deviceSn) d.deviceSn = d.maxSn;
+                if (d.pcsSn && !d.deviceSn) d.deviceSn = d.pcsSn;
+              });
+            }
+          });
+        }
+        this.homey.emit('lastData', lastData); // emit info to devices
+        return lastData;
+      })();
+
+      this.pendingPolls[cacheKey] = pollPromise;
+      const result = await pollPromise;
+      delete this.pendingPolls[cacheKey];
+      return result;
     } catch (error) {
       const msg = error.message || error;
       this.log('Error fetching last data for', `${device.username} ${device.deviceSn}: ${msg}`);
+      const cacheKey = `${device.deviceSn}_${device.deviceType}`;
+      delete this.pendingPolls[cacheKey];
       this.homey.emit('errorInfo', { device, error: msg }); // emit error to devices
       return Promise.reject(msg); // return info to driver
     }
