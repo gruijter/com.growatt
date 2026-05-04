@@ -8,7 +8,7 @@
     "measure_power",
     "measure_battery",
     "battery_charging_state",
-    "charge_setpoint"
+    "target_power"
   ],
   "capabilitiesOptions": {
     "measure_power": {
@@ -19,6 +19,9 @@
         "en": "Battery 2 Power",
         "nl": "Batterij 2 Vermogen"
       },
+      "decimals": 0
+    },
+    "target_power": {
       "decimals": 0
     },
     "meter_power.charged": {

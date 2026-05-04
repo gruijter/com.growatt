@@ -1,8 +1,8 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.growatt",
-  "version": "2.2.2",
-  "compatibility": ">=12.9.0",
+  "version": "2.3.0",
+  "compatibility": ">=12.13.0",
   "sdk": 3,
   "platforms": [
     "local",
@@ -51,32 +51,6 @@
   "support": "https://github.com/gruijter/com.growatt/issues",
   "flow": {
     "triggers": [
-      {
-        "title": {
-          "en": "AC power limit changed",
-          "nl": "AC vermogensbeperking is gewijzigd"
-        },
-        "highlight": true,
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=inverter2&capabilities=dim.active_power"
-          }
-        ],
-        "tokens": [
-          {
-            "name": "dim.active_power",
-            "type": "number",
-            "title": {
-              "en": "Limit level",
-              "nl": "Begrenzingsniveau"
-            },
-            "example": 53
-          }
-        ],
-        "id": "dim.active_power_changed"
-      },
       {
         "title": {
           "en": "Inverter power (AC) changed",
@@ -157,40 +131,6 @@
       }
     ],
     "actions": [
-      {
-        "title": {
-          "en": "Limit AC power",
-          "nl": "Beperk AC vermogen"
-        },
-        "titleFormatted": {
-          "en": "Limit inverter AC power to [[val]]",
-          "nl": "Begrens omvormer AC vermogen naar [[val]]"
-        },
-        "highlight": true,
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=inverter2&capabilities=dim.active_power"
-          },
-          {
-            "name": "val",
-            "type": "range",
-            "title": {
-              "en": "Limit",
-              "nl": "Limiet"
-            },
-            "min": 0,
-            "max": 1,
-            "step": 0.01,
-            "value": 1,
-            "label": "%",
-            "labelMultiplier": 100,
-            "labelDecimals": 0
-          }
-        ],
-        "id": "dim.active_power"
-      },
       {
         "title": {
           "en": "Get status update",
@@ -338,7 +278,7 @@
         "measure_power",
         "measure_battery",
         "battery_charging_state",
-        "charge_setpoint"
+        "target_power"
       ],
       "capabilitiesOptions": {
         "measure_power": {
@@ -349,6 +289,9 @@
             "en": "Battery 2 Power",
             "nl": "Batterij 2 Vermogen"
           },
+          "decimals": 0
+        },
+        "target_power": {
           "decimals": 0
         },
         "meter_power.charged": {
@@ -478,6 +421,19 @@
                 "nl": "Data logger serienummer"
               },
               "value": ""
+            },
+            {
+              "id": "nominalPower",
+              "type": "number",
+              "label": {
+                "en": "Max Charge/Discharge Power (W)",
+                "nl": "Max laad/ontlaad vermogen (W)"
+              },
+              "hint": {
+                "en": "Maximum battery power in Watts. Used to calculate Target Power percentages for the API.",
+                "nl": "Maximum batterijvermogen in Watt. Wordt gebruikt om het Doelvermogen percentage voor de API te berekenen."
+              },
+              "value": 3000
             }
           ]
         },
@@ -871,6 +827,19 @@
                 "nl": "Data logger serienummer"
               },
               "value": ""
+            },
+            {
+              "id": "nominalPower",
+              "type": "number",
+              "label": {
+                "en": "Nominal Power (W)",
+                "nl": "Nominaal vermogen (W)"
+              },
+              "hint": {
+                "en": "Maximum AC output in Watts. Used to calculate Target Power percentages for the API.",
+                "nl": "Maximum AC output in Watt. Wordt gebruikt om het Doelvermogen percentage voor de API te berekenen."
+              },
+              "value": 3000
             }
           ]
         },
