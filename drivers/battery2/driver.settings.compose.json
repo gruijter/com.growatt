@@ -60,15 +60,28 @@
 				"value": ""
 			},
 			{
-				"id": "nominalPower",
+				"id": "maxChargePower",
 				"type": "number",
 				"label": {
-					"en": "Max Charge/Discharge Power (W)",
-					"nl": "Max laad/ontlaad vermogen (W)"
+					"en": "Max Charge Power (W)",
+					"nl": "Max laadvermogen (W)"
 				},
 				"hint": {
-					"en": "Maximum battery power in Watts. Used to calculate Target Power percentages for the API.",
-					"nl": "Maximum batterijvermogen in Watt. Wordt gebruikt om het Doelvermogen percentage voor de API te berekenen."
+					"en": "Maximum battery charging power in Watts.",
+					"nl": "Maximum batterij laadvermogen in Watt."
+				},
+				"value": 3000
+			},
+			{
+				"id": "maxDischargePower",
+				"type": "number",
+				"label": {
+					"en": "Max Discharge Power (W)",
+					"nl": "Max ontlaadvermogen (W)"
+				},
+				"hint": {
+					"en": "Maximum battery discharging power in Watts.",
+					"nl": "Maximum batterij ontlaadvermogen in Watt."
 				},
 				"value": 3000
 			}
