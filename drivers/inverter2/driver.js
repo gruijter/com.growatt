@@ -19,7 +19,7 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 
 'use strict';
 
-const CommonDriver = require('../../common_driver');
+const CommonDriver = require('../../lib/common_driver');
 
 module.exports = class MyDevice extends CommonDriver {
 

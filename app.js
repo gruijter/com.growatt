@@ -21,7 +21,7 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 
 const Homey = require('homey');
 const Growatt = require('growatt'); // v1 API
-const Api = require('./lib/growatt'); // v2 API
+const Api = require('./lib/growatt_api'); // v2 API
 
 module.exports = class MyApp extends Homey.App {
 

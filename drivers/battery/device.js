@@ -19,7 +19,7 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 
 'use strict';
 
-const Device = require('../../common_device_v1');
+const Device = require('../../lib/common_device_v1');
 
 module.exports = class MyDevice extends Device {
 
