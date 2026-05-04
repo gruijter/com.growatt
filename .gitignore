@@ -1,5 +1,7 @@
 /env.json
 /.homeybuild/
+.github
+.vscode
 roadmap.txt
 /tmp
 tmp*

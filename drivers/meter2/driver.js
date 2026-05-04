@@ -1,5 +1,5 @@
 /*
-Copyright 2025, Robin de Gruijter (rmdegruijter@gmail.com)
+Copyright 2025 - 2026, Robin de Gruijter (rmdegruijter@gmail.com)
 
 This file is part of com.growatt.
 
