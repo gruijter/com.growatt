@@ -1,0 +1,25 @@
+{
+  "title": {
+    "en": "Energy today changed",
+    "nl": "Energie vandaag is gewijzigd"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "capabilities=meter_power.today"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "meter_power.today",
+      "type": "number",
+      "title": {
+        "en": "Energy today",
+        "nl": "Energie vandaag"
+      },
+      "example": 12.5
+    }
+  ]
+}
