@@ -1,7 +1,17 @@
 {
   "name": {
     "en": "Meter",
-    "nl": "Meter"
+    "nl": "Meter",
+    "da": "Måler",
+    "de": "Zähler",
+    "es": "Medidor",
+    "fr": "Compteur",
+    "it": "Contatore",
+    "no": "Måler",
+    "sv": "Mätare",
+    "pl": "Miernik",
+    "ru": "Счетчик",
+    "ko": "미터"
   },
   "class": "other",
   "capabilities": [
@@ -21,32 +31,82 @@
     "measure_voltage.1": {
       "title": {
         "en": "Voltage phase 1",
-        "nl": "Voltage fase 1"
+        "nl": "Voltage fase 1",
+        "da": "Spænding fase 1",
+        "de": "Spannung Phase 1",
+        "es": "Voltaje fase 1",
+        "fr": "Tension phase 1",
+        "it": "Tensione fase 1",
+        "no": "Spenning fase 1",
+        "sv": "Spänning fas 1",
+        "pl": "Napięcie faza 1",
+        "ru": "Напряжение фаза 1",
+        "ko": "전압 위상 1"
       }
     },
     "measure_voltage.2": {
       "title": {
         "en": "Voltage phase 2",
-        "nl": "Voltage fase 2"
+        "nl": "Voltage fase 2",
+        "da": "Spænding fase 2",
+        "de": "Spannung Phase 2",
+        "es": "Voltaje fase 2",
+        "fr": "Tension phase 2",
+        "it": "Tensione fase 2",
+        "no": "Spenning fase 2",
+        "sv": "Spänning fas 2",
+        "pl": "Napięcie faza 2",
+        "ru": "Напряжение фаза 2",
+        "ko": "전압 위상 2"
       }
     },
     "measure_voltage.3": {
       "title": {
         "en": "Voltage phase 3",
-        "nl": "Voltage fase 3"
+        "nl": "Voltage fase 3",
+        "da": "Spænding fase 3",
+        "de": "Spannung Phase 3",
+        "es": "Voltaje fase 3",
+        "fr": "Tension phase 3",
+        "it": "Tensione fase 3",
+        "no": "Spenning fase 3",
+        "sv": "Spänning fas 3",
+        "pl": "Napięcie faza 3",
+        "ru": "Напряжение фаза 3",
+        "ko": "전압 위상 3"
       }
     },
     "meter_power.imported": {
       "title": {
         "en": "Imported energy",
-        "nl": "Energie import"
+        "nl": "Energie import",
+        "da": "Importeret energi",
+        "de": "Importierte Energie",
+        "es": "Energía importada",
+        "fr": "Énergie importée",
+        "it": "Energia importata",
+        "no": "Importert energi",
+        "sv": "Importerad energi",
+        "pl": "Zaimportowana energia",
+        "ru": "Импортированная энергия",
+        "ko": "수입된 에너지"
       },
       "decimals": 2
     },
     "meter_power.exported": {
       "title": {
         "en": "Exported energy",
-        "nl": "Energie export"
+        "nl": "Energie export",
+        "da": "Eksporteret energi",
+        "de": "Exportierte Energie",
+        "es": "Energía exportada",
+        "fr": "Énergie exportée",
+        "it": "Energia esportata",
+        "no": "Eksportert energi",
+        "sv": "Exporterad energi",
+        "pl": "Wyeksportowana energia",
+        "ru": "Экспортированная энергия",
+        "ko": "수출된 에너지"
       },
       "decimals": 2
     }
@@ -72,11 +132,22 @@
       "template": "login_credentials",
       "options": {
         "title": {
-          "en": "Get your API token in the ShinePhone app"
+          "en": "Get your API token in the ShinePhone app",
+          "nl": "Haal je API token op in de ShinePhone app",
+          "da": "Få din API-token i ShinePhone-appen",
+          "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+          "es": "Obtenga su token API en la aplicación ShinePhone",
+          "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+          "it": "Ottieni il tuo token API nell'app ShinePhone",
+          "no": "Få API-tokenet ditt i ShinePhone-appen",
+          "sv": "Hämta din API-token i ShinePhone-appen",
+          "pl": "Pobierz swój token API w aplikacji ShinePhone",
+          "ru": "Получите ваш API токен в приложении ShinePhone",
+          "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
         },
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
-        "passwordLabel": { "en": "API Token", "nl": "API Token" },
-        "passwordPlaceholder": { "en": "My account>User name>API Token" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름" },
+        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰" },
+        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰" },
         "logo": "../assets/images/small.png"
       }
     },

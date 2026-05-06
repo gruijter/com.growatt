@@ -1,0 +1,2 @@
+Tilslut din Growatt-inverter til Homey og få detaljeret indsigt i din solenergiproduktion og batteriforbrug.
+Overvåg din nuværende strømproduktion samt din daglige, månedlige, årlige og samlede produktion. Med GroWatt-appen til Homey kan du bruge disse data til at optimere dit energiforbrug, oprette Flows og holde styr på dit systems ydeevne – alt på ét sted.

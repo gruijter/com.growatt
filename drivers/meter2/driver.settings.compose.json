@@ -3,7 +3,17 @@
 		"type": "group",
 		"label": {
 				"en": "Meter information",
-				"nl": "Meter informatie"
+				"nl": "Meter informatie",
+				"da": "Målerinformation",
+				"de": "Zählerinformationen",
+				"es": "Información del medidor",
+				"fr": "Informations sur le compteur",
+				"it": "Informazioni sul contatore",
+				"no": "Målerinformasjon",
+				"sv": "Mätarinformation",
+				"pl": "Informacje o mierniku",
+				"ru": "Информация о счетчике",
+				"ko": "미터 정보"
 		},
 		"children": [
 			{
@@ -65,7 +75,17 @@
 		"type": "group",
 		"label": {
 				"en": "Server settings",
-				"nl": "Server instellingen"
+				"nl": "Server instellingen",
+				"da": "Serverindstillinger",
+				"de": "Servereinstellungen",
+				"es": "Configuración del servidor",
+				"fr": "Paramètres du serveur",
+				"it": "Impostazioni del server",
+				"no": "Serverinnstillinger",
+				"sv": "Serverinställningar",
+				"pl": "Ustawienia serwera",
+				"ru": "Настройки сервера",
+				"ko": "서버 설정"
 		},
 		"children": [
 			{

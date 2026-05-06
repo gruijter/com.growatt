@@ -1,14 +1,24 @@
 {
   "title": {
     "en": "Solar power (DC) changed",
-    "nl": "Zonne-energie (DC) is gewijzigd"
+    "nl": "Zonne-energie (DC) is gewijzigd",
+    "da": "Solenergi (DC) ændret",
+    "de": "Solarleistung (DC) geändert",
+    "es": "Energía solar (CC) cambiada",
+    "fr": "Énergie solaire (CC) modifiée",
+    "it": "Energia solare (CC) modificata",
+    "no": "Solenergi (DC) endret",
+    "sv": "Solenergi (DC) ändrad",
+    "pl": "Moc słoneczna (DC) zmieniona",
+    "ru": "Солнечная энергия (DC) изменена",
+    "ko": "태양광 전력(DC) 변경됨"
   },
   "highlight": true,
   "args": [
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=inverter2&group&capabilities=measure_power.dc_solar"
+      "filter": "driver_id=inverter2&capabilities=measure_power.dc_solar"
     }
   ],
   "tokens": [
@@ -17,7 +27,17 @@
       "type": "number",
       "title": {
         "en": "Solar power (DC)",
-        "nl": "Zonne-energie (DC)"
+        "nl": "Zonne-energie (DC)",
+        "da": "Solenergi (DC)",
+        "de": "Solarleistung (DC)",
+        "es": "Energía solar (CC)",
+        "fr": "Énergie solaire (CC)",
+        "it": "Energia solare (CC)",
+        "no": "Solenergi (DC)",
+        "sv": "Solenergi (DC)",
+        "pl": "Moc słoneczna (DC)",
+        "ru": "Солнечная энергия (DC)",
+        "ko": "태양광 전력(DC)"
       },
       "example": 1500
     }

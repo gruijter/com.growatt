@@ -1,0 +1,2 @@
+Verbinden Sie Ihren Growatt-Wechselrichter mit Homey und erhalten Sie detaillierte Einblicke in Ihre Solarenergieproduktion und Batterienutzung.
+Überwachen Sie Ihre aktuelle Stromabgabe sowie Ihre tägliche, monatliche, jährliche und gesamte Erzeugung. Mit der GroWatt-App für Homey können Sie diese Daten nutzen, um Ihren Energieverbrauch zu optimieren, Flows zu erstellen und die Leistung Ihres Systems zu verfolgen – alles an einem Ort.

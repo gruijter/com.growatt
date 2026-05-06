@@ -1,7 +1,17 @@
 {
   "name": {
     "en": "Solar inverter V1",
-    "nl": "PV omvormer V1"
+    "nl": "PV omvormer V1",
+    "da": "Solcelleinverter V1",
+    "de": "Solar-Wechselrichter V1",
+    "es": "Inversor solar V1",
+    "fr": "Onduleur solaire V1",
+    "it": "Inverter solare V1",
+    "no": "Solcelleinverter V1",
+    "sv": "Växelriktare V1",
+    "pl": "Falownik słoneczny V1",
+    "ru": "Солнечный инвертор V1",
+    "ko": "태양광 인버터 V1"
   },
   "deprecated": true,
   "class": "solarpanel",
@@ -17,13 +27,33 @@
     "meter_power.month": {
       "title": {
         "en": "Energy this month",
-        "nl": "Energie deze maand"
+        "nl": "Energie deze maand",
+        "da": "Energi i denne måned",
+        "de": "Energie diesen Monat",
+        "es": "Energía este mes",
+        "fr": "Énergie ce mois-ci",
+        "it": "Energia questo mese",
+        "no": "Energi denne måneden",
+        "sv": "Energi denna månad",
+        "pl": "Energia w tym miesiącu",
+        "ru": "Энергия за этот месяц",
+        "ko": "이번 달 에너지"
       }
     },
     "meter_power.today": {
       "title": {
         "en": "Energy today",
-        "nl": "Energie vandaag"
+        "nl": "Energie vandaag",
+        "da": "Energi i dag",
+        "de": "Energie heute",
+        "es": "Energía de hoy",
+        "fr": "Énergie d'aujourd'hui",
+        "it": "Energia di oggi",
+        "no": "Energi i dag",
+        "sv": "Energi idag",
+        "pl": "Dzisiejsza energia",
+        "ru": "Энергия за сегодня",
+        "ko": "오늘의 에너지"
       }
     }
   },
@@ -42,8 +72,8 @@
       "id": "login_credentials",
       "template": "login_credentials",
       "options": {
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
-        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름" },
+        "passwordLabel": { "en": "Password", "nl": "Wachtwoord", "da": "Adgangskode", "de": "Passwort", "es": "Contraseña", "fr": "Mot de passe", "it": "Password", "no": "Passord", "sv": "Lösenord", "pl": "Hasło", "ru": "Пароль", "ko": "비밀번호" },
         "logo": "../assets/images/small.png"
       }
     },

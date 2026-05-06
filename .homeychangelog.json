@@ -49,5 +49,8 @@
   },
   "2.2.2": {
     "en": "Fixed inconsistent api inv deviceSn naming."
+  },
+  "2.3.0": {
+    "en": "Added support for all global regions. Added more battery support. Added DC Solar and AC Inverter capabilities. Use AC value for Solar power. Added support for target_power inverter. Removed dim capability. Added all translations. Code refactoring. Stability improvements"
   }
 }

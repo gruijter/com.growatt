@@ -1,14 +1,24 @@
 {
   "title": {
     "en": "Inverter power (AC) changed",
-    "nl": "Omvormer vermogen (AC) is gewijzigd"
+    "nl": "Omvormer vermogen (AC) is gewijzigd",
+    "da": "Inverter effekt (AC) ændret",
+    "de": "Wechselrichterleistung (AC) geändert",
+    "es": "Potencia del inversor (CA) cambiada",
+    "fr": "Puissance de l'onduleur (CA) modifiée",
+    "it": "Potenza inverter (CA) modificata",
+    "no": "Inverter effekt (AC) endret",
+    "sv": "Växelriktareffekt (AC) ändrad",
+    "pl": "Moc falownika (AC) zmieniona",
+    "ru": "Мощность инвертора (AC) изменена",
+    "ko": "인버터 전력(AC) 변경됨"
   },
   "highlight": true,
   "args": [
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=inverter2&group&capabilities=measure_power.ac_inverter"
+      "filter": "driver_id=inverter2&capabilities=measure_power.ac_inverter"
     }
   ],
   "tokens": [
@@ -17,7 +27,17 @@
       "type": "number",
       "title": {
         "en": "Inverter power (AC)",
-        "nl": "Omvormer vermogen (AC)"
+        "nl": "Omvormer vermogen (AC)",
+        "da": "Inverter effekt (AC)",
+        "de": "Wechselrichterleistung (AC)",
+        "es": "Potencia del inversor (CA)",
+        "fr": "Puissance de l'onduleur (CA)",
+        "it": "Potenza inverter (CA)",
+        "no": "Inverter effekt (AC)",
+        "sv": "Växelriktareffekt (AC)",
+        "pl": "Moc falownika (AC)",
+        "ru": "Мощность инвертора (AC)",
+        "ko": "인버터 전력(AC)"
       },
       "example": 1450
     }

@@ -3,7 +3,17 @@
 		"type": "group",
 		"label": {
 				"en": "Inverter information",
-				"nl": "Omvormer informatie"
+				"nl": "Omvormer informatie",
+				"da": "Inverterinformation",
+				"de": "Wechselrichter-Informationen",
+				"es": "Información del inversor",
+				"fr": "Informations sur l'onduleur",
+				"it": "Informazioni sull'inverter",
+				"no": "Inverterinformasjon",
+				"sv": "Växelriktarinformation",
+				"pl": "Informacje o falowniku",
+				"ru": "Информация об инверторе",
+				"ko": "인버터 정보"
 		},
 		"children": [
 			{
@@ -91,7 +101,17 @@
 		"type": "group",
 		"label": {
 				"en": "Server settings",
-				"nl": "Server instellingen"
+				"nl": "Server instellingen",
+				"da": "Serverindstillinger",
+				"de": "Servereinstellungen",
+				"es": "Configuración del servidor",
+				"fr": "Paramètres du serveur",
+				"it": "Impostazioni del server",
+				"no": "Serverinnstillinger",
+				"sv": "Serverinställningar",
+				"pl": "Ustawienia serwera",
+				"ru": "Настройки сервера",
+				"ko": "서버 설정"
 		},
 		"children": [
 			{

@@ -1,7 +1,17 @@
 {
   "title": {
     "en": "Energy today changed",
-    "nl": "Energie vandaag is gewijzigd"
+    "nl": "Energie vandaag is gewijzigd",
+    "da": "Energi i dag ændret",
+    "de": "Energie heute geändert",
+    "es": "Energía de hoy cambiada",
+    "fr": "Énergie d'aujourd'hui modifiée",
+    "it": "Energia di oggi modificata",
+    "no": "Energi i dag endret",
+    "sv": "Energi idag ändrad",
+    "pl": "Dzisiejsza energia zmieniona",
+    "ru": "Энергия за сегодня изменена",
+    "ko": "오늘의 에너지 변경됨"
   },
   "highlight": true,
   "args": [
@@ -17,7 +27,17 @@
       "type": "number",
       "title": {
         "en": "Energy today",
-        "nl": "Energie vandaag"
+        "nl": "Energie vandaag",
+        "da": "Energi i dag",
+        "de": "Energie heute",
+        "es": "Energía de hoy",
+        "fr": "Énergie d'aujourd'hui",
+        "it": "Energia di oggi",
+        "no": "Energi i dag",
+        "sv": "Energi idag",
+        "pl": "Dzisiejsza energia",
+        "ru": "Энергия за сегодня",
+        "ko": "오늘의 에너지"
       },
       "example": 12.5
     }

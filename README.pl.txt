@@ -1,0 +1,2 @@
+Podłącz swój falownik Growatt do Homey i uzyskaj szczegółowe informacje na temat produkcji energii słonecznej i zużycia baterii.
+Monitoruj bieżącą moc wyjściową, a także dzienne, miesięczne, roczne i całkowite wytwarzanie. Dzięki aplikacji GroWatt dla Homey możesz wykorzystać te dane do optymalizacji zużycia energii, tworzenia Przepływów (Flows) i śledzenia wydajności systemu — wszystko w jednym miejscu.

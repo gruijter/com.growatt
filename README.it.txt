@@ -1,0 +1,2 @@
+Collega il tuo inverter Growatt a Homey e ottieni informazioni dettagliate sulla produzione di energia solare e sull'utilizzo della batteria.
+Monitora la tua attuale produzione di energia, così come la tua generazione giornaliera, mensile, annuale e totale. Con l'app GroWatt per Homey, puoi utilizzare questi dati per ottimizzare il tuo consumo energetico, creare Flussi (Flows) e tenere traccia delle prestazioni del tuo sistema — tutto in un unico posto.

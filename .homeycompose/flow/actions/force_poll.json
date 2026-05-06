@@ -1,10 +1,30 @@
 {
     "title": {
       "en": "Get status update",
-      "nl": "Haal status update op"
+      "nl": "Haal status update op",
+      "da": "Hent statusopdatering",
+      "de": "Status-Update abrufen",
+      "es": "Obtener actualización de estado",
+      "fr": "Obtenir une mise à jour d'état",
+      "it": "Ottieni aggiornamento di stato",
+      "no": "Hent statusoppdatering",
+      "sv": "Hämta statusuppdatering",
+      "pl": "Pobierz aktualizację statusu",
+      "ru": "Получить обновление статуса",
+      "ko": "상태 업데이트 가져오기"
     },
     "hint": {
       "en": "This will try to update the status of all devices immediately. Carefull: too many updates will cause the server to temporarily block you.",
-      "nl": "Dit zal proberen de status van alle apparaten onmiddellijk bij te werken. Let op: te veel updates zullen ervoor zorgen dat de server je tijdelijk blokkeert."
+      "nl": "Dit zal proberen de status van alle apparaten onmiddellijk bij te werken. Let op: te veel updates zullen ervoor zorgen dat de server je tijdelijk blokkeert.",
+      "da": "Dette vil forsøge at opdatere status for alle enheder med det samme. Forsigtig: for mange opdateringer vil få serveren til at blokere dig midlertidigt.",
+      "de": "Dadurch wird versucht, den Status aller Geräte sofort zu aktualisieren. Vorsicht: Zu viele Updates führen dazu, dass der Server Sie vorübergehend blockiert.",
+      "es": "Esto intentará actualizar el estado de todos los dispositivos de inmediato. Cuidado: demasiadas actualizaciones harán que el servidor lo bloquee temporalmente.",
+      "fr": "Cela tentera de mettre à jour immédiatement l'état de tous les appareils. Attention : trop de mises à jour amèneront le serveur à vous bloquer temporairement.",
+      "it": "Questo proverà ad aggiornare immediatamente lo stato di tutti i dispositivi. Attenzione: troppi aggiornamenti causeranno il blocco temporaneo da parte del server.",
+      "no": "Dette vil prøve å oppdatere statusen til alle enheter umiddelbart. Forsiktig: for mange oppdateringer vil føre til at serveren midlertidig blokkerer deg.",
+      "sv": "Detta kommer att försöka uppdatera statusen för alla enheter omedelbart. Varning: för många uppdateringar gör att servern tillfälligt blockerar dig.",
+      "pl": "To spróbuje natychmiast zaktualizować status wszystkich urządzeń. Uwaga: zbyt wiele aktualizacji spowoduje tymczasowe zablokowanie przez serwer.",
+      "ru": "Это попытается немедленно обновить статус всех устройств. Осторожно: слишком большое количество обновлений приведет к временной блокировке на сервере.",
+      "ko": "모든 기기의 상태를 즉시 업데이트하려고 시도합니다. 주의: 업데이트가 너무 많으면 서버에서 일시적으로 차단됩니다."
     }
 }

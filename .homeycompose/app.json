@@ -30,6 +30,94 @@
       "Omvormer",
       "Zonnepanelen",
       "PV"
+    ],
+    "da": [
+      "Growatt",
+      "shine",
+      "Inverter",
+      "Solenergi",
+      "Solpaneler",
+      "PV"
+    ],
+    "de": [
+      "Growatt",
+      "shine",
+      "Wechselrichter",
+      "Solar",
+      "Solarmodule",
+      "PV"
+    ],
+    "es": [
+      "Growatt",
+      "shine",
+      "Inversor",
+      "Solar",
+      "Paneles solares",
+      "PV"
+    ],
+    "fr": [
+      "Growatt",
+      "shine",
+      "Onduleur",
+      "Solaire",
+      "Panneaux solaires",
+      "PV"
+    ],
+    "it": [
+      "Growatt",
+      "shine",
+      "Inverter",
+      "Solare",
+      "Pannelli solari",
+      "PV"
+    ],
+    "no": [
+      "Growatt",
+      "shine",
+      "Inverter",
+      "Solenergi",
+      "Solcellepaneler",
+      "PV"
+    ],
+    "sv": [
+      "Growatt",
+      "shine",
+      "Växelriktare",
+      "Solenergi",
+      "Solpaneler",
+      "PV"
+    ],
+    "pl": [
+      "Growatt",
+      "shine",
+      "Falownik",
+      "Słoneczna",
+      "Panele słoneczne",
+      "PV"
+    ],
+    "ru": [
+      "Growatt",
+      "shine",
+      "Инвертор",
+      "Солнечная",
+      "Солнечные панели",
+      "PV"
+    ],
+    "ko": [
+      "Growatt",
+      "shine",
+      "인버터",
+      "태양광",
+      "태양광 패널",
+      "PV"
+    ],
+    "ar": [
+      "Growatt",
+      "shine",
+      "عاكس",
+      "طاقة شمسية",
+      "ألواح شمسية",
+      "PV"
     ]
   },
   "category": [

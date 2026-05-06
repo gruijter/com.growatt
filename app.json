@@ -31,6 +31,94 @@
       "Omvormer",
       "Zonnepanelen",
       "PV"
+    ],
+    "da": [
+      "Growatt",
+      "shine",
+      "Inverter",
+      "Solenergi",
+      "Solpaneler",
+      "PV"
+    ],
+    "de": [
+      "Growatt",
+      "shine",
+      "Wechselrichter",
+      "Solar",
+      "Solarmodule",
+      "PV"
+    ],
+    "es": [
+      "Growatt",
+      "shine",
+      "Inversor",
+      "Solar",
+      "Paneles solares",
+      "PV"
+    ],
+    "fr": [
+      "Growatt",
+      "shine",
+      "Onduleur",
+      "Solaire",
+      "Panneaux solaires",
+      "PV"
+    ],
+    "it": [
+      "Growatt",
+      "shine",
+      "Inverter",
+      "Solare",
+      "Pannelli solari",
+      "PV"
+    ],
+    "no": [
+      "Growatt",
+      "shine",
+      "Inverter",
+      "Solenergi",
+      "Solcellepaneler",
+      "PV"
+    ],
+    "sv": [
+      "Growatt",
+      "shine",
+      "Växelriktare",
+      "Solenergi",
+      "Solpaneler",
+      "PV"
+    ],
+    "pl": [
+      "Growatt",
+      "shine",
+      "Falownik",
+      "Słoneczna",
+      "Panele słoneczne",
+      "PV"
+    ],
+    "ru": [
+      "Growatt",
+      "shine",
+      "Инвертор",
+      "Солнечная",
+      "Солнечные панели",
+      "PV"
+    ],
+    "ko": [
+      "Growatt",
+      "shine",
+      "인버터",
+      "태양광",
+      "태양광 패널",
+      "PV"
+    ],
+    "ar": [
+      "Growatt",
+      "shine",
+      "عاكس",
+      "طاقة شمسية",
+      "ألواح شمسية",
+      "PV"
     ]
   },
   "category": [
@@ -54,14 +142,24 @@
       {
         "title": {
           "en": "Inverter power (AC) changed",
-          "nl": "Omvormer vermogen (AC) is gewijzigd"
+          "nl": "Omvormer vermogen (AC) is gewijzigd",
+          "da": "Inverter effekt (AC) ændret",
+          "de": "Wechselrichterleistung (AC) geändert",
+          "es": "Potencia del inversor (CA) cambiada",
+          "fr": "Puissance de l'onduleur (CA) modifiée",
+          "it": "Potenza inverter (CA) modificata",
+          "no": "Inverter effekt (AC) endret",
+          "sv": "Växelriktareffekt (AC) ändrad",
+          "pl": "Moc falownika (AC) zmieniona",
+          "ru": "Мощность инвертора (AC) изменена",
+          "ko": "인버터 전력(AC) 변경됨"
         },
         "highlight": true,
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=inverter2&group&capabilities=measure_power.ac_inverter"
+            "filter": "driver_id=inverter2&capabilities=measure_power.ac_inverter"
           }
         ],
         "tokens": [
@@ -70,7 +168,17 @@
             "type": "number",
             "title": {
               "en": "Inverter power (AC)",
-              "nl": "Omvormer vermogen (AC)"
+              "nl": "Omvormer vermogen (AC)",
+              "da": "Inverter effekt (AC)",
+              "de": "Wechselrichterleistung (AC)",
+              "es": "Potencia del inversor (CA)",
+              "fr": "Puissance de l'onduleur (CA)",
+              "it": "Potenza inverter (CA)",
+              "no": "Inverter effekt (AC)",
+              "sv": "Växelriktareffekt (AC)",
+              "pl": "Moc falownika (AC)",
+              "ru": "Мощность инвертора (AC)",
+              "ko": "인버터 전력(AC)"
             },
             "example": 1450
           }
@@ -80,14 +188,24 @@
       {
         "title": {
           "en": "Solar power (DC) changed",
-          "nl": "Zonne-energie (DC) is gewijzigd"
+          "nl": "Zonne-energie (DC) is gewijzigd",
+          "da": "Solenergi (DC) ændret",
+          "de": "Solarleistung (DC) geändert",
+          "es": "Energía solar (CC) cambiada",
+          "fr": "Énergie solaire (CC) modifiée",
+          "it": "Energia solare (CC) modificata",
+          "no": "Solenergi (DC) endret",
+          "sv": "Solenergi (DC) ändrad",
+          "pl": "Moc słoneczna (DC) zmieniona",
+          "ru": "Солнечная энергия (DC) изменена",
+          "ko": "태양광 전력(DC) 변경됨"
         },
         "highlight": true,
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=inverter2&group&capabilities=measure_power.dc_solar"
+            "filter": "driver_id=inverter2&capabilities=measure_power.dc_solar"
           }
         ],
         "tokens": [
@@ -96,7 +214,17 @@
             "type": "number",
             "title": {
               "en": "Solar power (DC)",
-              "nl": "Zonne-energie (DC)"
+              "nl": "Zonne-energie (DC)",
+              "da": "Solenergi (DC)",
+              "de": "Solarleistung (DC)",
+              "es": "Energía solar (CC)",
+              "fr": "Énergie solaire (CC)",
+              "it": "Energia solare (CC)",
+              "no": "Solenergi (DC)",
+              "sv": "Solenergi (DC)",
+              "pl": "Moc słoneczna (DC)",
+              "ru": "Солнечная энергия (DC)",
+              "ko": "태양광 전력(DC)"
             },
             "example": 1500
           }
@@ -106,7 +234,17 @@
       {
         "title": {
           "en": "Energy today changed",
-          "nl": "Energie vandaag is gewijzigd"
+          "nl": "Energie vandaag is gewijzigd",
+          "da": "Energi i dag ændret",
+          "de": "Energie heute geändert",
+          "es": "Energía de hoy cambiada",
+          "fr": "Énergie d'aujourd'hui modifiée",
+          "it": "Energia di oggi modificata",
+          "no": "Energi i dag endret",
+          "sv": "Energi idag ändrad",
+          "pl": "Dzisiejsza energia zmieniona",
+          "ru": "Энергия за сегодня изменена",
+          "ko": "오늘의 에너지 변경됨"
         },
         "highlight": true,
         "args": [
@@ -122,7 +260,17 @@
             "type": "number",
             "title": {
               "en": "Energy today",
-              "nl": "Energie vandaag"
+              "nl": "Energie vandaag",
+              "da": "Energi i dag",
+              "de": "Energie heute",
+              "es": "Energía de hoy",
+              "fr": "Énergie d'aujourd'hui",
+              "it": "Energia di oggi",
+              "no": "Energi i dag",
+              "sv": "Energi idag",
+              "pl": "Dzisiejsza energia",
+              "ru": "Энергия за сегодня",
+              "ko": "오늘의 에너지"
             },
             "example": 12.5
           }
@@ -134,11 +282,31 @@
       {
         "title": {
           "en": "Get status update",
-          "nl": "Haal status update op"
+          "nl": "Haal status update op",
+          "da": "Hent statusopdatering",
+          "de": "Status-Update abrufen",
+          "es": "Obtener actualización de estado",
+          "fr": "Obtenir une mise à jour d'état",
+          "it": "Ottieni aggiornamento di stato",
+          "no": "Hent statusoppdatering",
+          "sv": "Hämta statusuppdatering",
+          "pl": "Pobierz aktualizację statusu",
+          "ru": "Получить обновление статуса",
+          "ko": "상태 업데이트 가져오기"
         },
         "hint": {
           "en": "This will try to update the status of all devices immediately. Carefull: too many updates will cause the server to temporarily block you.",
-          "nl": "Dit zal proberen de status van alle apparaten onmiddellijk bij te werken. Let op: te veel updates zullen ervoor zorgen dat de server je tijdelijk blokkeert."
+          "nl": "Dit zal proberen de status van alle apparaten onmiddellijk bij te werken. Let op: te veel updates zullen ervoor zorgen dat de server je tijdelijk blokkeert.",
+          "da": "Dette vil forsøge at opdatere status for alle enheder med det samme. Forsigtig: for mange opdateringer vil få serveren til at blokere dig midlertidigt.",
+          "de": "Dadurch wird versucht, den Status aller Geräte sofort zu aktualisieren. Vorsicht: Zu viele Updates führen dazu, dass der Server Sie vorübergehend blockiert.",
+          "es": "Esto intentará actualizar el estado de todos los dispositivos de inmediato. Cuidado: demasiadas actualizaciones harán que el servidor lo bloquee temporalmente.",
+          "fr": "Cela tentera de mettre à jour immédiatement l'état de tous les appareils. Attention : trop de mises à jour amèneront le serveur à vous bloquer temporairement.",
+          "it": "Questo proverà ad aggiornare immediatamente lo stato di tutti i dispositivi. Attenzione: troppi aggiornamenti causeranno il blocco temporaneo da parte del server.",
+          "no": "Dette vil prøve å oppdatere statusen til alle enheter umiddelbart. Forsiktig: for mange oppdateringer vil føre til at serveren midlertidig blokkerer deg.",
+          "sv": "Detta kommer att försöka uppdatera statusen för alla enheter omedelbart. Varning: för många uppdateringar gör att servern tillfälligt blockerar dig.",
+          "pl": "To spróbuje natychmiast zaktualizować status wszystkich urządzeń. Uwaga: zbyt wiele aktualizacji spowoduje tymczasowe zablokowanie przez serwer.",
+          "ru": "Это попытается немедленно обновить статус всех устройств. Осторожно: слишком большое количество обновлений приведет к временной блокировке на сервере.",
+          "ko": "모든 기기의 상태를 즉시 업데이트하려고 시도합니다. 주의: 업데이트가 너무 많으면 서버에서 일시적으로 차단됩니다."
         },
         "id": "force_poll"
       }
@@ -271,7 +439,17 @@
     {
       "name": {
         "en": "Battery",
-        "nl": "Batterij"
+        "nl": "Batterij",
+        "da": "Batteri",
+        "de": "Batterie",
+        "es": "Batería",
+        "fr": "Batterie",
+        "it": "Batteria",
+        "no": "Batteri",
+        "sv": "Batteri",
+        "pl": "Bateria",
+        "ru": "Батарея",
+        "ko": "배터리"
       },
       "class": "battery",
       "capabilities": [
@@ -287,7 +465,17 @@
         "measure_power.bat2": {
           "title": {
             "en": "Battery 2 Power",
-            "nl": "Batterij 2 Vermogen"
+            "nl": "Batterij 2 Vermogen",
+            "da": "Batteri 2 Effekt",
+            "de": "Batterie 2 Leistung",
+            "es": "Potencia Batería 2",
+            "fr": "Puissance Batterie 2",
+            "it": "Potenza Batteria 2",
+            "no": "Batteri 2 Effekt",
+            "sv": "Batteri 2 Effekt",
+            "pl": "Moc baterii 2",
+            "ru": "Мощность батареи 2",
+            "ko": "배터리 2 전력"
           },
           "decimals": 0
         },
@@ -297,14 +485,34 @@
         "meter_power.charged": {
           "title": {
             "en": "Charged energy",
-            "nl": "Geladen energie"
+            "nl": "Geladen energie",
+            "da": "Opladet energi",
+            "de": "Geladene Energie",
+            "es": "Energía cargada",
+            "fr": "Énergie chargée",
+            "it": "Energia caricata",
+            "no": "Ladet energi",
+            "sv": "Laddad energi",
+            "pl": "Pobrana energia",
+            "ru": "Заряженная энергия",
+            "ko": "충전된 에너지"
           },
           "decimals": 2
         },
         "meter_power.discharged": {
           "title": {
             "en": "Discharged energy",
-            "nl": "Ontladen energie"
+            "nl": "Ontladen energie",
+            "da": "Afladet energi",
+            "de": "Entladene Energie",
+            "es": "Energía descargada",
+            "fr": "Énergie déchargée",
+            "it": "Energia scaricata",
+            "no": "Utladet energi",
+            "sv": "Urladdad energi",
+            "pl": "Oddana energia",
+            "ru": "Разряженная энергия",
+            "ko": "방전된 에너지"
           },
           "decimals": 2
         }
@@ -332,18 +540,60 @@
           "template": "login_credentials",
           "options": {
             "title": {
-              "en": "Get your API token in the ShinePhone app"
+              "en": "Get your API token in the ShinePhone app",
+              "nl": "Haal je API token op in de ShinePhone app",
+              "da": "Få din API-token i ShinePhone-appen",
+              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+              "es": "Obtenga su token API en la aplicación ShinePhone",
+              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+              "it": "Ottieni il tuo token API nell'app ShinePhone",
+              "no": "Få API-tokenet ditt i ShinePhone-appen",
+              "sv": "Hämta din API-token i ShinePhone-appen",
+              "pl": "Pobierz swój token API w aplikacji ShinePhone",
+              "ru": "Получите ваш API токен в приложении ShinePhone",
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
             },
             "usernameLabel": {
               "en": "Username",
-              "nl": "Gebruikersnaam"
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름"
             },
             "passwordLabel": {
               "en": "API Token",
-              "nl": "API Token"
+              "nl": "API Token",
+              "da": "API Token",
+              "de": "API-Token",
+              "es": "Token API",
+              "fr": "Jeton API",
+              "it": "Token API",
+              "no": "API Token",
+              "sv": "API-token",
+              "pl": "Token API",
+              "ru": "API токен",
+              "ko": "API 토큰"
             },
             "passwordPlaceholder": {
-              "en": "My account>User name>API Token"
+              "en": "My account>User name>API Token",
+              "nl": "Mijn account>Gebruikersnaam>API Token",
+              "da": "Min konto>Brugernavn>API Token",
+              "de": "Mein Konto>Benutzername>API-Token",
+              "es": "Mi cuenta>Nombre de usuario>Token API",
+              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
+              "it": "Il mio account>Nome utente>Token API",
+              "no": "Min konto>Brukernavn>API Token",
+              "sv": "Mitt konto>Användarnamn>API-token",
+              "pl": "Moje konto>Nazwa użytkownika>Token API",
+              "ru": "Мой аккаунт>Имя пользователя>API токен",
+              "ko": "내 계정>사용자 이름>API 토큰"
             },
             "logo": "../assets/images/small.png"
           }
@@ -366,7 +616,17 @@
           "type": "group",
           "label": {
             "en": "Inverter information",
-            "nl": "Omvormer informatie"
+            "nl": "Omvormer informatie",
+            "da": "Inverterinformation",
+            "de": "Wechselrichter-Informationen",
+            "es": "Información del inversor",
+            "fr": "Informations sur l'onduleur",
+            "it": "Informazioni sull'inverter",
+            "no": "Inverterinformasjon",
+            "sv": "Växelriktarinformation",
+            "pl": "Informacje o falowniku",
+            "ru": "Информация об инверторе",
+            "ko": "인버터 정보"
           },
           "children": [
             {
@@ -454,7 +714,17 @@
           "type": "group",
           "label": {
             "en": "Server settings",
-            "nl": "Server instellingen"
+            "nl": "Server instellingen",
+            "da": "Serverindstillinger",
+            "de": "Servereinstellungen",
+            "es": "Configuración del servidor",
+            "fr": "Paramètres du serveur",
+            "it": "Impostazioni del server",
+            "no": "Serverinnstillinger",
+            "sv": "Serverinställningar",
+            "pl": "Ustawienia serwera",
+            "ru": "Настройки сервера",
+            "ko": "서버 설정"
           },
           "children": [
             {
@@ -526,7 +796,17 @@
     {
       "name": {
         "en": "Solar inverter V1",
-        "nl": "PV omvormer V1"
+        "nl": "PV omvormer V1",
+        "da": "Solcelleinverter V1",
+        "de": "Solar-Wechselrichter V1",
+        "es": "Inversor solar V1",
+        "fr": "Onduleur solaire V1",
+        "it": "Inverter solare V1",
+        "no": "Solcelleinverter V1",
+        "sv": "Växelriktare V1",
+        "pl": "Falownik słoneczny V1",
+        "ru": "Солнечный инвертор V1",
+        "ko": "태양광 인버터 V1"
       },
       "deprecated": true,
       "class": "solarpanel",
@@ -542,13 +822,33 @@
         "meter_power.month": {
           "title": {
             "en": "Energy this month",
-            "nl": "Energie deze maand"
+            "nl": "Energie deze maand",
+            "da": "Energi i denne måned",
+            "de": "Energie diesen Monat",
+            "es": "Energía este mes",
+            "fr": "Énergie ce mois-ci",
+            "it": "Energia questo mese",
+            "no": "Energi denne måneden",
+            "sv": "Energi denna månad",
+            "pl": "Energia w tym miesiącu",
+            "ru": "Энергия за этот месяц",
+            "ko": "이번 달 에너지"
           }
         },
         "meter_power.today": {
           "title": {
             "en": "Energy today",
-            "nl": "Energie vandaag"
+            "nl": "Energie vandaag",
+            "da": "Energi i dag",
+            "de": "Energie heute",
+            "es": "Energía de hoy",
+            "fr": "Énergie d'aujourd'hui",
+            "it": "Energia di oggi",
+            "no": "Energi i dag",
+            "sv": "Energi idag",
+            "pl": "Dzisiejsza energia",
+            "ru": "Энергия за сегодня",
+            "ko": "오늘의 에너지"
           }
         }
       },
@@ -571,11 +871,31 @@
           "options": {
             "usernameLabel": {
               "en": "Username",
-              "nl": "Gebruikersnaam"
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름"
             },
             "passwordLabel": {
               "en": "Password",
-              "nl": "Wachtwoord"
+              "nl": "Wachtwoord",
+              "da": "Adgangskode",
+              "de": "Passwort",
+              "es": "Contraseña",
+              "fr": "Mot de passe",
+              "it": "Password",
+              "no": "Passord",
+              "sv": "Lösenord",
+              "pl": "Hasło",
+              "ru": "Пароль",
+              "ko": "비밀번호"
             },
             "logo": "../assets/images/small.png"
           }
@@ -598,7 +918,17 @@
           "type": "group",
           "label": {
             "en": "Inverter information",
-            "nl": "Omvormer informatie"
+            "nl": "Omvormer informatie",
+            "da": "Inverterinformation",
+            "de": "Wechselrichter-Informationen",
+            "es": "Información del inversor",
+            "fr": "Informations sur l'onduleur",
+            "it": "Informazioni sull'inverter",
+            "no": "Inverterinformasjon",
+            "sv": "Växelriktarinformation",
+            "pl": "Informacje o falowniku",
+            "ru": "Информация об инверторе",
+            "ko": "인버터 정보"
           },
           "children": [
             {
@@ -669,7 +999,17 @@
           "type": "group",
           "label": {
             "en": "Server settings",
-            "nl": "Server instellingen"
+            "nl": "Server instellingen",
+            "da": "Serverindstillinger",
+            "de": "Servereinstellungen",
+            "es": "Configuración del servidor",
+            "fr": "Paramètres du serveur",
+            "it": "Impostazioni del server",
+            "no": "Serverinnstillinger",
+            "sv": "Serverinställningar",
+            "pl": "Ustawienia serwera",
+            "ru": "Настройки сервера",
+            "ko": "서버 설정"
           },
           "children": [
             {
@@ -696,7 +1036,17 @@
     {
       "name": {
         "en": "Solar inverter",
-        "nl": "PV omvormer"
+        "nl": "PV omvormer",
+        "da": "Solcelleinverter",
+        "de": "Solar-Wechselrichter",
+        "es": "Inversor solar",
+        "fr": "Onduleur solaire",
+        "it": "Inverter solare",
+        "no": "Solcelleinverter",
+        "sv": "Växelriktare",
+        "pl": "Falownik słoneczny",
+        "ru": "Солнечный инвертор",
+        "ko": "태양광 인버터"
       },
       "class": "solarpanel",
       "capabilities": [
@@ -709,27 +1059,67 @@
         "meter_power.today": {
           "title": {
             "en": "Energy today",
-            "nl": "Energie vandaag"
+            "nl": "Energie vandaag",
+            "da": "Energi i dag",
+            "de": "Energie heute",
+            "es": "Energía de hoy",
+            "fr": "Énergie d'aujourd'hui",
+            "it": "Energia di oggi",
+            "no": "Energi i dag",
+            "sv": "Energi idag",
+            "pl": "Dzisiejsza energia",
+            "ru": "Энергия за сегодня",
+            "ko": "오늘의 에너지"
           }
         },
         "measure_power": {
           "title": {
             "en": "Solar Power (AC)",
-            "nl": "Zonne-energie (AC)"
+            "nl": "Zonne-energie (AC)",
+            "da": "Solenergi (AC)",
+            "de": "Solarleistung (AC)",
+            "es": "Energía solar (CA)",
+            "fr": "Énergie solaire (CA)",
+            "it": "Energia solare (CA)",
+            "no": "Solenergi (AC)",
+            "sv": "Solenergi (AC)",
+            "pl": "Moc słoneczna (AC)",
+            "ru": "Солнечная энергия (AC)",
+            "ko": "태양광 전력(AC)"
           },
           "decimals": 0
         },
         "measure_power.dc_solar": {
           "title": {
             "en": "Solar Power (DC)",
-            "nl": "Zonne-energie (DC)"
+            "nl": "Zonne-energie (DC)",
+            "da": "Solenergi (DC)",
+            "de": "Solarleistung (DC)",
+            "es": "Energía solar (CC)",
+            "fr": "Énergie solaire (CC)",
+            "it": "Energia solare (CC)",
+            "no": "Solenergi (DC)",
+            "sv": "Solenergi (DC)",
+            "pl": "Moc słoneczna (DC)",
+            "ru": "Солнечная энергия (DC)",
+            "ko": "태양광 전력(DC)"
           },
           "decimals": 0
         },
         "measure_power.ac_inverter": {
           "title": {
             "en": "Inverter Power (AC)",
-            "nl": "Omvormer vermogen (AC)"
+            "nl": "Omvormer vermogen (AC)",
+            "da": "Inverter effekt (AC)",
+            "de": "Wechselrichterleistung (AC)",
+            "es": "Potencia del inversor (CA)",
+            "fr": "Puissance de l'onduleur (CA)",
+            "it": "Potenza inverter (CA)",
+            "no": "Inverter effekt (AC)",
+            "sv": "Växelriktareffekt (AC)",
+            "pl": "Moc falownika (AC)",
+            "ru": "Мощность инвертора (AC)",
+            "ko": "인버터 전력(AC)"
           },
           "decimals": 0
         },
@@ -755,18 +1145,60 @@
           "template": "login_credentials",
           "options": {
             "title": {
-              "en": "Get your API token in the ShinePhone app"
+              "en": "Get your API token in the ShinePhone app",
+              "nl": "Haal je API token op in de ShinePhone app",
+              "da": "Få din API-token i ShinePhone-appen",
+              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+              "es": "Obtenga su token API en la aplicación ShinePhone",
+              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+              "it": "Ottieni il tuo token API nell'app ShinePhone",
+              "no": "Få API-tokenet ditt i ShinePhone-appen",
+              "sv": "Hämta din API-token i ShinePhone-appen",
+              "pl": "Pobierz swój token API w aplikacji ShinePhone",
+              "ru": "Получите ваш API токен в приложении ShinePhone",
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
             },
             "usernameLabel": {
               "en": "Username",
-              "nl": "Gebruikersnaam"
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름"
             },
             "passwordLabel": {
               "en": "API Token",
-              "nl": "API Token"
+              "nl": "API Token",
+              "da": "API Token",
+              "de": "API-Token",
+              "es": "Token API",
+              "fr": "Jeton API",
+              "it": "Token API",
+              "no": "API Token",
+              "sv": "API-token",
+              "pl": "Token API",
+              "ru": "API токен",
+              "ko": "API 토큰"
             },
             "passwordPlaceholder": {
-              "en": "My account>User name>API Token"
+              "en": "My account>User name>API Token",
+              "nl": "Mijn account>Gebruikersnaam>API Token",
+              "da": "Min konto>Brugernavn>API Token",
+              "de": "Mein Konto>Benutzername>API-Token",
+              "es": "Mi cuenta>Nombre de usuario>Token API",
+              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
+              "it": "Il mio account>Nome utente>Token API",
+              "no": "Min konto>Brukernavn>API Token",
+              "sv": "Mitt konto>Användarnamn>API-token",
+              "pl": "Moje konto>Nazwa użytkownika>Token API",
+              "ru": "Мой аккаунт>Имя пользователя>API токен",
+              "ko": "내 계정>사용자 이름>API 토큰"
             },
             "logo": "../assets/images/small.png"
           }
@@ -789,7 +1221,17 @@
           "type": "group",
           "label": {
             "en": "Inverter information",
-            "nl": "Omvormer informatie"
+            "nl": "Omvormer informatie",
+            "da": "Inverterinformation",
+            "de": "Wechselrichter-Informationen",
+            "es": "Información del inversor",
+            "fr": "Informations sur l'onduleur",
+            "it": "Informazioni sull'inverter",
+            "no": "Inverterinformasjon",
+            "sv": "Växelriktarinformation",
+            "pl": "Informacje o falowniku",
+            "ru": "Информация об инверторе",
+            "ko": "인버터 정보"
           },
           "children": [
             {
@@ -864,7 +1306,17 @@
           "type": "group",
           "label": {
             "en": "Server settings",
-            "nl": "Server instellingen"
+            "nl": "Server instellingen",
+            "da": "Serverindstillinger",
+            "de": "Servereinstellungen",
+            "es": "Configuración del servidor",
+            "fr": "Paramètres du serveur",
+            "it": "Impostazioni del server",
+            "no": "Serverinnstillinger",
+            "sv": "Serverinställningar",
+            "pl": "Ustawienia serwera",
+            "ru": "Настройки сервера",
+            "ko": "서버 설정"
           },
           "children": [
             {
@@ -1092,7 +1544,17 @@
     {
       "name": {
         "en": "Meter",
-        "nl": "Meter"
+        "nl": "Meter",
+        "da": "Måler",
+        "de": "Zähler",
+        "es": "Medidor",
+        "fr": "Compteur",
+        "it": "Contatore",
+        "no": "Måler",
+        "sv": "Mätare",
+        "pl": "Miernik",
+        "ru": "Счетчик",
+        "ko": "미터"
       },
       "class": "other",
       "capabilities": [
@@ -1112,32 +1574,82 @@
         "measure_voltage.1": {
           "title": {
             "en": "Voltage phase 1",
-            "nl": "Voltage fase 1"
+            "nl": "Voltage fase 1",
+            "da": "Spænding fase 1",
+            "de": "Spannung Phase 1",
+            "es": "Voltaje fase 1",
+            "fr": "Tension phase 1",
+            "it": "Tensione fase 1",
+            "no": "Spenning fase 1",
+            "sv": "Spänning fas 1",
+            "pl": "Napięcie faza 1",
+            "ru": "Напряжение фаза 1",
+            "ko": "전압 위상 1"
           }
         },
         "measure_voltage.2": {
           "title": {
             "en": "Voltage phase 2",
-            "nl": "Voltage fase 2"
+            "nl": "Voltage fase 2",
+            "da": "Spænding fase 2",
+            "de": "Spannung Phase 2",
+            "es": "Voltaje fase 2",
+            "fr": "Tension phase 2",
+            "it": "Tensione fase 2",
+            "no": "Spenning fase 2",
+            "sv": "Spänning fas 2",
+            "pl": "Napięcie faza 2",
+            "ru": "Напряжение фаза 2",
+            "ko": "전압 위상 2"
           }
         },
         "measure_voltage.3": {
           "title": {
             "en": "Voltage phase 3",
-            "nl": "Voltage fase 3"
+            "nl": "Voltage fase 3",
+            "da": "Spænding fase 3",
+            "de": "Spannung Phase 3",
+            "es": "Voltaje fase 3",
+            "fr": "Tension phase 3",
+            "it": "Tensione fase 3",
+            "no": "Spenning fase 3",
+            "sv": "Spänning fas 3",
+            "pl": "Napięcie faza 3",
+            "ru": "Напряжение фаза 3",
+            "ko": "전압 위상 3"
           }
         },
         "meter_power.imported": {
           "title": {
             "en": "Imported energy",
-            "nl": "Energie import"
+            "nl": "Energie import",
+            "da": "Importeret energi",
+            "de": "Importierte Energie",
+            "es": "Energía importada",
+            "fr": "Énergie importée",
+            "it": "Energia importata",
+            "no": "Importert energi",
+            "sv": "Importerad energi",
+            "pl": "Zaimportowana energia",
+            "ru": "Импортированная энергия",
+            "ko": "수입된 에너지"
           },
           "decimals": 2
         },
         "meter_power.exported": {
           "title": {
             "en": "Exported energy",
-            "nl": "Energie export"
+            "nl": "Energie export",
+            "da": "Eksporteret energi",
+            "de": "Exportierte Energie",
+            "es": "Energía exportada",
+            "fr": "Énergie exportée",
+            "it": "Energia esportata",
+            "no": "Eksportert energi",
+            "sv": "Exporterad energi",
+            "pl": "Wyeksportowana energia",
+            "ru": "Экспортированная энергия",
+            "ko": "수출된 에너지"
           },
           "decimals": 2
         }
@@ -1165,18 +1677,60 @@
           "template": "login_credentials",
           "options": {
             "title": {
-              "en": "Get your API token in the ShinePhone app"
+              "en": "Get your API token in the ShinePhone app",
+              "nl": "Haal je API token op in de ShinePhone app",
+              "da": "Få din API-token i ShinePhone-appen",
+              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+              "es": "Obtenga su token API en la aplicación ShinePhone",
+              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+              "it": "Ottieni il tuo token API nell'app ShinePhone",
+              "no": "Få API-tokenet ditt i ShinePhone-appen",
+              "sv": "Hämta din API-token i ShinePhone-appen",
+              "pl": "Pobierz swój token API w aplikacji ShinePhone",
+              "ru": "Получите ваш API токен в приложении ShinePhone",
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
             },
             "usernameLabel": {
               "en": "Username",
-              "nl": "Gebruikersnaam"
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름"
             },
             "passwordLabel": {
               "en": "API Token",
-              "nl": "API Token"
+              "nl": "API Token",
+              "da": "API Token",
+              "de": "API-Token",
+              "es": "Token API",
+              "fr": "Jeton API",
+              "it": "Token API",
+              "no": "API Token",
+              "sv": "API-token",
+              "pl": "Token API",
+              "ru": "API токен",
+              "ko": "API 토큰"
             },
             "passwordPlaceholder": {
-              "en": "My account>User name>API Token"
+              "en": "My account>User name>API Token",
+              "nl": "Mijn account>Gebruikersnaam>API Token",
+              "da": "Min konto>Brugernavn>API Token",
+              "de": "Mein Konto>Benutzername>API-Token",
+              "es": "Mi cuenta>Nombre de usuario>Token API",
+              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
+              "it": "Il mio account>Nome utente>Token API",
+              "no": "Min konto>Brukernavn>API Token",
+              "sv": "Mitt konto>Användarnamn>API-token",
+              "pl": "Moje konto>Nazwa użytkownika>Token API",
+              "ru": "Мой аккаунт>Имя пользователя>API токен",
+              "ko": "내 계정>사용자 이름>API 토큰"
             },
             "logo": "../assets/images/small.png"
           }
@@ -1199,7 +1753,17 @@
           "type": "group",
           "label": {
             "en": "Meter information",
-            "nl": "Meter informatie"
+            "nl": "Meter informatie",
+            "da": "Målerinformation",
+            "de": "Zählerinformationen",
+            "es": "Información del medidor",
+            "fr": "Informations sur le compteur",
+            "it": "Informazioni sul contatore",
+            "no": "Målerinformasjon",
+            "sv": "Mätarinformation",
+            "pl": "Informacje o mierniku",
+            "ru": "Информация о счетчике",
+            "ko": "미터 정보"
           },
           "children": [
             {
@@ -1261,7 +1825,17 @@
           "type": "group",
           "label": {
             "en": "Server settings",
-            "nl": "Server instellingen"
+            "nl": "Server instellingen",
+            "da": "Serverindstillinger",
+            "de": "Servereinstellungen",
+            "es": "Configuración del servidor",
+            "fr": "Paramètres du serveur",
+            "it": "Impostazioni del server",
+            "no": "Serverinnstillinger",
+            "sv": "Serverinställningar",
+            "pl": "Ustawienia serwera",
+            "ru": "Настройки сервера",
+            "ko": "서버 설정"
           },
           "children": [
             {
@@ -1360,28 +1934,6 @@
       "insights": true,
       "uiComponent": "slider",
       "icon": "./assets/charge_setpoint.svg"
-    },
-    "dim": {
-      "type": "number",
-      "title": {
-        "en": "AC power limit",
-        "nl": "AC vermogen beperking"
-      },
-      "min": 0,
-      "max": 1,
-      "decimals": 2,
-      "units": {
-        "en": "%",
-        "ko": "%",
-        "no": "%",
-        "ru": "%",
-        "ar": "%"
-      },
-      "getable": true,
-      "setable": true,
-      "insights": true,
-      "uiComponent": "sensor",
-      "icon": "./assets/dim.svg"
     }
   }
 }

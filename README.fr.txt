@@ -1,0 +1,2 @@
+Connectez votre onduleur Growatt à Homey et obtenez des informations détaillées sur votre production d'énergie solaire et l'utilisation de votre batterie.
+Surveillez votre production d'électricité actuelle, ainsi que votre production quotidienne, mensuelle, annuelle et totale. Avec l'application GroWatt pour Homey, vous pouvez utiliser ces données pour optimiser votre consommation d'énergie, créer des Flows et suivre les performances de votre système — le tout en un seul endroit.

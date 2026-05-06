@@ -1,7 +1,17 @@
 {
   "name": {
     "en": "Battery",
-    "nl": "Batterij"
+    "nl": "Batterij",
+    "da": "Batteri",
+    "de": "Batterie",
+    "es": "Batería",
+    "fr": "Batterie",
+    "it": "Batteria",
+    "no": "Batteri",
+    "sv": "Batteri",
+    "pl": "Bateria",
+    "ru": "Батарея",
+    "ko": "배터리"
   },
   "class": "battery",
   "capabilities": [
@@ -17,7 +27,17 @@
     "measure_power.bat2": {
       "title": {
         "en": "Battery 2 Power",
-        "nl": "Batterij 2 Vermogen"
+        "nl": "Batterij 2 Vermogen",
+        "da": "Batteri 2 Effekt",
+        "de": "Batterie 2 Leistung",
+        "es": "Potencia Batería 2",
+        "fr": "Puissance Batterie 2",
+        "it": "Potenza Batteria 2",
+        "no": "Batteri 2 Effekt",
+        "sv": "Batteri 2 Effekt",
+        "pl": "Moc baterii 2",
+        "ru": "Мощность батареи 2",
+        "ko": "배터리 2 전력"
       },
       "decimals": 0
     },
@@ -27,14 +47,34 @@
     "meter_power.charged": {
       "title": {
         "en": "Charged energy",
-        "nl": "Geladen energie"
+        "nl": "Geladen energie",
+        "da": "Opladet energi",
+        "de": "Geladene Energie",
+        "es": "Energía cargada",
+        "fr": "Énergie chargée",
+        "it": "Energia caricata",
+        "no": "Ladet energi",
+        "sv": "Laddad energi",
+        "pl": "Pobrana energia",
+        "ru": "Заряженная энергия",
+        "ko": "충전된 에너지"
       },
       "decimals": 2
     },
     "meter_power.discharged": {
       "title": {
         "en": "Discharged energy",
-        "nl": "Ontladen energie"
+        "nl": "Ontladen energie",
+        "da": "Afladet energi",
+        "de": "Entladene Energie",
+        "es": "Energía descargada",
+        "fr": "Énergie déchargée",
+        "it": "Energia scaricata",
+        "no": "Utladet energi",
+        "sv": "Urladdad energi",
+        "pl": "Oddana energia",
+        "ru": "Разряженная энергия",
+        "ko": "방전된 에너지"
       },
       "decimals": 2
     }
@@ -60,11 +100,22 @@
       "template": "login_credentials",
       "options": {
         "title": {
-          "en": "Get your API token in the ShinePhone app"
+          "en": "Get your API token in the ShinePhone app",
+          "nl": "Haal je API token op in de ShinePhone app",
+          "da": "Få din API-token i ShinePhone-appen",
+          "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+          "es": "Obtenga su token API en la aplicación ShinePhone",
+          "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+          "it": "Ottieni il tuo token API nell'app ShinePhone",
+          "no": "Få API-tokenet ditt i ShinePhone-appen",
+          "sv": "Hämta din API-token i ShinePhone-appen",
+          "pl": "Pobierz swój token API w aplikacji ShinePhone",
+          "ru": "Получите ваш API токен в приложении ShinePhone",
+          "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
         },
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
-        "passwordLabel": { "en": "API Token", "nl": "API Token" },
-        "passwordPlaceholder": { "en": "My account>User name>API Token" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름" },
+        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰" },
+        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰" },
         "logo": "../assets/images/small.png"
       }
     },

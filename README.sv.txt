@@ -1,0 +1,2 @@
+Anslut din Growatt-växelriktare till Homey och få detaljerade insikter om din solenergiproduktion och batterianvändning.
+Övervaka din nuvarande uteffekt, samt din dagliga, månatliga, årliga och totala produktion. Med GroWatt-appen för Homey kan du använda dessa data för att optimera din energianvändning, skapa flöden och hålla koll på systemets prestanda – allt på ett ställe.
