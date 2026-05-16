@@ -77,8 +77,8 @@
 					"nl": "Nominaal vermogen (W)"
 				},
 				"hint": {
-					"en": "Maximum inverter AC output in Watts.",
-					"nl": "Maximum omvormer AC output in Watt."
+					"en": "Maximum inverter AC output in Watts. Set to 0 to fetch automatically.",
+					"nl": "Maximum omvormer AC output in Watt. Stel in op 0 om automatisch op te halen."
 				},
 				"value": 3000
 			}

@@ -77,8 +77,8 @@
 					"nl": "Max laadvermogen (W)"
 				},
 				"hint": {
-					"en": "Maximum battery charging power in Watts.",
-					"nl": "Maximum batterij laadvermogen in Watt."
+					"en": "Maximum battery charging power in Watts. Set to 0 to fetch automatically.",
+					"nl": "Maximum batterij laadvermogen in Watt. Stel in op 0 om automatisch op te halen."
 				},
 				"value": 3000
 			},
@@ -90,8 +90,8 @@
 					"nl": "Max ontlaadvermogen (W)"
 				},
 				"hint": {
-					"en": "Maximum battery discharging power in Watts.",
-					"nl": "Maximum batterij ontlaadvermogen in Watt."
+					"en": "Maximum battery discharging power in Watts. Set to 0 to fetch automatically.",
+					"nl": "Maximum batterij ontlaadvermogen in Watt. Stel in op 0 om automatisch op te halen."
 				},
 				"value": 3000
 			}
