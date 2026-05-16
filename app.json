@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.growatt",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "compatibility": ">=12.13.0",
   "sdk": 3,
   "platforms": [
@@ -152,7 +152,8 @@
           "sv": "Växelriktareffekt (AC) ändrad",
           "pl": "Moc falownika (AC) zmieniona",
           "ru": "Мощность инвертора (AC) изменена",
-          "ko": "인버터 전력(AC) 변경됨"
+          "ko": "인버터 전력(AC) 변경됨",
+          "ar": "تغيرت طاقة العاكس (AC)"
         },
         "highlight": true,
         "args": [
@@ -178,7 +179,8 @@
               "sv": "Växelriktareffekt (AC)",
               "pl": "Moc falownika (AC)",
               "ru": "Мощность инвертора (AC)",
-              "ko": "인버터 전력(AC)"
+              "ko": "인버터 전력(AC)",
+              "ar": "طاقة العاكس (AC)"
             },
             "example": 1450
           }
@@ -198,7 +200,8 @@
           "sv": "Solenergi (DC) ändrad",
           "pl": "Moc słoneczna (DC) zmieniona",
           "ru": "Солнечная энергия (DC) изменена",
-          "ko": "태양광 전력(DC) 변경됨"
+          "ko": "태양광 전력(DC) 변경됨",
+          "ar": "تغيرت الطاقة الشمسية (DC)"
         },
         "highlight": true,
         "args": [
@@ -224,7 +227,8 @@
               "sv": "Solenergi (DC)",
               "pl": "Moc słoneczna (DC)",
               "ru": "Солнечная энергия (DC)",
-              "ko": "태양광 전력(DC)"
+              "ko": "태양광 전력(DC)",
+              "ar": "الطاقة الشمسية (DC)"
             },
             "example": 1500
           }
@@ -244,7 +248,8 @@
           "sv": "Energi idag ändrad",
           "pl": "Dzisiejsza energia zmieniona",
           "ru": "Энергия за сегодня изменена",
-          "ko": "오늘의 에너지 변경됨"
+          "ko": "오늘의 에너지 변경됨",
+          "ar": "تغيرت الطاقة اليوم"
         },
         "highlight": true,
         "args": [
@@ -270,7 +275,8 @@
               "sv": "Energi idag",
               "pl": "Dzisiejsza energia",
               "ru": "Энергия за сегодня",
-              "ko": "오늘의 에너지"
+              "ko": "오늘의 에너지",
+              "ar": "الطاقة اليوم"
             },
             "example": 12.5
           }
@@ -292,7 +298,8 @@
           "sv": "Hämta statusuppdatering",
           "pl": "Pobierz aktualizację statusu",
           "ru": "Получить обновление статуса",
-          "ko": "상태 업데이트 가져오기"
+          "ko": "상태 업데이트 가져오기",
+          "ar": "احصل على تحديث الحالة"
         },
         "hint": {
           "en": "This will try to update the status of all devices immediately. Carefull: too many updates will cause the server to temporarily block you.",
@@ -306,7 +313,8 @@
           "sv": "Detta kommer att försöka uppdatera statusen för alla enheter omedelbart. Varning: för många uppdateringar gör att servern tillfälligt blockerar dig.",
           "pl": "To spróbuje natychmiast zaktualizować status wszystkich urządzeń. Uwaga: zbyt wiele aktualizacji spowoduje tymczasowe zablokowanie przez serwer.",
           "ru": "Это попытается немедленно обновить статус всех устройств. Осторожно: слишком большое количество обновлений приведет к временной блокировке на сервере.",
-          "ko": "모든 기기의 상태를 즉시 업데이트하려고 시도합니다. 주의: 업데이트가 너무 많으면 서버에서 일시적으로 차단됩니다."
+          "ko": "모든 기기의 상태를 즉시 업데이트하려고 시도합니다. 주의: 업데이트가 너무 많으면 서버에서 일시적으로 차단됩니다.",
+          "ar": "سيحاول هذا تحديث حالة جميع الأجهزة على الفور. احذر: كثرة التحديثات ستؤدي إلى حظرك مؤقتاً من قبل الخادم."
         },
         "id": "force_poll"
       }
@@ -393,7 +401,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Systeemnaam"
+                "nl": "Plant naam"
               },
               "value": ""
             },
@@ -402,7 +410,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Systeem ID"
+                "nl": "Plant ID"
               },
               "value": ""
             }
@@ -449,7 +457,8 @@
         "sv": "Batteri",
         "pl": "Bateria",
         "ru": "Батарея",
-        "ko": "배터리"
+        "ko": "배터리",
+        "ar": "بطارية"
       },
       "class": "battery",
       "capabilities": [
@@ -475,7 +484,8 @@
             "sv": "Batteri 2 Effekt",
             "pl": "Moc baterii 2",
             "ru": "Мощность батареи 2",
-            "ko": "배터리 2 전력"
+            "ko": "배터리 2 전력",
+            "ar": "طاقة البطارية 2"
           },
           "decimals": 0
         },
@@ -495,7 +505,8 @@
             "sv": "Laddad energi",
             "pl": "Pobrana energia",
             "ru": "Заряженная энергия",
-            "ko": "충전된 에너지"
+            "ko": "충전된 에너지",
+            "ar": "الطاقة المشحونة"
           },
           "decimals": 2
         },
@@ -512,7 +523,8 @@
             "sv": "Urladdad energi",
             "pl": "Oddana energia",
             "ru": "Разряженная энергия",
-            "ko": "방전된 에너지"
+            "ko": "방전된 에너지",
+            "ar": "الطاقة المفرغة"
           },
           "decimals": 2
         }
@@ -551,7 +563,8 @@
               "sv": "Hämta din API-token i ShinePhone-appen",
               "pl": "Pobierz swój token API w aplikacji ShinePhone",
               "ru": "Получите ваш API токен в приложении ShinePhone",
-              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
             },
             "usernameLabel": {
               "en": "Username",
@@ -565,7 +578,8 @@
               "sv": "Användarnamn",
               "pl": "Nazwa użytkownika",
               "ru": "Имя пользователя",
-              "ko": "사용자 이름"
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
             },
             "passwordLabel": {
               "en": "API Token",
@@ -579,7 +593,8 @@
               "sv": "API-token",
               "pl": "Token API",
               "ru": "API токен",
-              "ko": "API 토큰"
+              "ko": "API 토큰",
+              "ar": "رمز API"
             },
             "passwordPlaceholder": {
               "en": "My account>User name>API Token",
@@ -593,7 +608,8 @@
               "sv": "Mitt konto>Användarnamn>API-token",
               "pl": "Moje konto>Nazwa użytkownika>Token API",
               "ru": "Мой аккаунт>Имя пользователя>API токен",
-              "ko": "내 계정>사용자 이름>API 토큰"
+              "ko": "내 계정>사용자 이름>API 토큰",
+              "ar": "حسابي>اسم المستخدم>رمز API"
             },
             "logo": "../assets/images/small.png"
           }
@@ -626,7 +642,8 @@
             "sv": "Växelriktarinformation",
             "pl": "Informacje o falowniku",
             "ru": "Информация об инверторе",
-            "ko": "인버터 정보"
+            "ko": "인버터 정보",
+            "ar": "معلومات العاكس"
           },
           "children": [
             {
@@ -634,7 +651,18 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Systeemnaam"
+                "nl": "Systeemnaam",
+                "da": "Anlægsnavn",
+                "de": "Anlagenname",
+                "es": "Nombre de la planta",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "no": "Anleggsnavn",
+                "sv": "Anläggningsnamn",
+                "pl": "Nazwa instalacji",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
               },
               "value": ""
             },
@@ -643,7 +671,18 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Systeem ID"
+                "nl": "Systeem ID",
+                "da": "Anlægs-ID",
+                "de": "Anlagen-ID",
+                "es": "ID de la planta",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "no": "Anleggs-ID",
+                "sv": "Anläggnings-ID",
+                "pl": "ID instalacji",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
               },
               "value": ""
             },
@@ -652,7 +691,18 @@
               "type": "label",
               "label": {
                 "en": "Model",
-                "nl": "Model"
+                "nl": "Model",
+                "da": "Model",
+                "de": "Modell",
+                "es": "Modelo",
+                "fr": "Modèle",
+                "it": "Modello",
+                "no": "Modell",
+                "sv": "Modell",
+                "pl": "Model",
+                "ru": "Модель",
+                "ko": "모델",
+                "ar": "نموذج"
               },
               "value": ""
             },
@@ -660,7 +710,19 @@
               "id": "deviceType",
               "type": "label",
               "label": {
-                "en": "Device type"
+                "en": "Device type",
+                "nl": "Apparaattype",
+                "da": "Enhedstype",
+                "de": "Gerätetyp",
+                "es": "Tipo de dispositivo",
+                "fr": "Type d'appareil",
+                "it": "Tipo di dispositivo",
+                "no": "Enhetstype",
+                "sv": "Enhetstyp",
+                "pl": "Typ urządzenia",
+                "ru": "Тип устройства",
+                "ko": "기기 유형",
+                "ar": "نوع الجهاز"
               },
               "value": ""
             },
@@ -669,7 +731,18 @@
               "type": "label",
               "label": {
                 "en": "Device serial number",
-                "nl": "Apparaat serienummer"
+                "nl": "Apparaat serienummer",
+                "da": "Enhedens serienummer",
+                "de": "Geräte-Seriennummer",
+                "es": "Número de serie del dispositivo",
+                "fr": "Numéro de série de l'appareil",
+                "it": "Numero di serie del dispositivo",
+                "no": "Enhetens serienummer",
+                "sv": "Enhetens serienummer",
+                "pl": "Numer seryjny urządzenia",
+                "ru": "Серийный номер устройства",
+                "ko": "기기 일련번호",
+                "ar": "الرقم التسلسلي للجهاز"
               },
               "value": ""
             },
@@ -678,7 +751,18 @@
               "type": "label",
               "label": {
                 "en": "Data logger serial number",
-                "nl": "Data logger serienummer"
+                "nl": "Data logger serienummer",
+                "da": "Dataloggerens serienummer",
+                "de": "Datenlogger-Seriennummer",
+                "es": "Número de serie del registrador de datos",
+                "fr": "Numéro de série de l'enregistreur de données",
+                "it": "Numero di serie del data logger",
+                "no": "Dataloggens serienummer",
+                "sv": "Dataloggerns serienummer",
+                "pl": "Numer seryjny rejestratora danych",
+                "ru": "Серийный номер регистратора данных",
+                "ko": "데이터 로거 일련번호",
+                "ar": "الرقم التسلسلي لمسجل البيانات"
               },
               "value": ""
             },
@@ -687,11 +771,33 @@
               "type": "number",
               "label": {
                 "en": "Max Charge Power (W)",
-                "nl": "Max laadvermogen (W)"
+                "nl": "Max laadvermogen (W)",
+                "da": "Maks ladeeffekt (W)",
+                "de": "Max. Ladeleistung (W)",
+                "es": "Potencia máx. de carga (W)",
+                "fr": "Puissance de charge max (W)",
+                "it": "Potenza max di carica (W)",
+                "no": "Maks ladeeffekt (W)",
+                "sv": "Max laddningseffekt (W)",
+                "pl": "Maks. moc ładowania (W)",
+                "ru": "Макс. мощность зарядки (W)",
+                "ko": "최대 충전 전력 (W)",
+                "ar": "الطاقة القصوى للشحن (W)"
               },
               "hint": {
-                "en": "Maximum battery charging power in Watts.",
-                "nl": "Maximum batterij laadvermogen in Watt."
+                "en": "Maximum battery charging power in Watts. Set to 0 to fetch automatically.",
+                "nl": "Maximum batterij laadvermogen in Watt. Stel in op 0 om automatisch op te halen.",
+                "da": "Maksimal batteriladeeffekt i watt. Indstil til 0 for automatisk at hente.",
+                "de": "Maximale Batterieladeleistung in Watt. Auf 0 setzen, um automatisch abzurufen.",
+                "es": "Potencia máxima de carga de la batería en vatios. Establecer en 0 para obtener automáticamente.",
+                "fr": "Puissance de charge maximale de la batterie en watts. Réglez sur 0 pour récupérer automatiquement.",
+                "it": "Potenza massima di carica della batteria in Watt. Impostare su 0 per recuperare automaticamente.",
+                "no": "Maksimal batteriladeeffekt i watt. Sett til 0 for å hente automatisk.",
+                "sv": "Maximal batteriladdningseffekt i watt. Ställ in på 0 för att hämta automatiskt.",
+                "pl": "Maksymalna moc ładowania baterii w watach. Ustaw na 0, aby pobrać automatycznie.",
+                "ru": "Максимальная мощность зарядки аккумулятора в ваттах. Установите 0 для автоматического получения.",
+                "ko": "배터리 최대 충전 전력 (와트). 자동으로 가져오려면 0으로 설정하세요.",
+                "ar": "الطاقة القصوى لشحن البطارية بالواط. اضبط على 0 لجلبه تلقائيا."
               },
               "value": 3000
             },
@@ -700,11 +806,33 @@
               "type": "number",
               "label": {
                 "en": "Max Discharge Power (W)",
-                "nl": "Max ontlaadvermogen (W)"
+                "nl": "Max ontlaadvermogen (W)",
+                "da": "Maks afladeeffekt (W)",
+                "de": "Max. Entladeleistung (W)",
+                "es": "Potencia máx. de descarga (W)",
+                "fr": "Puissance de décharge max (W)",
+                "it": "Potenza max di scarica (W)",
+                "no": "Maks utladingseffekt (W)",
+                "sv": "Max urladdningseffekt (W)",
+                "pl": "Maks. moc rozładowania (W)",
+                "ru": "Макс. мощность разрядки (W)",
+                "ko": "최대 방전 전력 (W)",
+                "ar": "الطاقة القصوى للتفريغ (W)"
               },
               "hint": {
-                "en": "Maximum battery discharging power in Watts.",
-                "nl": "Maximum batterij ontlaadvermogen in Watt."
+                "en": "Maximum battery discharging power in Watts. Set to 0 to fetch automatically.",
+                "nl": "Maximum batterij ontlaadvermogen in Watt. Stel in op 0 om automatisch op te halen.",
+                "da": "Maksimal batteriafladeeffekt i watt. Indstil til 0 for automatisk at hente.",
+                "de": "Maximale Batterieentladeleistung in Watt. Auf 0 setzen, um automatisch abzurufen.",
+                "es": "Potencia máxima de descarga de la batería en vatios. Establecer en 0 para obtener automáticamente.",
+                "fr": "Puissance de décharge maximale de la batterie en watts. Réglez sur 0 pour récupérer automatiquement.",
+                "it": "Potenza massima di scarica della batteria in Watt. Impostare su 0 per recuperare automaticamente.",
+                "no": "Maksimal batteriafladeeffekt i watt. Sett til 0 for å hente automatisk.",
+                "sv": "Maximal batteriurladdningseffekt i watt. Ställ in på 0 för att hämta automatiskt.",
+                "pl": "Maksymalna moc rozładowania baterii w watach. Ustaw na 0, aby pobrać automatycznie.",
+                "ru": "Максимальная мощность разрядки аккумулятора в ваттах. Установите 0 для автоматического получения.",
+                "ko": "배터리 최대 방전 전력 (와트). 자동으로 가져오려면 0으로 설정하세요.",
+                "ar": "الطاقة القصوى لتفريغ البطارية بالواط. اضبط على 0 لجلبه تلقائيا."
               },
               "value": 3000
             }
@@ -724,7 +852,8 @@
             "sv": "Serverinställningar",
             "pl": "Ustawienia serwera",
             "ru": "Настройки сервера",
-            "ko": "서버 설정"
+            "ko": "서버 설정",
+            "ar": "إعدادات الخادم"
           },
           "children": [
             {
@@ -732,7 +861,18 @@
               "type": "text",
               "label": {
                 "en": "Username",
-                "nl": "Gebruikersnaam"
+                "nl": "Gebruikersnaam",
+                "da": "Brugernavn",
+                "de": "Benutzername",
+                "es": "Nombre de usuario",
+                "fr": "Nom d'utilisateur",
+                "it": "Nome utente",
+                "no": "Brukernavn",
+                "sv": "Användarnamn",
+                "pl": "Nazwa użytkownika",
+                "ru": "Имя пользователя",
+                "ko": "사용자 이름",
+                "ar": "اسم المستخدم"
               },
               "value": ""
             },
@@ -740,11 +880,34 @@
               "id": "token",
               "type": "password",
               "label": {
-                "en": "API token"
+                "en": "API token",
+                "nl": "API token",
+                "da": "API-token",
+                "de": "API-Token",
+                "es": "Token de API",
+                "fr": "Jeton API",
+                "it": "Token API",
+                "no": "API-token",
+                "sv": "API-token",
+                "pl": "Token API",
+                "ru": "API-токен",
+                "ko": "API 토큰",
+                "ar": "رمز API"
               },
               "hint": {
                 "en": "Get your API token in the ShinePhone app: My account > click on user name > API Token.",
-                "nl": ""
+                "nl": "Haal je API token op in de ShinePhone app: Mijn account > klik op gebruikersnaam > API Token.",
+                "da": "Få din API-token i ShinePhone-appen: Min konto > klik på brugernavn > API Token.",
+                "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App: Mein Konto > Klick auf Benutzername > API-Token.",
+                "es": "Obtenga su token API en la aplicación ShinePhone: Mi cuenta > haga clic en el nombre de usuario > Token de API.",
+                "fr": "Obtenez votre jeton API dans l'application ShinePhone : Mon compte > cliquez sur le nom d'utilisateur > Jeton API.",
+                "it": "Ottieni il tuo token API nell'app ShinePhone: Il mio account > fai clic sul nome utente > Token API.",
+                "no": "Få API-tokenet ditt i ShinePhone-appen: Min konto > klikk på brukernavn > API-token.",
+                "sv": "Hämta din API-token i ShinePhone-appen: Mitt konto > klicka på användarnamn > API-token.",
+                "pl": "Pobierz swój token API w aplikacji ShinePhone: Moje konto > kliknij na nazwę użytkownika > Token API.",
+                "ru": "Получите ваш API-токен в приложении ShinePhone: Мой аккаунт > нажмите на имя пользователя > API-токен.",
+                "ko": "ShinePhone 앱에서 API 토큰을 가져오세요: 내 계정 > 사용자 이름 클릭 > API 토큰.",
+                "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone: حسابي > انقر على اسم المستخدم > رمز API."
               },
               "value": ""
             },
@@ -753,38 +916,109 @@
               "type": "dropdown",
               "label": {
                 "en": "API Server",
-                "nl": "API Server"
+                "nl": "API Server",
+                "da": "API-server",
+                "de": "API-Server",
+                "es": "Servidor API",
+                "fr": "Serveur API",
+                "it": "Server API",
+                "no": "API-server",
+                "sv": "API-server",
+                "pl": "Serwer API",
+                "ru": "Сервер API",
+                "ko": "API 서버",
+                "ar": "خادم API"
               },
               "value": "openapi.growatt.com",
               "values": [
                 {
                   "id": "openapi.growatt.com",
                   "label": {
-                    "en": "Global (openapi.growatt.com)"
+                    "en": "Global (openapi.growatt.com)",
+                    "nl": "Wereldwijd (openapi.growatt.com)",
+                    "da": "Global (openapi.growatt.com)",
+                    "de": "Global (openapi.growatt.com)",
+                    "es": "Global (openapi.growatt.com)",
+                    "fr": "Mondial (openapi.growatt.com)",
+                    "it": "Globale (openapi.growatt.com)",
+                    "no": "Global (openapi.growatt.com)",
+                    "sv": "Global (openapi.growatt.com)",
+                    "pl": "Globalny (openapi.growatt.com)",
+                    "ru": "Глобальный (openapi.growatt.com)",
+                    "ko": "글로벌 (openapi.growatt.com)",
+                    "ar": "عالمي (openapi.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-us.growatt.com",
                   "label": {
-                    "en": "North America (openapi-us.growatt.com)"
+                    "en": "North America (openapi-us.growatt.com)",
+                    "nl": "Noord-Amerika (openapi-us.growatt.com)",
+                    "da": "Nordamerika (openapi-us.growatt.com)",
+                    "de": "Nordamerika (openapi-us.growatt.com)",
+                    "es": "Norteamérica (openapi-us.growatt.com)",
+                    "fr": "Amérique du Nord (openapi-us.growatt.com)",
+                    "it": "Nord America (openapi-us.growatt.com)",
+                    "no": "Nord-Amerika (openapi-us.growatt.com)",
+                    "sv": "Nordamerika (openapi-us.growatt.com)",
+                    "pl": "Ameryka Północna (openapi-us.growatt.com)",
+                    "ru": "Северная Америка (openapi-us.growatt.com)",
+                    "ko": "북미 (openapi-us.growatt.com)",
+                    "ar": "أمريكا الشمالية (openapi-us.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-au.growatt.com",
                   "label": {
-                    "en": "Australia / NZ (openapi-au.growatt.com)"
+                    "en": "Australia / NZ (openapi-au.growatt.com)",
+                    "nl": "Australië / NZ (openapi-au.growatt.com)",
+                    "da": "Australien / NZ (openapi-au.growatt.com)",
+                    "de": "Australien / NZ (openapi-au.growatt.com)",
+                    "es": "Australia / NZ (openapi-au.growatt.com)",
+                    "fr": "Australie / NZ (openapi-au.growatt.com)",
+                    "it": "Australia / NZ (openapi-au.growatt.com)",
+                    "no": "Australia / NZ (openapi-au.growatt.com)",
+                    "sv": "Australien / NZ (openapi-au.growatt.com)",
+                    "pl": "Australia / NZ (openapi-au.growatt.com)",
+                    "ru": "Австралия / НЗ (openapi-au.growatt.com)",
+                    "ko": "호주 / 뉴질랜드 (openapi-au.growatt.com)",
+                    "ar": "أستراليا / نيوزيلندا (openapi-au.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-cn.growatt.com",
                   "label": {
-                    "en": "China (openapi-cn.growatt.com)"
+                    "en": "China (openapi-cn.growatt.com)",
+                    "nl": "China (openapi-cn.growatt.com)",
+                    "da": "Kina (openapi-cn.growatt.com)",
+                    "de": "China (openapi-cn.growatt.com)",
+                    "es": "China (openapi-cn.growatt.com)",
+                    "fr": "Chine (openapi-cn.growatt.com)",
+                    "it": "Cina (openapi-cn.growatt.com)",
+                    "no": "Kina (openapi-cn.growatt.com)",
+                    "sv": "Kina (openapi-cn.growatt.com)",
+                    "pl": "Chiny (openapi-cn.growatt.com)",
+                    "ru": "Китай (openapi-cn.growatt.com)",
+                    "ko": "중국 (openapi-cn.growatt.com)",
+                    "ar": "الصين (openapi-cn.growatt.com)"
                   }
                 },
                 {
                   "id": "ess-server.atesspower.com",
                   "label": {
-                    "en": "Atess (ess-server.atesspower.com)"
+                    "en": "Atess (ess-server.atesspower.com)",
+                    "nl": "Atess (ess-server.atesspower.com)",
+                    "da": "Atess (ess-server.atesspower.com)",
+                    "de": "Atess (ess-server.atesspower.com)",
+                    "es": "Atess (ess-server.atesspower.com)",
+                    "fr": "Atess (ess-server.atesspower.com)",
+                    "it": "Atess (ess-server.atesspower.com)",
+                    "no": "Atess (ess-server.atesspower.com)",
+                    "sv": "Atess (ess-server.atesspower.com)",
+                    "pl": "Atess (ess-server.atesspower.com)",
+                    "ru": "Atess (ess-server.atesspower.com)",
+                    "ko": "Atess (ess-server.atesspower.com)",
+                    "ar": "Atess (ess-server.atesspower.com)"
                   }
                 }
               ]
@@ -936,7 +1170,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Systeemnaam"
+                "nl": "Plant naam"
               },
               "value": ""
             },
@@ -945,7 +1179,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Systeem ID"
+                "nl": "Plant ID"
               },
               "value": ""
             },
@@ -1046,7 +1280,8 @@
         "sv": "Växelriktare",
         "pl": "Falownik słoneczny",
         "ru": "Солнечный инвертор",
-        "ko": "태양광 인버터"
+        "ko": "태양광 인버터",
+        "ar": "عاكس الطاقة الشمسية"
       },
       "class": "solarpanel",
       "capabilities": [
@@ -1069,7 +1304,8 @@
             "sv": "Energi idag",
             "pl": "Dzisiejsza energia",
             "ru": "Энергия за сегодня",
-            "ko": "오늘의 에너지"
+            "ko": "오늘의 에너지",
+            "ar": "الطاقة اليوم"
           }
         },
         "measure_power": {
@@ -1085,7 +1321,8 @@
             "sv": "Solenergi (AC)",
             "pl": "Moc słoneczna (AC)",
             "ru": "Солнечная энергия (AC)",
-            "ko": "태양광 전력(AC)"
+            "ko": "태양광 전력(AC)",
+            "ar": "الطاقة الشمسية (AC)"
           },
           "decimals": 0
         },
@@ -1102,7 +1339,8 @@
             "sv": "Solenergi (DC)",
             "pl": "Moc słoneczna (DC)",
             "ru": "Солнечная энергия (DC)",
-            "ko": "태양광 전력(DC)"
+            "ko": "태양광 전력(DC)",
+            "ar": "الطاقة الشمسية (DC)"
           },
           "decimals": 0
         },
@@ -1119,7 +1357,8 @@
             "sv": "Växelriktareffekt (AC)",
             "pl": "Moc falownika (AC)",
             "ru": "Мощность инвертора (AC)",
-            "ko": "인버터 전력(AC)"
+            "ko": "인버터 전력(AC)",
+            "ar": "طاقة العاكس (AC)"
           },
           "decimals": 0
         },
@@ -1156,7 +1395,8 @@
               "sv": "Hämta din API-token i ShinePhone-appen",
               "pl": "Pobierz swój token API w aplikacji ShinePhone",
               "ru": "Получите ваш API токен в приложении ShinePhone",
-              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
             },
             "usernameLabel": {
               "en": "Username",
@@ -1170,7 +1410,8 @@
               "sv": "Användarnamn",
               "pl": "Nazwa użytkownika",
               "ru": "Имя пользователя",
-              "ko": "사용자 이름"
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
             },
             "passwordLabel": {
               "en": "API Token",
@@ -1184,7 +1425,8 @@
               "sv": "API-token",
               "pl": "Token API",
               "ru": "API токен",
-              "ko": "API 토큰"
+              "ko": "API 토큰",
+              "ar": "رمز API"
             },
             "passwordPlaceholder": {
               "en": "My account>User name>API Token",
@@ -1198,7 +1440,8 @@
               "sv": "Mitt konto>Användarnamn>API-token",
               "pl": "Moje konto>Nazwa użytkownika>Token API",
               "ru": "Мой аккаунт>Имя пользователя>API токен",
-              "ko": "내 계정>사용자 이름>API 토큰"
+              "ko": "내 계정>사용자 이름>API 토큰",
+              "ar": "حسابي>اسم المستخدم>رمز API"
             },
             "logo": "../assets/images/small.png"
           }
@@ -1231,7 +1474,8 @@
             "sv": "Växelriktarinformation",
             "pl": "Informacje o falowniku",
             "ru": "Информация об инверторе",
-            "ko": "인버터 정보"
+            "ko": "인버터 정보",
+            "ar": "معلومات العاكس"
           },
           "children": [
             {
@@ -1239,7 +1483,18 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Systeemnaam"
+                "nl": "Systeemnaam",
+                "da": "Anlægsnavn",
+                "de": "Anlagenname",
+                "es": "Nombre de la planta",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "no": "Anleggsnavn",
+                "sv": "Anläggningsnamn",
+                "pl": "Nazwa instalacji",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
               },
               "value": ""
             },
@@ -1248,7 +1503,18 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Systeem ID"
+                "nl": "Systeem ID",
+                "da": "Anlægs-ID",
+                "de": "Anlagen-ID",
+                "es": "ID de la planta",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "no": "Anleggs-ID",
+                "sv": "Anläggnings-ID",
+                "pl": "ID instalacji",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
               },
               "value": ""
             },
@@ -1257,7 +1523,18 @@
               "type": "label",
               "label": {
                 "en": "Model",
-                "nl": "Model"
+                "nl": "Model",
+                "da": "Model",
+                "de": "Modell",
+                "es": "Modelo",
+                "fr": "Modèle",
+                "it": "Modello",
+                "no": "Modell",
+                "sv": "Modell",
+                "pl": "Model",
+                "ru": "Модель",
+                "ko": "모델",
+                "ar": "نموذج"
               },
               "value": ""
             },
@@ -1265,7 +1542,19 @@
               "id": "deviceType",
               "type": "label",
               "label": {
-                "en": "Device type"
+                "en": "Device type",
+                "nl": "Apparaattype",
+                "da": "Enhedstype",
+                "de": "Gerätetyp",
+                "es": "Tipo de dispositivo",
+                "fr": "Type d'appareil",
+                "it": "Tipo di dispositivo",
+                "no": "Enhetstype",
+                "sv": "Enhetstyp",
+                "pl": "Typ urządzenia",
+                "ru": "Тип устройства",
+                "ko": "기기 유형",
+                "ar": "نوع الجهاز"
               },
               "value": ""
             },
@@ -1274,7 +1563,18 @@
               "type": "label",
               "label": {
                 "en": "Device serial number",
-                "nl": "Apparaat serienummer"
+                "nl": "Apparaat serienummer",
+                "da": "Enhedens serienummer",
+                "de": "Geräte-Seriennummer",
+                "es": "Número de serie del dispositivo",
+                "fr": "Numéro de série de l'appareil",
+                "it": "Numero di serie del dispositivo",
+                "no": "Enhetens serienummer",
+                "sv": "Enhetens serienummer",
+                "pl": "Numer seryjny urządzenia",
+                "ru": "Серийный номер устройства",
+                "ko": "기기 일련번호",
+                "ar": "الرقم التسلسلي للجهاز"
               },
               "value": ""
             },
@@ -1283,7 +1583,18 @@
               "type": "label",
               "label": {
                 "en": "Data logger serial number",
-                "nl": "Data logger serienummer"
+                "nl": "Data logger serienummer",
+                "da": "Dataloggerens serienummer",
+                "de": "Datenlogger-Seriennummer",
+                "es": "Número de serie del registrador de datos",
+                "fr": "Numéro de série de l'enregistreur de données",
+                "it": "Numero di serie del data logger",
+                "no": "Dataloggens serienummer",
+                "sv": "Dataloggerns serienummer",
+                "pl": "Numer seryjny rejestratora danych",
+                "ru": "Серийный номер регистратора данных",
+                "ko": "데이터 로거 일련번호",
+                "ar": "الرقم التسلسلي لمسجل البيانات"
               },
               "value": ""
             },
@@ -1292,11 +1603,33 @@
               "type": "number",
               "label": {
                 "en": "Nominal Power (W)",
-                "nl": "Nominaal vermogen (W)"
+                "nl": "Nominaal vermogen (W)",
+                "da": "Nominel effekt (W)",
+                "de": "Nennleistung (W)",
+                "es": "Potencia nominal (W)",
+                "fr": "Puissance nominale (W)",
+                "it": "Potenza nominale (W)",
+                "no": "Nominell effekt (W)",
+                "sv": "Nominell effekt (W)",
+                "pl": "Moc nominalna (W)",
+                "ru": "Номинальная мощность (W)",
+                "ko": "공칭 전력 (W)",
+                "ar": "الطاقة الاسمية (W)"
               },
               "hint": {
-                "en": "Maximum inverter AC output in Watts.",
-                "nl": "Maximum omvormer AC output in Watt."
+                "en": "Maximum inverter AC output in Watts. Set to 0 to fetch automatically.",
+                "nl": "Maximum omvormer AC output in Watt. Stel in op 0 om automatisch op te halen.",
+                "da": "Maksimal inverter AC-effekt i watt. Indstil til 0 for automatisk at hente.",
+                "de": "Maximale AC-Ausgangsleistung des Wechselrichters in Watt. Auf 0 setzen, um automatisch abzurufen.",
+                "es": "Salida máxima de CA del inversor en vatios. Establecer en 0 para obtener automáticamente.",
+                "fr": "Sortie CA maximale de l'onduleur en watts. Réglez sur 0 pour récupérer automatiquement.",
+                "it": "Uscita CA massima dell'inverter in Watt. Impostare su 0 per recuperare automaticamente.",
+                "no": "Maksimal inverter AC-effekt i watt. Sett til 0 for å hente automatisk.",
+                "sv": "Maximal växelriktar-AC-effekt i watt. Ställ in på 0 för att hämta automatiskt.",
+                "pl": "Maksymalna moc wyjściowa AC falownika w watach. Ustaw na 0, aby pobrać automatycznie.",
+                "ru": "Максимальная выходная мощность инвертора переменного тока в ваттах. Установите 0 для автоматического получения.",
+                "ko": "인버터 최대 AC 출력 (와트). 자동으로 가져오려면 0으로 설정하세요.",
+                "ar": "الحد الأقصى لإنتاج التيار المتردد للعاكس بالواط. اضبط على 0 لجلبه تلقائيا."
               },
               "value": 3000
             }
@@ -1316,7 +1649,8 @@
             "sv": "Serverinställningar",
             "pl": "Ustawienia serwera",
             "ru": "Настройки сервера",
-            "ko": "서버 설정"
+            "ko": "서버 설정",
+            "ar": "إعدادات الخادم"
           },
           "children": [
             {
@@ -1324,7 +1658,18 @@
               "type": "text",
               "label": {
                 "en": "Username",
-                "nl": "Gebruikersnaam"
+                "nl": "Gebruikersnaam",
+                "da": "Brugernavn",
+                "de": "Benutzername",
+                "es": "Nombre de usuario",
+                "fr": "Nom d'utilisateur",
+                "it": "Nome utente",
+                "no": "Brukernavn",
+                "sv": "Användarnamn",
+                "pl": "Nazwa użytkownika",
+                "ru": "Имя пользователя",
+                "ko": "사용자 이름",
+                "ar": "اسم المستخدم"
               },
               "value": ""
             },
@@ -1332,11 +1677,34 @@
               "id": "token",
               "type": "password",
               "label": {
-                "en": "API token"
+                "en": "API token",
+                "nl": "API token",
+                "da": "API-token",
+                "de": "API-Token",
+                "es": "Token de API",
+                "fr": "Jeton API",
+                "it": "Token API",
+                "no": "API-token",
+                "sv": "API-token",
+                "pl": "Token API",
+                "ru": "API-токен",
+                "ko": "API 토큰",
+                "ar": "رمز API"
               },
               "hint": {
                 "en": "Get your API token in the ShinePhone app: My account > click on user name > API Token.",
-                "nl": ""
+                "nl": "Haal je API token op in de ShinePhone app: Mijn account > klik op gebruikersnaam > API Token.",
+                "da": "Få din API-token i ShinePhone-appen: Min konto > klik på brugernavn > API Token.",
+                "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App: Mein Konto > Klick auf Benutzername > API-Token.",
+                "es": "Obtenga su token API en la aplicación ShinePhone: Mi cuenta > haga clic en el nombre de usuario > Token de API.",
+                "fr": "Obtenez votre jeton API dans l'application ShinePhone : Mon compte > cliquez sur le nom d'utilisateur > Jeton API.",
+                "it": "Ottieni il tuo token API nell'app ShinePhone: Il mio account > fai clic sul nome utente > Token API.",
+                "no": "Få API-tokenet ditt i ShinePhone-appen: Min konto > klikk på brukernavn > API-token.",
+                "sv": "Hämta din API-token i ShinePhone-appen: Mitt konto > klicka på användarnamn > API-token.",
+                "pl": "Pobierz swój token API w aplikacji ShinePhone: Moje konto > kliknij na nazwę użytkownika > Token API.",
+                "ru": "Получите ваш API-токен в приложении ShinePhone: Мой аккаунт > нажмите на имя пользователя > API-токен.",
+                "ko": "ShinePhone 앱에서 API 토큰을 가져오세요: 내 계정 > 사용자 이름 클릭 > API 토큰.",
+                "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone: حسابي > انقر على اسم المستخدم > رمز API."
               },
               "value": ""
             },
@@ -1345,38 +1713,109 @@
               "type": "dropdown",
               "label": {
                 "en": "API Server",
-                "nl": "API Server"
+                "nl": "API Server",
+                "da": "API-server",
+                "de": "API-Server",
+                "es": "Servidor API",
+                "fr": "Serveur API",
+                "it": "Server API",
+                "no": "API-server",
+                "sv": "API-server",
+                "pl": "Serwer API",
+                "ru": "Сервер API",
+                "ko": "API 서버",
+                "ar": "خادم API"
               },
               "value": "openapi.growatt.com",
               "values": [
                 {
                   "id": "openapi.growatt.com",
                   "label": {
-                    "en": "Global (openapi.growatt.com)"
+                    "en": "Global (openapi.growatt.com)",
+                    "nl": "Wereldwijd (openapi.growatt.com)",
+                    "da": "Global (openapi.growatt.com)",
+                    "de": "Global (openapi.growatt.com)",
+                    "es": "Global (openapi.growatt.com)",
+                    "fr": "Mondial (openapi.growatt.com)",
+                    "it": "Globale (openapi.growatt.com)",
+                    "no": "Global (openapi.growatt.com)",
+                    "sv": "Global (openapi.growatt.com)",
+                    "pl": "Globalny (openapi.growatt.com)",
+                    "ru": "Глобальный (openapi.growatt.com)",
+                    "ko": "글로벌 (openapi.growatt.com)",
+                    "ar": "عالمي (openapi.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-us.growatt.com",
                   "label": {
-                    "en": "North America (openapi-us.growatt.com)"
+                    "en": "North America (openapi-us.growatt.com)",
+                    "nl": "Noord-Amerika (openapi-us.growatt.com)",
+                    "da": "Nordamerika (openapi-us.growatt.com)",
+                    "de": "Nordamerika (openapi-us.growatt.com)",
+                    "es": "Norteamérica (openapi-us.growatt.com)",
+                    "fr": "Amérique du Nord (openapi-us.growatt.com)",
+                    "it": "Nord America (openapi-us.growatt.com)",
+                    "no": "Nord-Amerika (openapi-us.growatt.com)",
+                    "sv": "Nordamerika (openapi-us.growatt.com)",
+                    "pl": "Ameryka Północna (openapi-us.growatt.com)",
+                    "ru": "Северная Америка (openapi-us.growatt.com)",
+                    "ko": "북미 (openapi-us.growatt.com)",
+                    "ar": "أمريكا الشمالية (openapi-us.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-au.growatt.com",
                   "label": {
-                    "en": "Australia / NZ (openapi-au.growatt.com)"
+                    "en": "Australia / NZ (openapi-au.growatt.com)",
+                    "nl": "Australië / NZ (openapi-au.growatt.com)",
+                    "da": "Australien / NZ (openapi-au.growatt.com)",
+                    "de": "Australien / NZ (openapi-au.growatt.com)",
+                    "es": "Australia / NZ (openapi-au.growatt.com)",
+                    "fr": "Australie / NZ (openapi-au.growatt.com)",
+                    "it": "Australia / NZ (openapi-au.growatt.com)",
+                    "no": "Australia / NZ (openapi-au.growatt.com)",
+                    "sv": "Australien / NZ (openapi-au.growatt.com)",
+                    "pl": "Australia / NZ (openapi-au.growatt.com)",
+                    "ru": "Австралия / НЗ (openapi-au.growatt.com)",
+                    "ko": "호주 / 뉴질랜드 (openapi-au.growatt.com)",
+                    "ar": "أستراليا / نيوزيلندا (openapi-au.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-cn.growatt.com",
                   "label": {
-                    "en": "China (openapi-cn.growatt.com)"
+                    "en": "China (openapi-cn.growatt.com)",
+                    "nl": "China (openapi-cn.growatt.com)",
+                    "da": "Kina (openapi-cn.growatt.com)",
+                    "de": "China (openapi-cn.growatt.com)",
+                    "es": "China (openapi-cn.growatt.com)",
+                    "fr": "Chine (openapi-cn.growatt.com)",
+                    "it": "Cina (openapi-cn.growatt.com)",
+                    "no": "Kina (openapi-cn.growatt.com)",
+                    "sv": "Kina (openapi-cn.growatt.com)",
+                    "pl": "Chiny (openapi-cn.growatt.com)",
+                    "ru": "Китай (openapi-cn.growatt.com)",
+                    "ko": "중국 (openapi-cn.growatt.com)",
+                    "ar": "الصين (openapi-cn.growatt.com)"
                   }
                 },
                 {
                   "id": "ess-server.atesspower.com",
                   "label": {
-                    "en": "Atess (ess-server.atesspower.com)"
+                    "en": "Atess (ess-server.atesspower.com)",
+                    "nl": "Atess (ess-server.atesspower.com)",
+                    "da": "Atess (ess-server.atesspower.com)",
+                    "de": "Atess (ess-server.atesspower.com)",
+                    "es": "Atess (ess-server.atesspower.com)",
+                    "fr": "Atess (ess-server.atesspower.com)",
+                    "it": "Atess (ess-server.atesspower.com)",
+                    "no": "Atess (ess-server.atesspower.com)",
+                    "sv": "Atess (ess-server.atesspower.com)",
+                    "pl": "Atess (ess-server.atesspower.com)",
+                    "ru": "Atess (ess-server.atesspower.com)",
+                    "ko": "Atess (ess-server.atesspower.com)",
+                    "ar": "Atess (ess-server.atesspower.com)"
                   }
                 }
               ]
@@ -1498,7 +1937,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Systeemnaam"
+                "nl": "Plant naam"
               },
               "value": ""
             },
@@ -1507,7 +1946,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Systeem ID"
+                "nl": "Plant ID"
               },
               "value": ""
             }
@@ -1554,7 +1993,8 @@
         "sv": "Mätare",
         "pl": "Miernik",
         "ru": "Счетчик",
-        "ko": "미터"
+        "ko": "미터",
+        "ar": "عداد"
       },
       "class": "other",
       "capabilities": [
@@ -1584,7 +2024,8 @@
             "sv": "Spänning fas 1",
             "pl": "Napięcie faza 1",
             "ru": "Напряжение фаза 1",
-            "ko": "전압 위상 1"
+            "ko": "전압 위상 1",
+            "ar": "الجهد المرحلة 1"
           }
         },
         "measure_voltage.2": {
@@ -1600,7 +2041,8 @@
             "sv": "Spänning fas 2",
             "pl": "Napięcie faza 2",
             "ru": "Напряжение фаза 2",
-            "ko": "전압 위상 2"
+            "ko": "전압 위상 2",
+            "ar": "الجهد المرحلة 2"
           }
         },
         "measure_voltage.3": {
@@ -1616,7 +2058,8 @@
             "sv": "Spänning fas 3",
             "pl": "Napięcie faza 3",
             "ru": "Напряжение фаза 3",
-            "ko": "전압 위상 3"
+            "ko": "전압 위상 3",
+            "ar": "الجهد المرحلة 3"
           }
         },
         "meter_power.imported": {
@@ -1632,7 +2075,8 @@
             "sv": "Importerad energi",
             "pl": "Zaimportowana energia",
             "ru": "Импортированная энергия",
-            "ko": "수입된 에너지"
+            "ko": "수입된 에너지",
+            "ar": "الطاقة المستوردة"
           },
           "decimals": 2
         },
@@ -1649,7 +2093,8 @@
             "sv": "Exporterad energi",
             "pl": "Wyeksportowana energia",
             "ru": "Экспортированная энергия",
-            "ko": "수출된 에너지"
+            "ko": "수출된 에너지",
+            "ar": "الطاقة المصدرة"
           },
           "decimals": 2
         }
@@ -1688,7 +2133,8 @@
               "sv": "Hämta din API-token i ShinePhone-appen",
               "pl": "Pobierz swój token API w aplikacji ShinePhone",
               "ru": "Получите ваш API токен в приложении ShinePhone",
-              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
             },
             "usernameLabel": {
               "en": "Username",
@@ -1702,7 +2148,8 @@
               "sv": "Användarnamn",
               "pl": "Nazwa użytkownika",
               "ru": "Имя пользователя",
-              "ko": "사용자 이름"
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
             },
             "passwordLabel": {
               "en": "API Token",
@@ -1716,7 +2163,8 @@
               "sv": "API-token",
               "pl": "Token API",
               "ru": "API токен",
-              "ko": "API 토큰"
+              "ko": "API 토큰",
+              "ar": "رمز API"
             },
             "passwordPlaceholder": {
               "en": "My account>User name>API Token",
@@ -1730,7 +2178,8 @@
               "sv": "Mitt konto>Användarnamn>API-token",
               "pl": "Moje konto>Nazwa użytkownika>Token API",
               "ru": "Мой аккаунт>Имя пользователя>API токен",
-              "ko": "내 계정>사용자 이름>API 토큰"
+              "ko": "내 계정>사용자 이름>API 토큰",
+              "ar": "حسابي>اسم المستخدم>رمز API"
             },
             "logo": "../assets/images/small.png"
           }
@@ -1763,7 +2212,8 @@
             "sv": "Mätarinformation",
             "pl": "Informacje o mierniku",
             "ru": "Информация о счетчике",
-            "ko": "미터 정보"
+            "ko": "미터 정보",
+            "ar": "معلومات العداد"
           },
           "children": [
             {
@@ -1771,7 +2221,18 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Systeemnaam"
+                "nl": "Systeemnaam",
+                "da": "Anlægsnavn",
+                "de": "Anlagenname",
+                "es": "Nombre de la planta",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "no": "Anleggsnavn",
+                "sv": "Anläggningsnamn",
+                "pl": "Nazwa instalacji",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
               },
               "value": ""
             },
@@ -1780,7 +2241,18 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Systeem ID"
+                "nl": "Systeem ID",
+                "da": "Anlægs-ID",
+                "de": "Anlagen-ID",
+                "es": "ID de la planta",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "no": "Anleggs-ID",
+                "sv": "Anläggnings-ID",
+                "pl": "ID instalacji",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
               },
               "value": ""
             },
@@ -1789,7 +2261,18 @@
               "type": "label",
               "label": {
                 "en": "Model",
-                "nl": "Model"
+                "nl": "Model",
+                "da": "Model",
+                "de": "Modell",
+                "es": "Modelo",
+                "fr": "Modèle",
+                "it": "Modello",
+                "no": "Modell",
+                "sv": "Modell",
+                "pl": "Model",
+                "ru": "Модель",
+                "ko": "모델",
+                "ar": "نموذج"
               },
               "value": ""
             },
@@ -1797,7 +2280,19 @@
               "id": "deviceType",
               "type": "label",
               "label": {
-                "en": "Device type"
+                "en": "Device type",
+                "nl": "Apparaattype",
+                "da": "Enhedstype",
+                "de": "Gerätetyp",
+                "es": "Tipo de dispositivo",
+                "fr": "Type d'appareil",
+                "it": "Tipo di dispositivo",
+                "no": "Enhetstype",
+                "sv": "Enhetstyp",
+                "pl": "Typ urządzenia",
+                "ru": "Тип устройства",
+                "ko": "기기 유형",
+                "ar": "نوع الجهاز"
               },
               "value": ""
             },
@@ -1806,7 +2301,18 @@
               "type": "label",
               "label": {
                 "en": "Device serial number",
-                "nl": "Apparaat serienummer"
+                "nl": "Apparaat serienummer",
+                "da": "Enhedens serienummer",
+                "de": "Geräte-Seriennummer",
+                "es": "Número de serie del dispositivo",
+                "fr": "Numéro de série de l'appareil",
+                "it": "Numero di serie del dispositivo",
+                "no": "Enhetens serienummer",
+                "sv": "Enhetens serienummer",
+                "pl": "Numer seryjny urządzenia",
+                "ru": "Серийный номер устройства",
+                "ko": "기기 일련번호",
+                "ar": "الرقم التسلسلي للجهاز"
               },
               "value": ""
             },
@@ -1815,7 +2321,18 @@
               "type": "label",
               "label": {
                 "en": "Data logger serial number",
-                "nl": "Data logger serienummer"
+                "nl": "Data logger serienummer",
+                "da": "Dataloggerens serienummer",
+                "de": "Datenlogger-Seriennummer",
+                "es": "Número de serie del registrador de datos",
+                "fr": "Numéro de série de l'enregistreur de données",
+                "it": "Numero di serie del data logger",
+                "no": "Dataloggens serienummer",
+                "sv": "Dataloggerns serienummer",
+                "pl": "Numer seryjny rejestratora danych",
+                "ru": "Серийный номер регистратора данных",
+                "ko": "데이터 로거 일련번호",
+                "ar": "الرقم التسلسلي لمسجل البيانات"
               },
               "value": ""
             }
@@ -1843,7 +2360,18 @@
               "type": "text",
               "label": {
                 "en": "Username",
-                "nl": "Gebruikersnaam"
+                "nl": "Gebruikersnaam",
+                "da": "Brugernavn",
+                "de": "Benutzername",
+                "es": "Nombre de usuario",
+                "fr": "Nom d'utilisateur",
+                "it": "Nome utente",
+                "no": "Brukernavn",
+                "sv": "Användarnamn",
+                "pl": "Nazwa użytkownika",
+                "ru": "Имя пользователя",
+                "ko": "사용자 이름",
+                "ar": "اسم المستخدم"
               },
               "value": ""
             },
@@ -1851,11 +2379,34 @@
               "id": "token",
               "type": "password",
               "label": {
-                "en": "API token"
+                "en": "API token",
+                "nl": "API token",
+                "da": "API-token",
+                "de": "API-Token",
+                "es": "Token de API",
+                "fr": "Jeton API",
+                "it": "Token API",
+                "no": "API-token",
+                "sv": "API-token",
+                "pl": "Token API",
+                "ru": "API-токен",
+                "ko": "API 토큰",
+                "ar": "رمز API"
               },
               "hint": {
                 "en": "Get your API token in the ShinePhone app: My account > click on user name > API Token.",
-                "nl": ""
+                "nl": "Haal je API token op in de ShinePhone app: Mijn account > klik op gebruikersnaam > API Token.",
+                "da": "Få din API-token i ShinePhone-appen: Min konto > klik på brugernavn > API Token.",
+                "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App: Mein Konto > Klick auf Benutzername > API-Token.",
+                "es": "Obtenga su token API en la aplicación ShinePhone: Mi cuenta > haga clic en el nombre de usuario > Token de API.",
+                "fr": "Obtenez votre jeton API dans l'application ShinePhone : Mon compte > cliquez sur le nom d'utilisateur > Jeton API.",
+                "it": "Ottieni il tuo token API nell'app ShinePhone: Il mio account > fai clic sul nome utente > Token API.",
+                "no": "Få API-tokenet ditt i ShinePhone-appen: Min konto > klikk på brukernavn > API-token.",
+                "sv": "Hämta din API-token i ShinePhone-appen: Mitt konto > klicka på användarnamn > API-token.",
+                "pl": "Pobierz swój token API w aplikacji ShinePhone: Moje konto > kliknij na nazwę użytkownika > Token API.",
+                "ru": "Получите ваш API-токен в приложении ShinePhone: Мой аккаунт > нажмите на имя пользователя > API-токен.",
+                "ko": "ShinePhone 앱에서 API 토큰을 가져오세요: 내 계정 > 사용자 이름 클릭 > API 토큰.",
+                "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone: حسابي > انقر على اسم المستخدم > رمز API."
               },
               "value": ""
             },
@@ -1864,38 +2415,109 @@
               "type": "dropdown",
               "label": {
                 "en": "API Server",
-                "nl": "API Server"
+                "nl": "API Server",
+                "da": "API-server",
+                "de": "API-Server",
+                "es": "Servidor API",
+                "fr": "Serveur API",
+                "it": "Server API",
+                "no": "API-server",
+                "sv": "API-server",
+                "pl": "Serwer API",
+                "ru": "Сервер API",
+                "ko": "API 서버",
+                "ar": "خادم API"
               },
               "value": "openapi.growatt.com",
               "values": [
                 {
                   "id": "openapi.growatt.com",
                   "label": {
-                    "en": "Global (openapi.growatt.com)"
+                    "en": "Global (openapi.growatt.com)",
+                    "nl": "Wereldwijd (openapi.growatt.com)",
+                    "da": "Global (openapi.growatt.com)",
+                    "de": "Global (openapi.growatt.com)",
+                    "es": "Global (openapi.growatt.com)",
+                    "fr": "Mondial (openapi.growatt.com)",
+                    "it": "Globale (openapi.growatt.com)",
+                    "no": "Global (openapi.growatt.com)",
+                    "sv": "Global (openapi.growatt.com)",
+                    "pl": "Globalny (openapi.growatt.com)",
+                    "ru": "Глобальный (openapi.growatt.com)",
+                    "ko": "글로벌 (openapi.growatt.com)",
+                    "ar": "عالمي (openapi.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-us.growatt.com",
                   "label": {
-                    "en": "North America (openapi-us.growatt.com)"
+                    "en": "North America (openapi-us.growatt.com)",
+                    "nl": "Noord-Amerika (openapi-us.growatt.com)",
+                    "da": "Nordamerika (openapi-us.growatt.com)",
+                    "de": "Nordamerika (openapi-us.growatt.com)",
+                    "es": "Norteamérica (openapi-us.growatt.com)",
+                    "fr": "Amérique du Nord (openapi-us.growatt.com)",
+                    "it": "Nord America (openapi-us.growatt.com)",
+                    "no": "Nord-Amerika (openapi-us.growatt.com)",
+                    "sv": "Nordamerika (openapi-us.growatt.com)",
+                    "pl": "Ameryka Północna (openapi-us.growatt.com)",
+                    "ru": "Северная Америка (openapi-us.growatt.com)",
+                    "ko": "북미 (openapi-us.growatt.com)",
+                    "ar": "أمريكا الشمالية (openapi-us.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-au.growatt.com",
                   "label": {
-                    "en": "Australia / NZ (openapi-au.growatt.com)"
+                    "en": "Australia / NZ (openapi-au.growatt.com)",
+                    "nl": "Australië / NZ (openapi-au.growatt.com)",
+                    "da": "Australien / NZ (openapi-au.growatt.com)",
+                    "de": "Australien / NZ (openapi-au.growatt.com)",
+                    "es": "Australia / NZ (openapi-au.growatt.com)",
+                    "fr": "Australie / NZ (openapi-au.growatt.com)",
+                    "it": "Australia / NZ (openapi-au.growatt.com)",
+                    "no": "Australia / NZ (openapi-au.growatt.com)",
+                    "sv": "Australien / NZ (openapi-au.growatt.com)",
+                    "pl": "Australia / NZ (openapi-au.growatt.com)",
+                    "ru": "Австралия / НЗ (openapi-au.growatt.com)",
+                    "ko": "호주 / 뉴질랜드 (openapi-au.growatt.com)",
+                    "ar": "أستراليا / نيوزيلندا (openapi-au.growatt.com)"
                   }
                 },
                 {
                   "id": "openapi-cn.growatt.com",
                   "label": {
-                    "en": "China (openapi-cn.growatt.com)"
+                    "en": "China (openapi-cn.growatt.com)",
+                    "nl": "China (openapi-cn.growatt.com)",
+                    "da": "Kina (openapi-cn.growatt.com)",
+                    "de": "China (openapi-cn.growatt.com)",
+                    "es": "China (openapi-cn.growatt.com)",
+                    "fr": "Chine (openapi-cn.growatt.com)",
+                    "it": "Cina (openapi-cn.growatt.com)",
+                    "no": "Kina (openapi-cn.growatt.com)",
+                    "sv": "Kina (openapi-cn.growatt.com)",
+                    "pl": "Chiny (openapi-cn.growatt.com)",
+                    "ru": "Китай (openapi-cn.growatt.com)",
+                    "ko": "중국 (openapi-cn.growatt.com)",
+                    "ar": "الصين (openapi-cn.growatt.com)"
                   }
                 },
                 {
                   "id": "ess-server.atesspower.com",
                   "label": {
-                    "en": "Atess (ess-server.atesspower.com)"
+                    "en": "Atess (ess-server.atesspower.com)",
+                    "nl": "Atess (ess-server.atesspower.com)",
+                    "da": "Atess (ess-server.atesspower.com)",
+                    "de": "Atess (ess-server.atesspower.com)",
+                    "es": "Atess (ess-server.atesspower.com)",
+                    "fr": "Atess (ess-server.atesspower.com)",
+                    "it": "Atess (ess-server.atesspower.com)",
+                    "no": "Atess (ess-server.atesspower.com)",
+                    "sv": "Atess (ess-server.atesspower.com)",
+                    "pl": "Atess (ess-server.atesspower.com)",
+                    "ru": "Atess (ess-server.atesspower.com)",
+                    "ko": "Atess (ess-server.atesspower.com)",
+                    "ar": "Atess (ess-server.atesspower.com)"
                   }
                 }
               ]
@@ -1920,7 +2542,8 @@
         "sv": "Måleffekt",
         "pl": "Docelowa moc",
         "ru": "Целевая мощность",
-        "ko": "목표 전력"
+        "ko": "목표 전력",
+        "ar": "الطاقة المستهدفة"
       },
       "units": {
         "en": "%"

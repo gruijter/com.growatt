@@ -52,5 +52,8 @@
   },
   "2.3.0": {
     "en": "Added support for all global regions. Added more battery support. Added DC Solar and AC Inverter capabilities. Use AC value for Solar power. Added support for target_power inverter. Removed dim capability. Added all translations. Code refactoring. Stability improvements"
+  },
+  "2.3.1": {
+    "en": "Fix pMax/chargeMax/dischargeMax fetching and settings override. Fix translations."
   }
 }
