@@ -11,7 +11,8 @@
     "sv": "Solenergi (DC) ändrad",
     "pl": "Moc słoneczna (DC) zmieniona",
     "ru": "Солнечная энергия (DC) изменена",
-    "ko": "태양광 전력(DC) 변경됨"
+    "ko": "태양광 전력(DC) 변경됨",
+    "ar": "تغيرت الطاقة الشمسية (DC)"
   },
   "highlight": true,
   "args": [
@@ -37,7 +38,8 @@
         "sv": "Solenergi (DC)",
         "pl": "Moc słoneczna (DC)",
         "ru": "Солнечная энергия (DC)",
-        "ko": "태양광 전력(DC)"
+        "ko": "태양광 전력(DC)",
+        "ar": "الطاقة الشمسية (DC)"
       },
       "example": 1500
     }

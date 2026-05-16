@@ -13,7 +13,8 @@
 				"sv": "Mätarinformation",
 				"pl": "Informacje o mierniku",
 				"ru": "Информация о счетчике",
-				"ko": "미터 정보"
+				"ko": "미터 정보",
+				"ar": "معلومات العداد"
 		},
 		"children": [
 			{
@@ -21,7 +22,18 @@
 				"type": "label",
 				"label": {
 						"en": "Plant name",
-						"nl": "Plant naam"
+						"nl": "Systeemnaam",
+						"da": "Anlægsnavn",
+						"de": "Anlagenname",
+						"es": "Nombre de la planta",
+						"fr": "Nom de l'installation",
+						"it": "Nome impianto",
+						"no": "Anleggsnavn",
+						"sv": "Anläggningsnamn",
+						"pl": "Nazwa instalacji",
+						"ru": "Название станции",
+						"ko": "발전소 이름",
+						"ar": "اسم المحطة"
 				},
 				"value": ""
 			},
@@ -30,7 +42,18 @@
 				"type": "label",
 				"label": {
 						"en": "Plant ID",
-						"nl": "Plant ID"
+						"nl": "Systeem ID",
+						"da": "Anlægs-ID",
+						"de": "Anlagen-ID",
+						"es": "ID de la planta",
+						"fr": "ID de l'installation",
+						"it": "ID impianto",
+						"no": "Anleggs-ID",
+						"sv": "Anläggnings-ID",
+						"pl": "ID instalacji",
+						"ru": "ID станции",
+						"ko": "발전소 ID",
+						"ar": "معرف المحطة"
 				},
 				"value": ""
 			},
@@ -39,7 +62,18 @@
 				"type": "label",
 				"label": {
 						"en": "Model",
-						"nl": "Model"
+						"nl": "Model",
+						"da": "Model",
+						"de": "Modell",
+						"es": "Modelo",
+						"fr": "Modèle",
+						"it": "Modello",
+						"no": "Modell",
+						"sv": "Modell",
+						"pl": "Model",
+						"ru": "Модель",
+						"ko": "모델",
+						"ar": "نموذج"
 				},
 				"value": ""
 			},
@@ -47,7 +81,19 @@
 				"id": "deviceType",
 				"type": "label",
 				"label": {
-						"en": "Device type"
+						"en": "Device type",
+						"nl": "Apparaattype",
+						"da": "Enhedstype",
+						"de": "Gerätetyp",
+						"es": "Tipo de dispositivo",
+						"fr": "Type d'appareil",
+						"it": "Tipo di dispositivo",
+						"no": "Enhetstype",
+						"sv": "Enhetstyp",
+						"pl": "Typ urządzenia",
+						"ru": "Тип устройства",
+						"ko": "기기 유형",
+						"ar": "نوع الجهاز"
 				},
 				"value": ""
 			},
@@ -56,7 +102,18 @@
 				"type": "label",
 				"label": {
 						"en": "Device serial number",
-						"nl": "Apparaat serienummer"
+						"nl": "Apparaat serienummer",
+						"da": "Enhedens serienummer",
+						"de": "Geräte-Seriennummer",
+						"es": "Número de serie del dispositivo",
+						"fr": "Numéro de série de l'appareil",
+						"it": "Numero di serie del dispositivo",
+						"no": "Enhetens serienummer",
+						"sv": "Enhetens serienummer",
+						"pl": "Numer seryjny urządzenia",
+						"ru": "Серийный номер устройства",
+						"ko": "기기 일련번호",
+						"ar": "الرقم التسلسلي للجهاز"
 				},
 				"value": ""
 			},
@@ -65,7 +122,18 @@
 				"type": "label",
 				"label": {
 						"en": "Data logger serial number",
-						"nl": "Data logger serienummer"
+						"nl": "Data logger serienummer",
+						"da": "Dataloggerens serienummer",
+						"de": "Datenlogger-Seriennummer",
+						"es": "Número de serie del registrador de datos",
+						"fr": "Numéro de série de l'enregistreur de données",
+						"it": "Numero di serie del data logger",
+						"no": "Dataloggens serienummer",
+						"sv": "Dataloggerns serienummer",
+						"pl": "Numer seryjny rejestratora danych",
+						"ru": "Серийный номер регистратора данных",
+						"ko": "데이터 로거 일련번호",
+						"ar": "الرقم التسلسلي لمسجل البيانات"
 				},
 				"value": ""
 			}
@@ -93,7 +161,18 @@
 				"type": "text",
 				"label": {
 						"en": "Username",
-						"nl": "Gebruikersnaam"
+						"nl": "Gebruikersnaam",
+						"da": "Brugernavn",
+						"de": "Benutzername",
+						"es": "Nombre de usuario",
+						"fr": "Nom d'utilisateur",
+						"it": "Nome utente",
+						"no": "Brukernavn",
+						"sv": "Användarnamn",
+						"pl": "Nazwa użytkownika",
+						"ru": "Имя пользователя",
+						"ko": "사용자 이름",
+						"ar": "اسم المستخدم"
 				},
 				"value": ""
 			},
@@ -101,11 +180,34 @@
 					"id": "token",
 					"type": "password",
 					"label": {
-							"en": "API token"
+							"en": "API token",
+							"nl": "API token",
+							"da": "API-token",
+							"de": "API-Token",
+							"es": "Token de API",
+							"fr": "Jeton API",
+							"it": "Token API",
+							"no": "API-token",
+							"sv": "API-token",
+							"pl": "Token API",
+							"ru": "API-токен",
+							"ko": "API 토큰",
+							"ar": "رمز API"
 					},
 					"hint": {
 						"en": "Get your API token in the ShinePhone app: My account > click on user name > API Token.",
-						"nl": ""
+						"nl": "Haal je API token op in de ShinePhone app: Mijn account > klik op gebruikersnaam > API Token.",
+						"da": "Få din API-token i ShinePhone-appen: Min konto > klik på brugernavn > API Token.",
+						"de": "Holen Sie sich Ihr API-Token in der ShinePhone-App: Mein Konto > Klick auf Benutzername > API-Token.",
+						"es": "Obtenga su token API en la aplicación ShinePhone: Mi cuenta > haga clic en el nombre de usuario > Token de API.",
+						"fr": "Obtenez votre jeton API dans l'application ShinePhone : Mon compte > cliquez sur le nom d'utilisateur > Jeton API.",
+						"it": "Ottieni il tuo token API nell'app ShinePhone: Il mio account > fai clic sul nome utente > Token API.",
+						"no": "Få API-tokenet ditt i ShinePhone-appen: Min konto > klikk på brukernavn > API-token.",
+						"sv": "Hämta din API-token i ShinePhone-appen: Mitt konto > klicka på användarnamn > API-token.",
+						"pl": "Pobierz swój token API w aplikacji ShinePhone: Moje konto > kliknij na nazwę użytkownika > Token API.",
+						"ru": "Получите ваш API-токен в приложении ShinePhone: Мой аккаунт > нажмите на имя пользователя > API-токен.",
+						"ko": "ShinePhone 앱에서 API 토큰을 가져오세요: 내 계정 > 사용자 이름 클릭 > API 토큰.",
+						"ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone: حسابي > انقر على اسم المستخدم > رمز API."
 					},
 					"value": ""
 			},
@@ -114,29 +216,40 @@
 				"type": "dropdown",
 				"label": {
 					"en": "API Server",
-					"nl": "API Server"
+					"nl": "API Server",
+					"da": "API-server",
+					"de": "API-Server",
+					"es": "Servidor API",
+					"fr": "Serveur API",
+					"it": "Server API",
+					"no": "API-server",
+					"sv": "API-server",
+					"pl": "Serwer API",
+					"ru": "Сервер API",
+					"ko": "API 서버",
+					"ar": "خادم API"
 				},
 				"value": "openapi.growatt.com",
 				"values": [
 					{
 						"id": "openapi.growatt.com",
-						"label": { "en": "Global (openapi.growatt.com)" }
+						"label": { "en": "Global (openapi.growatt.com)", "nl": "Wereldwijd (openapi.growatt.com)", "da": "Global (openapi.growatt.com)", "de": "Global (openapi.growatt.com)", "es": "Global (openapi.growatt.com)", "fr": "Mondial (openapi.growatt.com)", "it": "Globale (openapi.growatt.com)", "no": "Global (openapi.growatt.com)", "sv": "Global (openapi.growatt.com)", "pl": "Globalny (openapi.growatt.com)", "ru": "Глобальный (openapi.growatt.com)", "ko": "글로벌 (openapi.growatt.com)", "ar": "عالمي (openapi.growatt.com)" }
 					},
 					{
 						"id": "openapi-us.growatt.com",
-						"label": { "en": "North America (openapi-us.growatt.com)" }
+						"label": { "en": "North America (openapi-us.growatt.com)", "nl": "Noord-Amerika (openapi-us.growatt.com)", "da": "Nordamerika (openapi-us.growatt.com)", "de": "Nordamerika (openapi-us.growatt.com)", "es": "Norteamérica (openapi-us.growatt.com)", "fr": "Amérique du Nord (openapi-us.growatt.com)", "it": "Nord America (openapi-us.growatt.com)", "no": "Nord-Amerika (openapi-us.growatt.com)", "sv": "Nordamerika (openapi-us.growatt.com)", "pl": "Ameryka Północna (openapi-us.growatt.com)", "ru": "Северная Америка (openapi-us.growatt.com)", "ko": "북미 (openapi-us.growatt.com)", "ar": "أمريكا الشمالية (openapi-us.growatt.com)" }
 					},
 					{
 						"id": "openapi-au.growatt.com",
-						"label": { "en": "Australia / NZ (openapi-au.growatt.com)" }
+						"label": { "en": "Australia / NZ (openapi-au.growatt.com)", "nl": "Australië / NZ (openapi-au.growatt.com)", "da": "Australien / NZ (openapi-au.growatt.com)", "de": "Australien / NZ (openapi-au.growatt.com)", "es": "Australia / NZ (openapi-au.growatt.com)", "fr": "Australie / NZ (openapi-au.growatt.com)", "it": "Australia / NZ (openapi-au.growatt.com)", "no": "Australia / NZ (openapi-au.growatt.com)", "sv": "Australien / NZ (openapi-au.growatt.com)", "pl": "Australia / NZ (openapi-au.growatt.com)", "ru": "Австралия / НЗ (openapi-au.growatt.com)", "ko": "호주 / 뉴질랜드 (openapi-au.growatt.com)", "ar": "أستراليا / نيوزيلندا (openapi-au.growatt.com)" }
 					},
 					{
 						"id": "openapi-cn.growatt.com",
-						"label": { "en": "China (openapi-cn.growatt.com)" }
+						"label": { "en": "China (openapi-cn.growatt.com)", "nl": "China (openapi-cn.growatt.com)", "da": "Kina (openapi-cn.growatt.com)", "de": "China (openapi-cn.growatt.com)", "es": "China (openapi-cn.growatt.com)", "fr": "Chine (openapi-cn.growatt.com)", "it": "Cina (openapi-cn.growatt.com)", "no": "Kina (openapi-cn.growatt.com)", "sv": "Kina (openapi-cn.growatt.com)", "pl": "Chiny (openapi-cn.growatt.com)", "ru": "Китай (openapi-cn.growatt.com)", "ko": "중국 (openapi-cn.growatt.com)", "ar": "الصين (openapi-cn.growatt.com)" }
 					},
 					{
 						"id": "ess-server.atesspower.com",
-						"label": { "en": "Atess (ess-server.atesspower.com)" }
+						"label": { "en": "Atess (ess-server.atesspower.com)", "nl": "Atess (ess-server.atesspower.com)", "da": "Atess (ess-server.atesspower.com)", "de": "Atess (ess-server.atesspower.com)", "es": "Atess (ess-server.atesspower.com)", "fr": "Atess (ess-server.atesspower.com)", "it": "Atess (ess-server.atesspower.com)", "no": "Atess (ess-server.atesspower.com)", "sv": "Atess (ess-server.atesspower.com)", "pl": "Atess (ess-server.atesspower.com)", "ru": "Atess (ess-server.atesspower.com)", "ko": "Atess (ess-server.atesspower.com)", "ar": "Atess (ess-server.atesspower.com)" }
 					}
 				]
 			}

@@ -11,7 +11,8 @@
     "sv": "Mätare",
     "pl": "Miernik",
     "ru": "Счетчик",
-    "ko": "미터"
+    "ko": "미터",
+    "ar": "عداد"
   },
   "class": "other",
   "capabilities": [
@@ -41,7 +42,8 @@
         "sv": "Spänning fas 1",
         "pl": "Napięcie faza 1",
         "ru": "Напряжение фаза 1",
-        "ko": "전압 위상 1"
+        "ko": "전압 위상 1",
+        "ar": "الجهد المرحلة 1"
       }
     },
     "measure_voltage.2": {
@@ -57,7 +59,8 @@
         "sv": "Spänning fas 2",
         "pl": "Napięcie faza 2",
         "ru": "Напряжение фаза 2",
-        "ko": "전압 위상 2"
+        "ko": "전압 위상 2",
+        "ar": "الجهد المرحلة 2"
       }
     },
     "measure_voltage.3": {
@@ -73,7 +76,8 @@
         "sv": "Spänning fas 3",
         "pl": "Napięcie faza 3",
         "ru": "Напряжение фаза 3",
-        "ko": "전압 위상 3"
+        "ko": "전압 위상 3",
+        "ar": "الجهد المرحلة 3"
       }
     },
     "meter_power.imported": {
@@ -89,7 +93,8 @@
         "sv": "Importerad energi",
         "pl": "Zaimportowana energia",
         "ru": "Импортированная энергия",
-        "ko": "수입된 에너지"
+        "ko": "수입된 에너지",
+        "ar": "الطاقة المستوردة"
       },
       "decimals": 2
     },
@@ -106,7 +111,8 @@
         "sv": "Exporterad energi",
         "pl": "Wyeksportowana energia",
         "ru": "Экспортированная энергия",
-        "ko": "수출된 에너지"
+        "ko": "수출된 에너지",
+        "ar": "الطاقة المصدرة"
       },
       "decimals": 2
     }
@@ -143,11 +149,12 @@
           "sv": "Hämta din API-token i ShinePhone-appen",
           "pl": "Pobierz swój token API w aplikacji ShinePhone",
           "ru": "Получите ваш API токен в приложении ShinePhone",
-          "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
+          "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+          "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
         },
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름" },
-        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰" },
-        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름", "ar": "اسم المستخدم" },
+        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰", "ar": "رمز API" },
+        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰", "ar": "حسابي>اسم المستخدم>رمز API" },
         "logo": "../assets/images/small.png"
       }
     },

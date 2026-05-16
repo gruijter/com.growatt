@@ -393,7 +393,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Systeemnaam"
               },
               "value": ""
             },
@@ -402,7 +402,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Systeem ID"
               },
               "value": ""
             }
@@ -634,7 +634,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Systeemnaam"
               },
               "value": ""
             },
@@ -643,7 +643,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Systeem ID"
               },
               "value": ""
             },
@@ -936,7 +936,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Systeemnaam"
               },
               "value": ""
             },
@@ -945,7 +945,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Systeem ID"
               },
               "value": ""
             },
@@ -1239,7 +1239,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Systeemnaam"
               },
               "value": ""
             },
@@ -1248,7 +1248,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Systeem ID"
               },
               "value": ""
             },
@@ -1498,7 +1498,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Systeemnaam"
               },
               "value": ""
             },
@@ -1507,7 +1507,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Systeem ID"
               },
               "value": ""
             }
@@ -1771,7 +1771,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Systeemnaam"
               },
               "value": ""
             },
@@ -1780,7 +1780,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Systeem ID"
               },
               "value": ""
             },

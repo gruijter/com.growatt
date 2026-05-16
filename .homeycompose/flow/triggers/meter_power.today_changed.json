@@ -11,7 +11,8 @@
     "sv": "Energi idag ändrad",
     "pl": "Dzisiejsza energia zmieniona",
     "ru": "Энергия за сегодня изменена",
-    "ko": "오늘의 에너지 변경됨"
+    "ko": "오늘의 에너지 변경됨",
+    "ar": "تغيرت الطاقة اليوم"
   },
   "highlight": true,
   "args": [
@@ -37,7 +38,8 @@
         "sv": "Energi idag",
         "pl": "Dzisiejsza energia",
         "ru": "Энергия за сегодня",
-        "ko": "오늘의 에너지"
+        "ko": "오늘의 에너지",
+        "ar": "الطاقة اليوم"
       },
       "example": 12.5
     }

@@ -11,7 +11,8 @@
     "sv": "Batteri",
     "pl": "Bateria",
     "ru": "Батарея",
-    "ko": "배터리"
+    "ko": "배터리",
+    "ar": "بطارية"
   },
   "class": "battery",
   "capabilities": [
@@ -37,7 +38,8 @@
         "sv": "Batteri 2 Effekt",
         "pl": "Moc baterii 2",
         "ru": "Мощность батареи 2",
-        "ko": "배터리 2 전력"
+        "ko": "배터리 2 전력",
+        "ar": "طاقة البطارية 2"
       },
       "decimals": 0
     },
@@ -57,7 +59,8 @@
         "sv": "Laddad energi",
         "pl": "Pobrana energia",
         "ru": "Заряженная энергия",
-        "ko": "충전된 에너지"
+        "ko": "충전된 에너지",
+        "ar": "الطاقة المشحونة"
       },
       "decimals": 2
     },
@@ -74,7 +77,8 @@
         "sv": "Urladdad energi",
         "pl": "Oddana energia",
         "ru": "Разряженная энергия",
-        "ko": "방전된 에너지"
+        "ko": "방전된 에너지",
+        "ar": "الطاقة المفرغة"
       },
       "decimals": 2
     }
@@ -111,11 +115,12 @@
           "sv": "Hämta din API-token i ShinePhone-appen",
           "pl": "Pobierz swój token API w aplikacji ShinePhone",
           "ru": "Получите ваш API токен в приложении ShinePhone",
-          "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
+          "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+          "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
         },
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름" },
-        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰" },
-        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름", "ar": "اسم المستخدم" },
+        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰", "ar": "رمز API" },
+        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰", "ar": "حسابي>اسم المستخدم>رمز API" },
         "logo": "../assets/images/small.png"
       }
     },

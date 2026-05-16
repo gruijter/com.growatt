@@ -11,7 +11,8 @@
     "sv": "Växelriktareffekt (AC) ändrad",
     "pl": "Moc falownika (AC) zmieniona",
     "ru": "Мощность инвертора (AC) изменена",
-    "ko": "인버터 전력(AC) 변경됨"
+    "ko": "인버터 전력(AC) 변경됨",
+    "ar": "تغيرت طاقة العاكس (AC)"
   },
   "highlight": true,
   "args": [
@@ -37,7 +38,8 @@
         "sv": "Växelriktareffekt (AC)",
         "pl": "Moc falownika (AC)",
         "ru": "Мощность инвертора (AC)",
-        "ko": "인버터 전력(AC)"
+        "ko": "인버터 전력(AC)",
+        "ar": "طاقة العاكس (AC)"
       },
       "example": 1450
     }

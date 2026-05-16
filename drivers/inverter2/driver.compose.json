@@ -11,7 +11,8 @@
     "sv": "Växelriktare",
     "pl": "Falownik słoneczny",
     "ru": "Солнечный инвертор",
-    "ko": "태양광 인버터"
+    "ko": "태양광 인버터",
+    "ar": "عاكس الطاقة الشمسية"
   },
   "class": "solarpanel",
   "capabilities": [
@@ -34,7 +35,8 @@
         "sv": "Energi idag",
         "pl": "Dzisiejsza energia",
         "ru": "Энергия за сегодня",
-        "ko": "오늘의 에너지"
+        "ko": "오늘의 에너지",
+        "ar": "الطاقة اليوم"
       }
     },
     "measure_power": {
@@ -50,7 +52,8 @@
         "sv": "Solenergi (AC)",
         "pl": "Moc słoneczna (AC)",
         "ru": "Солнечная энергия (AC)",
-        "ko": "태양광 전력(AC)"
+        "ko": "태양광 전력(AC)",
+        "ar": "الطاقة الشمسية (AC)"
       },
       "decimals": 0
     },
@@ -67,7 +70,8 @@
         "sv": "Solenergi (DC)",
         "pl": "Moc słoneczna (DC)",
         "ru": "Солнечная энергия (DC)",
-        "ko": "태양광 전력(DC)"
+        "ko": "태양광 전력(DC)",
+        "ar": "الطاقة الشمسية (DC)"
       },
       "decimals": 0
     },
@@ -84,7 +88,8 @@
         "sv": "Växelriktareffekt (AC)",
         "pl": "Moc falownika (AC)",
         "ru": "Мощность инвертора (AC)",
-        "ko": "인버터 전력(AC)"
+        "ko": "인버터 전력(AC)",
+        "ar": "طاقة العاكس (AC)"
       },
       "decimals": 0
     },
@@ -119,11 +124,12 @@
           "sv": "Hämta din API-token i ShinePhone-appen",
           "pl": "Pobierz swój token API w aplikacji ShinePhone",
           "ru": "Получите ваш API токен в приложении ShinePhone",
-          "ko": "ShinePhone 앱에서 API 토큰을 가져오세요"
+          "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+          "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
         },
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름" },
-        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰" },
-        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름", "ar": "اسم المستخدم" },
+        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰", "ar": "رمز API" },
+        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰", "ar": "حسابي>اسم المستخدم>رمز API" },
         "logo": "../assets/images/small.png"
       }
     },
