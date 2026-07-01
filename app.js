@@ -33,7 +33,7 @@ module.exports = class MyApp extends Homey.App {
     this.registerFlowListeners(); // register flow listeners
 
     // Trigger initial grouped poll 15 seconds after app boot to allow devices to initialize
-    this.homey.setTimeout(() => {
+    this.bootPollTimeoutId = this.homey.setTimeout(() => {
       this.log('Performing initial grouped poll');
       this.everyXminutesHandler().catch(this.error);
     }, 15000);
@@ -48,6 +48,15 @@ module.exports = class MyApp extends Homey.App {
 
   async onUninit() {
     this.log('app onUninit called');
+    if (this.pollTimeoutId) {
+      this.homey.clearTimeout(this.pollTimeoutId);
+    }
+    if (this.pollTimeoutIdV1) {
+      this.homey.clearTimeout(this.pollTimeoutIdV1);
+    }
+    if (this.bootPollTimeoutId) {
+      this.homey.clearTimeout(this.bootPollTimeoutId);
+    }
     this.homey.removeAllListeners('lastData');
     this.homey.removeAllListeners('errorInfo');
 
@@ -98,10 +107,9 @@ module.exports = class MyApp extends Homey.App {
 
   // poll getLastData, centralized for all devices every X minutes
   everyXminutes(interval) {
-    let timeoutId;
     const scheduleNextXminutes = () => {
-      if (timeoutId) {
-        this.homey.clearTimeout(timeoutId); // Clear any existing timeout
+      if (this.pollTimeoutId) {
+        this.homey.clearTimeout(this.pollTimeoutId); // Clear any existing timeout
       }
       const now = new Date();
       const nextXminutes = new Date(now);
@@ -110,7 +118,7 @@ module.exports = class MyApp extends Homey.App {
       nextXminutes.setMinutes(nextMultipleOfX, 0, 0);
       const timeToNextXminutes = nextXminutes - now;
       // console.log('everyXminutes starts in', timeToNextXminutes / 1000);
-      timeoutId = this.homey.setTimeout(() => {
+      this.pollTimeoutId = this.homey.setTimeout(() => {
         this.everyXminutesHandler().catch(this.error);
         scheduleNextXminutes(); // Schedule the next X minutes
       }, timeToNextXminutes);
@@ -222,10 +230,9 @@ module.exports = class MyApp extends Homey.App {
 
   // DEPRECATED V1
   everyXminutesV1(interval) {
-    let timeoutIdV1;
     const scheduleNextXminutes = () => {
-      if (timeoutIdV1) {
-        this.homey.clearTimeout(timeoutIdV1); // Clear any existing timeout
+      if (this.pollTimeoutIdV1) {
+        this.homey.clearTimeout(this.pollTimeoutIdV1); // Clear any existing timeout
       }
       const now = new Date();
       const nextXminutes = new Date(now);
@@ -234,7 +241,7 @@ module.exports = class MyApp extends Homey.App {
       nextXminutes.setMinutes(nextMultipleOfX, 0, 0);
       const timeToNextXminutes = nextXminutes - now;
       // console.log('everyXminutes starts in', timeToNextXminutes / 1000);
-      timeoutIdV1 = this.homey.setTimeout(() => {
+      this.pollTimeoutIdV1 = this.homey.setTimeout(() => {
         this.everyXminutesHandlerV1().catch(this.error);
         scheduleNextXminutes(); // Schedule the next X minutes
       }, timeToNextXminutes);
