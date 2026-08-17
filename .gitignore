@@ -6,3 +6,6 @@ roadmap.txt
 /tmp
 tmp*
 zzz*
+.claude/
+.github/
+AGENTS.md
