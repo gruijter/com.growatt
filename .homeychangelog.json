@@ -58,5 +58,8 @@
   },
   "2.3.2": {
     "en": "Fix pairing large systems. Fix device naming during pairing. Fix spinner during pairing. Stability improvements."
+  },
+  "2.3.3": {
+    "en": "Fix device migration. Add additional internal logging. Stability improvements."
   }
 }
