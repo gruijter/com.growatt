@@ -61,5 +61,8 @@
   },
   "2.3.3": {
     "en": "Fix device migration. Add additional internal logging. Stability improvements."
+  },
+  "2.3.4": {
+    "en": "Add inverter setting to use Homey time for daily reset. Fix powerLimit setting. Extend transient error and permission_denied exclusion. Extend diagnostic log."
   }
 }
