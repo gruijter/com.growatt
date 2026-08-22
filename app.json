@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.growatt",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "compatibility": ">=12.13.0",
   "sdk": 3,
   "platforms": [
@@ -1632,6 +1632,61 @@
                 "ar": "الحد الأقصى لإنتاج التيار المتردد للعاكس بالواط. اضبط على 0 لجلبه تلقائيا."
               },
               "value": 3000
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Energy settings",
+            "nl": "Energie instellingen",
+            "da": "Energiindstillinger",
+            "de": "Energieeinstellungen",
+            "es": "Configuración de energía",
+            "fr": "Paramètres énergétiques",
+            "it": "Impostazioni energetiche",
+            "no": "Energiinnstillinger",
+            "sv": "Energiinställningar",
+            "pl": "Ustawienia energii",
+            "ru": "Настройки энергии",
+            "ko": "에너지 설정",
+            "ar": "إعدادات الطاقة"
+          },
+          "children": [
+            {
+              "id": "dailyEnergyHomeyTimezone",
+              "type": "checkbox",
+              "label": {
+                "en": "Homey timezone reset",
+                "nl": "Homey tijdzone reset",
+                "da": "Homey-tidszone-reset",
+                "de": "Homey-Zeitzone-Reset",
+                "es": "Reinicio horario Homey",
+                "fr": "Reset horaire Homey",
+                "it": "Reset fuso orario Homey",
+                "no": "Homey-tidssone-reset",
+                "sv": "Homey-tidszon-reset",
+                "pl": "Reset wg strefy Homey",
+                "ru": "Сброс по Homey-времени",
+                "ko": "Homey 시간대 리셋",
+                "ar": "إعادة ضبط بتوقيت Homey"
+              },
+              "hint": {
+                "en": "Use if 'Energy today' resets at the wrong time. Calculates it from the total instead, reset at Homey's local midnight.",
+                "nl": "Gebruik dit als 'Energie vandaag' op het verkeerde moment reset. Wordt dan berekend vanaf de totaalmeter, met reset om middernacht (Homey tijd).",
+                "da": "Brug dette hvis 'Energi i dag' nulstilles på det forkerte tidspunkt. Beregnes da ud fra totalmåleren, med nulstilling ved midnat (Homey-tid).",
+                "de": "Verwenden, wenn 'Energie heute' zur falschen Zeit zurückgesetzt wird. Wird dann aus dem Gesamtwert berechnet, mit Reset um Mitternacht (Homey-Zeit).",
+                "es": "Úselo si 'Energía hoy' se reinicia a la hora incorrecta. Se calculará desde el total, con reinicio a medianoche (hora de Homey).",
+                "fr": "À utiliser si 'Énergie du jour' se réinitialise au mauvais moment. Sera calculée à partir du total, avec réinitialisation à minuit (heure Homey).",
+                "it": "Da usare se 'Energia oggi' si azzera al momento sbagliato. Verrà calcolata dal totale, con reset a mezzanotte (ora di Homey).",
+                "no": "Bruk dette hvis 'Energi i dag' tilbakestilles på feil tidspunkt. Beregnes da fra totalen, med tilbakestilling ved midnatt (Homey-tid).",
+                "sv": "Använd om 'Energi idag' återställs vid fel tidpunkt. Beräknas då från totalen, med återställning vid midnatt (Homey-tid).",
+                "pl": "Użyj, jeśli 'Energia dzisiaj' resetuje się o złej porze. Zostanie obliczona z licznika całkowitego, z resetem o północy (czas Homey).",
+                "ru": "Используйте, если 'Энергия сегодня' сбрасывается в неправильное время. Будет рассчитываться из общего счётчика, со сбросом в полночь (время Homey).",
+                "ko": "'오늘의 에너지'가 잘못된 시간에 재설정되면 사용하세요. 누적 총량 기준으로 계산되며, Homey 자정에 재설정됩니다.",
+                "ar": "استخدم هذا إذا كانت 'طاقة اليوم' تُعاد ضبطها في وقت خاطئ. سيتم احتسابها من الإجمالي، مع إعادة الضبط عند منتصف الليل (بتوقيت Homey)."
+              },
+              "value": false
             }
           ]
         },
