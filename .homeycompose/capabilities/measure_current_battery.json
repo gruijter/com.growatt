@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Battery current",
+    "nl": "Batterijstroom"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 2,
+  "units": {
+    "en": "A",
+    "nl": "A"
+  }
+}

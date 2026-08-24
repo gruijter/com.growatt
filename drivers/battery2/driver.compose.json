@@ -19,7 +19,23 @@
     "measure_power",
     "measure_battery",
     "battery_charging_state",
-    "target_power"
+    "target_power",
+    "measure_battery_soh",
+    "measure_battery_cycles",
+    "measure_voltage_battery",
+    "measure_current_battery",
+    "measure_temperature_battery",
+    "measure_temperature_bms",
+    "measure_voltage_cell_min",
+    "measure_voltage_cell_max",
+    "measure_voltage_cell_delta",
+    "measure_temperature_cell_min",
+    "measure_temperature_cell_max",
+    "measure_current_charge_limit",
+    "measure_current_discharge_limit",
+    "alarm_battery_charge_forbidden",
+    "alarm_battery_discharge_forbidden",
+    "alarm_bms_error"
   ],
   "capabilitiesOptions": {
     "measure_power": {

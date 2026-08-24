@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Charge current limit",
+    "nl": "Laadstroomlimiet"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 1,
+  "units": {
+    "en": "A",
+    "nl": "A"
+  }
+}

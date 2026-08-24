@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Discharge current limit",
+    "nl": "Ontlaadstroomlimiet"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 1,
+  "units": {
+    "en": "A",
+    "nl": "A"
+  }
+}

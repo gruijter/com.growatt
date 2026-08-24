@@ -1,0 +1,10 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Discharge forbidden",
+    "nl": "Ontladen geblokkeerd"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true
+}

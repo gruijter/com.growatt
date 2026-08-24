@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "BMS temperature",
+    "nl": "BMS temperatuur"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 1,
+  "units": {
+    "en": "°C",
+    "nl": "°C"
+  }
+}
