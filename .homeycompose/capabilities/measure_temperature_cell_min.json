@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Min cell temperature",
+    "nl": "Min celtemperatuur"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 1,
+  "units": {
+    "en": "°C",
+    "nl": "°C"
+  }
+}

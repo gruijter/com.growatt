@@ -1,0 +1,10 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Charge forbidden",
+    "nl": "Laden geblokkeerd"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true
+}

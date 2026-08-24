@@ -1,0 +1,10 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "BMS error",
+    "nl": "BMS fout"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true
+}

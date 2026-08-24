@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Battery SOH",
+    "nl": "Batterij SOH"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 0,
+  "units": {
+    "en": "%",
+    "nl": "%"
+  }
+}

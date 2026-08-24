@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Battery voltage",
+    "nl": "Batterijspanning"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 1,
+  "units": {
+    "en": "V",
+    "nl": "V"
+  }
+}

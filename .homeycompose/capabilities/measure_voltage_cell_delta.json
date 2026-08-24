@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Cell voltage delta",
+    "nl": "Celspanningsverschil"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 3,
+  "units": {
+    "en": "V",
+    "nl": "V"
+  }
+}

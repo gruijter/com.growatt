@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Battery cycles",
+    "nl": "Batterijcycli"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "decimals": 0
+}
