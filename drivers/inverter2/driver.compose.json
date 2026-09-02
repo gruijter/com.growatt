@@ -95,6 +95,42 @@
     },
     "target_power": {
       "decimals": 0
+    },
+    "meter_power.dc_solar": {
+      "title": {
+        "en": "Solar energy (DC)",
+        "nl": "Zonopbrengst (DC)",
+        "da": "Solproduktion (DC)",
+        "de": "Solarertrag (DC)",
+        "es": "Producción solar (CC)",
+        "fr": "Production solaire (CC)",
+        "it": "Produzione solare (CC)",
+        "no": "Solproduksjon (DC)",
+        "sv": "Solproduktion (DC)",
+        "pl": "Uzysk słoneczny (DC)",
+        "ru": "Выработка солнечной энергии (DC)",
+        "ko": "태양광 발전량 (DC)",
+        "ar": "إنتاج الطاقة الشمسية (DC)"
+      },
+      "decimals": 2
+    },
+    "meter_power.ac_inverter": {
+      "title": {
+        "en": "Inverter energy (AC)",
+        "nl": "Omvormeropbrengst (AC)",
+        "da": "Inverterproduktion (AC)",
+        "de": "Wechselrichterertrag (AC)",
+        "es": "Producción del inversor (CA)",
+        "fr": "Production de l'onduleur (CA)",
+        "it": "Produzione inverter (CA)",
+        "no": "Inverterproduksjon (AC)",
+        "sv": "Växelriktarproduktion (AC)",
+        "pl": "Uzysk falownika (AC)",
+        "ru": "Выработка инвертора (AC)",
+        "ko": "인버터 발전량 (AC)",
+        "ar": "إنتاج العاكس (AC)"
+      },
+      "decimals": 2
     }
   },
   "platforms": [
