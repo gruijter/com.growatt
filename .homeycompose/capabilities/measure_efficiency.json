@@ -34,5 +34,6 @@
   "getable": true,
   "setable": false,
   "insights": true,
-  "uiComponent": "sensor"
+  "uiComponent": "sensor",
+  "icon": "./assets/measure_efficiency.svg"
 }

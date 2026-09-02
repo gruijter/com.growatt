@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512" width="512" height="512">
+  <g fill="#000000" fill-rule="evenodd">
+    <!-- gauge arc -->
+    <path d="M 66 300 A 190 190 0 0 1 446 300 L 396 300 A 140 140 0 0 0 116 300 Z"/>
+    <!-- tick marks at the ends and top of the scale -->
+    <rect x="66" y="310" width="50" height="26" rx="8"/>
+    <rect x="396" y="310" width="50" height="26" rx="8"/>
+    <rect x="243" y="86" width="26" height="50" rx="8"/>
+    <!-- needle, pointing high on the scale -->
+    <path d="M 245.4 289.4 L 362.1 193.9 L 266.6 310.6 Z"/>
+    <!-- hub -->
+    <circle cx="256" cy="300" r="30"/>
+  </g>
+</svg>
