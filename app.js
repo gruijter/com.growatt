@@ -30,6 +30,7 @@ module.exports = class MyApp extends Homey.App {
     this.apiSessions = {}; // username__token: apiSession
     this.everyXminutes(5); // start poll emitter
     this.pendingPolls = {}; // prevents concurrent polling
+    this.cooldownNotified = {}; // one log line per rate-limit cooldown, not per skipped poll
     this.registerFlowListeners(); // register flow listeners
 
     // Trigger initial grouped poll 15 seconds after app boot to allow devices to initialize
@@ -129,7 +130,16 @@ module.exports = class MyApp extends Homey.App {
     this.log('everyXminutes job started');
   }
 
-  async everyXminutesHandler() {
+  // everyXminutes() fires on wall-clock multiples of the interval, so an app booting at hh:mm:38
+  // puts the boot poll at hh:mm:53 and the scheduled one 7 seconds behind it. The client cache
+  // normally swallows that duplicate, but when the first one fails there is nothing cached to
+  // swallow it and the pair reads as a retry - which is how one rate-limit trip came to look like
+  // two. `force` is for the force_poll flow card, which must run when the user asks even if a
+  // scheduled poll just did.
+  async everyXminutesHandler(force = false) {
+    const now = Date.now();
+    if (!force && this.lastGroupedPollAt && (now - this.lastGroupedPollAt) < 60 * 1000) return;
+    this.lastGroupedPollAt = now;
     await this.getDevices().catch(this.error);
 
     // Group by session and deviceType to query multiple SNs in one API call
@@ -161,6 +171,23 @@ module.exports = class MyApp extends Homey.App {
       }
 
       const session = this.getSession(device);
+
+      // The API client holds an account down for five minutes after a FREQUENTLY_ACCESS, and
+      // refuses anything enqueued meanwhile without touching the network. Asking anyway would
+      // still log a fetch and emit an errorInfo to every device on the account, which is what
+      // made a single trip read as two attempts in the log. Skip the cycle instead, and say so
+      // once per cooldown rather than once per skipped poll.
+      const cooldownUntil = session.cooldownUntil();
+      if (cooldownUntil) {
+        const accountKey = `${device.username}__${device.deviceType}`;
+        if (this.cooldownNotified[accountKey] !== cooldownUntil) {
+          this.cooldownNotified[accountKey] = cooldownUntil;
+          const secs = Math.ceil((cooldownUntil - Date.now()) / 1000);
+          this.log('Rate limited, skipping polls for', `${device.username} (${device.deviceType})`, `for ${secs}s`);
+        }
+        return null;
+      }
+
       const options = { deviceSn: device.deviceSn, deviceType: device.deviceType };
       this.log('Fetching last data for', `${device.username} ${device.deviceSn}, ${device.deviceType}`);
 
@@ -215,7 +242,7 @@ module.exports = class MyApp extends Homey.App {
           // special case for force poll
           if (action.id === 'force_poll') {
             args.device.log(`Flow action ${action.id} called.`);
-            this.everyXminutesHandler().catch(this.error);
+            this.everyXminutesHandler(true).catch(this.error);
 
             // DEPRECATED V1
             this.everyXminutesHandlerV1().catch(this.error);
