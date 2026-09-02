@@ -1586,6 +1586,24 @@
           },
           "decimals": 0
         },
+        "measure_power.dc_converter": {
+          "title": {
+            "en": "Converter output power (DC)",
+            "nl": "Uitgangsvermogen converter (DC)",
+            "da": "Konverterens udgangseffekt (DC)",
+            "de": "Wandler-Ausgangsleistung (DC)",
+            "es": "Potencia de salida del convertidor (CC)",
+            "fr": "Puissance de sortie du convertisseur (CC)",
+            "it": "Potenza in uscita del convertitore (CC)",
+            "no": "Omformerens utgangseffekt (DC)",
+            "sv": "Omvandlarens uteffekt (DC)",
+            "pl": "Moc wyjściowa przetwornicy (DC)",
+            "ru": "Выходная мощность преобразователя (DC)",
+            "ko": "컨버터 출력 전력(DC)",
+            "ar": "قدرة خرج المحول (DC)"
+          },
+          "decimals": 0
+        },
         "measure_power.ac_inverter": {
           "title": {
             "en": "Inverter Power (AC)",
