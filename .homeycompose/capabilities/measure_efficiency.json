@@ -1,0 +1,38 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Inverter efficiency",
+    "nl": "Omvormerrendement",
+    "da": "Inverterens virkningsgrad",
+    "de": "Wechselrichter-Wirkungsgrad",
+    "es": "Rendimiento del inversor",
+    "fr": "Rendement de l'onduleur",
+    "it": "Rendimento dell'inverter",
+    "no": "Inverterens virkningsgrad",
+    "sv": "Växelriktarens verkningsgrad",
+    "pl": "Sprawność falownika",
+    "ru": "КПД инвертора",
+    "ko": "인버터 효율",
+    "ar": "كفاءة العاكس"
+  },
+  "units": {
+    "en": "%",
+    "nl": "%",
+    "da": "%",
+    "de": "%",
+    "es": "%",
+    "fr": "%",
+    "it": "%",
+    "no": "%",
+    "sv": "%",
+    "pl": "%",
+    "ru": "%",
+    "ko": "%",
+    "ar": "%"
+  },
+  "decimals": 1,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor"
+}
