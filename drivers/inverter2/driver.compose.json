@@ -42,36 +42,36 @@
     "measure_power": {
       "title": {
         "en": "Solar Power (AC)",
-        "nl": "Zonne-energie (AC)",
-        "da": "Solenergi (AC)",
+        "nl": "Zonnevermogen (AC)",
+        "da": "Soleffekt (AC)",
         "de": "Solarleistung (AC)",
-        "es": "Energía solar (CA)",
-        "fr": "Énergie solaire (CA)",
-        "it": "Energia solare (CA)",
-        "no": "Solenergi (AC)",
-        "sv": "Solenergi (AC)",
+        "es": "Potencia solar (CA)",
+        "fr": "Puissance solaire (CA)",
+        "it": "Potenza solare (CA)",
+        "no": "Soleffekt (AC)",
+        "sv": "Soleffekt (AC)",
         "pl": "Moc słoneczna (AC)",
-        "ru": "Солнечная энергия (AC)",
+        "ru": "Солнечная мощность (AC)",
         "ko": "태양광 전력(AC)",
-        "ar": "الطاقة الشمسية (AC)"
+        "ar": "القدرة الشمسية (AC)"
       },
       "decimals": 0
     },
     "measure_power.dc_solar": {
       "title": {
         "en": "Solar Power (DC)",
-        "nl": "Zonne-energie (DC)",
-        "da": "Solenergi (DC)",
+        "nl": "Zonnevermogen (DC)",
+        "da": "Soleffekt (DC)",
         "de": "Solarleistung (DC)",
-        "es": "Energía solar (CC)",
-        "fr": "Énergie solaire (CC)",
-        "it": "Energia solare (CC)",
-        "no": "Solenergi (DC)",
-        "sv": "Solenergi (DC)",
+        "es": "Potencia solar (CC)",
+        "fr": "Puissance solaire (CC)",
+        "it": "Potenza solare (CC)",
+        "no": "Soleffekt (DC)",
+        "sv": "Soleffekt (DC)",
         "pl": "Moc słoneczna (DC)",
-        "ru": "Солнечная энергия (DC)",
+        "ru": "Солнечная мощность (DC)",
         "ko": "태양광 전력(DC)",
-        "ar": "الطاقة الشمسية (DC)"
+        "ar": "القدرة الشمسية (DC)"
       },
       "decimals": 0
     },
@@ -89,7 +89,7 @@
         "pl": "Moc falownika (AC)",
         "ru": "Мощность инвертора (AC)",
         "ko": "인버터 전력(AC)",
-        "ar": "طاقة العاكس (AC)"
+        "ar": "قدرة العاكس (AC)"
       },
       "decimals": 0
     },

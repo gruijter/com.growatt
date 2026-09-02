@@ -153,7 +153,8 @@
 				"sv": "Serverinställningar",
 				"pl": "Ustawienia serwera",
 				"ru": "Настройки сервера",
-				"ko": "서버 설정"
+				"ko": "서버 설정",
+				"ar": "إعدادات الخادم"
 		},
 		"children": [
 			{

@@ -3,7 +3,18 @@
 		"type": "group",
 		"label": {
 				"en": "Meter information",
-				"nl": "Meter informatie"
+				"nl": "Meter informatie",
+				"da": "Målerinformation",
+				"de": "Zählerinformationen",
+				"es": "Información del medidor",
+				"fr": "Informations sur le compteur",
+				"it": "Informazioni sul contatore",
+				"no": "Målerinformasjon",
+				"sv": "Mätarinformation",
+				"pl": "Informacje o mierniku",
+				"ru": "Информация о счетчике",
+				"ko": "미터 정보",
+				"ar": "معلومات العداد"
 		},
 		"children": [
 			{
@@ -11,7 +22,18 @@
 				"type": "label",
 				"label": {
 						"en": "Plant name",
-						"nl": "Plant naam"
+						"nl": "Plant naam",
+						"da": "Anlægsnavn",
+						"de": "Anlagenname",
+						"es": "Nombre de la planta",
+						"fr": "Nom de l'installation",
+						"it": "Nome impianto",
+						"no": "Anleggsnavn",
+						"sv": "Anläggningsnamn",
+						"pl": "Nazwa instalacji",
+						"ru": "Название станции",
+						"ko": "발전소 이름",
+						"ar": "اسم المحطة"
 				},
 				"value": ""
 			},
@@ -20,7 +42,18 @@
 				"type": "label",
 				"label": {
 						"en": "Plant ID",
-						"nl": "Plant ID"
+						"nl": "Plant ID",
+						"da": "Anlægs-ID",
+						"de": "Anlagen-ID",
+						"es": "ID de la planta",
+						"fr": "ID de l'installation",
+						"it": "ID impianto",
+						"no": "Anleggs-ID",
+						"sv": "Anläggnings-ID",
+						"pl": "ID instalacji",
+						"ru": "ID станции",
+						"ko": "발전소 ID",
+						"ar": "معرف المحطة"
 				},
 				"value": ""
 			}
@@ -30,7 +63,18 @@
 		"type": "group",
 		"label": {
 				"en": "Server settings",
-				"nl": "Server instellingen"
+				"nl": "Server instellingen",
+				"da": "Serverindstillinger",
+				"de": "Servereinstellungen",
+				"es": "Configuración del servidor",
+				"fr": "Paramètres du serveur",
+				"it": "Impostazioni del server",
+				"no": "Serverinnstillinger",
+				"sv": "Serverinställningar",
+				"pl": "Ustawienia serwera",
+				"ru": "Настройки сервера",
+				"ko": "서버 설정",
+				"ar": "إعدادات الخادم"
 		},
 		"children": [
 			{
@@ -38,7 +82,18 @@
 				"type": "text",
 				"label": {
 						"en": "Username",
-						"nl": "Gebruikersnaam"
+						"nl": "Gebruikersnaam",
+						"da": "Brugernavn",
+						"de": "Benutzername",
+						"es": "Nombre de usuario",
+						"fr": "Nom d'utilisateur",
+						"it": "Nome utente",
+						"no": "Brukernavn",
+						"sv": "Användarnamn",
+						"pl": "Nazwa użytkownika",
+						"ru": "Имя пользователя",
+						"ko": "사용자 이름",
+						"ar": "اسم المستخدم"
 				},
 				"value": ""
 			},
@@ -46,7 +101,19 @@
 					"id": "password",
 					"type": "password",
 					"label": {
-							"en": "Password"
+							"en": "Password",
+							"nl": "Wachtwoord",
+							"da": "Adgangskode",
+							"de": "Passwort",
+							"es": "Contraseña",
+							"fr": "Mot de passe",
+							"it": "Password",
+							"no": "Passord",
+							"sv": "Lösenord",
+							"pl": "Hasło",
+							"ru": "Пароль",
+							"ko": "비밀번호",
+							"ar": "كلمة المرور"
 					},
 					"value": ""
 			}

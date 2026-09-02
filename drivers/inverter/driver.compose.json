@@ -11,7 +11,8 @@
     "sv": "Växelriktare V1",
     "pl": "Falownik słoneczny V1",
     "ru": "Солнечный инвертор V1",
-    "ko": "태양광 인버터 V1"
+    "ko": "태양광 인버터 V1",
+    "ar": "عاكس الطاقة الشمسية V1"
   },
   "deprecated": true,
   "class": "solarpanel",
@@ -37,7 +38,8 @@
         "sv": "Energi denna månad",
         "pl": "Energia w tym miesiącu",
         "ru": "Энергия за этот месяц",
-        "ko": "이번 달 에너지"
+        "ko": "이번 달 에너지",
+        "ar": "الطاقة هذا الشهر"
       }
     },
     "meter_power.today": {
@@ -53,7 +55,8 @@
         "sv": "Energi idag",
         "pl": "Dzisiejsza energia",
         "ru": "Энергия за сегодня",
-        "ko": "오늘의 에너지"
+        "ko": "오늘의 에너지",
+        "ar": "الطاقة اليوم"
       }
     }
   },
@@ -72,8 +75,8 @@
       "id": "login_credentials",
       "template": "login_credentials",
       "options": {
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름" },
-        "passwordLabel": { "en": "Password", "nl": "Wachtwoord", "da": "Adgangskode", "de": "Passwort", "es": "Contraseña", "fr": "Mot de passe", "it": "Password", "no": "Passord", "sv": "Lösenord", "pl": "Hasło", "ru": "Пароль", "ko": "비밀번호" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름", "ar": "اسم المستخدم" },
+        "passwordLabel": { "en": "Password", "nl": "Wachtwoord", "da": "Adgangskode", "de": "Passwort", "es": "Contraseña", "fr": "Mot de passe", "it": "Password", "no": "Passord", "sv": "Lösenord", "pl": "Hasło", "ru": "Пароль", "ko": "비밀번호", "ar": "كلمة المرور" },
         "logo": "../assets/images/small.png"
       }
     },

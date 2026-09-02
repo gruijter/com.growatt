@@ -74,7 +74,9 @@ module.exports = class MyApp extends Homey.App {
     const sessionName = `${username}__${token}`;
     // check if session is connected
     if (!this.apiSessions[sessionName]) {
-      this.apiSessions[sessionName] = new Api({ user_name: username, token, host });
+      this.apiSessions[sessionName] = new Api({
+        user_name: username, token, host, homey: this.homey,
+      });
       this.log('New session created for', `${username}__${token}`, 'on', host);
     } else {
       this.apiSessions[sessionName].host = host; // update host if auto-discovery found a new one
@@ -193,7 +195,9 @@ module.exports = class MyApp extends Homey.App {
       this.log('Error fetching last data for', `${device.username} ${device.deviceSn}: ${msg}`);
       const cacheKey = `${device.deviceSn}_${device.deviceType}`;
       delete this.pendingPolls[cacheKey];
-      this.homey.emit('errorInfo', { device, error: msg }); // emit error to devices
+      // pass the stable reason code along - the message text is localized and must never be
+      // matched on by the listeners (see common_device.js#startListeners)
+      this.homey.emit('errorInfo', { device, error: msg, reason: error.reason }); // emit error to devices
       return Promise.reject(msg); // return info to driver
     }
   }

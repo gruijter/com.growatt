@@ -1,0 +1,18 @@
+{
+  "errors": {
+    "permissionDenied": "Odmowa dostępu. Sprawdź swój token API.",
+    "rateLimited": "Zbyt wiele żądań. Poczekaj 5 minut.",
+    "apiProblem": "Problem z API. Skontaktuj się z service.nl@growatt.com, aby naprawić konto.",
+    "userNotFound": "Użytkownik nie istnieje na żadnym serwerze.",
+    "httpRequestFailed": "Żądanie HTTP nie powiodło się",
+    "unexpectedResponse": "Nieoczekiwana odpowiedź serwera",
+    "commandRejected": "Falownik odrzucił polecenie. Sterowanie zdalne może być wyłączone w falowniku lub wymagany jest inteligentny licznik.",
+    "commandRejectedOrOffline": "Falownik odrzucił polecenie lub nie odpowiada. Sterowanie zdalne może być wyłączone lub urządzenie jest offline.",
+    "actionNotSupported": "__action__ nie jest obsługiwane przez to urządzenie."
+  },
+  "status": {
+    "migrating": "Trwa migracja. Proszę czekać...",
+    "noUpdates": "Brak aktualizacji z urządzenia",
+    "deprecatedDevice": "Przestarzałe urządzenie testowe. Usuń je i dodaj ponownie."
+  }
+}

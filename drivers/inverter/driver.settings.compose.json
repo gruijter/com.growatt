@@ -13,7 +13,8 @@
 				"sv": "Växelriktarinformation",
 				"pl": "Informacje o falowniku",
 				"ru": "Информация об инверторе",
-				"ko": "인버터 정보"
+				"ko": "인버터 정보",
+				"ar": "معلومات العاكس"
 		},
 		"children": [
 			{
@@ -21,7 +22,18 @@
 				"type": "label",
 				"label": {
 						"en": "Plant name",
-						"nl": "Plant naam"
+						"nl": "Plant naam",
+						"da": "Anlægsnavn",
+						"de": "Anlagenname",
+						"es": "Nombre de la planta",
+						"fr": "Nom de l'installation",
+						"it": "Nome impianto",
+						"no": "Anleggsnavn",
+						"sv": "Anläggningsnamn",
+						"pl": "Nazwa instalacji",
+						"ru": "Название станции",
+						"ko": "발전소 이름",
+						"ar": "اسم المحطة"
 				},
 				"value": ""
 			},
@@ -30,7 +42,18 @@
 				"type": "label",
 				"label": {
 						"en": "Plant ID",
-						"nl": "Plant ID"
+						"nl": "Plant ID",
+						"da": "Anlægs-ID",
+						"de": "Anlagen-ID",
+						"es": "ID de la planta",
+						"fr": "ID de l'installation",
+						"it": "ID impianto",
+						"no": "Anleggs-ID",
+						"sv": "Anläggnings-ID",
+						"pl": "ID instalacji",
+						"ru": "ID станции",
+						"ko": "발전소 ID",
+						"ar": "معرف المحطة"
 				},
 				"value": ""
 			},
@@ -39,7 +62,18 @@
 				"type": "label",
 				"label": {
 						"en": "Model",
-						"nl": "Model"
+						"nl": "Model",
+						"da": "Model",
+						"de": "Modell",
+						"es": "Modelo",
+						"fr": "Modèle",
+						"it": "Modello",
+						"no": "Modell",
+						"sv": "Modell",
+						"pl": "Model",
+						"ru": "Модель",
+						"ko": "모델",
+						"ar": "نموذج"
 				},
 				"value": ""
 			},
@@ -47,7 +81,19 @@
 				"id": "type",
 				"type": "label",
 				"label": {
-						"en": "Type"
+						"en": "Type",
+						"nl": "Type",
+						"da": "Type",
+						"de": "Typ",
+						"es": "Tipo",
+						"fr": "Type",
+						"it": "Tipo",
+						"no": "Type",
+						"sv": "Typ",
+						"pl": "Typ",
+						"ru": "Тип",
+						"ko": "유형",
+						"ar": "النوع"
 				},
 				"value": ""
 			},
@@ -56,7 +102,18 @@
 				"type": "label",
 				"label": {
 						"en": "Nominal power",
-						"nl": "Nominaal vermogen"
+						"nl": "Nominaal vermogen",
+						"da": "Nominel effekt",
+						"de": "Nennleistung",
+						"es": "Potencia nominal",
+						"fr": "Puissance nominale",
+						"it": "Potenza nominale",
+						"no": "Nominell effekt",
+						"sv": "Nominell effekt",
+						"pl": "Moc znamionowa",
+						"ru": "Номинальная мощность",
+						"ko": "정격 전력",
+						"ar": "الطاقة الاسمية"
 				},
 				"value": ""
 			},
@@ -65,7 +122,18 @@
 				"type": "label",
 				"label": {
 						"en": "Serial number",
-						"nl": "Serienummer"
+						"nl": "Serienummer",
+						"da": "Serienummer",
+						"de": "Seriennummer",
+						"es": "Número de serie",
+						"fr": "Numéro de série",
+						"it": "Numero di serie",
+						"no": "Serienummer",
+						"sv": "Serienummer",
+						"pl": "Numer seryjny",
+						"ru": "Серийный номер",
+						"ko": "일련번호",
+						"ar": "الرقم التسلسلي"
 				},
 				"value": ""
 			},
@@ -74,7 +142,18 @@
 				"type": "label",
 				"label": {
 						"en": "Data logger serial number",
-						"nl": "Data logger serienummer"
+						"nl": "Data logger serienummer",
+						"da": "Dataloggerens serienummer",
+						"de": "Datenlogger-Seriennummer",
+						"es": "Número de serie del registrador de datos",
+						"fr": "Numéro de série de l'enregistreur de données",
+						"it": "Numero di serie del data logger",
+						"no": "Dataloggens serienummer",
+						"sv": "Dataloggerns serienummer",
+						"pl": "Numer seryjny rejestratora danych",
+						"ru": "Серийный номер регистратора данных",
+						"ko": "데이터 로거 일련번호",
+						"ar": "الرقم التسلسلي لمسجل البيانات"
 				},
 				"value": ""
 			}
@@ -94,7 +173,8 @@
 				"sv": "Serverinställningar",
 				"pl": "Ustawienia serwera",
 				"ru": "Настройки сервера",
-				"ko": "서버 설정"
+				"ko": "서버 설정",
+				"ar": "إعدادات الخادم"
 		},
 		"children": [
 			{
@@ -102,7 +182,18 @@
 				"type": "text",
 				"label": {
 						"en": "Username",
-						"nl": "Gebruikersnaam"
+						"nl": "Gebruikersnaam",
+						"da": "Brugernavn",
+						"de": "Benutzername",
+						"es": "Nombre de usuario",
+						"fr": "Nom d'utilisateur",
+						"it": "Nome utente",
+						"no": "Brukernavn",
+						"sv": "Användarnamn",
+						"pl": "Nazwa użytkownika",
+						"ru": "Имя пользователя",
+						"ko": "사용자 이름",
+						"ar": "اسم المستخدم"
 				},
 				"value": ""
 			},
@@ -110,7 +201,19 @@
 					"id": "password",
 					"type": "password",
 					"label": {
-							"en": "Password"
+							"en": "Password",
+							"nl": "Wachtwoord",
+							"da": "Adgangskode",
+							"de": "Passwort",
+							"es": "Contraseña",
+							"fr": "Mot de passe",
+							"it": "Password",
+							"no": "Passord",
+							"sv": "Lösenord",
+							"pl": "Hasło",
+							"ru": "Пароль",
+							"ko": "비밀번호",
+							"ar": "كلمة المرور"
 					},
 					"value": ""
 			}

@@ -8,11 +8,34 @@
     "cloud"
   ],
   "name": {
-    "en": "Growatt"
+    "en": "Growatt",
+    "nl": "Growatt",
+    "da": "Growatt",
+    "de": "Growatt",
+    "es": "Growatt",
+    "fr": "Growatt",
+    "it": "Growatt",
+    "no": "Growatt",
+    "sv": "Growatt",
+    "pl": "Growatt",
+    "ru": "Growatt",
+    "ko": "Growatt",
+    "ar": "Growatt"
   },
   "description": {
     "en": "Smart energy for a green future.",
-    "nl": "Slimme energie voor een groene toekomst."
+    "nl": "Slimme energie voor een groene toekomst.",
+    "da": "Smart energi til en grøn fremtid.",
+    "de": "Intelligente Energie für eine grüne Zukunft.",
+    "es": "Energía inteligente para un futuro verde.",
+    "fr": "L'énergie intelligente pour un avenir vert.",
+    "it": "Energia intelligente per un futuro verde.",
+    "no": "Smart energi for en grønn fremtid.",
+    "sv": "Smart energi för en grön framtid.",
+    "pl": "Inteligentna energia dla zielonej przyszłości.",
+    "ru": "Умная энергия для зелёного будущего.",
+    "ko": "친환경 미래를 위한 스마트 에너지.",
+    "ar": "طاقة ذكية لمستقبل أخضر."
   },
   "brandColor": "#80B645",
   "tags": {

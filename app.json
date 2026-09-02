@@ -9,11 +9,34 @@
     "cloud"
   ],
   "name": {
-    "en": "Growatt"
+    "en": "Growatt",
+    "nl": "Growatt",
+    "da": "Growatt",
+    "de": "Growatt",
+    "es": "Growatt",
+    "fr": "Growatt",
+    "it": "Growatt",
+    "no": "Growatt",
+    "sv": "Growatt",
+    "pl": "Growatt",
+    "ru": "Growatt",
+    "ko": "Growatt",
+    "ar": "Growatt"
   },
   "description": {
     "en": "Smart energy for a green future.",
-    "nl": "Slimme energie voor een groene toekomst."
+    "nl": "Slimme energie voor een groene toekomst.",
+    "da": "Smart energi til en grøn fremtid.",
+    "de": "Intelligente Energie für eine grüne Zukunft.",
+    "es": "Energía inteligente para un futuro verde.",
+    "fr": "L'énergie intelligente pour un avenir vert.",
+    "it": "Energia intelligente per un futuro verde.",
+    "no": "Smart energi for en grønn fremtid.",
+    "sv": "Smart energi för en grön framtid.",
+    "pl": "Inteligentna energia dla zielonej przyszłości.",
+    "ru": "Умная энергия для зелёного будущего.",
+    "ko": "친환경 미래를 위한 스마트 에너지.",
+    "ar": "طاقة ذكية لمستقبل أخضر."
   },
   "brandColor": "#80B645",
   "tags": {
@@ -324,7 +347,18 @@
     {
       "name": {
         "en": "Battery V1",
-        "nl": "Batterij V1"
+        "nl": "Batterij V1",
+        "da": "Batteri V1",
+        "de": "Batterie V1",
+        "es": "Batería V1",
+        "fr": "Batterie V1",
+        "it": "Batteria V1",
+        "no": "Batteri V1",
+        "sv": "Batteri V1",
+        "pl": "Bateria V1",
+        "ru": "Батарея V1",
+        "ko": "배터리 V1",
+        "ar": "بطارية V1"
       },
       "deprecated": true,
       "class": "battery",
@@ -339,7 +373,18 @@
         "measure_power.bat2": {
           "title": {
             "en": "Battery 2 Power",
-            "nl": "Batterij 2 Vermogen"
+            "nl": "Batterij 2 Vermogen",
+            "da": "Batteri 2 Effekt",
+            "de": "Batterie 2 Leistung",
+            "es": "Potencia Batería 2",
+            "fr": "Puissance Batterie 2",
+            "it": "Potenza Batteria 2",
+            "no": "Batteri 2 Effekt",
+            "sv": "Batteri 2 Effekt",
+            "pl": "Moc baterii 2",
+            "ru": "Мощность батареи 2",
+            "ko": "배터리 2 전력",
+            "ar": "طاقة البطارية 2"
           },
           "decimals": 0
         }
@@ -366,11 +411,33 @@
           "options": {
             "usernameLabel": {
               "en": "Username",
-              "nl": "Gebruikersnaam"
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
             },
             "passwordLabel": {
               "en": "Password",
-              "nl": "Wachtwoord"
+              "nl": "Wachtwoord",
+              "da": "Adgangskode",
+              "de": "Passwort",
+              "es": "Contraseña",
+              "fr": "Mot de passe",
+              "it": "Password",
+              "no": "Passord",
+              "sv": "Lösenord",
+              "pl": "Hasło",
+              "ru": "Пароль",
+              "ko": "비밀번호",
+              "ar": "كلمة المرور"
             },
             "logo": "../assets/images/small.png"
           }
@@ -393,7 +460,18 @@
           "type": "group",
           "label": {
             "en": "Battery information",
-            "nl": "Batterij informatie"
+            "nl": "Batterij informatie",
+            "da": "Batterioplysninger",
+            "de": "Batterie-Informationen",
+            "es": "Información de la batería",
+            "fr": "Informations sur la batterie",
+            "it": "Informazioni sulla batteria",
+            "no": "Batteriinformasjon",
+            "sv": "Batteriinformation",
+            "pl": "Informacje o baterii",
+            "ru": "Информация о батарее",
+            "ko": "배터리 정보",
+            "ar": "معلومات البطارية"
           },
           "children": [
             {
@@ -401,7 +479,18 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Plant naam",
+                "da": "Anlægsnavn",
+                "de": "Anlagenname",
+                "es": "Nombre de la planta",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "no": "Anleggsnavn",
+                "sv": "Anläggningsnamn",
+                "pl": "Nazwa instalacji",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
               },
               "value": ""
             },
@@ -410,7 +499,18 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Plant ID",
+                "da": "Anlægs-ID",
+                "de": "Anlagen-ID",
+                "es": "ID de la planta",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "no": "Anleggs-ID",
+                "sv": "Anläggnings-ID",
+                "pl": "ID instalacji",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
               },
               "value": ""
             }
@@ -420,7 +520,18 @@
           "type": "group",
           "label": {
             "en": "Server settings",
-            "nl": "Server instellingen"
+            "nl": "Server instellingen",
+            "da": "Serverindstillinger",
+            "de": "Servereinstellungen",
+            "es": "Configuración del servidor",
+            "fr": "Paramètres du serveur",
+            "it": "Impostazioni del server",
+            "no": "Serverinnstillinger",
+            "sv": "Serverinställningar",
+            "pl": "Ustawienia serwera",
+            "ru": "Настройки сервера",
+            "ko": "서버 설정",
+            "ar": "إعدادات الخادم"
           },
           "children": [
             {
@@ -428,7 +539,18 @@
               "type": "text",
               "label": {
                 "en": "Username",
-                "nl": "Gebruikersnaam"
+                "nl": "Gebruikersnaam",
+                "da": "Brugernavn",
+                "de": "Benutzername",
+                "es": "Nombre de usuario",
+                "fr": "Nom d'utilisateur",
+                "it": "Nome utente",
+                "no": "Brukernavn",
+                "sv": "Användarnamn",
+                "pl": "Nazwa użytkownika",
+                "ru": "Имя пользователя",
+                "ko": "사용자 이름",
+                "ar": "اسم المستخدم"
               },
               "value": ""
             },
@@ -436,7 +558,19 @@
               "id": "password",
               "type": "password",
               "label": {
-                "en": "Password"
+                "en": "Password",
+                "nl": "Wachtwoord",
+                "da": "Adgangskode",
+                "de": "Passwort",
+                "es": "Contraseña",
+                "fr": "Mot de passe",
+                "it": "Password",
+                "no": "Passord",
+                "sv": "Lösenord",
+                "pl": "Hasło",
+                "ru": "Пароль",
+                "ko": "비밀번호",
+                "ar": "كلمة المرور"
               },
               "value": ""
             }
@@ -1040,7 +1174,8 @@
         "sv": "Växelriktare V1",
         "pl": "Falownik słoneczny V1",
         "ru": "Солнечный инвертор V1",
-        "ko": "태양광 인버터 V1"
+        "ko": "태양광 인버터 V1",
+        "ar": "عاكس الطاقة الشمسية V1"
       },
       "deprecated": true,
       "class": "solarpanel",
@@ -1066,7 +1201,8 @@
             "sv": "Energi denna månad",
             "pl": "Energia w tym miesiącu",
             "ru": "Энергия за этот месяц",
-            "ko": "이번 달 에너지"
+            "ko": "이번 달 에너지",
+            "ar": "الطاقة هذا الشهر"
           }
         },
         "meter_power.today": {
@@ -1082,7 +1218,8 @@
             "sv": "Energi idag",
             "pl": "Dzisiejsza energia",
             "ru": "Энергия за сегодня",
-            "ko": "오늘의 에너지"
+            "ko": "오늘의 에너지",
+            "ar": "الطاقة اليوم"
           }
         }
       },
@@ -1115,7 +1252,8 @@
               "sv": "Användarnamn",
               "pl": "Nazwa użytkownika",
               "ru": "Имя пользователя",
-              "ko": "사용자 이름"
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
             },
             "passwordLabel": {
               "en": "Password",
@@ -1129,7 +1267,8 @@
               "sv": "Lösenord",
               "pl": "Hasło",
               "ru": "Пароль",
-              "ko": "비밀번호"
+              "ko": "비밀번호",
+              "ar": "كلمة المرور"
             },
             "logo": "../assets/images/small.png"
           }
@@ -1162,7 +1301,8 @@
             "sv": "Växelriktarinformation",
             "pl": "Informacje o falowniku",
             "ru": "Информация об инверторе",
-            "ko": "인버터 정보"
+            "ko": "인버터 정보",
+            "ar": "معلومات العاكس"
           },
           "children": [
             {
@@ -1170,7 +1310,18 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Plant naam",
+                "da": "Anlægsnavn",
+                "de": "Anlagenname",
+                "es": "Nombre de la planta",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "no": "Anleggsnavn",
+                "sv": "Anläggningsnamn",
+                "pl": "Nazwa instalacji",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
               },
               "value": ""
             },
@@ -1179,7 +1330,18 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Plant ID",
+                "da": "Anlægs-ID",
+                "de": "Anlagen-ID",
+                "es": "ID de la planta",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "no": "Anleggs-ID",
+                "sv": "Anläggnings-ID",
+                "pl": "ID instalacji",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
               },
               "value": ""
             },
@@ -1188,7 +1350,18 @@
               "type": "label",
               "label": {
                 "en": "Model",
-                "nl": "Model"
+                "nl": "Model",
+                "da": "Model",
+                "de": "Modell",
+                "es": "Modelo",
+                "fr": "Modèle",
+                "it": "Modello",
+                "no": "Modell",
+                "sv": "Modell",
+                "pl": "Model",
+                "ru": "Модель",
+                "ko": "모델",
+                "ar": "نموذج"
               },
               "value": ""
             },
@@ -1196,7 +1369,19 @@
               "id": "type",
               "type": "label",
               "label": {
-                "en": "Type"
+                "en": "Type",
+                "nl": "Type",
+                "da": "Type",
+                "de": "Typ",
+                "es": "Tipo",
+                "fr": "Type",
+                "it": "Tipo",
+                "no": "Type",
+                "sv": "Typ",
+                "pl": "Typ",
+                "ru": "Тип",
+                "ko": "유형",
+                "ar": "النوع"
               },
               "value": ""
             },
@@ -1205,7 +1390,18 @@
               "type": "label",
               "label": {
                 "en": "Nominal power",
-                "nl": "Nominaal vermogen"
+                "nl": "Nominaal vermogen",
+                "da": "Nominel effekt",
+                "de": "Nennleistung",
+                "es": "Potencia nominal",
+                "fr": "Puissance nominale",
+                "it": "Potenza nominale",
+                "no": "Nominell effekt",
+                "sv": "Nominell effekt",
+                "pl": "Moc znamionowa",
+                "ru": "Номинальная мощность",
+                "ko": "정격 전력",
+                "ar": "الطاقة الاسمية"
               },
               "value": ""
             },
@@ -1214,7 +1410,18 @@
               "type": "label",
               "label": {
                 "en": "Serial number",
-                "nl": "Serienummer"
+                "nl": "Serienummer",
+                "da": "Serienummer",
+                "de": "Seriennummer",
+                "es": "Número de serie",
+                "fr": "Numéro de série",
+                "it": "Numero di serie",
+                "no": "Serienummer",
+                "sv": "Serienummer",
+                "pl": "Numer seryjny",
+                "ru": "Серийный номер",
+                "ko": "일련번호",
+                "ar": "الرقم التسلسلي"
               },
               "value": ""
             },
@@ -1223,7 +1430,18 @@
               "type": "label",
               "label": {
                 "en": "Data logger serial number",
-                "nl": "Data logger serienummer"
+                "nl": "Data logger serienummer",
+                "da": "Dataloggerens serienummer",
+                "de": "Datenlogger-Seriennummer",
+                "es": "Número de serie del registrador de datos",
+                "fr": "Numéro de série de l'enregistreur de données",
+                "it": "Numero di serie del data logger",
+                "no": "Dataloggens serienummer",
+                "sv": "Dataloggerns serienummer",
+                "pl": "Numer seryjny rejestratora danych",
+                "ru": "Серийный номер регистратора данных",
+                "ko": "데이터 로거 일련번호",
+                "ar": "الرقم التسلسلي لمسجل البيانات"
               },
               "value": ""
             }
@@ -1243,7 +1461,8 @@
             "sv": "Serverinställningar",
             "pl": "Ustawienia serwera",
             "ru": "Настройки сервера",
-            "ko": "서버 설정"
+            "ko": "서버 설정",
+            "ar": "إعدادات الخادم"
           },
           "children": [
             {
@@ -1251,7 +1470,18 @@
               "type": "text",
               "label": {
                 "en": "Username",
-                "nl": "Gebruikersnaam"
+                "nl": "Gebruikersnaam",
+                "da": "Brugernavn",
+                "de": "Benutzername",
+                "es": "Nombre de usuario",
+                "fr": "Nom d'utilisateur",
+                "it": "Nome utente",
+                "no": "Brukernavn",
+                "sv": "Användarnamn",
+                "pl": "Nazwa użytkownika",
+                "ru": "Имя пользователя",
+                "ko": "사용자 이름",
+                "ar": "اسم المستخدم"
               },
               "value": ""
             },
@@ -1259,7 +1489,19 @@
               "id": "password",
               "type": "password",
               "label": {
-                "en": "Password"
+                "en": "Password",
+                "nl": "Wachtwoord",
+                "da": "Adgangskode",
+                "de": "Passwort",
+                "es": "Contraseña",
+                "fr": "Mot de passe",
+                "it": "Password",
+                "no": "Passord",
+                "sv": "Lösenord",
+                "pl": "Hasło",
+                "ru": "Пароль",
+                "ko": "비밀번호",
+                "ar": "كلمة المرور"
               },
               "value": ""
             }
@@ -1311,36 +1553,36 @@
         "measure_power": {
           "title": {
             "en": "Solar Power (AC)",
-            "nl": "Zonne-energie (AC)",
-            "da": "Solenergi (AC)",
+            "nl": "Zonnevermogen (AC)",
+            "da": "Soleffekt (AC)",
             "de": "Solarleistung (AC)",
-            "es": "Energía solar (CA)",
-            "fr": "Énergie solaire (CA)",
-            "it": "Energia solare (CA)",
-            "no": "Solenergi (AC)",
-            "sv": "Solenergi (AC)",
+            "es": "Potencia solar (CA)",
+            "fr": "Puissance solaire (CA)",
+            "it": "Potenza solare (CA)",
+            "no": "Soleffekt (AC)",
+            "sv": "Soleffekt (AC)",
             "pl": "Moc słoneczna (AC)",
-            "ru": "Солнечная энергия (AC)",
+            "ru": "Солнечная мощность (AC)",
             "ko": "태양광 전력(AC)",
-            "ar": "الطاقة الشمسية (AC)"
+            "ar": "القدرة الشمسية (AC)"
           },
           "decimals": 0
         },
         "measure_power.dc_solar": {
           "title": {
             "en": "Solar Power (DC)",
-            "nl": "Zonne-energie (DC)",
-            "da": "Solenergi (DC)",
+            "nl": "Zonnevermogen (DC)",
+            "da": "Soleffekt (DC)",
             "de": "Solarleistung (DC)",
-            "es": "Energía solar (CC)",
-            "fr": "Énergie solaire (CC)",
-            "it": "Energia solare (CC)",
-            "no": "Solenergi (DC)",
-            "sv": "Solenergi (DC)",
+            "es": "Potencia solar (CC)",
+            "fr": "Puissance solaire (CC)",
+            "it": "Potenza solare (CC)",
+            "no": "Soleffekt (DC)",
+            "sv": "Soleffekt (DC)",
             "pl": "Moc słoneczna (DC)",
-            "ru": "Солнечная энергия (DC)",
+            "ru": "Солнечная мощность (DC)",
             "ko": "태양광 전력(DC)",
-            "ar": "الطاقة الشمسية (DC)"
+            "ar": "القدرة الشمسية (DC)"
           },
           "decimals": 0
         },
@@ -1358,7 +1600,7 @@
             "pl": "Moc falownika (AC)",
             "ru": "Мощность инвертора (AC)",
             "ko": "인버터 전력(AC)",
-            "ar": "طاقة العاكس (AC)"
+            "ar": "قدرة العاكس (AC)"
           },
           "decimals": 0
         },
@@ -1918,7 +2160,18 @@
     {
       "name": {
         "en": "Meter V1",
-        "nl": "Meter V1"
+        "nl": "Meter V1",
+        "da": "Måler V1",
+        "de": "Zähler V1",
+        "es": "Medidor V1",
+        "fr": "Compteur V1",
+        "it": "Contatore V1",
+        "no": "Måler V1",
+        "sv": "Mätare V1",
+        "pl": "Miernik V1",
+        "ru": "Счетчик V1",
+        "ko": "미터 V1",
+        "ar": "عداد V1"
       },
       "deprecated": true,
       "class": "other",
@@ -1939,32 +2192,87 @@
         "measure_voltage.1": {
           "title": {
             "en": "Voltage phase 1",
-            "nl": "Voltage fase 1"
+            "nl": "Voltage fase 1",
+            "da": "Spænding fase 1",
+            "de": "Spannung Phase 1",
+            "es": "Voltaje fase 1",
+            "fr": "Tension phase 1",
+            "it": "Tensione fase 1",
+            "no": "Spenning fase 1",
+            "sv": "Spänning fas 1",
+            "pl": "Napięcie faza 1",
+            "ru": "Напряжение фаза 1",
+            "ko": "전압 위상 1",
+            "ar": "الجهد المرحلة 1"
           }
         },
         "measure_voltage.2": {
           "title": {
             "en": "Voltage phase 2",
-            "nl": "Voltage fase 2"
+            "nl": "Voltage fase 2",
+            "da": "Spænding fase 2",
+            "de": "Spannung Phase 2",
+            "es": "Voltaje fase 2",
+            "fr": "Tension phase 2",
+            "it": "Tensione fase 2",
+            "no": "Spenning fase 2",
+            "sv": "Spänning fas 2",
+            "pl": "Napięcie faza 2",
+            "ru": "Напряжение фаза 2",
+            "ko": "전압 위상 2",
+            "ar": "الجهد المرحلة 2"
           }
         },
         "measure_voltage.3": {
           "title": {
             "en": "Voltage phase 3",
-            "nl": "Voltage fase 3"
+            "nl": "Voltage fase 3",
+            "da": "Spænding fase 3",
+            "de": "Spannung Phase 3",
+            "es": "Voltaje fase 3",
+            "fr": "Tension phase 3",
+            "it": "Tensione fase 3",
+            "no": "Spenning fase 3",
+            "sv": "Spänning fas 3",
+            "pl": "Napięcie faza 3",
+            "ru": "Напряжение фаза 3",
+            "ko": "전압 위상 3",
+            "ar": "الجهد المرحلة 3"
           }
         },
         "meter_power.imported": {
           "title": {
             "en": "Imported energy",
-            "nl": "Energie import"
+            "nl": "Energie import",
+            "da": "Importeret energi",
+            "de": "Importierte Energie",
+            "es": "Energía importada",
+            "fr": "Énergie importée",
+            "it": "Energia importata",
+            "no": "Importert energi",
+            "sv": "Importerad energi",
+            "pl": "Zaimportowana energia",
+            "ru": "Импортированная энергия",
+            "ko": "수입된 에너지",
+            "ar": "الطاقة المستوردة"
           },
           "decimals": 2
         },
         "meter_power.exported": {
           "title": {
             "en": "Exported energy",
-            "nl": "Energie export"
+            "nl": "Energie export",
+            "da": "Eksporteret energi",
+            "de": "Exportierte Energie",
+            "es": "Energía exportada",
+            "fr": "Énergie exportée",
+            "it": "Energia esportata",
+            "no": "Eksportert energi",
+            "sv": "Exporterad energi",
+            "pl": "Wyeksportowana energia",
+            "ru": "Экспортированная энергия",
+            "ko": "수출된 에너지",
+            "ar": "الطاقة المصدرة"
           },
           "decimals": 2
         }
@@ -1993,11 +2301,33 @@
           "options": {
             "usernameLabel": {
               "en": "Username",
-              "nl": "Gebruikersnaam"
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
             },
             "passwordLabel": {
               "en": "Password",
-              "nl": "Wachtwoord"
+              "nl": "Wachtwoord",
+              "da": "Adgangskode",
+              "de": "Passwort",
+              "es": "Contraseña",
+              "fr": "Mot de passe",
+              "it": "Password",
+              "no": "Passord",
+              "sv": "Lösenord",
+              "pl": "Hasło",
+              "ru": "Пароль",
+              "ko": "비밀번호",
+              "ar": "كلمة المرور"
             },
             "logo": "../assets/images/small.png"
           }
@@ -2020,7 +2350,18 @@
           "type": "group",
           "label": {
             "en": "Meter information",
-            "nl": "Meter informatie"
+            "nl": "Meter informatie",
+            "da": "Målerinformation",
+            "de": "Zählerinformationen",
+            "es": "Información del medidor",
+            "fr": "Informations sur le compteur",
+            "it": "Informazioni sul contatore",
+            "no": "Målerinformasjon",
+            "sv": "Mätarinformation",
+            "pl": "Informacje o mierniku",
+            "ru": "Информация о счетчике",
+            "ko": "미터 정보",
+            "ar": "معلومات العداد"
           },
           "children": [
             {
@@ -2028,7 +2369,18 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam"
+                "nl": "Plant naam",
+                "da": "Anlægsnavn",
+                "de": "Anlagenname",
+                "es": "Nombre de la planta",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "no": "Anleggsnavn",
+                "sv": "Anläggningsnamn",
+                "pl": "Nazwa instalacji",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
               },
               "value": ""
             },
@@ -2037,7 +2389,18 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID"
+                "nl": "Plant ID",
+                "da": "Anlægs-ID",
+                "de": "Anlagen-ID",
+                "es": "ID de la planta",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "no": "Anleggs-ID",
+                "sv": "Anläggnings-ID",
+                "pl": "ID instalacji",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
               },
               "value": ""
             }
@@ -2047,7 +2410,18 @@
           "type": "group",
           "label": {
             "en": "Server settings",
-            "nl": "Server instellingen"
+            "nl": "Server instellingen",
+            "da": "Serverindstillinger",
+            "de": "Servereinstellungen",
+            "es": "Configuración del servidor",
+            "fr": "Paramètres du serveur",
+            "it": "Impostazioni del server",
+            "no": "Serverinnstillinger",
+            "sv": "Serverinställningar",
+            "pl": "Ustawienia serwera",
+            "ru": "Настройки сервера",
+            "ko": "서버 설정",
+            "ar": "إعدادات الخادم"
           },
           "children": [
             {
@@ -2055,7 +2429,18 @@
               "type": "text",
               "label": {
                 "en": "Username",
-                "nl": "Gebruikersnaam"
+                "nl": "Gebruikersnaam",
+                "da": "Brugernavn",
+                "de": "Benutzername",
+                "es": "Nombre de usuario",
+                "fr": "Nom d'utilisateur",
+                "it": "Nome utente",
+                "no": "Brukernavn",
+                "sv": "Användarnamn",
+                "pl": "Nazwa użytkownika",
+                "ru": "Имя пользователя",
+                "ko": "사용자 이름",
+                "ar": "اسم المستخدم"
               },
               "value": ""
             },
@@ -2063,7 +2448,19 @@
               "id": "password",
               "type": "password",
               "label": {
-                "en": "Password"
+                "en": "Password",
+                "nl": "Wachtwoord",
+                "da": "Adgangskode",
+                "de": "Passwort",
+                "es": "Contraseña",
+                "fr": "Mot de passe",
+                "it": "Password",
+                "no": "Passord",
+                "sv": "Lösenord",
+                "pl": "Hasło",
+                "ru": "Пароль",
+                "ko": "비밀번호",
+                "ar": "كلمة المرور"
               },
               "value": ""
             }
@@ -2443,7 +2840,8 @@
             "sv": "Serverinställningar",
             "pl": "Ustawienia serwera",
             "ru": "Настройки сервера",
-            "ko": "서버 설정"
+            "ko": "서버 설정",
+            "ar": "إعدادات الخادم"
           },
           "children": [
             {
@@ -2637,7 +3035,19 @@
         "ar": "الطاقة المستهدفة"
       },
       "units": {
-        "en": "%"
+        "en": "%",
+        "nl": "%",
+        "da": "%",
+        "de": "%",
+        "es": "%",
+        "fr": "%",
+        "it": "%",
+        "no": "%",
+        "sv": "%",
+        "pl": "%",
+        "ru": "%",
+        "ko": "%",
+        "ar": "%"
       },
       "min": 0,
       "max": 100,

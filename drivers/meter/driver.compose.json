@@ -1,7 +1,18 @@
 {
   "name": {
     "en": "Meter V1",
-    "nl": "Meter V1"
+    "nl": "Meter V1",
+    "da": "Måler V1",
+    "de": "Zähler V1",
+    "es": "Medidor V1",
+    "fr": "Compteur V1",
+    "it": "Contatore V1",
+    "no": "Måler V1",
+    "sv": "Mätare V1",
+    "pl": "Miernik V1",
+    "ru": "Счетчик V1",
+    "ko": "미터 V1",
+    "ar": "عداد V1"
   },
   "deprecated": true,
   "class": "other",
@@ -22,32 +33,87 @@
     "measure_voltage.1": {
       "title": {
         "en": "Voltage phase 1",
-        "nl": "Voltage fase 1"
+        "nl": "Voltage fase 1",
+        "da": "Spænding fase 1",
+        "de": "Spannung Phase 1",
+        "es": "Voltaje fase 1",
+        "fr": "Tension phase 1",
+        "it": "Tensione fase 1",
+        "no": "Spenning fase 1",
+        "sv": "Spänning fas 1",
+        "pl": "Napięcie faza 1",
+        "ru": "Напряжение фаза 1",
+        "ko": "전압 위상 1",
+        "ar": "الجهد المرحلة 1"
       }
     },
     "measure_voltage.2": {
       "title": {
         "en": "Voltage phase 2",
-        "nl": "Voltage fase 2"
+        "nl": "Voltage fase 2",
+        "da": "Spænding fase 2",
+        "de": "Spannung Phase 2",
+        "es": "Voltaje fase 2",
+        "fr": "Tension phase 2",
+        "it": "Tensione fase 2",
+        "no": "Spenning fase 2",
+        "sv": "Spänning fas 2",
+        "pl": "Napięcie faza 2",
+        "ru": "Напряжение фаза 2",
+        "ko": "전압 위상 2",
+        "ar": "الجهد المرحلة 2"
       }
     },
     "measure_voltage.3": {
       "title": {
         "en": "Voltage phase 3",
-        "nl": "Voltage fase 3"
+        "nl": "Voltage fase 3",
+        "da": "Spænding fase 3",
+        "de": "Spannung Phase 3",
+        "es": "Voltaje fase 3",
+        "fr": "Tension phase 3",
+        "it": "Tensione fase 3",
+        "no": "Spenning fase 3",
+        "sv": "Spänning fas 3",
+        "pl": "Napięcie faza 3",
+        "ru": "Напряжение фаза 3",
+        "ko": "전압 위상 3",
+        "ar": "الجهد المرحلة 3"
       }
     },
     "meter_power.imported": {
       "title": {
         "en": "Imported energy",
-        "nl": "Energie import"
+        "nl": "Energie import",
+        "da": "Importeret energi",
+        "de": "Importierte Energie",
+        "es": "Energía importada",
+        "fr": "Énergie importée",
+        "it": "Energia importata",
+        "no": "Importert energi",
+        "sv": "Importerad energi",
+        "pl": "Zaimportowana energia",
+        "ru": "Импортированная энергия",
+        "ko": "수입된 에너지",
+        "ar": "الطاقة المستوردة"
       },
       "decimals": 2
     },
     "meter_power.exported": {
       "title": {
         "en": "Exported energy",
-        "nl": "Energie export"
+        "nl": "Energie export",
+        "da": "Eksporteret energi",
+        "de": "Exportierte Energie",
+        "es": "Energía exportada",
+        "fr": "Énergie exportée",
+        "it": "Energia esportata",
+        "no": "Eksportert energi",
+        "sv": "Exporterad energi",
+        "pl": "Wyeksportowana energia",
+        "ru": "Экспортированная энергия",
+        "ko": "수출된 에너지",
+        "ar": "الطاقة المصدرة"
       },
       "decimals": 2
     }
@@ -72,8 +138,8 @@
       "id": "login_credentials",
       "template": "login_credentials",
       "options": {
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
-        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름", "ar": "اسم المستخدم" },
+        "passwordLabel": { "en": "Password", "nl": "Wachtwoord", "da": "Adgangskode", "de": "Passwort", "es": "Contraseña", "fr": "Mot de passe", "it": "Password", "no": "Passord", "sv": "Lösenord", "pl": "Hasło", "ru": "Пароль", "ko": "비밀번호", "ar": "كلمة المرور" },
         "logo": "../assets/images/small.png"
       }
     },

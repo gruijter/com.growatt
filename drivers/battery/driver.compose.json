@@ -1,7 +1,18 @@
 {
   "name": {
     "en": "Battery V1",
-    "nl": "Batterij V1"
+    "nl": "Batterij V1",
+    "da": "Batteri V1",
+    "de": "Batterie V1",
+    "es": "Batería V1",
+    "fr": "Batterie V1",
+    "it": "Batteria V1",
+    "no": "Batteri V1",
+    "sv": "Batteri V1",
+    "pl": "Bateria V1",
+    "ru": "Батарея V1",
+    "ko": "배터리 V1",
+    "ar": "بطارية V1"
   },
   "deprecated": true,
   "class": "battery",
@@ -16,7 +27,18 @@
     "measure_power.bat2": {
       "title": {
         "en": "Battery 2 Power",
-        "nl": "Batterij 2 Vermogen"
+        "nl": "Batterij 2 Vermogen",
+        "da": "Batteri 2 Effekt",
+        "de": "Batterie 2 Leistung",
+        "es": "Potencia Batería 2",
+        "fr": "Puissance Batterie 2",
+        "it": "Potenza Batteria 2",
+        "no": "Batteri 2 Effekt",
+        "sv": "Batteri 2 Effekt",
+        "pl": "Moc baterii 2",
+        "ru": "Мощность батареи 2",
+        "ko": "배터리 2 전력",
+        "ar": "طاقة البطارية 2"
       },
       "decimals": 0
     }
@@ -39,8 +61,8 @@
       "id": "login_credentials",
       "template": "login_credentials",
       "options": {
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam" },
-        "passwordLabel": { "en": "Password", "nl": "Wachtwoord" },
+        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름", "ar": "اسم المستخدم" },
+        "passwordLabel": { "en": "Password", "nl": "Wachtwoord", "da": "Adgangskode", "de": "Passwort", "es": "Contraseña", "fr": "Mot de passe", "it": "Password", "no": "Passord", "sv": "Lösenord", "pl": "Hasło", "ru": "Пароль", "ko": "비밀번호", "ar": "كلمة المرور" },
         "logo": "../assets/images/small.png"
       }
     },

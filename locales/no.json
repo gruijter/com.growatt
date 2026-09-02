@@ -1,0 +1,18 @@
+{
+  "errors": {
+    "permissionDenied": "Tilgang nektet. Kontroller API-tokenet ditt.",
+    "rateLimited": "For mange forespørsler. Vent 5 minutter.",
+    "apiProblem": "API-problem. Kontakt service.nl@growatt.com for å få kontoen din rettet.",
+    "userNotFound": "Brukeren finnes ikke på noen server.",
+    "httpRequestFailed": "HTTP-forespørsel mislyktes",
+    "unexpectedResponse": "Uventet svar fra serveren",
+    "commandRejected": "Inverteren avviste kommandoen. Fjernstyring kan være deaktivert på inverteren, eller en smartmåler kreves.",
+    "commandRejectedOrOffline": "Inverteren avviste kommandoen eller svarer ikke. Fjernstyring kan være deaktivert, eller den er frakoblet.",
+    "actionNotSupported": "__action__ støttes ikke av denne enheten."
+  },
+  "status": {
+    "migrating": "Migrerer. Vent litt...",
+    "noUpdates": "Ingen oppdateringer fra enheten",
+    "deprecatedDevice": "Utdatert testenhet. Fjern den og legg den til på nytt."
+  }
+}

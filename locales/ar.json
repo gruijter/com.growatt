@@ -1,0 +1,18 @@
+{
+  "errors": {
+    "permissionDenied": "تم رفض الإذن. تحقق من رمز API الخاص بك.",
+    "rateLimited": "طلبات كثيرة جدًا. انتظر 5 دقائق.",
+    "apiProblem": "مشكلة في API. يرجى التواصل مع service.nl@growatt.com لإصلاح حسابك.",
+    "userNotFound": "المستخدم غير موجود على أي خادم.",
+    "httpRequestFailed": "فشل طلب HTTP",
+    "unexpectedResponse": "استجابة غير متوقعة من الخادم",
+    "commandRejected": "رفض العاكس الأمر. قد يكون التحكم عن بُعد معطلاً في العاكس، أو أن هناك حاجة إلى عداد ذكي.",
+    "commandRejectedOrOffline": "رفض العاكس الأمر أو لا يستجيب. قد يكون التحكم عن بُعد معطلاً، أو أن الجهاز غير متصل.",
+    "actionNotSupported": "الجهاز لا يدعم __action__."
+  },
+  "status": {
+    "migrating": "جارٍ الترحيل. يرجى الانتظار...",
+    "noUpdates": "لا توجد تحديثات من الجهاز",
+    "deprecatedDevice": "جهاز اختبار مهجور. يرجى إزالته وإضافته من جديد."
+  }
+}

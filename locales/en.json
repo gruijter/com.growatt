@@ -1,1 +1,18 @@
-{}
+{
+  "errors": {
+    "permissionDenied": "Permission denied. Check your API token.",
+    "rateLimited": "Too many requests. Wait 5 minutes.",
+    "apiProblem": "API problem. Please contact service.nl@growatt.com to fix your account.",
+    "userNotFound": "User does not exist on any server.",
+    "httpRequestFailed": "HTTP request failed",
+    "unexpectedResponse": "Unexpected response from the server",
+    "commandRejected": "The inverter rejected the command. Remote control may be disabled on the inverter, or a smart meter is required.",
+    "commandRejectedOrOffline": "The inverter rejected the command or is not responding. Remote control may be disabled on the inverter, or it is offline.",
+    "actionNotSupported": "__action__ is not supported by this device."
+  },
+  "status": {
+    "migrating": "Migrating. Please wait...",
+    "noUpdates": "No updates from device",
+    "deprecatedDevice": "Deprecated test device. Please remove and re-add."
+  }
+}
