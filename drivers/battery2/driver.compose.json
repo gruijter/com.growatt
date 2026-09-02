@@ -27,15 +27,15 @@
     },
     "measure_power.bat2": {
       "title": {
-        "en": "Battery 2 Power",
-        "nl": "Batterij 2 Vermogen",
-        "da": "Batteri 2 Effekt",
+        "en": "Battery 2 power",
+        "nl": "Batterij 2 vermogen",
+        "da": "Batteri 2 effekt",
         "de": "Batterie 2 Leistung",
-        "es": "Potencia Batería 2",
-        "fr": "Puissance Batterie 2",
-        "it": "Potenza Batteria 2",
-        "no": "Batteri 2 Effekt",
-        "sv": "Batteri 2 Effekt",
+        "es": "Potencia batería 2",
+        "fr": "Puissance batterie 2",
+        "it": "Potenza batteria 2",
+        "no": "Batteri 2 effekt",
+        "sv": "Batteri 2 effekt",
         "pl": "Moc baterii 2",
         "ru": "Мощность батареи 2",
         "ko": "배터리 2 전력",
@@ -92,7 +92,9 @@
     "local",
     "cloud"
   ],
-  "connectivity": ["cloud"],
+  "connectivity": [
+    "cloud"
+  ],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.png",
     "large": "{{driverAssetsPath}}/images/large.png",
@@ -118,22 +120,64 @@
           "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
           "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
         },
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름", "ar": "اسم المستخدم" },
-        "passwordLabel": { "en": "API Token", "nl": "API Token", "da": "API Token", "de": "API-Token", "es": "Token API", "fr": "Jeton API", "it": "Token API", "no": "API Token", "sv": "API-token", "pl": "Token API", "ru": "API токен", "ko": "API 토큰", "ar": "رمز API" },
-        "passwordPlaceholder": { "en": "My account>User name>API Token", "nl": "Mijn account>Gebruikersnaam>API Token", "da": "Min konto>Brugernavn>API Token", "de": "Mein Konto>Benutzername>API-Token", "es": "Mi cuenta>Nombre de usuario>Token API", "fr": "Mon compte>Nom d'utilisateur>Jeton API", "it": "Il mio account>Nome utente>Token API", "no": "Min konto>Brukernavn>API Token", "sv": "Mitt konto>Användarnamn>API-token", "pl": "Moje konto>Nazwa użytkownika>Token API", "ru": "Мой аккаунт>Имя пользователя>API токен", "ko": "내 계정>사용자 이름>API 토큰", "ar": "حسابي>اسم المستخدم>رمز API" },
+        "usernameLabel": {
+          "en": "Username",
+          "nl": "Gebruikersnaam",
+          "da": "Brugernavn",
+          "de": "Benutzername",
+          "es": "Nombre de usuario",
+          "fr": "Nom d'utilisateur",
+          "it": "Nome utente",
+          "no": "Brukernavn",
+          "sv": "Användarnamn",
+          "pl": "Nazwa użytkownika",
+          "ru": "Имя пользователя",
+          "ko": "사용자 이름",
+          "ar": "اسم المستخدم"
+        },
+        "passwordLabel": {
+          "en": "API Token",
+          "nl": "API Token",
+          "da": "API Token",
+          "de": "API-Token",
+          "es": "Token API",
+          "fr": "Jeton API",
+          "it": "Token API",
+          "no": "API Token",
+          "sv": "API-token",
+          "pl": "Token API",
+          "ru": "API токен",
+          "ko": "API 토큰",
+          "ar": "رمز API"
+        },
+        "passwordPlaceholder": {
+          "en": "My account>User name>API Token",
+          "nl": "Mijn account>Gebruikersnaam>API Token",
+          "da": "Min konto>Brugernavn>API Token",
+          "de": "Mein Konto>Benutzername>API-Token",
+          "es": "Mi cuenta>Nombre de usuario>Token API",
+          "fr": "Mon compte>Nom d'utilisateur>Jeton API",
+          "it": "Il mio account>Nome utente>Token API",
+          "no": "Min konto>Brukernavn>API Token",
+          "sv": "Mitt konto>Användarnamn>API-token",
+          "pl": "Moje konto>Nazwa użytkownika>Token API",
+          "ru": "Мой аккаунт>Имя пользователя>API токен",
+          "ko": "내 계정>사용자 이름>API 토큰",
+          "ar": "حسابي>اسم المستخدم>رمز API"
+        },
         "logo": "../assets/images/small.png"
       }
     },
-		{
-			"id": "list_devices",
-			"template": "list_devices",
-			"navigation": {
-				"next": "add_devices"
-			}
-		},
-		{
-			"id": "add_devices",
-			"template": "add_devices"
-		}
-	]
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
 }

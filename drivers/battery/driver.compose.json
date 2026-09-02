@@ -26,15 +26,15 @@
     },
     "measure_power.bat2": {
       "title": {
-        "en": "Battery 2 Power",
-        "nl": "Batterij 2 Vermogen",
-        "da": "Batteri 2 Effekt",
+        "en": "Battery 2 power",
+        "nl": "Batterij 2 vermogen",
+        "da": "Batteri 2 effekt",
         "de": "Batterie 2 Leistung",
-        "es": "Potencia Batería 2",
-        "fr": "Puissance Batterie 2",
-        "it": "Potenza Batteria 2",
-        "no": "Batteri 2 Effekt",
-        "sv": "Batteri 2 Effekt",
+        "es": "Potencia batería 2",
+        "fr": "Puissance batterie 2",
+        "it": "Potenza batteria 2",
+        "no": "Batteri 2 effekt",
+        "sv": "Batteri 2 effekt",
         "pl": "Moc baterii 2",
         "ru": "Мощность батареи 2",
         "ko": "배터리 2 전력",
@@ -50,7 +50,9 @@
     "local",
     "cloud"
   ],
-  "connectivity": ["cloud"],
+  "connectivity": [
+    "cloud"
+  ],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.png",
     "large": "{{driverAssetsPath}}/images/large.png",
@@ -61,21 +63,49 @@
       "id": "login_credentials",
       "template": "login_credentials",
       "options": {
-        "usernameLabel": { "en": "Username", "nl": "Gebruikersnaam", "da": "Brugernavn", "de": "Benutzername", "es": "Nombre de usuario", "fr": "Nom d'utilisateur", "it": "Nome utente", "no": "Brukernavn", "sv": "Användarnamn", "pl": "Nazwa użytkownika", "ru": "Имя пользователя", "ko": "사용자 이름", "ar": "اسم المستخدم" },
-        "passwordLabel": { "en": "Password", "nl": "Wachtwoord", "da": "Adgangskode", "de": "Passwort", "es": "Contraseña", "fr": "Mot de passe", "it": "Password", "no": "Passord", "sv": "Lösenord", "pl": "Hasło", "ru": "Пароль", "ko": "비밀번호", "ar": "كلمة المرور" },
+        "usernameLabel": {
+          "en": "Username",
+          "nl": "Gebruikersnaam",
+          "da": "Brugernavn",
+          "de": "Benutzername",
+          "es": "Nombre de usuario",
+          "fr": "Nom d'utilisateur",
+          "it": "Nome utente",
+          "no": "Brukernavn",
+          "sv": "Användarnamn",
+          "pl": "Nazwa użytkownika",
+          "ru": "Имя пользователя",
+          "ko": "사용자 이름",
+          "ar": "اسم المستخدم"
+        },
+        "passwordLabel": {
+          "en": "Password",
+          "nl": "Wachtwoord",
+          "da": "Adgangskode",
+          "de": "Passwort",
+          "es": "Contraseña",
+          "fr": "Mot de passe",
+          "it": "Password",
+          "no": "Passord",
+          "sv": "Lösenord",
+          "pl": "Hasło",
+          "ru": "Пароль",
+          "ko": "비밀번호",
+          "ar": "كلمة المرور"
+        },
         "logo": "../assets/images/small.png"
       }
     },
-		{
-			"id": "list_devices",
-			"template": "list_devices",
-			"navigation": {
-				"next": "add_devices"
-			}
-		},
-		{
-			"id": "add_devices",
-			"template": "add_devices"
-		}
-	]
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
 }

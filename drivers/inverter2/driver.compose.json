@@ -41,7 +41,7 @@
     },
     "measure_power": {
       "title": {
-        "en": "Solar Power (AC)",
+        "en": "Solar power (AC)",
         "nl": "Zonnevermogen (AC)",
         "da": "Soleffekt (AC)",
         "de": "Solarleistung (AC)",
@@ -59,7 +59,7 @@
     },
     "measure_power.dc_solar": {
       "title": {
-        "en": "Solar Power (DC)",
+        "en": "Solar power (DC)",
         "nl": "Zonnevermogen (DC)",
         "da": "Soleffekt (DC)",
         "de": "Solarleistung (DC)",
@@ -95,7 +95,7 @@
     },
     "measure_power.ac_inverter": {
       "title": {
-        "en": "Inverter Power (AC)",
+        "en": "Inverter power (AC)",
         "nl": "Omvormer vermogen (AC)",
         "da": "Inverter effekt (AC)",
         "de": "Wechselrichterleistung (AC)",

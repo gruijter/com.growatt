@@ -372,15 +372,15 @@
         },
         "measure_power.bat2": {
           "title": {
-            "en": "Battery 2 Power",
-            "nl": "Batterij 2 Vermogen",
-            "da": "Batteri 2 Effekt",
+            "en": "Battery 2 power",
+            "nl": "Batterij 2 vermogen",
+            "da": "Batteri 2 effekt",
             "de": "Batterie 2 Leistung",
-            "es": "Potencia Batería 2",
-            "fr": "Puissance Batterie 2",
-            "it": "Potenza Batteria 2",
-            "no": "Batteri 2 Effekt",
-            "sv": "Batteri 2 Effekt",
+            "es": "Potencia batería 2",
+            "fr": "Puissance batterie 2",
+            "it": "Potenza batteria 2",
+            "no": "Batteri 2 effekt",
+            "sv": "Batteri 2 effekt",
             "pl": "Moc baterii 2",
             "ru": "Мощность батареи 2",
             "ko": "배터리 2 전력",
@@ -607,15 +607,15 @@
         },
         "measure_power.bat2": {
           "title": {
-            "en": "Battery 2 Power",
-            "nl": "Batterij 2 Vermogen",
-            "da": "Batteri 2 Effekt",
+            "en": "Battery 2 power",
+            "nl": "Batterij 2 vermogen",
+            "da": "Batteri 2 effekt",
             "de": "Batterie 2 Leistung",
-            "es": "Potencia Batería 2",
-            "fr": "Puissance Batterie 2",
-            "it": "Potenza Batteria 2",
-            "no": "Batteri 2 Effekt",
-            "sv": "Batteri 2 Effekt",
+            "es": "Potencia batería 2",
+            "fr": "Puissance batterie 2",
+            "it": "Potenza batteria 2",
+            "no": "Batteri 2 effekt",
+            "sv": "Batteri 2 effekt",
             "pl": "Moc baterii 2",
             "ru": "Мощность батареи 2",
             "ko": "배터리 2 전력",
@@ -1552,7 +1552,7 @@
         },
         "measure_power": {
           "title": {
-            "en": "Solar Power (AC)",
+            "en": "Solar power (AC)",
             "nl": "Zonnevermogen (AC)",
             "da": "Soleffekt (AC)",
             "de": "Solarleistung (AC)",
@@ -1570,7 +1570,7 @@
         },
         "measure_power.dc_solar": {
           "title": {
-            "en": "Solar Power (DC)",
+            "en": "Solar power (DC)",
             "nl": "Zonnevermogen (DC)",
             "da": "Soleffekt (DC)",
             "de": "Solarleistung (DC)",
@@ -1606,7 +1606,7 @@
         },
         "measure_power.ac_inverter": {
           "title": {
-            "en": "Inverter Power (AC)",
+            "en": "Inverter power (AC)",
             "nl": "Omvormer vermogen (AC)",
             "da": "Inverter effekt (AC)",
             "de": "Wechselrichterleistung (AC)",
@@ -3038,7 +3038,7 @@
     "charge_setpoint": {
       "type": "number",
       "title": {
-        "en": "Target Power",
+        "en": "Target power",
         "nl": "Doelvermogen",
         "da": "Mål effekt",
         "de": "Zielleistung",
