@@ -66,6 +66,6 @@
     "en": "Add inverter setting to use Homey time for daily reset. Fix powerLimit setting. Extend transient error and permission_denied exclusion. Extend diagnostic log."
   },
   "2.4.0": {
-    "en": "Add inverter_efficiency. Fix/improve solar inverter power and energy mapping. Fix grid meter energy mapping. Fix local timezone handling. Fix/improve NOAH mapping. Disregard ghost battery data. Adaptive api queueing. Fix translations. Shorten long titles. Fix model naming."
+    "en": "Add temperature and inverter_efficiency. Add measure_current for grid meter. Fix/improve solar inverter power and energy mapping. Fix grid meter energy mapping. Fix local timezone handling. Fix/improve NOAH mapping. Disregard ghost battery data. Adaptive api queueing. Fix translations. Shorten long titles. Fix model naming."
   }
 }
