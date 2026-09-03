@@ -1,3 +1,21 @@
 {
-  "extends": "athom/homey-app"
+  "extends": "athom/homey-app",
+  "overrides": [
+    {
+      "files": [
+        "test/**/*.js",
+        "zzz_*.js"
+      ],
+      "rules": {
+        "no-console": "off",
+        "no-process-exit": "off",
+        "consistent-return": "off",
+        "no-await-in-loop": "off",
+        "mocha/no-setup-in-describe": "off",
+        "global-require": "off",
+        "import/extensions": "off",
+        "max-classes-per-file": "off"
+      }
+    }
+  ]
 }

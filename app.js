@@ -22,6 +22,7 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 const Homey = require('homey');
 const Growatt = require('growatt'); // v1 API
 const Api = require('./lib/growatt_api'); // v2 API
+const growattMap = require('./lib/growattMap');
 
 // Cloud data does not arrive on the wall clock. The datalogger uploads on its own free-running
 // timer - measured at ~361 s on three separate sites, drifting steadily against real time - while
@@ -314,14 +315,7 @@ module.exports = class MyApp extends Homey.App {
           Object.values(lastData).forEach((list) => {
             if (Array.isArray(list)) {
               list.forEach((d) => {
-                if (d.serialNum && !d.deviceSn) d.deviceSn = d.serialNum;
-                if (d.inverterId && !d.deviceSn) d.deviceSn = d.inverterId;
-                if (d.mixSn && !d.deviceSn) d.deviceSn = d.mixSn;
-                if (d.spaSn && !d.deviceSn) d.deviceSn = d.spaSn;
-                if (d.hpsSn && !d.deviceSn) d.deviceSn = d.hpsSn;
-                if (d.tlxSn && !d.deviceSn) d.deviceSn = d.tlxSn;
-                if (d.maxSn && !d.deviceSn) d.deviceSn = d.maxSn;
-                if (d.pcsSn && !d.deviceSn) d.deviceSn = d.pcsSn;
+                if (!d.deviceSn) d.deviceSn = growattMap.deviceSnOf(d);
               });
             }
           });
