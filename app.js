@@ -209,7 +209,11 @@ module.exports = class MyApp extends Homey.App {
             }
           });
         }
-        this.homey.emit('lastData', lastData); // emit info to devices
+        // Pass the polled group along with the payload. The emit is global, so without it every
+        // device of this deviceType on EVERY account received this - and each one that did not
+        // find its own SN logged a mismatch, once per poll per foreign account. Same {device}
+        // contract as the errorInfo emit below, matched on its comma-joined SN list.
+        this.homey.emit('lastData', { lastData, device }); // emit info to devices
         return lastData;
       })();
 
