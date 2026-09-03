@@ -49,6 +49,12 @@ module.exports = class MyApp extends Homey.App {
     this.cooldownNotified = {}; // one log line per rate-limit cooldown, not per skipped poll
     this.registerFlowListeners(); // register flow listeners
 
+    // The adaptive limiter this replaced kept its learned spacing under `apiRateLimits`. Nothing
+    // reads that any more, so upgrading users would carry a dead settings entry forever.
+    try {
+      if (this.homey.settings.get('apiRateLimits') !== null) this.homey.settings.unset('apiRateLimits');
+    } catch (error) { /* best effort - a leftover key is not worth failing startup over */ }
+
     // Start the per-device schedules 15 seconds after app boot, to let devices initialize first
     this.bootPollTimeoutId = this.homey.setTimeout(() => {
       this.log('Starting per-device polling');
