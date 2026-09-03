@@ -115,6 +115,57 @@
         "ar": "الطاقة المصدرة"
       },
       "decimals": 2
+    },
+    "measure_current.1": {
+      "title": {
+        "en": "Current phase 1",
+        "nl": "Stroom fase 1",
+        "da": "Strøm fase 1",
+        "de": "Strom Phase 1",
+        "es": "Corriente fase 1",
+        "fr": "Courant phase 1",
+        "it": "Corrente fase 1",
+        "no": "Strøm fase 1",
+        "sv": "Ström fas 1",
+        "pl": "Prąd faza 1",
+        "ru": "Ток фаза 1",
+        "ko": "전류 위상 1",
+        "ar": "التيار المرحلة 1"
+      }
+    },
+    "measure_current.2": {
+      "title": {
+        "en": "Current phase 2",
+        "nl": "Stroom fase 2",
+        "da": "Strøm fase 2",
+        "de": "Strom Phase 2",
+        "es": "Corriente fase 2",
+        "fr": "Courant phase 2",
+        "it": "Corrente fase 2",
+        "no": "Strøm fase 2",
+        "sv": "Ström fas 2",
+        "pl": "Prąd faza 2",
+        "ru": "Ток фаза 2",
+        "ko": "전류 위상 2",
+        "ar": "التيار المرحلة 2"
+      }
+    },
+    "measure_current.3": {
+      "title": {
+        "en": "Current phase 3",
+        "nl": "Stroom fase 3",
+        "da": "Strøm fase 3",
+        "de": "Strom Phase 3",
+        "es": "Corriente fase 3",
+        "fr": "Courant phase 3",
+        "it": "Corrente fase 3",
+        "no": "Strøm fase 3",
+        "sv": "Ström fas 3",
+        "pl": "Prąd faza 3",
+        "ru": "Ток фаза 3",
+        "ko": "전류 위상 3",
+        "ar": "التيار المرحلة 3"
+      }
     }
   },
   "energy": {
