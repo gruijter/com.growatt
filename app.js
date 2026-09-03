@@ -127,6 +127,19 @@ module.exports = class MyApp extends Homey.App {
           username, token, host, deviceSn, deviceType,
         };
       });
+
+      // Every device listens for `lastData` and `errorInfo`, so Node's default ceiling of ten
+      // listeners per event is reached at six devices and warns about a leak that is not one: they
+      // are removed again in common_device#onUninit. The broadcast is deliberate - one poll feeds
+      // every device sharing that serial, and the same inverter is commonly paired as an
+      // inverter2, a meter2 and a battery2 at once. So lift the ceiling to what the device count
+      // actually needs rather than disabling the check, which would hide a real leak later.
+      const needed = (devices.length * 2) + 10;
+      if (typeof this.homey.setMaxListeners === 'function'
+        && (this.homey.getMaxListeners?.() ?? 10) < needed) {
+        this.homey.setMaxListeners(needed);
+      }
+
       return Promise.resolve(this.devices);
     } catch (error) {
       this.error(error);

@@ -67,5 +67,8 @@
   },
   "2.4.0": {
     "en": "Add temperature and inverter_efficiency. Add measure_current for grid meter. Fix/improve solar inverter power and energy mapping. Fix grid meter energy mapping. Fix local timezone handling. Fix/improve NOAH mapping. Disregard ghost battery data. Adaptive api queueing. Fix translations. Shorten long titles. Fix model naming."
+  },
+  "2.5.0": {
+    "en": "JIT synced polling. Fix pairing errors. Improve pairing speed. Fix target power. Cleanup unused device settings. Added test suite."
   }
 }
