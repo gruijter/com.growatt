@@ -38,7 +38,7 @@ async function simulate({
   const app = Object.create(MyApp.prototype);
   app.log = () => {};
   app.error = () => {};
-  app.devices = { A: device };
+  app.devices = { [MyApp.pollKey(device)]: device };
   app.pollSchedules = {};
   app.homey = {
     setTimeout: (fn, ms) => {
@@ -61,19 +61,24 @@ async function simulate({
     }
     lastServed = now;
     polls.push({ at: now, uploadAt, staleness: now - uploadAt });
-    return { [deviceType]: [{ deviceSn: 'A', ...(noTimestamp ? {} : { calendar: uploadAt + skew }) }] };
+    // noah carries its upload time as a numeric `time`, the others as `calendar`
+    const stamp = deviceType === 'noah' ? { time: uploadAt + skew } : { calendar: uploadAt + skew };
+    return { [deviceType]: [{ deviceSn: 'A', ...(noTimestamp ? {} : stamp) }] };
   };
 
-  app.reconcileSchedules();
-  while (now < T0 + (8 * 3600 * 1000)) {
-    timers.sort((x, y) => x.at - y.at);
-    const timer = timers.shift();
-    if (!timer) break;
-    now = timer.at;
-    timer.fn();
-    for (let i = 0; i < 20; i++) await new Promise((r) => setImmediate(r));
+  try {
+    app.reconcileSchedules();
+    while (now < T0 + (8 * 3600 * 1000)) {
+      timers.sort((x, y) => x.at - y.at);
+      const timer = timers.shift();
+      if (!timer) break;
+      now = timer.at;
+      timer.fn();
+      for (let i = 0; i < 20; i++) await new Promise((r) => setImmediate(r));
+    }
+  } finally {
+    Date.now = realNow;
   }
-  Date.now = realNow;
 
   const uploads = new Set(polls.map((p) => p.uploadAt));
   const total = Math.floor((8 * 3600 * 1000) / cadence);
@@ -115,6 +120,22 @@ module.exports = async (t) => {
     t.eq(r.refusals, 0, `Homey clock ${clockErr / 1000}s out: still no rate-limit breach`);
     t.ok(r.captured >= r.total - 1, `Homey clock ${clockErr / 1000}s out: still captures uploads (${r.captured}/${r.total})`);
   }
+
+  // devices on one serial keep a schedule each, so repairing one of them takes effect
+  const app = Object.create(MyApp.prototype);
+  Object.assign(app, {
+    log: () => {}, pollSchedules: {}, homey: { setTimeout: () => 1, clearTimeout: () => {} },
+  });
+  const inv = {
+    username: 'u', token: 'new', host: 'h', deviceSn: 'A', deviceType: 'min',
+  };
+  const meter = { ...inv, token: 'old', deviceType: 'inv' };
+  app.devices = { [MyApp.pollKey(inv)]: inv, [MyApp.pollKey(meter)]: meter };
+  app.reconcileSchedules();
+  t.eq(Object.keys(app.pollSchedules).length, 2, 'one serial with two credentials/types: two schedules');
+  delete app.devices[MyApp.pollKey(meter)];
+  app.reconcileSchedules();
+  t.ok(Object.keys(app.pollSchedules).length === 1 && app.pollSchedules[MyApp.pollKey(inv)], 'the sibling repaired to the same identity: its old schedule stops, the other stays');
 
   const blind = await simulate({ offset: 200000, noTimestamp: true });
   t.ok(blind.refusals === 0 && blind.captured >= blind.total, `payload without a timestamp falls back to fixed interval (${blind.captured}/${blind.total}, ${blind.avgStale}s)`);

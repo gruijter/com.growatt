@@ -44,9 +44,9 @@ module.exports = class MyApp extends Homey.App {
   async onInit() {
     capture.setLog((line) => this.log(line));
     capture.arm('app start', { force: true });
-    this.devices = {};// { serial: { username, token, serial, type } }; is filled by Homey devices through getSessions
+    this.devices = {}; // pollKey: { username, token, host, deviceSn, deviceType }
     this.apiSessions = {}; // username__token: apiSession
-    this.pollSchedules = {}; // deviceSn: { timeoutId, cadence, lastUploadAt, lastPollAt }
+    this.pollSchedules = {}; // pollKey: { timeoutId, cadence, lastUploadAt, lastPollAt }
     this.everyXminutes(5); // reconciles the per-device schedules; the polls themselves are theirs
     this.pendingPolls = {}; // prevents concurrent polling
     this.cooldownNotified = {}; // one log line per rate-limit cooldown, not per skipped poll
@@ -119,13 +119,16 @@ module.exports = class MyApp extends Homey.App {
       const batteries = this.homey.drivers.getDriver('battery2').getDevices();
       const devices = [...inverters, ...meters, ...batteries];
       this.devices = {}; // so deleted devices are not polled
+      // one entry per distinct poll: devices sharing a serial (inverter2/meter2/battery2) can differ
+      // in credentials or type after a repair
       devices.forEach((device) => {
         const {
           username, token, host, deviceSn, deviceType,
         } = device.getSettings();
-        this.devices[`${deviceSn}`] = {
+        const entry = {
           username, token, host, deviceSn, deviceType,
         };
+        this.devices[MyApp.pollKey(entry)] = entry;
       });
 
       return Promise.resolve(this.devices);
@@ -189,21 +192,23 @@ module.exports = class MyApp extends Homey.App {
     return 0;
   }
 
+  static pollKey(device) {
+    return `${device.username}|${device.token}|${device.host}|${device.deviceType}|${device.deviceSn}`;
+  }
+
   reconcileSchedules() {
-    // a repair can change a device's credentials or type: restart its schedule with the new ones
-    const identity = (d) => `${d.username}|${d.token}|${d.host}|${d.deviceType}`;
-    Object.keys(this.pollSchedules).forEach((deviceSn) => {
-      const schedule = this.pollSchedules[deviceSn];
-      if (this.devices[deviceSn] && schedule.identity === identity(this.devices[deviceSn])) return;
+    Object.keys(this.pollSchedules).forEach((key) => {
+      if (this.devices[key]) return;
+      const schedule = this.pollSchedules[key];
       if (schedule.timeoutId) this.homey.clearTimeout(schedule.timeoutId);
-      delete this.pollSchedules[deviceSn];
-      this.log('Stopped polling', deviceSn);
+      delete this.pollSchedules[key];
+      this.log('Stopped polling', schedule.label);
     });
     let added = 0;
-    Object.values(this.devices).forEach((device) => {
-      if (this.pollSchedules[device.deviceSn]) return;
-      this.pollSchedules[device.deviceSn] = {
-        identity: identity(device), timeoutId: null, cadence: this.pollProfile(device.deviceType).cadence, lastUploadAt: 0, lastPollAt: 0, skew: 0, phase: 0,
+    Object.entries(this.devices).forEach(([key, device]) => {
+      if (this.pollSchedules[key]) return;
+      this.pollSchedules[key] = {
+        label: `${device.deviceSn} (${device.deviceType})`, timeoutId: null, cadence: this.pollProfile(device.deviceType).cadence, lastUploadAt: 0, lastPollAt: 0, skew: 0, phase: 0,
       };
       this.scheduleDevicePoll(device, added * POLL_STAGGER);
       added += 1;
@@ -212,7 +217,7 @@ module.exports = class MyApp extends Homey.App {
   }
 
   scheduleDevicePoll(device, delay) {
-    const schedule = this.pollSchedules[device.deviceSn];
+    const schedule = this.pollSchedules[MyApp.pollKey(device)];
     if (!schedule) return;
     if (schedule.timeoutId) this.homey.clearTimeout(schedule.timeoutId);
     schedule.timeoutId = this.homey.setTimeout(() => {
@@ -222,11 +227,12 @@ module.exports = class MyApp extends Homey.App {
 
   // Poll one device, then schedule the next poll just after its next upload.
   async runDevicePoll(device) {
-    const schedule = this.pollSchedules[device.deviceSn];
+    const key = MyApp.pollKey(device);
+    const schedule = this.pollSchedules[key];
     if (!schedule) return;
     schedule.lastPollAt = Date.now();
     const lastData = await this.pollDevice(device).catch(() => null);
-    if (this.pollSchedules[device.deviceSn] !== schedule) return; // restarted meanwhile
+    if (this.pollSchedules[key] !== schedule) return; // restarted meanwhile
 
     const uploadAt = MyApp.uploadTimeOf(lastData, device.deviceSn);
     const { minInterval, bounds } = this.pollProfile(device.deviceType);
@@ -267,7 +273,7 @@ module.exports = class MyApp extends Homey.App {
 
   async pollDevice(device) {
     try {
-      const cacheKey = `${device.deviceSn}_${device.deviceType}`;
+      const cacheKey = MyApp.pollKey(device);
       if (this.pendingPolls[cacheKey]) {
         return await this.pendingPolls[cacheKey];
       }
@@ -313,7 +319,7 @@ module.exports = class MyApp extends Homey.App {
     } catch (error) {
       const msg = error.message || error;
       this.log('Error fetching last data for', `${device.username} ${device.deviceSn}: ${msg}`);
-      const cacheKey = `${device.deviceSn}_${device.deviceType}`;
+      const cacheKey = MyApp.pollKey(device);
       delete this.pendingPolls[cacheKey];
       // listeners match the reason; the message is localized
       this.homey.emit('errorInfo', { device, error: msg, reason: error.reason });

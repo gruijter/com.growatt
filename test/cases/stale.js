@@ -53,9 +53,49 @@ const fakeDevice = (Device, growatt) => {
   return dev;
 };
 
+const DAY = 24 * 60 * 60 * 1000;
+
+// synthetic: no capture needed
+async function clockCases(t, Device) {
+  const realNow = Date.now;
+  let now = 1792462237436;
+  Date.now = () => now;
+  try {
+    const d = fakeDevice(Device, { getDeviceList2: async () => ({ data: [] }) });
+    d.deviceType = 'min';
+    // a datalogger clock ten days behind: the first record looks stale, the next upload clears it
+    await d.handleLastData({ calendar: now - (10 * DAY), time: 'x' });
+    t.ok(!d.state.available, 'first record dated ten days back: unavailable');
+    now += 6 * 60 * 1000;
+    await d.handleLastData({ calendar: now - (10 * DAY) + (6 * 60 * 1000), time: 'x' });
+    t.ok(d.state.available, 'a datalogger clock days off recovers with its next upload');
+    now += 6 * DAY;
+    await d.handleLastData({ calendar: now - (16 * DAY) + (6 * 60 * 1000), time: 'x' });
+    t.ok(d.state.available, 'the same upload for six days: still available');
+    now += 2 * DAY;
+    await d.handleLastData({ calendar: now - (18 * DAY) + (6 * 60 * 1000), time: 'x' });
+    t.ok(!d.state.available, 'the same upload for eight days on Homey\'s clock: unavailable');
+  } finally {
+    Date.now = realNow;
+  }
+  t.eq(growattMap.uploadTimeOf({ time: 1792462237436 }), 1792462237436, 'noah: the numeric `time` is its upload time');
+  t.eq(growattMap.uploadTimeOf({ time: '2026-10-20 10:06:50' }), 0, 'a `time` string alone is no upload time');
+
+  const p = fakeDevice(Device);
+  p.getSettings = () => ({ username: 'u', token: 'new' });
+  const polled = {
+    username: 'u', token: 'new', deviceSn: 'QUH4BK90AK', deviceType: 'inv',
+  };
+  t.ok(p.pollIsForUs(polled), 'a poll with our serial, credentials and type is ours');
+  t.ok(!p.pollIsForUs({ ...polled, token: 'old' }), 'a sibling still polling with the old token is not ours');
+  t.ok(!p.pollIsForUs({ ...polled, deviceType: 'min' }), 'a poll for another type of our serial is not ours');
+  t.ok(!p.pollIsForUs({ ...polled, deviceSn: 'OTHER' }), 'another serial is not ours');
+}
+
 module.exports = async (t) => {
-  if (!fixtures.available) return t.skip('no zzz_responses/ - run `node zzz_collect.js` to capture');
   const Device = loadDevice();
+  await clockCases(t, Device);
+  if (!fixtures.available) return t.skip('no zzz_responses/ - run `node zzz_collect.js` to capture');
 
   const net = fixtures.install();
   try {

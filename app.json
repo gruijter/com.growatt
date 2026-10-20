@@ -579,85 +579,6 @@
       ]
     },
     {
-      "name": {
-        "en": "Battery",
-        "nl": "Batterij",
-        "da": "Batteri",
-        "de": "Batterie",
-        "es": "Batería",
-        "fr": "Batterie",
-        "it": "Batteria",
-        "no": "Batteri",
-        "sv": "Batteri",
-        "pl": "Bateria",
-        "ru": "Батарея",
-        "ko": "배터리",
-        "ar": "بطارية"
-      },
-      "class": "battery",
-      "capabilities": [
-        "measure_power",
-        "measure_battery",
-        "battery_charging_state"
-      ],
-      "capabilitiesOptions": {
-        "measure_power": {
-          "decimals": 0
-        },
-        "meter_power.charged": {
-          "title": {
-            "en": "Charged energy",
-            "nl": "Geladen energie",
-            "da": "Opladet energi",
-            "de": "Geladene Energie",
-            "es": "Energía cargada",
-            "fr": "Énergie chargée",
-            "it": "Energia caricata",
-            "no": "Ladet energi",
-            "sv": "Laddad energi",
-            "pl": "Pobrana energia",
-            "ru": "Заряженная энергия",
-            "ko": "충전된 에너지",
-            "ar": "الطاقة المشحونة"
-          },
-          "decimals": 2
-        },
-        "meter_power.discharged": {
-          "title": {
-            "en": "Discharged energy",
-            "nl": "Ontladen energie",
-            "da": "Afladet energi",
-            "de": "Entladene Energie",
-            "es": "Energía descargada",
-            "fr": "Énergie déchargée",
-            "it": "Energia scaricata",
-            "no": "Utladet energi",
-            "sv": "Urladdad energi",
-            "pl": "Oddana energia",
-            "ru": "Разряженная энергия",
-            "ko": "방전된 에너지",
-            "ar": "الطاقة المفرغة"
-          },
-          "decimals": 2
-        }
-      },
-      "energy": {
-        "homeBattery": true,
-        "meterPowerImportedCapability": "meter_power.charged",
-        "meterPowerExportedCapability": "meter_power.discharged"
-      },
-      "platforms": [
-        "local",
-        "cloud"
-      ],
-      "connectivity": [
-        "cloud"
-      ],
-      "images": {
-        "small": "/drivers/battery2/assets/images/small.png",
-        "large": "/drivers/battery2/assets/images/large.png",
-        "xlarge": "/drivers/battery2/assets/images/xlarge.png"
-      },
       "pair": [
         {
           "id": "login_credentials",
@@ -811,6 +732,85 @@
           "template": "done"
         }
       ],
+      "name": {
+        "en": "Battery",
+        "nl": "Batterij",
+        "da": "Batteri",
+        "de": "Batterie",
+        "es": "Batería",
+        "fr": "Batterie",
+        "it": "Batteria",
+        "no": "Batteri",
+        "sv": "Batteri",
+        "pl": "Bateria",
+        "ru": "Батарея",
+        "ko": "배터리",
+        "ar": "بطارية"
+      },
+      "class": "battery",
+      "capabilities": [
+        "measure_power",
+        "measure_battery",
+        "battery_charging_state"
+      ],
+      "capabilitiesOptions": {
+        "measure_power": {
+          "decimals": 0
+        },
+        "meter_power.charged": {
+          "title": {
+            "en": "Charged energy",
+            "nl": "Geladen energie",
+            "da": "Opladet energi",
+            "de": "Geladene Energie",
+            "es": "Energía cargada",
+            "fr": "Énergie chargée",
+            "it": "Energia caricata",
+            "no": "Ladet energi",
+            "sv": "Laddad energi",
+            "pl": "Pobrana energia",
+            "ru": "Заряженная энергия",
+            "ko": "충전된 에너지",
+            "ar": "الطاقة المشحونة"
+          },
+          "decimals": 2
+        },
+        "meter_power.discharged": {
+          "title": {
+            "en": "Discharged energy",
+            "nl": "Ontladen energie",
+            "da": "Afladet energi",
+            "de": "Entladene Energie",
+            "es": "Energía descargada",
+            "fr": "Énergie déchargée",
+            "it": "Energia scaricata",
+            "no": "Utladet energi",
+            "sv": "Urladdad energi",
+            "pl": "Oddana energia",
+            "ru": "Разряженная энергия",
+            "ko": "방전된 에너지",
+            "ar": "الطاقة المفرغة"
+          },
+          "decimals": 2
+        }
+      },
+      "energy": {
+        "homeBattery": true,
+        "meterPowerImportedCapability": "meter_power.charged",
+        "meterPowerExportedCapability": "meter_power.discharged"
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/battery2/assets/images/small.png",
+        "large": "/drivers/battery2/assets/images/large.png",
+        "xlarge": "/drivers/battery2/assets/images/xlarge.png"
+      },
       "id": "battery2",
       "settings": [
         {
@@ -1561,6 +1561,159 @@
       ]
     },
     {
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Get your API token in the ShinePhone app",
+              "nl": "Haal je API token op in de ShinePhone app",
+              "da": "Få din API-token i ShinePhone-appen",
+              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+              "es": "Obtenga su token API en la aplicación ShinePhone",
+              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+              "it": "Ottieni il tuo token API nell'app ShinePhone",
+              "no": "Få API-tokenet ditt i ShinePhone-appen",
+              "sv": "Hämta din API-token i ShinePhone-appen",
+              "pl": "Pobierz swój token API w aplikacji ShinePhone",
+              "ru": "Получите ваш API токен в приложении ShinePhone",
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
+            },
+            "usernameLabel": {
+              "en": "Username",
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
+            },
+            "passwordLabel": {
+              "en": "API Token",
+              "nl": "API Token",
+              "da": "API Token",
+              "de": "API-Token",
+              "es": "Token API",
+              "fr": "Jeton API",
+              "it": "Token API",
+              "no": "API Token",
+              "sv": "API-token",
+              "pl": "Token API",
+              "ru": "API токен",
+              "ko": "API 토큰",
+              "ar": "رمز API"
+            },
+            "passwordPlaceholder": {
+              "en": "My account>User name>API Token",
+              "nl": "Mijn account>Gebruikersnaam>API Token",
+              "da": "Min konto>Brugernavn>API Token",
+              "de": "Mein Konto>Benutzername>API-Token",
+              "es": "Mi cuenta>Nombre de usuario>Token API",
+              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
+              "it": "Il mio account>Nome utente>Token API",
+              "no": "Min konto>Brukernavn>API Token",
+              "sv": "Mitt konto>Användarnamn>API-token",
+              "pl": "Moje konto>Nazwa użytkownika>Token API",
+              "ru": "Мой аккаунт>Имя пользователя>API токен",
+              "ko": "내 계정>사용자 이름>API 토큰",
+              "ar": "حسابي>اسم المستخدم>رمز API"
+            },
+            "logo": "../assets/images/small.png"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Get your API token in the ShinePhone app",
+              "nl": "Haal je API token op in de ShinePhone app",
+              "da": "Få din API-token i ShinePhone-appen",
+              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+              "es": "Obtenga su token API en la aplicación ShinePhone",
+              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+              "it": "Ottieni il tuo token API nell'app ShinePhone",
+              "no": "Få API-tokenet ditt i ShinePhone-appen",
+              "sv": "Hämta din API-token i ShinePhone-appen",
+              "pl": "Pobierz swój token API w aplikacji ShinePhone",
+              "ru": "Получите ваш API токен в приложении ShinePhone",
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
+            },
+            "usernameLabel": {
+              "en": "Username",
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
+            },
+            "passwordLabel": {
+              "en": "API Token",
+              "nl": "API Token",
+              "da": "API Token",
+              "de": "API-Token",
+              "es": "Token API",
+              "fr": "Jeton API",
+              "it": "Token API",
+              "no": "API Token",
+              "sv": "API-token",
+              "pl": "Token API",
+              "ru": "API токен",
+              "ko": "API 토큰",
+              "ar": "رمز API"
+            },
+            "passwordPlaceholder": {
+              "en": "My account>User name>API Token",
+              "nl": "Mijn account>Gebruikersnaam>API Token",
+              "da": "Min konto>Brugernavn>API Token",
+              "de": "Mein Konto>Benutzername>API-Token",
+              "es": "Mi cuenta>Nombre de usuario>Token API",
+              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
+              "it": "Il mio account>Nome utente>Token API",
+              "no": "Min konto>Brukernavn>API Token",
+              "sv": "Mitt konto>Användarnamn>API-token",
+              "pl": "Moje konto>Nazwa użytkownika>Token API",
+              "ru": "Мой аккаунт>Имя пользователя>API токен",
+              "ko": "내 계정>사용자 이름>API 토큰",
+              "ar": "حسابي>اسم المستخدم>رمز API"
+            },
+            "logo": "../assets/images/small.png"
+          }
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
       "name": {
         "en": "Solar inverter",
         "nl": "PV omvormer",
@@ -1742,159 +1895,6 @@
         "large": "/drivers/inverter2/assets/images/large.png",
         "xlarge": "/drivers/inverter2/assets/images/xlarge.png"
       },
-      "pair": [
-        {
-          "id": "login_credentials",
-          "template": "login_credentials",
-          "options": {
-            "title": {
-              "en": "Get your API token in the ShinePhone app",
-              "nl": "Haal je API token op in de ShinePhone app",
-              "da": "Få din API-token i ShinePhone-appen",
-              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
-              "es": "Obtenga su token API en la aplicación ShinePhone",
-              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
-              "it": "Ottieni il tuo token API nell'app ShinePhone",
-              "no": "Få API-tokenet ditt i ShinePhone-appen",
-              "sv": "Hämta din API-token i ShinePhone-appen",
-              "pl": "Pobierz swój token API w aplikacji ShinePhone",
-              "ru": "Получите ваш API токен в приложении ShinePhone",
-              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
-              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
-            },
-            "usernameLabel": {
-              "en": "Username",
-              "nl": "Gebruikersnaam",
-              "da": "Brugernavn",
-              "de": "Benutzername",
-              "es": "Nombre de usuario",
-              "fr": "Nom d'utilisateur",
-              "it": "Nome utente",
-              "no": "Brukernavn",
-              "sv": "Användarnamn",
-              "pl": "Nazwa użytkownika",
-              "ru": "Имя пользователя",
-              "ko": "사용자 이름",
-              "ar": "اسم المستخدم"
-            },
-            "passwordLabel": {
-              "en": "API Token",
-              "nl": "API Token",
-              "da": "API Token",
-              "de": "API-Token",
-              "es": "Token API",
-              "fr": "Jeton API",
-              "it": "Token API",
-              "no": "API Token",
-              "sv": "API-token",
-              "pl": "Token API",
-              "ru": "API токен",
-              "ko": "API 토큰",
-              "ar": "رمز API"
-            },
-            "passwordPlaceholder": {
-              "en": "My account>User name>API Token",
-              "nl": "Mijn account>Gebruikersnaam>API Token",
-              "da": "Min konto>Brugernavn>API Token",
-              "de": "Mein Konto>Benutzername>API-Token",
-              "es": "Mi cuenta>Nombre de usuario>Token API",
-              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
-              "it": "Il mio account>Nome utente>Token API",
-              "no": "Min konto>Brukernavn>API Token",
-              "sv": "Mitt konto>Användarnamn>API-token",
-              "pl": "Moje konto>Nazwa użytkownika>Token API",
-              "ru": "Мой аккаунт>Имя пользователя>API токен",
-              "ko": "내 계정>사용자 이름>API 토큰",
-              "ar": "حسابي>اسم المستخدم>رمز API"
-            },
-            "logo": "../assets/images/small.png"
-          }
-        },
-        {
-          "id": "list_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_devices"
-          }
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
-        }
-      ],
-      "repair": [
-        {
-          "id": "login_credentials",
-          "template": "login_credentials",
-          "options": {
-            "title": {
-              "en": "Get your API token in the ShinePhone app",
-              "nl": "Haal je API token op in de ShinePhone app",
-              "da": "Få din API-token i ShinePhone-appen",
-              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
-              "es": "Obtenga su token API en la aplicación ShinePhone",
-              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
-              "it": "Ottieni il tuo token API nell'app ShinePhone",
-              "no": "Få API-tokenet ditt i ShinePhone-appen",
-              "sv": "Hämta din API-token i ShinePhone-appen",
-              "pl": "Pobierz swój token API w aplikacji ShinePhone",
-              "ru": "Получите ваш API токен в приложении ShinePhone",
-              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
-              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
-            },
-            "usernameLabel": {
-              "en": "Username",
-              "nl": "Gebruikersnaam",
-              "da": "Brugernavn",
-              "de": "Benutzername",
-              "es": "Nombre de usuario",
-              "fr": "Nom d'utilisateur",
-              "it": "Nome utente",
-              "no": "Brukernavn",
-              "sv": "Användarnamn",
-              "pl": "Nazwa użytkownika",
-              "ru": "Имя пользователя",
-              "ko": "사용자 이름",
-              "ar": "اسم المستخدم"
-            },
-            "passwordLabel": {
-              "en": "API Token",
-              "nl": "API Token",
-              "da": "API Token",
-              "de": "API-Token",
-              "es": "Token API",
-              "fr": "Jeton API",
-              "it": "Token API",
-              "no": "API Token",
-              "sv": "API-token",
-              "pl": "Token API",
-              "ru": "API токен",
-              "ko": "API 토큰",
-              "ar": "رمز API"
-            },
-            "passwordPlaceholder": {
-              "en": "My account>User name>API Token",
-              "nl": "Mijn account>Gebruikersnaam>API Token",
-              "da": "Min konto>Brugernavn>API Token",
-              "de": "Mein Konto>Benutzername>API-Token",
-              "es": "Mi cuenta>Nombre de usuario>Token API",
-              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
-              "it": "Il mio account>Nome utente>Token API",
-              "no": "Min konto>Brukernavn>API Token",
-              "sv": "Mitt konto>Användarnamn>API-token",
-              "pl": "Moje konto>Nazwa użytkownika>Token API",
-              "ru": "Мой аккаунт>Имя пользователя>API токен",
-              "ko": "내 계정>사용자 이름>API 토큰",
-              "ar": "حسابي>اسم المستخدم>رمز API"
-            },
-            "logo": "../assets/images/small.png"
-          }
-        },
-        {
-          "id": "done",
-          "template": "done"
-        }
-      ],
       "id": "inverter2",
       "settings": [
         {
@@ -2628,6 +2628,159 @@
       ]
     },
     {
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Get your API token in the ShinePhone app",
+              "nl": "Haal je API token op in de ShinePhone app",
+              "da": "Få din API-token i ShinePhone-appen",
+              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+              "es": "Obtenga su token API en la aplicación ShinePhone",
+              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+              "it": "Ottieni il tuo token API nell'app ShinePhone",
+              "no": "Få API-tokenet ditt i ShinePhone-appen",
+              "sv": "Hämta din API-token i ShinePhone-appen",
+              "pl": "Pobierz swój token API w aplikacji ShinePhone",
+              "ru": "Получите ваш API токен в приложении ShinePhone",
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
+            },
+            "usernameLabel": {
+              "en": "Username",
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
+            },
+            "passwordLabel": {
+              "en": "API Token",
+              "nl": "API Token",
+              "da": "API Token",
+              "de": "API-Token",
+              "es": "Token API",
+              "fr": "Jeton API",
+              "it": "Token API",
+              "no": "API Token",
+              "sv": "API-token",
+              "pl": "Token API",
+              "ru": "API токен",
+              "ko": "API 토큰",
+              "ar": "رمز API"
+            },
+            "passwordPlaceholder": {
+              "en": "My account>User name>API Token",
+              "nl": "Mijn account>Gebruikersnaam>API Token",
+              "da": "Min konto>Brugernavn>API Token",
+              "de": "Mein Konto>Benutzername>API-Token",
+              "es": "Mi cuenta>Nombre de usuario>Token API",
+              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
+              "it": "Il mio account>Nome utente>Token API",
+              "no": "Min konto>Brukernavn>API Token",
+              "sv": "Mitt konto>Användarnamn>API-token",
+              "pl": "Moje konto>Nazwa użytkownika>Token API",
+              "ru": "Мой аккаунт>Имя пользователя>API токен",
+              "ko": "내 계정>사용자 이름>API 토큰",
+              "ar": "حسابي>اسم المستخدم>رمز API"
+            },
+            "logo": "../assets/images/small.png"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Get your API token in the ShinePhone app",
+              "nl": "Haal je API token op in de ShinePhone app",
+              "da": "Få din API-token i ShinePhone-appen",
+              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
+              "es": "Obtenga su token API en la aplicación ShinePhone",
+              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
+              "it": "Ottieni il tuo token API nell'app ShinePhone",
+              "no": "Få API-tokenet ditt i ShinePhone-appen",
+              "sv": "Hämta din API-token i ShinePhone-appen",
+              "pl": "Pobierz swój token API w aplikacji ShinePhone",
+              "ru": "Получите ваш API токен в приложении ShinePhone",
+              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
+              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
+            },
+            "usernameLabel": {
+              "en": "Username",
+              "nl": "Gebruikersnaam",
+              "da": "Brugernavn",
+              "de": "Benutzername",
+              "es": "Nombre de usuario",
+              "fr": "Nom d'utilisateur",
+              "it": "Nome utente",
+              "no": "Brukernavn",
+              "sv": "Användarnamn",
+              "pl": "Nazwa użytkownika",
+              "ru": "Имя пользователя",
+              "ko": "사용자 이름",
+              "ar": "اسم المستخدم"
+            },
+            "passwordLabel": {
+              "en": "API Token",
+              "nl": "API Token",
+              "da": "API Token",
+              "de": "API-Token",
+              "es": "Token API",
+              "fr": "Jeton API",
+              "it": "Token API",
+              "no": "API Token",
+              "sv": "API-token",
+              "pl": "Token API",
+              "ru": "API токен",
+              "ko": "API 토큰",
+              "ar": "رمز API"
+            },
+            "passwordPlaceholder": {
+              "en": "My account>User name>API Token",
+              "nl": "Mijn account>Gebruikersnaam>API Token",
+              "da": "Min konto>Brugernavn>API Token",
+              "de": "Mein Konto>Benutzername>API-Token",
+              "es": "Mi cuenta>Nombre de usuario>Token API",
+              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
+              "it": "Il mio account>Nome utente>Token API",
+              "no": "Min konto>Brukernavn>API Token",
+              "sv": "Mitt konto>Användarnamn>API-token",
+              "pl": "Moje konto>Nazwa użytkownika>Token API",
+              "ru": "Мой аккаунт>Имя пользователя>API токен",
+              "ko": "내 계정>사용자 이름>API 토큰",
+              "ar": "حسابي>اسم المستخدم>رمز API"
+            },
+            "logo": "../assets/images/small.png"
+          }
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
       "name": {
         "en": "Meter",
         "nl": "Meter",
@@ -2814,159 +2967,6 @@
         "large": "/drivers/meter2/assets/images/large.png",
         "xlarge": "/drivers/meter2/assets/images/xlarge.png"
       },
-      "pair": [
-        {
-          "id": "login_credentials",
-          "template": "login_credentials",
-          "options": {
-            "title": {
-              "en": "Get your API token in the ShinePhone app",
-              "nl": "Haal je API token op in de ShinePhone app",
-              "da": "Få din API-token i ShinePhone-appen",
-              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
-              "es": "Obtenga su token API en la aplicación ShinePhone",
-              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
-              "it": "Ottieni il tuo token API nell'app ShinePhone",
-              "no": "Få API-tokenet ditt i ShinePhone-appen",
-              "sv": "Hämta din API-token i ShinePhone-appen",
-              "pl": "Pobierz swój token API w aplikacji ShinePhone",
-              "ru": "Получите ваш API токен в приложении ShinePhone",
-              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
-              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
-            },
-            "usernameLabel": {
-              "en": "Username",
-              "nl": "Gebruikersnaam",
-              "da": "Brugernavn",
-              "de": "Benutzername",
-              "es": "Nombre de usuario",
-              "fr": "Nom d'utilisateur",
-              "it": "Nome utente",
-              "no": "Brukernavn",
-              "sv": "Användarnamn",
-              "pl": "Nazwa użytkownika",
-              "ru": "Имя пользователя",
-              "ko": "사용자 이름",
-              "ar": "اسم المستخدم"
-            },
-            "passwordLabel": {
-              "en": "API Token",
-              "nl": "API Token",
-              "da": "API Token",
-              "de": "API-Token",
-              "es": "Token API",
-              "fr": "Jeton API",
-              "it": "Token API",
-              "no": "API Token",
-              "sv": "API-token",
-              "pl": "Token API",
-              "ru": "API токен",
-              "ko": "API 토큰",
-              "ar": "رمز API"
-            },
-            "passwordPlaceholder": {
-              "en": "My account>User name>API Token",
-              "nl": "Mijn account>Gebruikersnaam>API Token",
-              "da": "Min konto>Brugernavn>API Token",
-              "de": "Mein Konto>Benutzername>API-Token",
-              "es": "Mi cuenta>Nombre de usuario>Token API",
-              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
-              "it": "Il mio account>Nome utente>Token API",
-              "no": "Min konto>Brukernavn>API Token",
-              "sv": "Mitt konto>Användarnamn>API-token",
-              "pl": "Moje konto>Nazwa użytkownika>Token API",
-              "ru": "Мой аккаунт>Имя пользователя>API токен",
-              "ko": "내 계정>사용자 이름>API 토큰",
-              "ar": "حسابي>اسم المستخدم>رمز API"
-            },
-            "logo": "../assets/images/small.png"
-          }
-        },
-        {
-          "id": "list_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_devices"
-          }
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
-        }
-      ],
-      "repair": [
-        {
-          "id": "login_credentials",
-          "template": "login_credentials",
-          "options": {
-            "title": {
-              "en": "Get your API token in the ShinePhone app",
-              "nl": "Haal je API token op in de ShinePhone app",
-              "da": "Få din API-token i ShinePhone-appen",
-              "de": "Holen Sie sich Ihr API-Token in der ShinePhone-App",
-              "es": "Obtenga su token API en la aplicación ShinePhone",
-              "fr": "Obtenez votre jeton API dans l'application ShinePhone",
-              "it": "Ottieni il tuo token API nell'app ShinePhone",
-              "no": "Få API-tokenet ditt i ShinePhone-appen",
-              "sv": "Hämta din API-token i ShinePhone-appen",
-              "pl": "Pobierz swój token API w aplikacji ShinePhone",
-              "ru": "Получите ваш API токен в приложении ShinePhone",
-              "ko": "ShinePhone 앱에서 API 토큰을 가져오세요",
-              "ar": "احصل على رمز API الخاص بك في تطبيق ShinePhone"
-            },
-            "usernameLabel": {
-              "en": "Username",
-              "nl": "Gebruikersnaam",
-              "da": "Brugernavn",
-              "de": "Benutzername",
-              "es": "Nombre de usuario",
-              "fr": "Nom d'utilisateur",
-              "it": "Nome utente",
-              "no": "Brukernavn",
-              "sv": "Användarnamn",
-              "pl": "Nazwa użytkownika",
-              "ru": "Имя пользователя",
-              "ko": "사용자 이름",
-              "ar": "اسم المستخدم"
-            },
-            "passwordLabel": {
-              "en": "API Token",
-              "nl": "API Token",
-              "da": "API Token",
-              "de": "API-Token",
-              "es": "Token API",
-              "fr": "Jeton API",
-              "it": "Token API",
-              "no": "API Token",
-              "sv": "API-token",
-              "pl": "Token API",
-              "ru": "API токен",
-              "ko": "API 토큰",
-              "ar": "رمز API"
-            },
-            "passwordPlaceholder": {
-              "en": "My account>User name>API Token",
-              "nl": "Mijn account>Gebruikersnaam>API Token",
-              "da": "Min konto>Brugernavn>API Token",
-              "de": "Mein Konto>Benutzername>API-Token",
-              "es": "Mi cuenta>Nombre de usuario>Token API",
-              "fr": "Mon compte>Nom d'utilisateur>Jeton API",
-              "it": "Il mio account>Nome utente>Token API",
-              "no": "Min konto>Brukernavn>API Token",
-              "sv": "Mitt konto>Användarnamn>API-token",
-              "pl": "Moje konto>Nazwa użytkownika>Token API",
-              "ru": "Мой аккаунт>Имя пользователя>API токен",
-              "ko": "내 계정>사용자 이름>API 토큰",
-              "ar": "حسابي>اسم المستخدم>رمز API"
-            },
-            "logo": "../assets/images/small.png"
-          }
-        },
-        {
-          "id": "done",
-          "template": "done"
-        }
-      ],
       "id": "meter2",
       "settings": [
         {
