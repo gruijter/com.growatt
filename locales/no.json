@@ -15,6 +15,7 @@
     "migrating": "Migrerer. Vent litt...",
     "noUpdates": "Ingen oppdateringer fra enheten",
     "staleData": "Ingen nye data siden __since__. Sjekk dataloggerens tilkobling.",
+    "deviceTypeChanged": "Growatt viser nå denne enheten som __type__. Reparer enheten for å oppdatere den.",
     "deprecatedDevice": "Utdatert testenhet. Fjern den og legg den til på nytt."
   }
 }

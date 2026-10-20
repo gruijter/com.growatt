@@ -20,15 +20,19 @@ const loadDevice = () => {
   }
 };
 
-const fakeDevice = (Device) => {
+const MOVED_TO_MIN = 'Nick.van.koningsveld@gmail.com';
+
+const fakeDevice = (Device, growatt) => {
   const dev = Object.create(Device.prototype);
   const state = { available: true, message: null, set: {} };
   Object.assign(dev, {
     state,
     driver: { id: 'inverter2' },
     deviceType: 'inv',
+    deviceSn: 'QUH4BK90AK',
+    growatt,
     invalidCapsLogged: new Set(),
-    homey: { __: (key, tokens) => `${key}:${tokens ? tokens.since : ''}` },
+    homey: { __: (key, tokens) => `${key}:${tokens ? tokens.since || tokens.type : ''}` },
     log: () => {},
     error: () => {},
     getName: () => 'test',
@@ -64,21 +68,37 @@ module.exports = async (t) => {
       const entry = ((lastData && lastData.inv) || []).find((d) => growattMap.deviceSnOf(d) === dev.deviceSn);
       if (!entry) continue;
       // judged at capture time: the archive ages, the payloads do not
-      const realNow = Date.now;
       const capturedAt = Date.parse(fixtures.fixture(dev.account, '/v4/new-api/queryLastData', { deviceSn: dev.deviceSn, deviceType: 'inv' }).capturedAt);
-      Date.now = () => capturedAt;
-      const d = fakeDevice(Device);
-      try {
-        // eslint-disable-next-line no-await-in-loop
-        await d.handleLastData(entry);
-      } finally {
-        Date.now = realNow;
-      }
+      const run = async (growatt) => {
+        const realNow = Date.now;
+        Date.now = () => capturedAt;
+        const d = fakeDevice(Device, growatt);
+        d.deviceSn = dev.deviceSn;
+        try {
+          await d.handleLastData(entry);
+        } finally {
+          Date.now = realNow;
+        }
+        return d;
+      };
+      // eslint-disable-next-line no-await-in-loop
+      // the client's limiter waits on Date.now, so the list is fetched before the clock is set back
+      const listOf = async (client) => {
+        const list = await client.getDeviceList2({}).catch(() => undefined);
+        return { getDeviceList2: async () => list };
+      };
+      // eslint-disable-next-line no-await-in-loop
+      const d = await run(await listOf(g));
       if (entry.time && entry.time.startsWith('2026-05-09')) {
         lost += 1;
         t.ok(!d.state.available, `${dev.deviceSn}: a record from months ago makes the device unavailable`);
-        t.eq(d.state.message, `status.staleData:${entry.time}`, `${dev.deviceSn}: the message names when data stopped`);
+        t.eq(d.state.message, `status.staleData:${entry.time}`, `${dev.deviceSn}: without a device list, the message names when data stopped`);
         t.eq(Object.keys(d.state.set).length, 0, `${dev.deviceSn}: no capability is overwritten with the stale zeros`);
+        // the same serial's live account lists it as min now
+        // eslint-disable-next-line no-await-in-loop
+        const moved = await run(await listOf(fixtures.client(MOVED_TO_MIN)));
+        t.eq(moved.state.message, 'status.deviceTypeChanged:min', `${dev.deviceSn}: listed as min, so the message asks for a repair`);
+        t.eq(Object.keys(moved.state.set).length, 0, `${dev.deviceSn}: and still writes nothing`);
       } else {
         live += 1;
         t.ok(d.state.available, `${dev.deviceSn}: a fresh record keeps the device available`);

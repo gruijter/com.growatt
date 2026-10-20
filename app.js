@@ -190,9 +190,11 @@ module.exports = class MyApp extends Homey.App {
   }
 
   reconcileSchedules() {
+    // a repair can change a device's credentials or type: restart its schedule with the new ones
+    const identity = (d) => `${d.username}|${d.token}|${d.host}|${d.deviceType}`;
     Object.keys(this.pollSchedules).forEach((deviceSn) => {
-      if (this.devices[deviceSn]) return;
       const schedule = this.pollSchedules[deviceSn];
+      if (this.devices[deviceSn] && schedule.identity === identity(this.devices[deviceSn])) return;
       if (schedule.timeoutId) this.homey.clearTimeout(schedule.timeoutId);
       delete this.pollSchedules[deviceSn];
       this.log('Stopped polling', deviceSn);
@@ -201,7 +203,7 @@ module.exports = class MyApp extends Homey.App {
     Object.values(this.devices).forEach((device) => {
       if (this.pollSchedules[device.deviceSn]) return;
       this.pollSchedules[device.deviceSn] = {
-        timeoutId: null, cadence: this.pollProfile(device.deviceType).cadence, lastUploadAt: 0, lastPollAt: 0, skew: 0, phase: 0,
+        identity: identity(device), timeoutId: null, cadence: this.pollProfile(device.deviceType).cadence, lastUploadAt: 0, lastPollAt: 0, skew: 0, phase: 0,
       };
       this.scheduleDevicePoll(device, added * POLL_STAGGER);
       added += 1;
@@ -224,6 +226,7 @@ module.exports = class MyApp extends Homey.App {
     if (!schedule) return;
     schedule.lastPollAt = Date.now();
     const lastData = await this.pollDevice(device).catch(() => null);
+    if (this.pollSchedules[device.deviceSn] !== schedule) return; // restarted meanwhile
 
     const uploadAt = MyApp.uploadTimeOf(lastData, device.deviceSn);
     const { minInterval, bounds } = this.pollProfile(device.deviceType);

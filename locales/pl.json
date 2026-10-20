@@ -15,6 +15,7 @@
     "migrating": "Trwa migracja. Proszę czekać...",
     "noUpdates": "Brak aktualizacji z urządzenia",
     "staleData": "Brak nowych danych od __since__. Sprawdź połączenie dataloggera.",
+    "deviceTypeChanged": "Growatt wyświetla teraz to urządzenie jako __type__. Napraw urządzenie, aby je zaktualizować.",
     "deprecatedDevice": "Przestarzałe urządzenie testowe. Usuń je i dodaj ponownie."
   }
 }

@@ -15,6 +15,7 @@
     "migrating": "마이그레이션 중입니다. 잠시 기다려 주세요...",
     "noUpdates": "기기에서 업데이트가 없습니다",
     "staleData": "__since__ 이후 새 데이터가 없습니다. 데이터로거 연결을 확인하세요.",
+    "deviceTypeChanged": "Growatt에서 이 기기를 이제 __type__(으)로 표시합니다. 기기를 복구하여 업데이트하세요.",
     "deprecatedDevice": "사용 중단된 테스트 기기입니다. 제거한 뒤 다시 추가하세요."
   }
 }

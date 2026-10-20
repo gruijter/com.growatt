@@ -15,6 +15,7 @@
     "migrating": "Migrating. Please wait...",
     "noUpdates": "No updates from device",
     "staleData": "No new data since __since__. Check the datalogger connection.",
+    "deviceTypeChanged": "Growatt now lists this device as __type__. Repair the device to update it.",
     "deprecatedDevice": "Deprecated test device. Please remove and re-add."
   }
 }
