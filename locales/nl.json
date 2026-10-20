@@ -14,6 +14,7 @@
   "status": {
     "migrating": "Bezig met migreren. Even geduld...",
     "noUpdates": "Geen updates van apparaat",
+    "staleData": "Geen nieuwe data sinds __since__. Controleer de verbinding van de datalogger.",
     "deprecatedDevice": "Verouderd testapparaat. Verwijder het en voeg het opnieuw toe."
   }
 }

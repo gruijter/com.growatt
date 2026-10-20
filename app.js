@@ -178,16 +178,13 @@ module.exports = class MyApp extends Homey.App {
     return Math.round(((uploadAt - Date.now()) + (cadence / 2)) / 900000) * 900000;
   }
 
-  // Upload time on the payload's clock (inv: timeCalendar); without one a device polls at a fixed interval.
+  // Upload time of this device's entry; without one a device polls at a fixed interval.
   static uploadTimeOf(lastData, deviceSn) {
     if (!lastData) return 0;
     for (const list of Object.values(lastData)) {
       if (!Array.isArray(list)) continue;
-      for (const entry of list) {
-        if (!entry || entry.deviceSn !== deviceSn) continue;
-        const at = Number(entry.calendar !== undefined ? entry.calendar : entry.timeCalendar);
-        return Number.isFinite(at) && at > 0 ? at : 0;
-      }
+      const entry = list.find((e) => e && e.deviceSn === deviceSn);
+      if (entry) return growattMap.uploadTimeOf(entry);
     }
     return 0;
   }

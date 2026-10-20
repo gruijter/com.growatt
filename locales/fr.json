@@ -14,6 +14,7 @@
   "status": {
     "migrating": "Migration en cours. Veuillez patienter...",
     "noUpdates": "Aucune mise à jour de l'appareil",
+    "staleData": "Aucune nouvelle donnée depuis __since__. Vérifiez la connexion du datalogger.",
     "deprecatedDevice": "Appareil de test obsolète. Supprimez-le et rajoutez-le."
   }
 }

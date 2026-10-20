@@ -14,6 +14,7 @@
   "status": {
     "migrating": "Migrerer. Vent litt...",
     "noUpdates": "Ingen oppdateringer fra enheten",
+    "staleData": "Ingen nye data siden __since__. Sjekk dataloggerens tilkobling.",
     "deprecatedDevice": "Utdatert testenhet. Fjern den og legg den til på nytt."
   }
 }

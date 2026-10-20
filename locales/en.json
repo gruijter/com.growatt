@@ -14,6 +14,7 @@
   "status": {
     "migrating": "Migrating. Please wait...",
     "noUpdates": "No updates from device",
+    "staleData": "No new data since __since__. Check the datalogger connection.",
     "deprecatedDevice": "Deprecated test device. Please remove and re-add."
   }
 }
