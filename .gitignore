@@ -10,4 +10,5 @@ zzz*
 .github/
 AGENTS.md
 CLAUDE.md
-/test
+# captured API responses (serial numbers, plant names); the test code itself is tracked
+/zzz_responses/
