@@ -8,7 +8,8 @@
     "unexpectedResponse": "Respuesta inesperada del servidor",
     "commandRejected": "El inversor rechazó el comando. Puede que el control remoto esté desactivado en el inversor o que se necesite un medidor inteligente.",
     "commandRejectedOrOffline": "El inversor rechazó el comando o no responde. Puede que el control remoto esté desactivado o que esté sin conexión.",
-    "actionNotSupported": "Este dispositivo no admite __action__."
+    "actionNotSupported": "Este dispositivo no admite __action__.",
+    "deviceNotOnAccount": "Este dispositivo no está en esa cuenta de Growatt."
   },
   "status": {
     "migrating": "Migrando. Espera...",

@@ -8,7 +8,8 @@
     "unexpectedResponse": "استجابة غير متوقعة من الخادم",
     "commandRejected": "رفض العاكس الأمر. قد يكون التحكم عن بُعد معطلاً في العاكس، أو أن هناك حاجة إلى عداد ذكي.",
     "commandRejectedOrOffline": "رفض العاكس الأمر أو لا يستجيب. قد يكون التحكم عن بُعد معطلاً، أو أن الجهاز غير متصل.",
-    "actionNotSupported": "الجهاز لا يدعم __action__."
+    "actionNotSupported": "الجهاز لا يدعم __action__.",
+    "deviceNotOnAccount": "هذا الجهاز غير موجود في حساب Growatt هذا."
   },
   "status": {
     "migrating": "جارٍ الترحيل. يرجى الانتظار...",

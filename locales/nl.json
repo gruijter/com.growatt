@@ -8,7 +8,8 @@
     "unexpectedResponse": "Onverwacht antwoord van de server",
     "commandRejected": "De omvormer heeft de opdracht geweigerd. Mogelijk staat afstandsbediening uit op de omvormer, of is een slimme meter vereist.",
     "commandRejectedOrOffline": "De omvormer heeft de opdracht geweigerd of reageert niet. Mogelijk staat afstandsbediening uit op de omvormer, of is hij offline.",
-    "actionNotSupported": "__action__ wordt niet ondersteund door dit apparaat."
+    "actionNotSupported": "__action__ wordt niet ondersteund door dit apparaat.",
+    "deviceNotOnAccount": "Dit apparaat staat niet op dat Growatt-account."
   },
   "status": {
     "migrating": "Bezig met migreren. Even geduld...",

@@ -8,7 +8,8 @@
     "unexpectedResponse": "Uventet svar fra serveren",
     "commandRejected": "Inverteren afviste kommandoen. Fjernstyring kan være deaktiveret på inverteren, eller en smart måler er påkrævet.",
     "commandRejectedOrOffline": "Inverteren afviste kommandoen eller svarer ikke. Fjernstyring kan være deaktiveret på inverteren, eller den er offline.",
-    "actionNotSupported": "__action__ understøttes ikke af denne enhed."
+    "actionNotSupported": "__action__ understøttes ikke af denne enhed.",
+    "deviceNotOnAccount": "Denne enhed er ikke på den Growatt-konto."
   },
   "status": {
     "migrating": "Migrerer. Vent venligst...",

@@ -8,7 +8,8 @@
     "unexpectedResponse": "Réponse inattendue du serveur",
     "commandRejected": "L'onduleur a rejeté la commande. La commande à distance est peut-être désactivée sur l'onduleur, ou un compteur intelligent est requis.",
     "commandRejectedOrOffline": "L'onduleur a rejeté la commande ou ne répond pas. La commande à distance est peut-être désactivée, ou l'appareil est hors ligne.",
-    "actionNotSupported": "__action__ n'est pas pris en charge par cet appareil."
+    "actionNotSupported": "__action__ n'est pas pris en charge par cet appareil.",
+    "deviceNotOnAccount": "Cet appareil n'est pas sur ce compte Growatt."
   },
   "status": {
     "migrating": "Migration en cours. Veuillez patienter...",

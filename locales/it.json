@@ -8,7 +8,8 @@
     "unexpectedResponse": "Risposta inattesa dal server",
     "commandRejected": "L'inverter ha rifiutato il comando. Il controllo remoto potrebbe essere disattivato sull'inverter, oppure è necessario un contatore intelligente.",
     "commandRejectedOrOffline": "L'inverter ha rifiutato il comando o non risponde. Il controllo remoto potrebbe essere disattivato, oppure è offline.",
-    "actionNotSupported": "__action__ non è supportato da questo dispositivo."
+    "actionNotSupported": "__action__ non è supportato da questo dispositivo.",
+    "deviceNotOnAccount": "Questo dispositivo non è su quell'account Growatt."
   },
   "status": {
     "migrating": "Migrazione in corso. Attendere...",
