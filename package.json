@@ -9,9 +9,9 @@
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
   },
   "devDependencies": {
-    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.11",
-    "eslint": "^7.32.0",
-    "eslint-config-athom": "^3.1.5"
+    "@types/homey": "npm:homey-apps-sdk-v3-types@beta",
+    "eslint": "^8.57.1",
+    "eslint-config-athom": "^4.0.2"
   },
   "dependencies": {
     "growatt": "^0.7.7"

@@ -34,6 +34,7 @@ module.exports = class MyDriver extends Homey.Driver {
     this.log(`${this.id} v1 driver has been initialized`);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   async onPair(session) {
     let username = '';
     let password = '';
