@@ -70,5 +70,8 @@
   },
   "2.5.0": {
     "en": "JIT synced polling. Fix pairing errors. Improve pairing speed. Fix target power. Cleanup unused device settings. Added test suite."
+  },
+  "2.5.1": {
+    "en": "Add device repair. Improve capability migration. Improve fault alarm. Improve device unavailable detection. Add device type change detection. Fix NOAH stale data detection. Add API diagnostics. Stability improvements."
   }
 }
