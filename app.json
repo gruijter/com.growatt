@@ -598,32 +598,10 @@
       "capabilities": [
         "measure_power",
         "measure_battery",
-        "battery_charging_state",
-        "target_power"
+        "battery_charging_state"
       ],
       "capabilitiesOptions": {
         "measure_power": {
-          "decimals": 0
-        },
-        "measure_power.bat2": {
-          "title": {
-            "en": "Battery 2 power",
-            "nl": "Batterij 2 vermogen",
-            "da": "Batteri 2 effekt",
-            "de": "Batterie 2 Leistung",
-            "es": "Potencia batería 2",
-            "fr": "Puissance batterie 2",
-            "it": "Potenza batteria 2",
-            "no": "Batteri 2 effekt",
-            "sv": "Batteri 2 effekt",
-            "pl": "Moc baterii 2",
-            "ru": "Мощность батареи 2",
-            "ko": "배터리 2 전력",
-            "ar": "طاقة البطارية 2"
-          },
-          "decimals": 0
-        },
-        "target_power": {
           "decimals": 0
         },
         "meter_power.charged": {

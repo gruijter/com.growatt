@@ -23,6 +23,7 @@ const Homey = require('homey');
 const Growatt = require('growatt'); // v1 API
 const Api = require('./lib/growatt_api'); // v2 API
 const growattMap = require('./lib/growattMap');
+const capture = require('./lib/growattCapture');
 
 // Cloud data does not arrive on the wall clock. The datalogger uploads on its own free-running
 // timer - measured at ~361 s on three separate sites, drifting steadily against real time - while
@@ -41,6 +42,8 @@ const PHASE_STEP = 45000; // how far to nudge the aim when the payload says we m
 module.exports = class MyApp extends Homey.App {
 
   async onInit() {
+    capture.setLog((line) => this.log(line));
+    capture.arm('app start', { force: true });
     this.devices = {};// { serial: { username, token, serial, type } }; is filled by Homey devices through getSessions
     this.apiSessions = {}; // username__token: apiSession
     this.pollSchedules = {}; // deviceSn: { timeoutId, cadence, lastUploadAt, lastPollAt }
