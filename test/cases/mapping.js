@@ -1,12 +1,7 @@
 'use strict';
 
-/* Every captured payload, through every driver's capability map. Guards the thing that breaks
-   silently: a Growatt field that changes name or disappears turns a mapped capability into NaN,
-   which Homey shows as an empty tile rather than an error.
-
-   The first run records a snapshot next to the fixtures (both are local, and a snapshot only means
-   anything against the payloads it was taken from). Later runs compare against it, so ANY change in
-   a mapped value shows up - not just the handful a hand-written assertion would have thought of. */
+/* Every captured payload through every capability map: no NaN, and no value changed against the
+   snapshot recorded by the first run (zzz_responses/mapping-snapshot.json). */
 
 const fs = require('node:fs');
 const path = require('node:path');

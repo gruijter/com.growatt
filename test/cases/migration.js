@@ -1,9 +1,7 @@
 'use strict';
 
-/* A freshly paired device must arrive with the capability set it will settle on. When it does not,
-   the first poll settles the battery verdict, common_device#migrate rebuilds the set and the
-   device sits in "waiting for migration" - which every string inverter did, because pairing handed
-   over the full hybrid set regardless. */
+/* A freshly paired inverter2 must get the capability set it settles on, in order, so the first poll
+   does not trigger a migration. */
 
 const fixtures = require('../fixtures');
 const growattMap = require('../../lib/growattMap');
@@ -29,15 +27,11 @@ module.exports = async (t) => {
       const stored = hasBattery === undefined ? null : hasBattery;
       const settled = Object.keys(growattMap.inverterCapabilities(dev.deviceType, stored === null ? undefined : stored) || {});
 
-      // Membership and ORDER both: migrate() rebuilds from the first mismatching index, so a
-      // reordering destroys Insights history for every capability after it.
+      // order too: a rebuild loses the Insights history of every capability after the mismatch
       t.ok(JSON.stringify(paired) === JSON.stringify(settled),
         `${dev.deviceSn} (${dev.deviceType}, hasBattery=${hasBattery}): paired set matches the settled set, in order`);
 
-      // The assertion above holds by construction now, so it alone would pass even if the fix were
-      // reverted. This is the one that fails in that case: before, pairing handed over the raw map
-      // for every device, and a string inverter's verdict then removed two capabilities and added
-      // one - three rebuilds, on six of ten devices here.
+      // a string inverter must not be paired with the raw hybrid set
       const rawMap = Object.keys(growattMap.inverter2Map[dev.deviceType] || {});
       if (hasBattery === false) {
         t.ok(JSON.stringify(paired) !== JSON.stringify(rawMap),

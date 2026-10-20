@@ -1,8 +1,6 @@
 'use strict';
 
-/* Proves the archive is actually replayable: every captured request, put back through the real
-   client, returns what was captured - without touching the network. If this fails, no other
-   offline case can be trusted. */
+/* Every captured request, replayed through the real client, returns what was captured. */
 
 const fixtures = require('../fixtures');
 

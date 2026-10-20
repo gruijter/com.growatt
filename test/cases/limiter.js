@@ -1,8 +1,6 @@
 'use strict';
 
-/* The rate limiter and response cache. Growatt keys its limit on the exact request - account,
-   endpoint AND parameters - so these check that identity, not a per-account approximation of it.
-   See zzz_docs/API-FIELD-NOTES.md section 11 for how that was established. */
+/* The rate limiter and response cache, keyed on the exact request (account, endpoint, parameters). */
 
 const Api = require('../../lib/growatt_api');
 
@@ -42,8 +40,7 @@ module.exports = async (t) => {
     t.ok((await res(a.getLastData({ deviceSn: 'B', deviceType: 'min' }))).ok, 'request B succeeds');
     t.eq(net.calls.length, 2, 'two distinct requests both reach the network');
 
-    // discoverHost builds a throwaway client per host, and pairing one per driver: a second client
-    // for the same account must be ABLE to answer a repeat, not be refused for lack of a cache
+    // a second client of the same account answers a repeat from the shared cache
     const b = mk();
     net.calls.length = 0;
     t.ok((await res(b.getLastData({ deviceSn: 'A', deviceType: 'min' }))).ok, 'a second client answers a repeat from the shared cache');

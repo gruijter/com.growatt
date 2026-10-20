@@ -28,7 +28,6 @@ module.exports = class MyDevice extends Device {
   }
 
   async handleDeviceData(device) {
-    // check if data is new
     if (!device || !device.historyLast || device.historyLast.createTime === this.lastCreateTime) return;
     await this.setAvailable();
     this.lastPoll = Date.now();
@@ -40,11 +39,9 @@ module.exports = class MyDevice extends Device {
       'meter_power.today': meterToday,
       // 'meter_power.month': Number(device.deviceData.eMonth),
     };
-    // set the capability values
     for (const [capability, value] of Object.entries(values)) {
       this.setCapability(capability, value).catch((error) => this.error(error));
     }
-    // set settings that have changed
     const newSettings = {
       type: device.deviceData.deviceTypeName,
       model: device.deviceData.deviceModel,

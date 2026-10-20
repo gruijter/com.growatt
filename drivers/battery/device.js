@@ -28,7 +28,6 @@ module.exports = class MyDevice extends Device {
   }
 
   async handleDeviceData(device) {
-    // check if data is new
     if (!device || !device.historyLast || device.historyLast.createTime === this.lastCreateTime) return;
     await this.setAvailable();
     this.lastPoll = Date.now();
@@ -38,11 +37,9 @@ module.exports = class MyDevice extends Device {
       measure_power: device.historyLast[`bdc${bdc}ChargePower`] - device.historyLast[`bdc${bdc}DischargePower`],
       measure_battery: device.historyLast[`bdc${bdc}Soc`],
     };
-    // set the capability values
     for (const [capability, value] of Object.entries(values)) {
       this.setCapability(capability, value).catch((error) => this.error(error));
     }
-    // set settings that have changed
     const newSettings = {
       plantId: device.deviceData.plantId,
       plantName: device.deviceData.plantName,

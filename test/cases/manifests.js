@@ -1,16 +1,9 @@
 'use strict';
 
-/* Checks that `homey app validate` cannot make. They read the built app.json: run `homey app build`
-   after a compose change.
-
-   1. What existing devices depend on is still there (app id, drivers, setting keys, custom
-      capabilities).
-   2. Every capability the v2 maps set is a Homey system capability or one of the app's own, and
-      every capability the manifest names (capabilities, capabilitiesOptions, energy, titles) is one
-      the device can have. Devices get their capabilities from growattMap, not the manifest, and
-      setCapability() skips an unknown one without a word.
-   3. Every translation has all 13 locales, every locales key used in code exists in every locales
-      file, and every language has its README. */
+/* Checks `homey app validate` cannot make, on the built app.json (run `homey app build` first):
+   1. what existing devices depend on is still there;
+   2. every mapped capability exists, and the manifest names only capabilities a device can have;
+   3. every translation has all 13 locales, every locales key used in code exists, every README. */
 
 const fs = require('node:fs');
 const path = require('node:path');

@@ -1,9 +1,6 @@
 'use strict';
 
-/* Every setting a driver writes must be one that driver actually declares. A value stored under an
-   undeclared key is invisible in the UI and unreadable by the code, and worse: fetchDeviceInfo
-   guards on `!nominalPower`, so a driver that neither declares nor writes it would call
-   getDeviceInfo on every boot, forever. */
+/* Every setting a driver writes must be one that driver declares. */
 
 const fs = require('node:fs');
 const path = require('node:path');
@@ -46,11 +43,7 @@ module.exports = async (t) => {
     t.ok(ids.includes('model'), `${driver}: declares model, which every driver reads`);
   }
 
-  // The noah family takes target_power in absolute watts and reports no rated power, so its
-  // ceiling comes from the docs rather than the device. NOAH and NEXA are one deviceType, told
-  // apart only by model name - and an unknown model must land on the HIGHER limit: target_power
-  // limits output, so too high is capped by the device while too low permanently prevents the
-  // inverter from reaching full power.
+  // noah: W from the docs per model; an unknown model gets the higher limit
   const tp = (settings) => growattMap.targetPowerOptions('inverter2', settings);
   t.eq(tp({ deviceType: 'noah', model: 'NOAH2000 Master' }).max, 800, 'noah: 800 W (doc 4.3.2)');
   t.eq(tp({ deviceType: 'noah', model: 'NEXA 2000' }).max, 1000, 'nexa: 1000 W (doc 4.3.2)');
@@ -59,8 +52,7 @@ module.exports = async (t) => {
   t.eq(tp({ deviceType: 'min', nominalPower: 3300 }).max, 3300, 'other types still use their rated power');
   t.eq(tp({ deviceType: 'min' }).max, 3000, 'and fall back when it is unknown');
 
-  // The capability is in watts, the wire is in percent. Every slider position must survive the
-  // round trip, or the value moves on its own after the next poll.
+  // W in the capability, % on the wire: every slider position must survive the round trip
   t.eq(tp({ deviceType: 'min', nominalPower: 3300 }).step, 33, 'percentage devices step by 1% of rated power');
   t.eq(tp({ deviceType: 'noah', model: 'NOAH2000 Master' }).step, 1, 'noah is watts end to end, so it steps by 1 W');
 

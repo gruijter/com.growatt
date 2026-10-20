@@ -1,8 +1,7 @@
 'use strict';
 
-/* lib/growattCapture.js: what the API client logs comes back out of a report intact, once per
-   request per arm, without location or contact details; and replaying the captured fixtures through
-   the real client produces captures equal to the fixtures themselves. */
+/* lib/growattCapture.js round trip: once per request per arm, redacted, and identical to what the
+   real client returned. */
 
 const capture = require('../../lib/growattCapture');
 const fixtures = require('../fixtures');

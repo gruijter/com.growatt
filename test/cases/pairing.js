@@ -1,8 +1,6 @@
 'use strict';
 
-/* Host discovery and its error reporting - the pairing paths that misled a real user. Each of
-   these three account shapes produced a wrong or useless message at some point today, so each one
-   is pinned here against the payloads that caused it. */
+/* Host discovery and its error messages, against the account shapes that produced wrong ones. */
 
 const Api = require('../../lib/growatt_api');
 const fixtures = require('../fixtures');
@@ -26,9 +24,7 @@ module.exports = async (t) => {
         .then((v) => ({ v }), (e) => ({ e }));
       t.ok(!!r.e, `${account}: discovery fails, as it must`);
       if (!r.e) continue;
-      // The bug: the message came from whichever host was LAST in the list -
-      // ess-server.atesspower.com, whose answer for any normal Growatt account is
-      // error_userNotExist. An account that exists and logs in on the web was told it does not.
+      // the message must come from the host the user exists on, not the last host tried
       t.ok(!/userNotExist|does not exist/i.test(r.e.message),
         `${account}: not reported as non-existent (got "${r.e.message.slice(0, 60)}")`);
       t.ok(/contact|permission|token/i.test(r.e.message),
@@ -46,9 +42,7 @@ module.exports = async (t) => {
       t.eq(list.count, 0, `${account}: and the emptiness is in the device list, not the login`);
       t.ok((r.v?.info?.plants || []).length > 0, `${account}: it has plants, they just hold no devices`);
     }
-    // The UX that matters: a device must show values the moment it is added, not five minutes
-    // later. Pairing prefetches one GROUPED lastData per device type; the device then polls its own
-    // serial, which is a different request, so it is neither cached from pairing nor blocked by it.
+    // pairing's grouped lastData must not block the new device's own first poll
     const account = fixtures.accountsByTier('working')
       .find((a) => fixtures.devices().filter((d) => d.account === a).length > 1)
       || fixtures.devices()[0]?.account;
@@ -70,12 +64,8 @@ module.exports = async (t) => {
         t.ok(!!firstPoll, `${sn}: so it shows values immediately after pairing`);
       }
     }
-    // Pairing runs inside Homey's dialog, and every call to one account is spaced REQUEST_SPACING
-    // apart, so the cost is a wall-clock budget rather than an abstract count. One lastData per
-    // device put the five-device account at twelve calls, about 33 seconds - past the point where
-    // the dialog gives up. This pins the shape that replaced it: a constant plus one per plant and
-    // one per device TYPE, never one per device.
-    const SPACING_S = 1; // lib/growatt_api.js#requestSpacing, measured - see the comment there
+    // pairing calls scale with plants and device types, never devices, to fit the dialog's timeout
+    const SPACING_S = 1; // lib/growatt_api.js#requestSpacing
     const BUDGET_S = 15;
     for (const acct of fixtures.accountsByTier('working')) {
       const g = fixtures.client(acct);

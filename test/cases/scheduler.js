@@ -1,9 +1,7 @@
 'use strict';
 
-/* The per-device poll scheduler, on a virtual clock. Drives the REAL app.js code against a
-   simulated datalogger and a server that refuses a repeat inside 300 s, so the two properties that
-   matter are checked rather than assumed: it never breaks the rate limit, and it never misses an
-   upload. See zzz_docs/API-FIELD-NOTES.md section 11. */
+/* The per-device poll scheduler on a virtual clock, against a server that refuses a repeat inside
+   300 s: it must never break the rate limit and never miss an upload. */
 
 const Module = require('node:module');
 
@@ -24,8 +22,7 @@ function loadApp() {
 const MyApp = loadApp();
 const T0 = 1788432000000;
 
-// One 8-hour run. `skew` is how far the payload's clock sits from real time (Growatt reports the
-// plant's local wall clock parsed on a UTC+8 server); `clockErr` is how wrong Homey's own clock is.
+// One 8-hour run. `skew`: payload clock vs real time; `clockErr`: Homey's own clock error.
 async function simulate({
   offset = 0, cadence = 361000, deviceType = 'min', skew = 0, clockErr = 0, noTimestamp = false,
 }) {
