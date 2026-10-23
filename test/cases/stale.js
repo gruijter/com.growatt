@@ -78,6 +78,37 @@ async function clockCases(t, Device) {
   } finally {
     Date.now = realNow;
   }
+  Date.now = () => now;
+  try {
+    const d = fakeDevice(Device);
+    d.deviceType = 'min';
+    const record = {
+      calendar: now - (3 * 60 * 60 * 1000), time: 'x', pac: 40, ppv: 42, epvTotal: 1000,
+    };
+    // after a restart at dusk, on a datalogger clock three hours behind
+    await d.handleLastData(record);
+    t.eq(d.state.set.measure_power, 40, 'a record first heard now is not asleep, whatever its own clock says');
+    now += 19 * 60 * 1000;
+    await d.handleLastData(record);
+    t.eq(d.state.set.measure_power, 40, 'the same upload for 19 minutes: power kept');
+    now += 2 * 60 * 1000;
+    await d.handleLastData(record);
+    t.eq(d.state.set.measure_power, 0, 'the same upload for 21 minutes: asleep, power 0');
+    t.eq(d.state.set['measure_power.dc_solar'], 0, 'asleep: DC power 0 too');
+    t.eq(d.state.set.meter_power, 1000, 'asleep: energy counters keep their value');
+    now += 6 * 60 * 1000;
+    await d.handleLastData({ ...record, calendar: record.calendar + (27 * 60 * 1000), pac: 5 });
+    t.eq(d.state.set.measure_power, 5, 'a new upload wakes it');
+    const m = fakeDevice(Device);
+    m.driver = { id: 'meter2' };
+    m.deviceType = 'min';
+    await m.handleLastData({ calendar: now, pacToUserTotal: 300 });
+    now += 30 * 60 * 1000;
+    await m.handleLastData({ calendar: now - (30 * 60 * 1000), pacToUserTotal: 300 });
+    t.eq(m.state.set.measure_power, 300, 'a grid meter is never put to sleep');
+  } finally {
+    Date.now = realNow;
+  }
   t.eq(growattMap.uploadTimeOf({ time: 1792462237436 }), 1792462237436, 'noah: the numeric `time` is its upload time');
   t.eq(growattMap.uploadTimeOf({ time: '2026-10-20 10:06:50' }), 0, 'a `time` string alone is no upload time');
 
