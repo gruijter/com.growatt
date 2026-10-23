@@ -73,5 +73,8 @@
   },
   "2.5.1": {
     "en": "Add device repair. Improve capability migration. Improve fault alarm. Improve device unavailable detection. Add device type change detection. Fix NOAH stale data detection. Add API diagnostics. Stability improvements."
+  },
+  "2.6.0": {
+    "en": "Breaking: combine all batteries on same inverter into a single device. Breaking: replace alarm_generic with alarm_problem and alarm_connectivity. Add battery SoH and temperature. Better detection of sleeping inverters. Stability improvements."
   }
 }
