@@ -2,21 +2,10 @@
 
 /* lib/growattErrors.js, and the one write path that capability and flow writes share. */
 
-const Module = require('node:module');
+const requireStubbed = require('../stubs');
 const growattErrors = require('../../lib/growattErrors');
 
-const loadDevice = () => {
-  const orig = Module._load;
-  Module._load = function load(req, parent, isMain) {
-    if (req === 'homey') return { Device: class {} };
-    return orig.call(this, req, parent, isMain);
-  };
-  try {
-    return require('../../lib/common_device.js');
-  } finally {
-    Module._load = orig;
-  }
-};
+const loadDevice = () => requireStubbed(require.resolve('../../lib/common_device.js'), { homey: { Device: class {} } });
 
 const apiError = (reason, errorCode) => Object.assign(Error(`localized ${reason}`), { reason, errorCode });
 
@@ -55,6 +44,8 @@ module.exports = async (t) => {
     t.eq(timedOut.message, 'The Growatt server did not answer in time.', 'with the timeout text');
     const unreachable = await failWith(new TypeError('fetch failed'));
     t.eq(unreachable.reason, 'NETWORK', 'an unreachable host: NETWORK');
+    const dropped = await failWith(new TypeError('terminated'));
+    t.eq(dropped.reason, 'NETWORK', 'a connection dropped during the body: NETWORK');
     const odd = await failWith(Error('something else'));
     t.eq(odd.message, 'something else', 'any other failure passes through');
   } finally {
@@ -105,6 +96,32 @@ module.exports = async (t) => {
 
   const other = device([apiError('PERMISSION_DENIED', 1)]);
   t.eq(await other.writeSetting('target_power', 500, mapFunc).catch((error) => error.message), 'localized PERMISSION_DENIED', 'other errors keep their message');
+
+  // a lasting outage: every poll fails, so no lastData ever arrives to run the watchdog
+  const EventEmitter = require('node:events');
+  const homey = Object.assign(new EventEmitter(), { __: (key) => key });
+  const quiet = Object.assign(Object.create(Device.prototype), {
+    homey,
+    deviceSn: 'SN',
+    deviceType: 'min',
+    lastPoll: Date.now() - (30 * 60 * 1000),
+    unavailable: null,
+    log: () => {},
+    error: () => {},
+    getName: () => 'test',
+    getSettings: () => ({}),
+    getCapabilities: () => [],
+    setUnavailable: async (message) => {
+      quiet.unavailable = message;
+    },
+  });
+  quiet.startListeners();
+  homey.emit('errorInfo', { device: { deviceSn: 'SN' }, error: 'timeout', reason: 'TIMEOUT' });
+  t.eq(quiet.unavailable, null, 'a timeout leaves the device available');
+  quiet.lastPoll = Date.now() - (62 * 60 * 1000);
+  homey.emit('errorInfo', { device: { deviceSn: 'SN' }, error: 'timeout', reason: 'TIMEOUT' });
+  t.eq(quiet.unavailable, 'status.noUpdates', 'an hour of failed polls makes it unavailable');
+  quiet.destroyListeners();
 
   const flow = device([]);
   const unsupported = await flow.handleFlowAction({ action: 'nope', val: 1 }).catch((error) => error.message);

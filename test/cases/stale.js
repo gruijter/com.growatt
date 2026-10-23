@@ -3,22 +3,11 @@
 /* A datalogger that went offline leaves its last record, all zeros, in the cloud. That record must
    make the device unavailable and leave its capabilities alone; a live one must not. */
 
-const Module = require('node:module');
+const requireStubbed = require('../stubs');
 const fixtures = require('../fixtures');
 const growattMap = require('../../lib/growattMap');
 
-const loadDevice = () => {
-  const orig = Module._load;
-  Module._load = function load(req, parent, isMain) {
-    if (req === 'homey') return { Device: class {} };
-    return orig.call(this, req, parent, isMain);
-  };
-  try {
-    return require('../../lib/common_device.js');
-  } finally {
-    Module._load = orig;
-  }
-};
+const loadDevice = () => requireStubbed(require.resolve('../../lib/common_device.js'), { homey: { Device: class {} } });
 
 const MOVED_TO_MIN = 'Nick.van.koningsveld@gmail.com';
 

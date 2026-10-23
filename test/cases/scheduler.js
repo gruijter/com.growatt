@@ -3,23 +3,9 @@
 /* The per-device poll scheduler on a virtual clock, against a server that refuses a repeat inside
    300 s: it must never break the rate limit and never miss an upload. */
 
-const Module = require('node:module');
+const requireStubbed = require('../stubs');
 
-function loadApp() {
-  const orig = Module._load;
-  Module._load = function load(req, parent, isMain) {
-    if (req === 'homey') return { App: class {} };
-    if (req === 'growatt') return class {};
-    return orig(req, parent, isMain);
-  };
-  try {
-    return require('../../app.js');
-  } finally {
-    Module._load = orig;
-  }
-}
-
-const MyApp = loadApp();
+const MyApp = requireStubbed(require.resolve('../../app.js'), { homey: { App: class {} }, growatt: class {} });
 const T0 = 1788432000000;
 
 // One 8-hour run. `skew`: payload clock vs real time; `clockErr`: Homey's own clock error.
@@ -119,6 +105,11 @@ module.exports = async (t) => {
     const r = await simulate({ offset: 200000, skew });
     t.ok(r.refusals === 0 && r.avgStale <= 35, `payload clock skew ${skew / 3600000}h: ${r.avgStale}s staleness, ${r.refusals} refusals`);
   }
+
+  // a datalogger clock minutes off a quarter-hour: an early poll is still read as early, not as
+  // silence (from other start offsets this skew settles at ~195 s, the limit of clockSkew's rounding)
+  const minutesOff = await simulate({ offset: 0, skew: -((6 * 3600) + 420) * 1000 });
+  t.ok(minutesOff.refusals === 0 && minutesOff.avgStale <= 35, `payload clock skew -6h7m: ${minutesOff.avgStale}s staleness, ${minutesOff.refusals} refusals`);
 
   for (const cadence of [340000, 361000, 400000]) {
     const r = await simulate({ offset: 200000, cadence, skew: -6 * 3600 * 1000 });

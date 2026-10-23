@@ -280,7 +280,7 @@ module.exports = class MyApp extends Homey.App {
         try {
           // special case for force poll
           if (action.id === 'force_poll') {
-            args.device.log(`Flow action ${action.id} called.`);
+            this.log(`Flow action ${action.id} called.`); // an app card: no device argument
             this.everyXminutesHandler(true).catch(this.error);
 
             // DEPRECATED V1

@@ -3,20 +3,9 @@
 /* Lifetime energy counters for Homey Energy: never falling, judged once per upload, and continued
    without a jump when the solar yield moves between its AC and DC counter. */
 
-const Module = require('node:module');
+const requireStubbed = require('../stubs');
 
-const loadDevice = () => {
-  const orig = Module._load;
-  Module._load = function load(req, parent, isMain) {
-    if (req === 'homey') return { Device: class {} };
-    return orig.call(this, req, parent, isMain);
-  };
-  try {
-    return require('../../lib/common_device.js');
-  } finally {
-    Module._load = orig;
-  }
-};
+const loadDevice = () => requireStubbed(require.resolve('../../lib/common_device.js'), { homey: { Device: class {} } });
 
 const fakeDevice = (Device, { driverId = 'inverter2', deviceType = 'min', store = {} } = {}) => {
   const dev = Object.create(Device.prototype);
@@ -85,6 +74,31 @@ module.exports = async (t) => {
     await d.handleLastData(record(now, 3, 54));
     t.eq(d.state.set['meter_power.imported'], 102, 'and grows on from there');
     t.eq(d.state.set['meter_power.exported'], 54, 'the other counter is untouched');
+
+    // the same low upload delivered twice at once (two polls ending together) is still one upload
+    const race = fakeDevice(Device, { driverId: 'meter2', deviceType: 'min' });
+    await race.handleLastData(record(now, 100, 50));
+    now += 6 * MIN;
+    await Promise.all([race.handleLastData(record(now, 0, 50)), race.handleLastData(record(now, 0, 50))]);
+    now += 6 * MIN;
+    await race.handleLastData(record(now, 101, 51));
+    t.eq(race.state.set['meter_power.imported'], 101, 'a low upload delivered twice at once is held once, not counted as a fall');
+
+    // a repair that moved the device to another type: its counters read other fields, no jump
+    const moved = fakeDevice(Device, { driverId: 'meter2', deviceType: 'min' });
+    await moved.handleLastData(record(now, 100, 50));
+    moved.state.store.rebaseCounters = 'max';
+    await moved.handleLastData(record(now, 100, 50));
+    t.eq(moved.state.store.rebaseCounters, 'max', 'a record of the old type does not use up the rebase');
+    moved.state.store.rebaseCounters = 'min';
+    now += 6 * MIN;
+    await moved.handleLastData(record(now, 500, 20));
+    t.eq(moved.state.set['meter_power.imported'], 100, 'after a type-change repair a higher counter continues where it was');
+    t.eq(moved.state.set['meter_power.exported'], 50, 'and so does a lower one');
+    t.eq(moved.state.store.rebaseCounters, null, 'once');
+    now += 6 * MIN;
+    await moved.handleLastData(record(now, 501, 21));
+    t.eq(moved.state.set['meter_power.imported'], 101, 'and grows on from there');
 
     // the net counter may fall: it is not held
     const net = fakeDevice(Device, { driverId: 'meter2', deviceType: 'storage' });
