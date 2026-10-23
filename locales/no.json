@@ -6,6 +6,8 @@
     "userNotFound": "Brukeren finnes ikke på noen server.",
     "httpRequestFailed": "HTTP-forespørsel mislyktes",
     "unexpectedResponse": "Uventet svar fra serveren",
+    "timeout": "Growatt-serveren svarte ikke i tide.",
+    "unreachable": "Growatt-serveren kan ikke nås. Kontroller internettforbindelsen.",
     "commandRejected": "Inverteren avviste kommandoen. Fjernstyring kan være deaktivert på inverteren, eller en smartmåler kreves.",
     "commandRejectedOrOffline": "Inverteren avviste kommandoen eller svarer ikke. Fjernstyring kan være deaktivert, eller den er frakoblet.",
     "actionNotSupported": "__action__ støttes ikke av denne enheten.",

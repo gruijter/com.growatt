@@ -6,6 +6,8 @@
     "userNotFound": "L'utente non esiste su nessun server.",
     "httpRequestFailed": "Richiesta HTTP non riuscita",
     "unexpectedResponse": "Risposta inattesa dal server",
+    "timeout": "Il server Growatt non ha risposto in tempo.",
+    "unreachable": "Il server Growatt non è raggiungibile. Controlla la connessione a Internet.",
     "commandRejected": "L'inverter ha rifiutato il comando. Il controllo remoto potrebbe essere disattivato sull'inverter, oppure è necessario un contatore intelligente.",
     "commandRejectedOrOffline": "L'inverter ha rifiutato il comando o non risponde. Il controllo remoto potrebbe essere disattivato, oppure è offline.",
     "actionNotSupported": "__action__ non è supportato da questo dispositivo.",

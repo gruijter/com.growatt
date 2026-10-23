@@ -6,6 +6,8 @@
     "userNotFound": "User does not exist on any server.",
     "httpRequestFailed": "HTTP request failed",
     "unexpectedResponse": "Unexpected response from the server",
+    "timeout": "The Growatt server did not answer in time.",
+    "unreachable": "The Growatt server cannot be reached. Check the internet connection.",
     "commandRejected": "The inverter rejected the command. Remote control may be disabled on the inverter, or a smart meter is required.",
     "commandRejectedOrOffline": "The inverter rejected the command or is not responding. Remote control may be disabled on the inverter, or it is offline.",
     "actionNotSupported": "__action__ is not supported by this device.",

@@ -6,6 +6,8 @@
     "userNotFound": "Användaren finns inte på någon server.",
     "httpRequestFailed": "HTTP-begäran misslyckades",
     "unexpectedResponse": "Oväntat svar från servern",
+    "timeout": "Growatt-servern svarade inte i tid.",
+    "unreachable": "Growatt-servern kan inte nås. Kontrollera internetanslutningen.",
     "commandRejected": "Växelriktaren avvisade kommandot. Fjärrstyrning kan vara avstängd på växelriktaren, eller så krävs en smart mätare.",
     "commandRejectedOrOffline": "Växelriktaren avvisade kommandot eller svarar inte. Fjärrstyrning kan vara avstängd, eller så är den offline.",
     "actionNotSupported": "__action__ stöds inte av den här enheten.",

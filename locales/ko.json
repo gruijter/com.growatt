@@ -6,6 +6,8 @@
     "userNotFound": "어떤 서버에도 사용자가 존재하지 않습니다.",
     "httpRequestFailed": "HTTP 요청 실패",
     "unexpectedResponse": "서버에서 예기치 않은 응답이 왔습니다",
+    "timeout": "Growatt 서버가 제때 응답하지 않았습니다.",
+    "unreachable": "Growatt 서버에 연결할 수 없습니다. 인터넷 연결을 확인하세요.",
     "commandRejected": "인버터가 명령을 거부했습니다. 인버터에서 원격 제어가 꺼져 있거나 스마트 미터가 필요할 수 있습니다.",
     "commandRejectedOrOffline": "인버터가 명령을 거부했거나 응답하지 않습니다. 원격 제어가 꺼져 있거나 오프라인일 수 있습니다.",
     "actionNotSupported": "이 기기는 __action__을(를) 지원하지 않습니다.",

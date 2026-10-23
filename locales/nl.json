@@ -6,6 +6,8 @@
     "userNotFound": "Gebruiker bestaat op geen enkele server.",
     "httpRequestFailed": "HTTP-verzoek mislukt",
     "unexpectedResponse": "Onverwacht antwoord van de server",
+    "timeout": "De Growatt-server antwoordde niet op tijd.",
+    "unreachable": "De Growatt-server is niet bereikbaar. Controleer de internetverbinding.",
     "commandRejected": "De omvormer heeft de opdracht geweigerd. Mogelijk staat afstandsbediening uit op de omvormer, of is een slimme meter vereist.",
     "commandRejectedOrOffline": "De omvormer heeft de opdracht geweigerd of reageert niet. Mogelijk staat afstandsbediening uit op de omvormer, of is hij offline.",
     "actionNotSupported": "__action__ wordt niet ondersteund door dit apparaat.",

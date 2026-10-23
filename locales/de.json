@@ -6,6 +6,8 @@
     "userNotFound": "Benutzer existiert auf keinem Server.",
     "httpRequestFailed": "HTTP-Anfrage fehlgeschlagen",
     "unexpectedResponse": "Unerwartete Antwort vom Server",
+    "timeout": "Der Growatt-Server hat nicht rechtzeitig geantwortet.",
+    "unreachable": "Der Growatt-Server ist nicht erreichbar. Überprüfen Sie die Internetverbindung.",
     "commandRejected": "Der Wechselrichter hat den Befehl abgelehnt. Möglicherweise ist die Fernsteuerung deaktiviert oder ein Smart Meter erforderlich.",
     "commandRejectedOrOffline": "Der Wechselrichter hat den Befehl abgelehnt oder antwortet nicht. Möglicherweise ist die Fernsteuerung deaktiviert oder das Gerät ist offline.",
     "actionNotSupported": "__action__ wird von diesem Gerät nicht unterstützt.",

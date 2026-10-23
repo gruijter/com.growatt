@@ -24,7 +24,7 @@ const T0 = 1788432000000;
 
 // One 8-hour run. `skew`: payload clock vs real time; `clockErr`: Homey's own clock error.
 async function simulate({
-  offset = 0, cadence = 361000, deviceType = 'min', skew = 0, clockErr = 0, noTimestamp = false,
+  offset = 0, cadence = 361000, deviceType = 'min', skew = 0, clockErr = 0, noTimestamp = false, nights = [], hours = 8,
 }) {
   let now = T0;
   let timers = [];
@@ -49,13 +49,24 @@ async function simulate({
     },
   };
 
+  // `nights`: no uploads from `from` until `to`, then a new upload phase (the datalogger restarts)
+  const latest = (t, start) => start + (Math.floor((t - start) / cadence) * cadence);
+  const uploadAtOf = (t) => {
+    let start = T0 + offset;
+    for (const { from, to } of nights) {
+      if (t < from) break;
+      if (t < to) return latest(from - 1, start);
+      start = to;
+    }
+    return latest(t, start);
+  };
+
   const window = deviceType === 'noah' ? 60000 : 300000;
   let lastServed = -Infinity;
   const polls = [];
   let refusals = 0;
   app.pollDevice = async () => {
-    const n = Math.floor((now - T0 - offset) / cadence);
-    const uploadAt = T0 + offset + (n * cadence);
+    const uploadAt = uploadAtOf(now);
     if (now - lastServed < window) {
       refusals += 1; return null;
     }
@@ -68,7 +79,7 @@ async function simulate({
 
   try {
     app.reconcileSchedules();
-    while (now < T0 + (8 * 3600 * 1000)) {
+    while (now < T0 + (hours * 3600 * 1000)) {
       timers.sort((x, y) => x.at - y.at);
       const timer = timers.shift();
       if (!timer) break;
@@ -81,9 +92,14 @@ async function simulate({
   }
 
   const uploads = new Set(polls.map((p) => p.uploadAt));
-  const total = Math.floor((8 * 3600 * 1000) / cadence);
+  const total = Math.floor((hours * 3600 * 1000) / cadence);
   const settled = polls.slice(6).map((p) => p.staleness);
+  // the first hour after the last night: how stale its uploads were when picked up
+  const dawn = nights.length ? nights[nights.length - 1].to : Infinity;
+  const morning = polls.filter((p) => p.at >= dawn && p.at < dawn + 3600000 && p.uploadAt >= dawn);
   return {
+    morningCaptured: new Set(morning.map((p) => p.uploadAt)).size,
+    morningStale: Math.round(morning.slice(2).reduce((a, p) => a + p.staleness, 0) / Math.max(1, morning.length - 2) / 1000),
     refusals,
     captured: uploads.size,
     total,
@@ -136,6 +152,18 @@ module.exports = async (t) => {
   delete app.devices[MyApp.pollKey(meter)];
   app.reconcileSchedules();
   t.ok(Object.keys(app.pollSchedules).length === 1 && app.pollSchedules[MyApp.pollKey(inv)], 'the sibling repaired to the same identity: its old schedule stops, the other stays');
+
+  // a night without uploads is silence, not a mistimed poll: the morning is picked up on time
+  const HOUR = 3600 * 1000;
+  for (const dawn of [0, 120000, 300000]) {
+    const r = await simulate({ offset: 200000, skew: -6 * HOUR, nights: [{ from: T0 + (2 * HOUR), to: T0 + (6 * HOUR) + dawn }] });
+    t.ok(r.refusals === 0 && r.morningStale <= 35, `after a night (dawn +${dawn / 1000}s): ${r.morningStale}s staleness, ${r.refusals} refusals`);
+  }
+  const nights = [0, 1, 2].map((d) => ({ from: T0 + ((d * 24) + 10) * HOUR, to: T0 + ((d * 24) + 20) * HOUR + (d * 70000) }));
+  const week = await simulate({
+    offset: 200000, skew: -6 * HOUR, nights, hours: 3 * 24,
+  });
+  t.ok(week.refusals === 0 && week.morningStale <= 35, `after three nights: ${week.morningStale}s staleness, ${week.refusals} refusals`);
 
   const blind = await simulate({ offset: 200000, noTimestamp: true });
   t.ok(blind.refusals === 0 && blind.captured >= blind.total, `payload without a timestamp falls back to fixed interval (${blind.captured}/${blind.total}, ${blind.avgStale}s)`);

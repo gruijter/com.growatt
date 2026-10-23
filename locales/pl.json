@@ -6,6 +6,8 @@
     "userNotFound": "Użytkownik nie istnieje na żadnym serwerze.",
     "httpRequestFailed": "Żądanie HTTP nie powiodło się",
     "unexpectedResponse": "Nieoczekiwana odpowiedź serwera",
+    "timeout": "Serwer Growatt nie odpowiedział na czas.",
+    "unreachable": "Serwer Growatt jest nieosiągalny. Sprawdź połączenie z internetem.",
     "commandRejected": "Falownik odrzucił polecenie. Sterowanie zdalne może być wyłączone w falowniku lub wymagany jest inteligentny licznik.",
     "commandRejectedOrOffline": "Falownik odrzucił polecenie lub nie odpowiada. Sterowanie zdalne może być wyłączone lub urządzenie jest offline.",
     "actionNotSupported": "__action__ nie jest obsługiwane przez to urządzenie.",

@@ -24,20 +24,7 @@ const Growatt = require('growatt'); // v1 API
 const Api = require('./lib/growatt_api'); // v2 API
 const growattMap = require('./lib/growattMap');
 const capture = require('./lib/growattCapture');
-
-// Cloud data does not arrive on the wall clock. The datalogger uploads on its own free-running
-// timer - measured at ~361 s on three separate sites, drifting steadily against real time - while
-// Growatt refuses a repeat of the same queryLastData inside the window its docs give for that
-// device type (5 minutes; 1 minute for noah). Polling every device on its own clock, phase-locked
-// to the upload timestamp the payload itself carries, picks new data up ~POLL_MARGIN after it
-// appears instead of up to a full cadence later. See zzz_docs/API-FIELD-NOTES.md sections 10-11.
-const POLL_PROFILE = {
-  default: { cadence: 361000, minInterval: 305000, bounds: [305000, 420000] },
-  noah: { cadence: 61000, minInterval: 61000, bounds: [55000, 130000] },
-};
-const POLL_MARGIN = 30000; // how long after an expected upload to poll, allowing for jitter
-const POLL_STAGGER = 2000; // spread the first poll of each device so no queue forms at boot
-const PHASE_STEP = 45000; // how far to nudge the aim when the payload says we mistimed a poll
+const timing = require('./lib/growattTiming');
 
 module.exports = class MyApp extends Homey.App {
 
@@ -171,17 +158,6 @@ module.exports = class MyApp extends Homey.App {
     }
   }
 
-  pollProfile(deviceType) {
-    return POLL_PROFILE[deviceType] || POLL_PROFILE.default;
-  }
-
-  // Offset of the upload clock from real time. `calendar` is the plant's wall clock parsed in the
-  // server's timezone (measured -6 h for a CEST plant), so derive it from a freshly changed upload,
-  // rounded to whole quarter-hours like every timezone offset.
-  static clockSkew(uploadAt, cadence) {
-    return Math.round(((uploadAt - Date.now()) + (cadence / 2)) / 900000) * 900000;
-  }
-
   // Upload time of this device's entry; without one a device polls at a fixed interval.
   static uploadTimeOf(lastData, deviceSn) {
     if (!lastData) return 0;
@@ -208,10 +184,8 @@ module.exports = class MyApp extends Homey.App {
     let added = 0;
     Object.entries(this.devices).forEach(([key, device]) => {
       if (this.pollSchedules[key]) return;
-      this.pollSchedules[key] = {
-        label: `${device.deviceSn} (${device.deviceType})`, timeoutId: null, cadence: this.pollProfile(device.deviceType).cadence, lastUploadAt: 0, lastPollAt: 0, skew: 0, phase: 0,
-      };
-      this.scheduleDevicePoll(device, added * POLL_STAGGER);
+      this.pollSchedules[key] = timing.newSchedule(device);
+      this.scheduleDevicePoll(device, added * timing.POLL_STAGGER);
       added += 1;
       this.log('Started polling', `${device.deviceSn} (${device.deviceType})`);
     });
@@ -236,39 +210,7 @@ module.exports = class MyApp extends Homey.App {
     if (this.pollSchedules[key] !== schedule) return; // restarted meanwhile
 
     const uploadAt = MyApp.uploadTimeOf(lastData, device.deviceSn);
-    const { minInterval, bounds } = this.pollProfile(device.deviceType);
-    if (uploadAt > schedule.lastUploadAt) {
-      // cadence from consecutive uploads, smoothed; a gap of two periods counts as a missed upload
-      if (schedule.lastUploadAt) {
-        const gap = uploadAt - schedule.lastUploadAt;
-        const periods = Math.max(1, Math.round(gap / schedule.cadence));
-        const observed = gap / periods;
-        if (observed >= bounds[0] && observed <= bounds[1]) {
-          schedule.cadence = Math.round((schedule.cadence * 0.7) + (observed * 0.3));
-        }
-        // skipped the upload we aimed at: aimed too late (deliberate k-th-upload skips excluded)
-        if (periods > 1 && schedule.aimedPeriods === 1) {
-          schedule.phase = Math.max(-schedule.cadence, schedule.phase - PHASE_STEP);
-        }
-      }
-      schedule.lastUploadAt = uploadAt;
-      // only on a changed timestamp: stale data would skew it without bound
-      schedule.skew = MyApp.clockSkew(uploadAt, schedule.cadence);
-    } else if (uploadAt && schedule.lastPollAt) {
-      // the same upload twice: aimed too early
-      schedule.phase = Math.min(schedule.cadence, schedule.phase + PHASE_STEP);
-    }
-
-    // Aim POLL_MARGIN after the first upload due once this request's window has closed (a repeat
-    // inside it is refused); that may skip one upload but locks the phase in one cycle.
-    const earliest = schedule.lastPollAt + minInterval;
-    let target = earliest;
-    if (schedule.lastUploadAt) {
-      const base = (schedule.lastUploadAt - schedule.skew) + POLL_MARGIN + schedule.phase;
-      const periods = Math.max(1, Math.ceil((earliest - base) / schedule.cadence));
-      schedule.aimedPeriods = periods; // so a deliberate skip is not later read as a mistimed poll
-      target = Math.max(base + (periods * schedule.cadence), earliest);
-    }
+    const target = timing.nextPollAt(schedule, uploadAt, device.deviceType);
     this.scheduleDevicePoll(device, Math.max(1000, target - Date.now()));
   }
 
@@ -350,6 +292,7 @@ module.exports = class MyApp extends Homey.App {
           await args.device.handleFlowAction({ action: action.id, val: args.val });
         } catch (error) {
           this.error(error);
+          throw error; // the flow card shows it as failed
         }
       });
     });
