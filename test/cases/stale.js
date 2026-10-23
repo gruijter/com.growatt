@@ -99,6 +99,35 @@ async function clockCases(t, Device) {
     now += 6 * 60 * 1000;
     await d.handleLastData({ ...record, calendar: record.calendar + (27 * 60 * 1000), pac: 5 });
     t.eq(d.state.set.measure_power, 5, 'a new upload wakes it');
+    t.eq(d.state.set.alarm_connectivity, false, 'uploading again: no connection alarm');
+    now += 23 * 60 * 60 * 1000;
+    const quiet = { ...record, calendar: record.calendar + (27 * 60 * 1000), pac: 5 };
+    await d.handleLastData(quiet);
+    t.eq(d.state.set.alarm_connectivity, false, 'the same upload for 23 hours (a night): no connection alarm');
+    t.eq(d.state.set.measure_power, 0, 'but asleep');
+    now += 2 * 60 * 60 * 1000;
+    await d.handleLastData(quiet);
+    t.eq(d.state.set.alarm_connectivity, true, 'the same upload for 25 hours: connection alarm');
+    t.ok(d.state.available, 'and still available: stale only after a week');
+    now += 6 * 60 * 1000;
+    await d.handleLastData({ ...quiet, calendar: quiet.calendar + (25 * 60 * 60 * 1000) });
+    t.eq(d.state.set.alarm_connectivity, false, 'a new upload clears the connection alarm');
+
+    // the time an upload was first heard survives a restart
+    const store = {};
+    const r = fakeDevice(Device);
+    r.deviceType = 'min';
+    r.getStoreValue = (key) => (key in store ? store[key] : null);
+    r.setStoreValue = async (key, value) => {
+      store[key] = value;
+    };
+    const night = { ...record, calendar: now - (6 * 60 * 60 * 1000) };
+    await r.handleLastData(night);
+    now += 30 * 60 * 1000;
+    delete r.uploadSeen; // the device object after an app restart
+    await r.handleLastData(night);
+    t.eq(r.state.set.measure_power, 0, 'after a restart: an upload heard 30 minutes before it is still asleep');
+
     const m = fakeDevice(Device);
     m.driver = { id: 'meter2' };
     m.deviceType = 'min';

@@ -1864,23 +1864,6 @@
             "ar": "إنتاج العاكس (AC)"
           },
           "decimals": 2
-        },
-        "alarm_generic": {
-          "title": {
-            "en": "Fault",
-            "nl": "Storing",
-            "da": "Fejl",
-            "de": "Störung",
-            "es": "Avería",
-            "fr": "Défaut",
-            "it": "Guasto",
-            "no": "Feil",
-            "sv": "Fel",
-            "pl": "Awaria",
-            "ru": "Неисправность",
-            "ko": "고장",
-            "ar": "عطل"
-          }
         }
       },
       "platforms": [

@@ -73,6 +73,20 @@ module.exports = async (t) => {
     t.ok(!(await DeviceMigrator.migrateCapabilities(device, to, { settleMs: 0 })), `${label}: second run changes nothing`);
   }
 
+  // alarm_generic replaced by alarm_problem + alarm_connectivity: only the tail changes
+  for (const [driverId, type] of [['inverter2', 'min'], ['meter2', 'min'], ['battery2', 'noah']]) {
+    const map = driverId === 'inverter2' ? growattMap.inverterCapabilities(type, true) : growattMap[`${driverId}Map`][type];
+    const to = Object.keys(map);
+    const from = [...to.filter((cap) => !cap.startsWith('alarm_')), ...(driverId === 'inverter2' ? ['alarm_generic'] : [])];
+    const values = Object.fromEntries(from.map((cap, i) => [cap, i + 1]));
+    const old = fakeDevice({ caps: from, values });
+    // eslint-disable-next-line no-await-in-loop
+    await DeviceMigrator.migrateCapabilities(old, to, { settleMs: 0 });
+    t.ok(same(old.state.caps, to), `${driverId}/${type}: the new alarms last, in order`);
+    const touched = old.state.touched.map((x) => x.slice(1));
+    t.ok(touched.every((cap) => cap.startsWith('alarm_')), `${driverId}/${type}: no other tile rebuilt (${old.state.touched.join(' ')})`);
+  }
+
   // target_power options: written once, then left alone; re-applied after a rebuild
   const settings = { deviceType: 'min', nominalPower: 3300 };
   const wanted = { target_power: growattMap.targetPowerOptions('inverter2', settings) };
