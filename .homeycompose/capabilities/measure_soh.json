@@ -1,0 +1,41 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Battery health",
+    "nl": "Batterijgezondheid",
+    "de": "Batteriezustand",
+    "fr": "État de santé batterie",
+    "es": "Salud de la batería",
+    "it": "Stato di salute batteria",
+    "da": "Batteritilstand",
+    "sv": "Batterihälsa",
+    "no": "Batterihelse",
+    "pl": "Kondycja akumulatora",
+    "ru": "Состояние батареи",
+    "ar": "صحة البطارية",
+    "ko": "배터리 수명 상태"
+  },
+  "units": {
+    "en": "%",
+    "nl": "%",
+    "de": "%",
+    "fr": "%",
+    "es": "%",
+    "it": "%",
+    "da": "%",
+    "sv": "%",
+    "no": "%",
+    "pl": "%",
+    "ru": "%",
+    "ar": "%",
+    "ko": "%"
+  },
+  "decimals": 0,
+  "min": 0,
+  "max": 100,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "./assets/measure_soh.svg"
+}
