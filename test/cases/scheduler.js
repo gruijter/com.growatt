@@ -106,8 +106,7 @@ module.exports = async (t) => {
     t.ok(r.refusals === 0 && r.avgStale <= 35, `payload clock skew ${skew / 3600000}h: ${r.avgStale}s staleness, ${r.refusals} refusals`);
   }
 
-  // a datalogger clock minutes off a quarter-hour: an early poll is still read as early, not as
-  // silence (from other start offsets this skew settles at ~195 s, the limit of clockSkew's rounding)
+  // a datalogger clock minutes off a quarter-hour: an early poll is still read as early, not as silence
   const minutesOff = await simulate({ offset: 0, skew: -((6 * 3600) + 420) * 1000 });
   t.ok(minutesOff.refusals === 0 && minutesOff.avgStale <= 35, `payload clock skew -6h7m: ${minutesOff.avgStale}s staleness, ${minutesOff.refusals} refusals`);
 

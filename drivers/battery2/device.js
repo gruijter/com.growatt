@@ -33,7 +33,7 @@ module.exports = class MyDevice extends Device {
       this.restarting = false;
       this.log(`${this.getName()} is a second battery device; the unit's batteries are one device now`);
       await this.setUnavailable(this.homey.__('status.batteryMerged')).catch((error) => this.error(error));
-      // its last bdc2 readings were junk: leave nothing for Homey Energy to show
+      // clear its last (junk bdc2) readings from Homey Energy
       for (const cap of ['measure_power', 'measure_battery']) {
         if (this.hasCapability(cap)) await this.setCapabilityValue(cap, null).catch((error) => this.error(error));
       }
