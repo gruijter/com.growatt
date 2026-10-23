@@ -16,6 +16,7 @@
     "noUpdates": "Nessun aggiornamento dal dispositivo",
     "staleData": "Nessun dato nuovo dal __since__. Controlla la connessione del datalogger.",
     "deviceTypeChanged": "Growatt ora elenca questo dispositivo come __type__. Ripara il dispositivo per aggiornarlo.",
-    "deprecatedDevice": "Dispositivo di prova obsoleto. Rimuovilo e aggiungilo di nuovo."
+    "deprecatedDevice": "Dispositivo di prova obsoleto. Rimuovilo e aggiungilo di nuovo.",
+    "batteryMerged": "Unito al dispositivo batteria dell'unità. Rimuovi questo dispositivo."
   }
 }

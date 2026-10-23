@@ -23,8 +23,29 @@ const Device = require('../../lib/common_device');
 
 module.exports = class MyDevice extends Device {
 
+  // a second battery device ('<sn>.bat2', paired before one device per unit) was never a real battery
+  get isMergedBattery() {
+    return String(this.getData().id).endsWith('.bat2');
+  }
+
   async onInit() {
+    if (this.isMergedBattery) {
+      this.restarting = false;
+      this.log(`${this.getName()} is a second battery device; the unit's batteries are one device now`);
+      await this.setUnavailable(this.homey.__('status.batteryMerged')).catch((error) => this.error(error));
+      return;
+    }
     await super.onInit();
+  }
+
+  async onAdded() {
+    if (this.isMergedBattery) return;
+    await super.onAdded();
+  }
+
+  async onSettings(event) {
+    if (this.isMergedBattery) return;
+    await super.onSettings(event);
   }
 
 };

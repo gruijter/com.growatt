@@ -16,6 +16,7 @@
     "noUpdates": "Inga uppdateringar från enheten",
     "staleData": "Inga nya data sedan __since__. Kontrollera dataloggerns anslutning.",
     "deviceTypeChanged": "Growatt listar nu den här enheten som __type__. Reparera enheten för att uppdatera den.",
-    "deprecatedDevice": "Föråldrad testenhet. Ta bort den och lägg till den igen."
+    "deprecatedDevice": "Föråldrad testenhet. Ta bort den och lägg till den igen.",
+    "batteryMerged": "Sammanslagen med enhetens batterienhet. Ta bort den här enheten."
   }
 }

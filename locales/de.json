@@ -16,6 +16,7 @@
     "noUpdates": "Keine Updates vom Gerät",
     "staleData": "Keine neuen Daten seit __since__. Prüfen Sie die Verbindung des Datenloggers.",
     "deviceTypeChanged": "Growatt führt dieses Gerät jetzt als __type__. Reparieren Sie das Gerät, um es zu aktualisieren.",
-    "deprecatedDevice": "Veraltetes Testgerät. Bitte entfernen und neu hinzufügen."
+    "deprecatedDevice": "Veraltetes Testgerät. Bitte entfernen und neu hinzufügen.",
+    "batteryMerged": "Mit dem Batteriegerät der Einheit zusammengeführt. Bitte entferne dieses Gerät."
   }
 }

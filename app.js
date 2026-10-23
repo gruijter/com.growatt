@@ -116,7 +116,8 @@ module.exports = class MyApp extends Homey.App {
     try {
       const inverters = this.homey.drivers.getDriver('inverter2').getDevices();
       const meters = this.homey.drivers.getDriver('meter2').getDevices();
-      const batteries = this.homey.drivers.getDriver('battery2').getDevices();
+      const batteries = this.homey.drivers.getDriver('battery2').getDevices()
+        .filter((device) => !device.isMergedBattery);
       const devices = [...inverters, ...meters, ...batteries];
       this.devices = {}; // so deleted devices are not polled
       // one entry per distinct poll: devices sharing a serial (inverter2/meter2/battery2) can differ

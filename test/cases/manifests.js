@@ -52,9 +52,7 @@ module.exports = async (t) => {
   for (const id of V2) {
     const driver = drivers[id];
     const possible = new Set(Object.values(growattMap[`${id}Map`])
-      .flatMap((map) => Object.keys(map))
-      // common_device#migrate drops the fake second battery
-      .filter((cap) => id !== 'battery2' || !cap.includes('.bat2')));
+      .flatMap((map) => Object.keys(map)));
     const unknown = [...possible].filter((cap) => !system[cap.split('.')[0]] && !app.capabilities?.[cap.split('.')[0]]);
     t.ok(unknown.length === 0, `${id}: every mapped capability exists${unknown.length ? ` (unknown: ${unknown.join(', ')})` : ''}`);
 
