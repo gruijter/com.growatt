@@ -69,6 +69,33 @@ module.exports = async (t) => {
     t.ok(!d2.ok && d2.reason === 'RATE_LIMITED', 'D stays refused for its own window');
     t.ok(c.lastDataCooldownUntil({ deviceSn: 'D', deviceType: 'min' }) > 0, 'D reports a cooldown');
     t.eq(c.lastDataCooldownUntil({ deviceSn: 'Z', deviceType: 'min' }), 0, 'an unrelated device reports none');
+
+    // a cooldown saved before the account key lost its username still holds after the update
+    let saved = {};
+    const homey = {
+      settings: {
+        get: () => saved,
+        set: (key, value) => {
+          saved = value;
+        },
+      },
+    };
+    Api.__testHooks.reset();
+    Api.__testHooks.enableStore();
+    const e = new Api({
+      user_name: 'u', token: 't', host: 'openapi.growatt.com', homey,
+    });
+    net.trip('deviceSn=F');
+    await res(e.getLastData({ deviceSn: 'F', deviceType: 'min' }));
+    Api.__testHooks.flush();
+    const old = (keys) => Object.fromEntries(Object.entries(keys).map(([key, value]) => [`u__${key}`, value]));
+    saved = { cooldowns: old(saved.cooldowns), cache: old(saved.cache) };
+    Api.__testHooks.reset();
+    Api.__testHooks.enableStore();
+    const f = new Api({
+      user_name: 'U', token: 't', host: 'openapi.growatt.com', homey,
+    });
+    t.ok(f.lastDataCooldownUntil({ deviceSn: 'F', deviceType: 'min' }) > 0, 'a cooldown saved with the username is restored');
   } finally {
     global.fetch = realFetch;
     Api.__testHooks.setSpacing(1000);

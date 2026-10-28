@@ -79,23 +79,6 @@
         "ar": "جهد البطارية",
         "ko": "배터리 전압"
       }
-    },
-    "measure_temperature": {
-      "title": {
-        "en": "Ambient temperature",
-        "nl": "Omgevingstemperatuur",
-        "de": "Umgebungstemperatur",
-        "fr": "Température ambiante",
-        "es": "Temperatura ambiente",
-        "it": "Temperatura ambiente",
-        "da": "Omgivelsestemperatur",
-        "sv": "Omgivningstemperatur",
-        "no": "Omgivelsestemperatur",
-        "pl": "Temperatura otoczenia",
-        "ru": "Температура окружающей среды",
-        "ar": "درجة الحرارة المحيطة",
-        "ko": "주변 온도"
-      }
     }
   },
   "energy": {

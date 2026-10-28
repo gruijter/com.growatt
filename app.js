@@ -34,7 +34,7 @@ module.exports = class MyApp extends Homey.App {
     capture.setLog((line) => this.log(line));
     capture.arm('app start', { force: true });
     this.devices = {}; // pollKey: { username, token, host, deviceSn, deviceType }
-    this.apiSessions = {}; // username__token: apiSession
+    this.apiSessions = {}; // token: apiSession
     this.pollSchedules = {}; // pollKey: { timeoutId, cadence, lastUploadAt, lastPollAt }
     this.everyXminutes(5); // reconciles the per-device schedules; the polls themselves are theirs
     this.pendingPolls = {}; // prevents concurrent polling
@@ -91,7 +91,8 @@ module.exports = class MyApp extends Homey.App {
     const username = device.username || '';
     const token = device.token || '';
     const host = device.host || 'openapi.growatt.com';
-    const sessionName = `${username}__${token}`;
+    // the token alone, as pollKey: a username typed in another case is the same account
+    const sessionName = token;
     if (!this.apiSessions[sessionName]) {
       this.apiSessions[sessionName] = new Api({
         user_name: username, token, host, homey: this.homey,
@@ -99,6 +100,7 @@ module.exports = class MyApp extends Homey.App {
       this.log('New session created for', `${username}__${token}`, 'on', host);
     } else {
       this.apiSessions[sessionName].host = host; // discovery may have found another host
+      this.apiSessions[sessionName].user_name = username; // as entered, for checkUser at pairing
     }
     return this.apiSessions[sessionName];
   }

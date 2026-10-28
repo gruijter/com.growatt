@@ -157,6 +157,7 @@ const homey = {
 /** Answers 0x03/0x04 inside the given registers, exception 2 outside; 0x06 writes into holding. */
 const serve = (unit) => new Promise((resolve) => {
   const writes = [];
+  const reads = [];
   const server = net.createServer((socket) => {
     socket.on('error', () => {});
     socket.on('data', (frame) => {
@@ -169,6 +170,7 @@ const serve = (unit) => new Promise((resolve) => {
         return;
       }
       const count = frame.readUInt16BE(10);
+      reads.push(`${fc}:${address}:${count}`);
       const map = fc === 0x04 ? unit.input : unit.holding;
       const words = Array.from({ length: count }, (_, i) => map[address + i]);
       if (words.some((w) => w === undefined)) {
@@ -191,7 +193,9 @@ const serve = (unit) => new Promise((resolve) => {
       socket.write(reply);
     });
   });
-  server.listen(0, '127.0.0.1', () => resolve({ server, writes, port: server.address().port }));
+  server.listen(0, '127.0.0.1', () => resolve({
+    server, writes, reads, port: server.address().port,
+  }));
 });
 
 const loadDriver = (id) => {

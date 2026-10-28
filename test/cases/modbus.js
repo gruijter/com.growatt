@@ -173,10 +173,13 @@ module.exports = async (t) => {
   ];
 
   for (const unitCase of cases) {
-    const { server, writes, port } = await serve(unitCase.unit); // eslint-disable-line no-await-in-loop
+    const {
+      server, writes, reads, port,
+    } = await serve(unitCase.unit); // eslint-disable-line no-await-in-loop
     try {
       for (const id of DRIVERS) {
         logs.length = 0;
+        reads.length = 0;
         const started = await pairAndStart(id, port); // eslint-disable-line no-await-in-loop
         const { captures, errors, asServed } = capturesOf(unitCase.unit);
         const prefix = id.replace(/[^A-Za-z]/g, '');
@@ -198,6 +201,8 @@ module.exports = async (t) => {
         t.ok(Array.isArray(offer.capabilities), `${unitCase.name}: ${id} paired with its capabilities`);
         t.eq(device.migrations.join(' '), '', `${unitCase.name}: ${id} does not migrate right after pairing`);
         t.eq(device.problems.join('; '), '', `${unitCase.name}: ${id} started without problems`);
+        // once at pairing (identity, reused by detection), once at the start (detection, reused by identity)
+        t.eq(reads.filter((read) => read === '3:0:125').length, 2, `${unitCase.name}: ${id} reads its identity block twice, not four times`);
         for (const [cap, value] of Object.entries(unitCase.expect[id])) {
           t.eq(device.getCapabilityValue(cap), value, `${unitCase.name}: ${id} ${cap}`);
         }
@@ -213,8 +218,27 @@ module.exports = async (t) => {
           const control = brand.pointMap[id].controls[0];
           await device.writeControl(control, { target_power: 2500 }); // eslint-disable-line no-await-in-loop
           t.eq(JSON.stringify(writes), '[[3,50]]', `${unitCase.name}: a 2500 W limit writes 50 % to holding 3`);
+          unitCase.unit.holding[3] = 255; // the inverter restarted
+          await device.poll(); // eslint-disable-line no-await-in-loop
+          t.eq(JSON.stringify(writes), '[[3,50],[3,50]]', `${unitCase.name}: a limit lost in a restart is written again`);
           await device.writeControl(control, { target_power: 5000 }); // eslint-disable-line no-await-in-loop
-          t.eq(JSON.stringify(writes[1]), '[3,255]', `${unitCase.name}: the rated power writes "not limited"`);
+          t.eq(JSON.stringify(writes[2]), '[3,255]', `${unitCase.name}: the rated power writes "not limited"`);
+          await device.poll(); // eslint-disable-line no-await-in-loop
+          t.eq(writes.length, 3, `${unitCase.name}: no limit is reapplied once unlimited`);
+
+          // off for the night: power 0 rather than the last reading, one logged failure per hour
+          const { readBlocks } = device;
+          device.readBlocks = async () => {
+            throw Error('connect ECONNREFUSED');
+          };
+          for (let n = 0; n < 6; n += 1) await device.poll(); // eslint-disable-line no-await-in-loop
+          t.ok(!device.getAvailable(), `${unitCase.name}: unreachable makes the inverter unavailable`);
+          t.eq(device.getCapabilityValue('measure_power'), 0, `${unitCase.name}: unreachable sets solar power to 0`);
+          t.eq(device.getCapabilityValue('measure_power.pv1'), 0, `${unitCase.name}: unreachable sets string power to 0`);
+          t.eq(device.getCapabilityValue('measure_efficiency'), null, `${unitCase.name}: unreachable clears the efficiency`);
+          t.eq(device.problems.filter((line) => line.includes('failed:')).length, 3, `${unitCase.name}: failed polls are logged until unavailable`);
+          device.readBlocks = readBlocks;
+          device.problems.length = 0;
         }
         stop(device);
       }

@@ -183,7 +183,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=inverter2&capabilities=measure_power.ac_inverter"
+            "filter": "driver_id=inverter2|inverter_modbus&capabilities=measure_power.ac_inverter"
           }
         ],
         "tokens": [
@@ -231,7 +231,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=inverter2&capabilities=measure_power.dc_solar"
+            "filter": "driver_id=inverter2|inverter_modbus&capabilities=measure_power.dc_solar"
           }
         ],
         "tokens": [
@@ -279,7 +279,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=inverter2&capabilities=meter_power.today"
+            "filter": "driver_id=inverter2|inverter_modbus&capabilities=meter_power.today"
           }
         ],
         "tokens": [
@@ -1352,23 +1352,6 @@
             "ru": "Напряжение батареи",
             "ar": "جهد البطارية",
             "ko": "배터리 전압"
-          }
-        },
-        "measure_temperature": {
-          "title": {
-            "en": "Ambient temperature",
-            "nl": "Omgevingstemperatuur",
-            "de": "Umgebungstemperatur",
-            "fr": "Température ambiante",
-            "es": "Temperatura ambiente",
-            "it": "Temperatura ambiente",
-            "da": "Omgivelsestemperatur",
-            "sv": "Omgivningstemperatur",
-            "no": "Omgivelsestemperatur",
-            "pl": "Temperatura otoczenia",
-            "ru": "Температура окружающей среды",
-            "ar": "درجة الحرارة المحيطة",
-            "ko": "주변 온도"
           }
         }
       },

@@ -19,7 +19,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=inverter2&capabilities=measure_power.dc_solar"
+      "filter": "driver_id=inverter2|inverter_modbus&capabilities=measure_power.dc_solar"
     }
   ],
   "tokens": [
