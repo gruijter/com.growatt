@@ -1,2 +1,4 @@
 Conecte su inversor Growatt a Homey y obtenga información detallada sobre su producción de energía solar y el uso de la batería.
 Supervise su producción de energía actual, así como su generación diaria, mensual, anual y total. Con la aplicación GroWatt para Homey, puede utilizar estos datos para optimizar su consumo de energía, crear Flujos (Flows) y realizar un seguimiento del rendimiento de su sistema, todo en un solo lugar.
+
+Conexión local (Modbus TCP): el inversor, la batería y el medidor de red también se pueden añadir sin la nube de Growatt, mediante un dongle ShineWiLan-X2 en su red local. Elija el dispositivo marcado con '(Modbus)'. Se actualizan cada 10 segundos. Asigne al dongle una dirección IP fija en su router. Otros dongles no son compatibles. No añada el mismo inversor a través de la nube y de Modbus a la vez, o Homey Energy lo contará dos veces.

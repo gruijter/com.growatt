@@ -1,2 +1,4 @@
 Verbinden Sie Ihren Growatt-Wechselrichter mit Homey und erhalten Sie detaillierte Einblicke in Ihre Solarenergieproduktion und Batterienutzung.
 Überwachen Sie Ihre aktuelle Stromabgabe sowie Ihre tägliche, monatliche, jährliche und gesamte Erzeugung. Mit der GroWatt-App für Homey können Sie diese Daten nutzen, um Ihren Energieverbrauch zu optimieren, Flows zu erstellen und die Leistung Ihres Systems zu verfolgen – alles an einem Ort.
+
+Lokale Verbindung (Modbus TCP): Wechselrichter, Batterie und Stromzähler können auch ohne die Growatt-Cloud hinzugefügt werden, über einen ShineWiLan-X2-Dongle im lokalen Netzwerk. Wählen Sie das Gerät mit '(Modbus)'. Diese werden alle 10 Sekunden aktualisiert. Geben Sie dem Dongle eine feste IP-Adresse in Ihrem Router. Andere Dongles werden nicht unterstützt. Fügen Sie denselben Wechselrichter nicht sowohl über die Cloud als auch über Modbus hinzu, sonst zählt Homey Energy ihn doppelt.

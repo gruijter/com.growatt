@@ -1,2 +1,4 @@
-Verbind je Growatt-omvormer met Homey en krijg gedetailleerd inzicht in je zonne-energieproductie en batterij gebruik. 
+Verbind je Growatt-omvormer met Homey en krijg gedetailleerd inzicht in je zonne-energieproductie en batterij gebruik.
 Houd je huidige stroomopbrengst bij, evenals je dagelijkse, maandelijkse, jaarlijkse en totale opwekking. Met de GroWatt-app voor Homey kun je deze gegevens gebruiken om je energieverbruik te optimaliseren, Flows te maken en de prestaties van je systeem bij te houden — allemaal op één plek.
+
+Lokale verbinding (Modbus TCP): de omvormer, batterij en energiemeter kun je ook zonder de Growatt-cloud toevoegen, via een ShineWiLan-X2-dongle in je lokale netwerk. Kies het apparaat met '(Modbus)'. Deze worden elke 10 seconden bijgewerkt. Geef de dongle een vast IP-adres in je router. Andere dongles worden niet ondersteund. Voeg dezelfde omvormer niet via zowel de cloud als Modbus toe, anders telt Homey Energy hem dubbel.

@@ -1,2 +1,4 @@
 Podłącz swój falownik Growatt do Homey i uzyskaj szczegółowe informacje na temat produkcji energii słonecznej i zużycia baterii.
 Monitoruj bieżącą moc wyjściową, a także dzienne, miesięczne, roczne i całkowite wytwarzanie. Dzięki aplikacji GroWatt dla Homey możesz wykorzystać te dane do optymalizacji zużycia energii, tworzenia Przepływów (Flows) i śledzenia wydajności systemu — wszystko w jednym miejscu.
+
+Połączenie lokalne (Modbus TCP): falownik, baterię i licznik można też dodać bez chmury Growatt, przez klucz ShineWiLan-X2 w sieci lokalnej. Wybierz urządzenie oznaczone '(Modbus)'. Są aktualizowane co 10 sekund. Nadaj kluczowi stały adres IP w routerze. Inne klucze nie są obsługiwane. Nie dodawaj tego samego falownika jednocześnie przez chmurę i Modbus, bo Homey Energy policzy go podwójnie.

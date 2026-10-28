@@ -1,2 +1,4 @@
 Connectez votre onduleur Growatt à Homey et obtenez des informations détaillées sur votre production d'énergie solaire et l'utilisation de votre batterie.
 Surveillez votre production d'électricité actuelle, ainsi que votre production quotidienne, mensuelle, annuelle et totale. Avec l'application GroWatt pour Homey, vous pouvez utiliser ces données pour optimiser votre consommation d'énergie, créer des Flows et suivre les performances de votre système — le tout en un seul endroit.
+
+Connexion locale (Modbus TCP) : l'onduleur, la batterie et le compteur peuvent aussi être ajoutés sans le cloud Growatt, via un dongle ShineWiLan-X2 sur votre réseau local. Choisissez l'appareil marqué '(Modbus)'. Ils sont mis à jour toutes les 10 secondes. Attribuez au dongle une adresse IP fixe dans votre routeur. Les autres dongles ne sont pas pris en charge. N'ajoutez pas le même onduleur à la fois via le cloud et via Modbus, sinon Homey Energy le comptera deux fois.
