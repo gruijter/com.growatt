@@ -5,150 +5,9 @@
    decoded values, and the power limit control. Register values are synthetic, from the protocol
    documents' layout (lib/growattModbusPointMap.js). */
 
-const fs = require('node:fs');
-const net = require('node:net');
-const path = require('node:path');
-const requireStubbed = require('../stubs');
-
-const ROOT = path.join(__dirname, '..', '..');
-const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'app.json'), 'utf8'));
-const en = JSON.parse(fs.readFileSync(path.join(ROOT, 'locales', 'en.json'), 'utf8'));
-const DRIVERS = ['inverter_modbus', 'battery_modbus', 'meter_modbus'];
-
-class SimpleClass {
-
-  log() {}
-
-  error() {}
-
-}
-
-class Device extends SimpleClass {
-
-  constructor({ driver, offer, homey }) {
-    super();
-    this.homey = homey;
-    this.driver = driver;
-    this.data = offer.data;
-    this.settings = { ...offer.settings };
-    this.store = structuredClone(offer.store || {});
-    this.values = Object.fromEntries((offer.capabilities || driver.manifest.capabilities).map((id) => [id, null]));
-    this.energy = driver.manifest.energy ?? null;
-    this.available = true;
-    this.migrations = [];
-    this.problems = [];
-  }
-
-  getName() {
-    return this.driver.id;
-  }
-
-  getData() {
-    return this.data;
-  }
-
-  getSettings() {
-    return this.settings;
-  }
-
-  getSetting(key) {
-    return this.settings[key];
-  }
-
-  async setSettings(settings) {
-    Object.assign(this.settings, settings);
-  }
-
-  hasCapability(id) {
-    return id in this.values;
-  }
-
-  getCapabilities() {
-    return Object.keys(this.values);
-  }
-
-  getCapabilityValue(id) {
-    return this.values[id] ?? null;
-  }
-
-  async addCapability(id) {
-    this.migrations.push(`+${id}`);
-    this.values[id] = null;
-  }
-
-  async removeCapability(id) {
-    this.migrations.push(`-${id}`);
-    delete this.values[id];
-  }
-
-  getCapabilityOptions(id) {
-    if (!this.options?.[id]) throw new Error(`Invalid Capability: ${id}`);
-    return this.options[id];
-  }
-
-  async setCapabilityOptions(id, options) {
-    this.options = { ...this.options, [id]: options };
-  }
-
-  getEnergy() {
-    return this.energy;
-  }
-
-  async setEnergy(energy) {
-    this.energy = energy;
-  }
-
-  async setCapabilityValue(id, value) {
-    if (!(id in this.values)) throw new Error(`Invalid Capability: ${id}`);
-    this.values[id] = value;
-  }
-
-  getStoreValue(key) {
-    return this.store[key] ?? null;
-  }
-
-  async setStoreValue(key, value) {
-    this.store[key] = value;
-  }
-
-  getAvailable() {
-    return this.available;
-  }
-
-  async setAvailable() {
-    this.available = true;
-  }
-
-  async setUnavailable(message) {
-    this.available = false;
-    this.problems.push(`unavailable: ${message}`);
-  }
-
-  registerMultipleCapabilityListener() {}
-
-  error(...args) {
-    this.problems.push(`error: ${args.map((arg) => arg?.message ?? arg).join(' ')}`);
-  }
-
-}
-
-const stubs = { homey: { Device, Driver: SimpleClass, SimpleClass } };
-const ModbusPool = requireStubbed(path.join(ROOT, 'lib', 'ModbusPool.js'), stubs);
-const brand = requireStubbed(path.join(ROOT, 'lib', 'modbusBrand.js'), stubs);
-
-const homey = {
-  manifest,
-  __: (key) => key.split('.').reduce((node, part) => node?.[part], en) ?? key,
-  i18n: { getLanguage: () => 'en' },
-  setTimeout: () => ({}),
-  clearTimeout() {},
-  setInterval: () => ({}),
-  clearInterval() {},
-  on() {},
-  removeListener() {},
-  settings: { get: () => undefined, set() {} },
-  app: { pool: new ModbusPool() },
-};
+const {
+  DRIVERS, manifest, brand, homey, logs, registerCapture, INPUT, serve, pairAndStart, stop,
+} = require('../modbus-harness');
 
 // --- fake inverters -----------------------------------------------------------------------
 
@@ -243,82 +102,12 @@ const TL3 = (() => {
   return { holding, input };
 })();
 
-/** Answers 0x03/0x04 inside the given registers, exception 2 outside; 0x06 writes into holding. */
-const serve = (unit) => new Promise((resolve) => {
-  const writes = [];
-  const server = net.createServer((socket) => {
-    socket.on('error', () => {});
-    socket.on('data', (frame) => {
-      const fc = frame.readUInt8(7);
-      const address = frame.readUInt16BE(8);
-      if (fc === 0x06) {
-        unit.holding[address] = frame.readUInt16BE(10);
-        writes.push([address, frame.readUInt16BE(10)]);
-        socket.write(Buffer.from(frame.subarray(0, 12)));
-        return;
-      }
-      const count = frame.readUInt16BE(10);
-      const map = fc === 0x04 ? unit.input : unit.holding;
-      const words = Array.from({ length: count }, (_, i) => map[address + i]);
-      if (words.some((w) => w === undefined)) {
-        const reply = Buffer.alloc(9);
-        frame.copy(reply, 0, 0, 4);
-        reply.writeUInt16BE(3, 4);
-        reply.writeUInt8(frame.readUInt8(6), 6);
-        reply.writeUInt8(fc | 0x80, 7);
-        reply.writeUInt8(2, 8);
-        socket.write(reply);
-        return;
-      }
-      const reply = Buffer.alloc(9 + count * 2);
-      frame.copy(reply, 0, 0, 4);
-      reply.writeUInt16BE(3 + count * 2, 4);
-      reply.writeUInt8(frame.readUInt8(6), 6);
-      reply.writeUInt8(fc, 7);
-      reply.writeUInt8(count * 2, 8);
-      words.forEach((w, i) => reply.writeUInt16BE(w, 9 + i * 2));
-      socket.write(reply);
-    });
-  });
-  server.listen(0, '127.0.0.1', () => resolve({ server, writes, port: server.address().port }));
-});
-
-const loadDriver = (id) => {
-  const DriverClass = requireStubbed(path.join(ROOT, 'drivers', id, 'driver.js'), stubs);
-  const driver = new DriverClass();
-  driver.homey = homey;
-  driver.id = id;
-  driver.manifest = manifest.drivers.find((item) => item.id === id);
-  driver.getDevices = () => [];
-  return driver;
-};
-
-const settle = async (device) => {
-  while (device.polling) {
-    // eslint-disable-next-line no-await-in-loop
-    await new Promise((resolve) => {
-      setTimeout(resolve, 5); // eslint-disable-line homey-app/global-timers
-    });
-  }
-};
-
-/** Pair `id` from a scan hit at the fake server and start it; null when nothing is offered. */
-const pairAndStart = async (id, port) => {
-  const driver = loadDriver(id);
-  driver.scanResults = async () => [{ id: null, address: '127.0.0.1', port }];
-  const offers = await driver.onPairListDevices();
-  if (!offers.length) return null;
-  const [offer] = offers;
-  const DeviceClass = requireStubbed(path.join(ROOT, 'drivers', id, 'device.js'), stubs);
-  const device = new DeviceClass({ driver, offer, homey });
-  await device.onInit();
-  await settle(device);
-  return { driver, device, offer };
-};
-
-const stop = (device) => {
-  device.stopPolling();
-  device.release();
+/** The capture blocks in the log, and whether each holds the registers the fake server serves. */
+const capturesOf = (unit) => {
+  const { captures, errors } = registerCapture.parseLog(logs.join('\n'));
+  const asServed = Object.values(captures).every((capture) => [...registerCapture.fromRuns(capture.registers)]
+    .every(([address, word]) => (address >= INPUT ? unit.input[address - INPUT] : unit.holding[address]) === word));
+  return { captures, errors, asServed };
 };
 
 module.exports = async (t) => {
@@ -387,7 +176,13 @@ module.exports = async (t) => {
     const { server, writes, port } = await serve(unitCase.unit); // eslint-disable-line no-await-in-loop
     try {
       for (const id of DRIVERS) {
+        logs.length = 0;
         const started = await pairAndStart(id, port); // eslint-disable-line no-await-in-loop
+        const { captures, errors, asServed } = capturesOf(unitCase.unit);
+        const prefix = id.replace(/[^A-Za-z]/g, '');
+        t.eq(errors.join('; '), '', `${unitCase.name}: ${id} captures parse from the log`);
+        t.ok(asServed, `${unitCase.name}: ${id} captures hold the registers as served`);
+        t.ok(captures[`${prefix}PairIdentity`], `${unitCase.name}: ${id} pairing captures its identity registers`);
         if ((unitCase.unpairable || []).includes(id)) {
           t.ok(started === null, `${unitCase.name}: ${id} is not offered`);
           continue;
@@ -409,6 +204,10 @@ module.exports = async (t) => {
         for (const cap of (unitCase.absent || {})[id] || []) {
           t.ok(!device.hasCapability(cap), `${unitCase.name}: ${id} has no ${cap}`);
         }
+        for (const kind of ['PairDetection', 'Identity', 'Detection', 'Poll']) {
+          t.ok(captures[`${prefix}${kind}`], `${unitCase.name}: ${id} captures ${kind}`);
+        }
+        t.eq(JSON.stringify(captures[`${prefix}Poll`]?.values), JSON.stringify(device.values), `${unitCase.name}: ${id} Poll capture holds the values`);
         if (id === 'inverter_modbus' && unitCase.unit === MIN_XH) {
           writes.length = 0;
           const control = brand.pointMap[id].controls[0];

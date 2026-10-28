@@ -43,6 +43,14 @@ per app start, device init, pairing and repair, with location and contact detail
 under the same names and index entries as `zzz_collect.js` (`--dry` to look first, `--force` to
 overwrite).
 
+The local Modbus drivers have their own route. `lib/registerCapture.js` logs the raw registers of
+each probed unit at pairing (also of one that is not offered), and each device's identity,
+detection and first poll at device start and repair (tag `GROWATT-MODBUS`).
+`node test/from-modbus-logs.js <report.txt>` writes them into `zzz_responses/modbus/<site>.json`
+(`--site`, `--dry`, `--force`), and `cases/modbus-replay.js` serves them from a fake Modbus server.
+Its `expect` starts as the captured poll values; drop one that depended on what the device had
+stored rather than on the registers.
+
 ## The cases
 
 | File | What it protects |
@@ -50,6 +58,8 @@ overwrite).
 | `replay.js` | That the archive is replayable at all: every captured request, back through the real client, returns what was captured. If this fails, trust nothing else. |
 | `mapping.js` | Every payload through every driver's capability map, compared against a snapshot. Catches the silent failure: a Growatt field that changes name turns a capability into `NaN`, which Homey renders as an empty tile rather than an error. |
 | `limiter.js` | Request-level identity of the cache and cooldown — including the two regressions that reached a user: a second client for one account being refused instead of served, and cross-host cache reuse that would make `discoverHost` pick the wrong server. |
+| `modbus.js` | The Modbus drivers against a fake Modbus TCP server per register family: manifests against the point map, pairing with its detection, no migration right after pairing, decoded values, the power limit, and that every register capture reads back as served. |
+| `modbus-replay.js` | Real register captures (`zzz_responses/modbus/`) replayed: each driver pairs, detects and decodes as it did at that installation; for a driver without a device there only whether it is offered. |
 | `scheduler.js` | The per-device poll scheduler on a virtual clock, against a server that refuses repeats. Checks the two properties that matter — never breaks the rate limit, never misses an upload — across cold-start offsets, payload clock skews, datalogger cadences, `noah`'s 1-minute window, a wrong Homey clock, and payloads with no timestamp at all. |
 
 ## Adding a case
