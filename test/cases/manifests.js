@@ -7,9 +7,11 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { isDeepStrictEqual } = require('node:util');
 const homeyLib = require('homey-lib'); // eslint-disable-line node/no-unpublished-require
 const growattMap = require('../../lib/growattMap');
 const { deviceTitles } = require('../../lib/capabilityTitles');
+const { solarTitle } = require('../../lib/solarTitles');
 
 const ROOT = path.join(__dirname, '..', '..');
 const LOCALES = ['en', 'nl', 'de', 'fr', 'es', 'it', 'da', 'sv', 'no', 'pl', 'ru', 'ar', 'ko'];
@@ -68,6 +70,26 @@ module.exports = async (t) => {
     }
     const stray = [...new Set(named.filter(([cap]) => !possible.has(cap)).map(([cap, where]) => `${cap} (${where})`))];
     t.ok(stray.length === 0, `${id}: the manifest names only capabilities the device can have${stray.length ? ` (not mapped: ${stray.join(', ')})` : ''}`);
+  }
+
+  // solar titles in the manifests are those of the shared solarTitles.js
+  const SOLAR_MANIFEST_TITLES = {
+    inverter: {
+      measure_power: ['measure_power', 'dc'],
+      meter_power: ['meter_power', 'dc'],
+      'meter_power.today': ['meter_power.today', 'dc'],
+      'meter_power.month': ['meter_power.month', 'dc'],
+    },
+    inverter2: {
+      measure_power: ['measure_power', 'ac'],
+      'measure_power.dc_solar': ['measure_power', 'dc'],
+      'meter_power.dc_solar': ['meter_power', 'dc'],
+    },
+  };
+  for (const [id, caps] of Object.entries(SOLAR_MANIFEST_TITLES)) {
+    for (const [cap, [base, side]] of Object.entries(caps)) {
+      t.ok(isDeepStrictEqual(drivers[id].capabilitiesOptions?.[cap]?.title, solarTitle(base, side)), `${id}: ${cap} title is solarTitle('${base}', '${side}')`);
+    }
   }
 
   // --- 3. translations

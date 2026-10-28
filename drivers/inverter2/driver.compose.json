@@ -55,7 +55,7 @@
         "sv": "Soleffekt (AC)",
         "pl": "Moc słoneczna (AC)",
         "ru": "Солнечная мощность (AC)",
-        "ko": "태양광 전력(AC)",
+        "ko": "태양광 전력 (AC)",
         "ar": "القدرة الشمسية (AC)"
       },
       "decimals": 0
@@ -73,7 +73,7 @@
         "sv": "Soleffekt (DC)",
         "pl": "Moc słoneczna (DC)",
         "ru": "Солнечная мощность (DC)",
-        "ko": "태양광 전력(DC)",
+        "ko": "태양광 전력 (DC)",
         "ar": "القدرة الشمسية (DC)"
       },
       "decimals": 0

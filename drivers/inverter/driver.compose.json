@@ -35,7 +35,7 @@
         "sv": "Soleffekt (DC)",
         "pl": "Moc słoneczna (DC)",
         "ru": "Солнечная мощность (DC)",
-        "ko": "태양광 전력(DC)",
+        "ko": "태양광 전력 (DC)",
         "ar": "القدرة الشمسية (DC)"
       },
       "decimals": 0
@@ -59,19 +59,19 @@
     },
     "meter_power.month": {
       "title": {
-        "en": "Energy this month",
-        "nl": "Energie deze maand",
-        "da": "Energi i denne måned",
-        "de": "Energie diesen Monat",
-        "es": "Energía este mes",
-        "fr": "Énergie ce mois-ci",
-        "it": "Energia questo mese",
-        "no": "Energi denne måneden",
-        "sv": "Energi denna månad",
-        "pl": "Energia w tym miesiącu",
-        "ru": "Энергия за этот месяц",
-        "ko": "이번 달 에너지",
-        "ar": "الطاقة هذا الشهر"
+        "en": "Solar energy this month (DC)",
+        "nl": "Opbrengst deze maand (DC)",
+        "da": "Produktion denne måned (DC)",
+        "de": "Solarertrag diesen Monat (DC)",
+        "es": "Producción de este mes (CC)",
+        "fr": "Production du mois (CC)",
+        "it": "Produzione di questo mese (CC)",
+        "no": "Produksjon denne måneden (DC)",
+        "sv": "Solproduktion denna månad (DC)",
+        "pl": "Uzysk w tym miesiącu (DC)",
+        "ru": "Энергия за этот месяц (DC)",
+        "ko": "이번 달 태양광 발전량 (DC)",
+        "ar": "الطاقة هذا الشهر (DC)"
       }
     },
     "meter_power.today": {

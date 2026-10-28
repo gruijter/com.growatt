@@ -7,7 +7,7 @@
   },
   "scripts": {
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
-    "test": "node test/run.js"
+    "test": "node test/run.js && (test ! -f ../.agents/sync/sync-shared.js || node ../.agents/sync/sync-shared.js check com.growatt)"
   },
   "devDependencies": {
     "@types/homey": "npm:homey-apps-sdk-v3-types@beta",
