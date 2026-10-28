@@ -137,6 +137,7 @@ async function clockCases(t, Device) {
   };
   t.ok(p.pollIsForUs(polled), 'a poll with our serial, credentials and type is ours');
   t.ok(!p.pollIsForUs({ ...polled, token: 'old' }), 'a sibling still polling with the old token is not ours');
+  t.ok(p.pollIsForUs({ ...polled, username: 'U' }), 'our token with the username in another case is ours');
   t.ok(!p.pollIsForUs({ ...polled, deviceType: 'min' }), 'a poll for another type of our serial is not ours');
   t.ok(!p.pollIsForUs({ ...polled, deviceSn: 'OTHER' }), 'another serial is not ours');
 }

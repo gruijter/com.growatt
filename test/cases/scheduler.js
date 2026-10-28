@@ -142,6 +142,8 @@ module.exports = async (t) => {
   delete app.devices[MyApp.pollKey(meter)];
   app.reconcileSchedules();
   t.ok(Object.keys(app.pollSchedules).length === 1 && app.pollSchedules[MyApp.pollKey(inv)], 'the sibling repaired to the same identity: its old schedule stops, the other stays');
+  const sameAccount = { ...inv, username: 'U' };
+  t.eq(MyApp.pollKey(sameAccount), MyApp.pollKey(inv), 'a username typed in another case is the same poll, not a second one inside the window');
 
   // a night without uploads is silence, not a mistimed poll: the morning is picked up on time
   const HOUR = 3600 * 1000;

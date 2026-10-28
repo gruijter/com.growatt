@@ -169,8 +169,9 @@ module.exports = class MyApp extends Homey.App {
     return 0;
   }
 
+  // no username: Growatt authenticates on the token, so two spellings would poll one device twice
   static pollKey(device) {
-    return `${device.username}|${device.token}|${device.host}|${device.deviceType}|${device.deviceSn}`;
+    return `${device.token}|${device.host}|${device.deviceType}|${device.deviceSn}`;
   }
 
   reconcileSchedules() {
@@ -228,9 +229,8 @@ module.exports = class MyApp extends Homey.App {
       // inside this request's window: skip quietly, logged once per cooldown
       const cooldownUntil = session.lastDataCooldownUntil(options);
       if (cooldownUntil) {
-        const pollKey = `${device.username}__${device.deviceSn}__${device.deviceType}`;
-        if (this.cooldownNotified[pollKey] !== cooldownUntil) {
-          this.cooldownNotified[pollKey] = cooldownUntil;
+        if (this.cooldownNotified[cacheKey] !== cooldownUntil) {
+          this.cooldownNotified[cacheKey] = cooldownUntil;
           const secs = Math.ceil((cooldownUntil - Date.now()) / 1000);
           this.log('Rate limited, skipping poll for', `${device.username} ${device.deviceSn} (${device.deviceType})`, `for ${secs}s`);
         }
