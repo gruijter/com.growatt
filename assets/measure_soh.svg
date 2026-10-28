@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <g fill="#000000">
-    <!-- battery body with a heart: state of health -->
-    <path d="M176 48h160v40h48c22 0 40 18 40 40v296c0 22-18 40-40 40H128c-22 0-40-18-40-40V128c0-22 18-40 40-40h48V48zm-48 88v280h256V136H128z"/>
-    <path d="M256 368l-70-66c-30-28-30-66-6-86 22-18 52-12 76 14 24-26 54-32 76-14 24 20 24 58-6 86l-70 66z"/>
-  </g>
+  <!-- battery body and terminal, shared by the battery icons -->
+  <rect x="118" y="106" width="276" height="358" rx="40" fill="none" stroke="#000000" stroke-width="36" stroke-linejoin="round"/>
+  <rect x="196" y="40" width="120" height="48" rx="14" fill="#000000"/>
+  <!-- heart: state of health -->
+  <path fill="#000000" d="M256 392C202 351 164 321 164 284C164 259 183 241 206 241C227 241 243 253 256 269C269 253 285 241 306 241C329 241 348 259 348 284C348 321 310 351 256 392Z"/>
 </svg>

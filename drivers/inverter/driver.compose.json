@@ -23,7 +23,39 @@
   ],
   "capabilitiesOptions": {
     "measure_power": {
+      "title": {
+        "en": "Solar power (DC)",
+        "nl": "Zonnevermogen (DC)",
+        "da": "Soleffekt (DC)",
+        "de": "Solarleistung (DC)",
+        "es": "Potencia solar (CC)",
+        "fr": "Puissance solaire (CC)",
+        "it": "Potenza solare (CC)",
+        "no": "Soleffekt (DC)",
+        "sv": "Soleffekt (DC)",
+        "pl": "Moc słoneczna (DC)",
+        "ru": "Солнечная мощность (DC)",
+        "ko": "태양광 전력(DC)",
+        "ar": "القدرة الشمسية (DC)"
+      },
       "decimals": 0
+    },
+    "meter_power": {
+      "title": {
+        "en": "Solar energy (DC)",
+        "nl": "Zonopbrengst (DC)",
+        "da": "Solproduktion (DC)",
+        "de": "Solarertrag (DC)",
+        "es": "Producción solar (CC)",
+        "fr": "Production solaire (CC)",
+        "it": "Produzione solare (CC)",
+        "no": "Solproduksjon (DC)",
+        "sv": "Solproduktion (DC)",
+        "pl": "Uzysk słoneczny (DC)",
+        "ru": "Солнечная энергия (DC)",
+        "ko": "태양광 발전량 (DC)",
+        "ar": "الطاقة الشمسية (DC)"
+      }
     },
     "meter_power.month": {
       "title": {
@@ -44,19 +76,19 @@
     },
     "meter_power.today": {
       "title": {
-        "en": "Energy today",
-        "nl": "Energie vandaag",
-        "da": "Energi i dag",
-        "de": "Energie heute",
-        "es": "Energía de hoy",
-        "fr": "Énergie d'aujourd'hui",
-        "it": "Energia di oggi",
-        "no": "Energi i dag",
-        "sv": "Energi idag",
-        "pl": "Dzisiejsza energia",
-        "ru": "Энергия за сегодня",
-        "ko": "오늘의 에너지",
-        "ar": "الطاقة اليوم"
+        "en": "Solar energy today (DC)",
+        "nl": "Opbrengst vandaag (DC)",
+        "da": "Produktion i dag (DC)",
+        "de": "Solarertrag heute (DC)",
+        "es": "Producción de hoy (CC)",
+        "fr": "Production du jour (CC)",
+        "it": "Produzione di oggi (CC)",
+        "no": "Produksjon i dag (DC)",
+        "sv": "Solproduktion idag (DC)",
+        "pl": "Uzysk dzisiaj (DC)",
+        "ru": "Энергия сегодня (DC)",
+        "ko": "오늘 태양광 발전량 (DC)",
+        "ar": "الطاقة اليوم (DC)"
       }
     }
   },
