@@ -35,7 +35,7 @@ published app bundle.
 runs if the archive is cleared or captured on another machine.
 
 Recapture with `node zzz_collect.js` (~4 minutes; it spends one of the ten daily
-`user_plant_list` calls per account, see `zzz_docs/API-FIELD-NOTES.md` §11).
+`user_plant_list` calls per account, see `zzz_docs/cloud-api/API-FIELD-NOTES.md` §11).
 
 A user's diagnostics report works too: `lib/growattCapture.js` logs each read request's answer once
 per app start, device init, pairing and repair, with location and contact details redacted.
