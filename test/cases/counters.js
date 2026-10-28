@@ -26,6 +26,7 @@ const fakeDevice = (Device, { driverId = 'inverter2', deviceType = 'min', store 
       state.store[key] = value;
     },
     hasCapability: () => true,
+    getCapabilityValue: (cap) => state.set[cap] ?? null,
     setAvailable: async () => {},
     setUnavailable: async () => {},
     setCapabilityValue: async (cap, value) => {
