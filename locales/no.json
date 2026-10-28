@@ -11,7 +11,20 @@
     "commandRejected": "Inverteren avviste kommandoen. Fjernstyring kan være deaktivert på inverteren, eller en smartmåler kreves.",
     "commandRejectedOrOffline": "Inverteren avviste kommandoen eller svarer ikke. Fjernstyring kan være deaktivert, eller den er frakoblet.",
     "actionNotSupported": "__action__ støttes ikke av denne enheten.",
-    "deviceNotOnAccount": "Denne enheten er ikke på den Growatt-kontoen."
+    "deviceNotOnAccount": "Denne enheten er ikke på den Growatt-kontoen.",
+    "hostMissing": "Ingen IP-adresse angitt.",
+    "hostRequired": "Skriv inn en IP-adresse.",
+    "modbusNoData": "Ingen data mottatt.",
+    "modbusUnreachable": "Enheten kan ikke nås:",
+    "modbusProbeFailed": "Ingen kompatibel enhet svarte på denne adressen.",
+    "modbusWriteFailed": "Kunne ikke sende kommandoen:",
+    "notSupported": "Denne enheten støtter ikke det.",
+    "modbusNoUnits": "Ingenting av denne typen ble funnet på denne adressen.",
+    "notPairable": {
+      "inverter_modbus": "Denne Growatt-modellen støttes ikke via Modbus.",
+      "battery_modbus": "Vekselretteren svarte, men ingen batteri er tilkoblet.",
+      "meter_modbus": "Vekselretteren svarte, men ingen måler er tilkoblet."
+    }
   },
   "status": {
     "migrating": "Migrerer. Vent litt...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt viser nå denne enheten som __type__. Reparer enheten for å oppdatere den.",
     "deprecatedDevice": "Utdatert testenhet. Fjern den og legg den til på nytt.",
     "batteryMerged": "Slått sammen med enhetens batterienhet. Fjern denne enheten."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Vekselretter",
+      "battery_modbus": "Batteri",
+      "meter_modbus": "Måler"
+    },
+    "manualEntry": "Manuelt",
+    "manual": {
+      "connect": "Koble til",
+      "intro": "Skriv inn IP-adressen til ShineWiLan-X2-donglen. Gi den først en fast IP-adresse i ruteren.",
+      "title": "Skriv inn IP-adresse",
+      "legend": "Tilkobling"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Skriv inn adressen enheten bruker nå.",
+      "title": "Endre IP-adresse"
+    },
+    "current": "nåværende"
+  },
+  "settings": {
+    "host": "IP-adresse",
+    "port": "Port",
+    "unitId": "Enhets-ID",
+    "energyManagerNone": "Ikke funnet"
   }
 }

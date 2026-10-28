@@ -1,0 +1,86 @@
+<header class="homey-header">
+  <p class="homey-subtitle" id="intro"></p>
+</header>
+
+<form class="homey-form" id="form">
+  <fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend" id="legend"></legend>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="host" id="host-label"></label>
+      <input class="homey-form-input" id="host" type="text" value="" placeholder="192.168.1.10" />
+    </div>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="port" id="port-label"></label>
+      <input class="homey-form-input" id="port" type="number" value="502" min="1" max="65535" />
+    </div>
+    <div class="homey-form-group" id="unit-group">
+      <label class="homey-form-label" for="unitId" id="unit-label"></label>
+      <input class="homey-form-input" id="unitId" type="number" value="1" min="1" max="255" />
+    </div>
+  </fieldset>
+
+  <button id="connect" type="submit" class="homey-button-primary-full"></button>
+</form>
+
+<script type="text/javascript">
+  function __(key, fallback) {
+    var translated = Homey.__(key);
+    return (translated && translated !== key) ? translated : fallback;
+  }
+
+  Homey.setTitle(__('pair.manual.title', 'Enter IP address'));
+  document.getElementById('intro').innerText = __('pair.manual.intro',
+    'Give the device a fixed IP address in your router first, so it keeps working after a restart.');
+
+  function done(device) {
+    return Homey.createDevice(device).then(function () {
+      Homey.done();
+    });
+  }
+
+  document.getElementById('legend').innerText = __('pair.manual.legend', 'Connection');
+  document.getElementById('host-label').innerText = __('settings.host', 'IP address');
+  document.getElementById('port-label').innerText = __('settings.port', 'Port');
+  document.getElementById('unit-label').innerText = __('settings.unitId', 'Unit ID');
+
+  var connectButton = document.getElementById('connect');
+  connectButton.innerText = __('pair.manual.connect', 'Connect');
+
+  function busy(on) {
+    connectButton.classList.toggle('is-loading', on);
+    connectButton.disabled = on;
+  }
+
+  document.getElementById('form').onsubmit = function (event) {
+    event.preventDefault();
+    if (connectButton.disabled) return;
+
+    var host = document.getElementById('host').value.trim();
+    if (!host) {
+      Homey.alert(__('errors.hostRequired', 'Enter an IP address.'), 'error');
+      return;
+    }
+
+    busy(true);
+    Homey.emit('manual_connect', {
+      host: host,
+      port: Number(document.getElementById('port').value),
+      unitId: Number(document.getElementById('unitId').value)
+    })
+      .then(done)
+      .catch(function (error) {
+        busy(false);
+        Homey.alert(error.message || error.toString(), 'error');
+      });
+  };
+
+  // The unit id only matters where the device answers a single one (the charger).
+  Homey.emit('manual_fields')
+    .then(function (fields) {
+      if (!fields.unitId) document.getElementById('unit-group').style.display = 'none';
+    })
+    .catch(function () {});
+
+  Homey.ready();
+</script>
+

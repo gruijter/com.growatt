@@ -11,7 +11,20 @@
     "commandRejected": "The inverter rejected the command. Remote control may be disabled on the inverter, or a smart meter is required.",
     "commandRejectedOrOffline": "The inverter rejected the command or is not responding. Remote control may be disabled on the inverter, or it is offline.",
     "actionNotSupported": "__action__ is not supported by this device.",
-    "deviceNotOnAccount": "This device is not on that Growatt account."
+    "deviceNotOnAccount": "This device is not on that Growatt account.",
+    "hostMissing": "No IP address set.",
+    "hostRequired": "Enter an IP address.",
+    "modbusNoData": "No data received.",
+    "modbusUnreachable": "Device not reachable:",
+    "modbusProbeFailed": "No compatible device answered at this address.",
+    "modbusWriteFailed": "Could not send the command:",
+    "notSupported": "This device does not support that.",
+    "modbusNoUnits": "Nothing of this kind was found at this address.",
+    "notPairable": {
+      "inverter_modbus": "This Growatt model is not supported over Modbus.",
+      "battery_modbus": "The inverter answered, but no battery is connected to it.",
+      "meter_modbus": "The inverter answered, but no meter is connected to it."
+    }
   },
   "status": {
     "migrating": "Migrating. Please wait...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt now lists this device as __type__. Repair the device to update it.",
     "deprecatedDevice": "Deprecated test device. Please remove and re-add.",
     "batteryMerged": "Merged into the unit's battery device. Please remove this device."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Inverter",
+      "battery_modbus": "Battery",
+      "meter_modbus": "Meter"
+    },
+    "manualEntry": "Manual entry",
+    "manual": {
+      "connect": "Connect",
+      "intro": "Enter the IP address of the ShineWiLan-X2 dongle. Give it a fixed IP address in your router first.",
+      "title": "Enter IP address",
+      "legend": "Connection"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Enter the address the device uses now.",
+      "title": "Change IP address"
+    },
+    "current": "current"
+  },
+  "settings": {
+    "host": "IP address",
+    "port": "Port",
+    "unitId": "Unit ID",
+    "energyManagerNone": "None found"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "id": "deviceModel",
+  "type": "label",
+  "value": "",
+  "label": {
+    "en": "Model",
+    "nl": "Model",
+    "de": "Modell",
+    "fr": "Modèle",
+    "es": "Modelo",
+    "it": "Modello",
+    "da": "Model",
+    "sv": "Modell",
+    "no": "Modell",
+    "pl": "Model",
+    "ru": "Модель",
+    "ar": "طراز",
+    "ko": "모델"
+  }
+}

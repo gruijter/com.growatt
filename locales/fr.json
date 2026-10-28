@@ -11,7 +11,20 @@
     "commandRejected": "L'onduleur a rejeté la commande. La commande à distance est peut-être désactivée sur l'onduleur, ou un compteur intelligent est requis.",
     "commandRejectedOrOffline": "L'onduleur a rejeté la commande ou ne répond pas. La commande à distance est peut-être désactivée, ou l'appareil est hors ligne.",
     "actionNotSupported": "__action__ n'est pas pris en charge par cet appareil.",
-    "deviceNotOnAccount": "Cet appareil n'est pas sur ce compte Growatt."
+    "deviceNotOnAccount": "Cet appareil n'est pas sur ce compte Growatt.",
+    "hostMissing": "Aucune adresse IP définie.",
+    "hostRequired": "Saisissez une adresse IP.",
+    "modbusNoData": "Aucune donnée reçue.",
+    "modbusUnreachable": "Appareil injoignable :",
+    "modbusProbeFailed": "Aucun appareil compatible n'a répondu à cette adresse.",
+    "modbusWriteFailed": "Impossible d'envoyer la commande :",
+    "notSupported": "Cet appareil ne le prend pas en charge.",
+    "modbusNoUnits": "Rien de ce type n'a été trouvé à cette adresse.",
+    "notPairable": {
+      "inverter_modbus": "Ce modèle Growatt n'est pas pris en charge via Modbus.",
+      "battery_modbus": "L'onduleur a répondu, mais aucune batterie n'y est raccordée.",
+      "meter_modbus": "L'onduleur a répondu, mais aucun compteur n'y est raccordé."
+    }
   },
   "status": {
     "migrating": "Migration en cours. Veuillez patienter...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt répertorie désormais cet appareil comme __type__. Réparez l'appareil pour le mettre à jour.",
     "deprecatedDevice": "Appareil de test obsolète. Supprimez-le et rajoutez-le.",
     "batteryMerged": "Fusionné avec l'appareil batterie de l'unité. Veuillez supprimer cet appareil."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Onduleur",
+      "battery_modbus": "Batterie",
+      "meter_modbus": "Compteur"
+    },
+    "manualEntry": "Manuel",
+    "manual": {
+      "connect": "Connecter",
+      "intro": "Saisissez l'adresse IP du dongle ShineWiLan-X2. Attribuez-lui d'abord une adresse IP fixe dans votre routeur.",
+      "title": "Saisir l'adresse IP",
+      "legend": "Connexion"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Saisissez l'adresse utilisée actuellement par l'appareil.",
+      "title": "Modifier l'adresse IP"
+    },
+    "current": "actuel"
+  },
+  "settings": {
+    "host": "Adresse IP",
+    "port": "Port",
+    "unitId": "ID d'unité",
+    "energyManagerNone": "Aucun trouvé"
   }
 }

@@ -11,7 +11,20 @@
     "commandRejected": "El inversor rechazó el comando. Puede que el control remoto esté desactivado en el inversor o que se necesite un medidor inteligente.",
     "commandRejectedOrOffline": "El inversor rechazó el comando o no responde. Puede que el control remoto esté desactivado o que esté sin conexión.",
     "actionNotSupported": "Este dispositivo no admite __action__.",
-    "deviceNotOnAccount": "Este dispositivo no está en esa cuenta de Growatt."
+    "deviceNotOnAccount": "Este dispositivo no está en esa cuenta de Growatt.",
+    "hostMissing": "No hay dirección IP configurada.",
+    "hostRequired": "Introduce una dirección IP.",
+    "modbusNoData": "No se recibieron datos.",
+    "modbusUnreachable": "Dispositivo no accesible:",
+    "modbusProbeFailed": "Ningún dispositivo compatible respondió en esta dirección.",
+    "modbusWriteFailed": "No se pudo enviar el comando:",
+    "notSupported": "Este dispositivo no lo admite.",
+    "modbusNoUnits": "No se encontró nada de este tipo en esta dirección.",
+    "notPairable": {
+      "inverter_modbus": "Este modelo de Growatt no es compatible con Modbus.",
+      "battery_modbus": "El inversor respondió, pero no tiene ninguna batería conectada.",
+      "meter_modbus": "El inversor respondió, pero no tiene ningún medidor conectado."
+    }
   },
   "status": {
     "migrating": "Migrando. Espera...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt ahora muestra este dispositivo como __type__. Repare el dispositivo para actualizarlo.",
     "deprecatedDevice": "Dispositivo de prueba obsoleto. Elimínalo y vuelve a añadirlo.",
     "batteryMerged": "Combinado con el dispositivo de batería de la unidad. Elimina este dispositivo."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Inversor",
+      "battery_modbus": "Batería",
+      "meter_modbus": "Medidor"
+    },
+    "manualEntry": "Manual",
+    "manual": {
+      "connect": "Conectar",
+      "intro": "Introduce la dirección IP del dongle ShineWiLan-X2. Asígnale primero una dirección IP fija en tu router.",
+      "title": "Introducir dirección IP",
+      "legend": "Conexión"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Introduce la dirección que usa ahora el dispositivo.",
+      "title": "Cambiar dirección IP"
+    },
+    "current": "actual"
+  },
+  "settings": {
+    "host": "Dirección IP",
+    "port": "Puerto",
+    "unitId": "ID de unidad",
+    "energyManagerNone": "No encontrado"
   }
 }

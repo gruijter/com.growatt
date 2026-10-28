@@ -1,0 +1,53 @@
+{
+  "id": "pollInterval",
+  "type": "number",
+  "value": 5,
+  "min": 1,
+  "max": 300,
+  "step": 1,
+  "label": {
+    "en": "Update interval",
+    "nl": "Update-interval",
+    "de": "Aktualisierungsintervall",
+    "fr": "Intervalle de mise à jour",
+    "es": "Intervalo de actualización",
+    "it": "Intervallo di aggiornamento",
+    "da": "Opdateringsinterval",
+    "sv": "Uppdateringsintervall",
+    "no": "Oppdateringsintervall",
+    "pl": "Interwał aktualizacji",
+    "ru": "Интервал обновления",
+    "ar": "فترة التحديث",
+    "ko": "업데이트 간격"
+  },
+  "units": {
+    "en": "s",
+    "nl": "s",
+    "de": "s",
+    "fr": "s",
+    "es": "s",
+    "it": "s",
+    "da": "s",
+    "sv": "s",
+    "no": "s",
+    "pl": "s",
+    "ru": "с",
+    "ar": "ث",
+    "ko": "초"
+  },
+  "hint": {
+    "en": "How often the device is read.",
+    "nl": "Hoe vaak het apparaat wordt uitgelezen.",
+    "de": "Wie oft das Gerät ausgelesen wird.",
+    "fr": "Fréquence de lecture de l'appareil.",
+    "es": "Con qué frecuencia se lee el dispositivo.",
+    "it": "Con quale frequenza viene letto il dispositivo.",
+    "da": "Hvor ofte enheden aflæses.",
+    "sv": "Hur ofta enheten läses av.",
+    "no": "Hvor ofte enheten leses av.",
+    "pl": "Jak często urządzenie jest odczytywane.",
+    "ru": "Как часто опрашивается устройство.",
+    "ar": "عدد مرات قراءة الجهاز.",
+    "ko": "장치를 읽는 주기입니다."
+  }
+}

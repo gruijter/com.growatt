@@ -11,7 +11,20 @@
     "commandRejected": "L'inverter ha rifiutato il comando. Il controllo remoto potrebbe essere disattivato sull'inverter, oppure è necessario un contatore intelligente.",
     "commandRejectedOrOffline": "L'inverter ha rifiutato il comando o non risponde. Il controllo remoto potrebbe essere disattivato, oppure è offline.",
     "actionNotSupported": "__action__ non è supportato da questo dispositivo.",
-    "deviceNotOnAccount": "Questo dispositivo non è su quell'account Growatt."
+    "deviceNotOnAccount": "Questo dispositivo non è su quell'account Growatt.",
+    "hostMissing": "Nessun indirizzo IP impostato.",
+    "hostRequired": "Inserisci un indirizzo IP.",
+    "modbusNoData": "Nessun dato ricevuto.",
+    "modbusUnreachable": "Dispositivo non raggiungibile:",
+    "modbusProbeFailed": "Nessun dispositivo compatibile ha risposto a questo indirizzo.",
+    "modbusWriteFailed": "Impossibile inviare il comando:",
+    "notSupported": "Questo dispositivo non lo supporta.",
+    "modbusNoUnits": "A questo indirizzo non è stato trovato nulla di questo tipo.",
+    "notPairable": {
+      "inverter_modbus": "Questo modello Growatt non è supportato tramite Modbus.",
+      "battery_modbus": "L'inverter ha risposto, ma non è collegata alcuna batteria.",
+      "meter_modbus": "L'inverter ha risposto, ma non è collegato alcun contatore."
+    }
   },
   "status": {
     "migrating": "Migrazione in corso. Attendere...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt ora elenca questo dispositivo come __type__. Ripara il dispositivo per aggiornarlo.",
     "deprecatedDevice": "Dispositivo di prova obsoleto. Rimuovilo e aggiungilo di nuovo.",
     "batteryMerged": "Unito al dispositivo batteria dell'unità. Rimuovi questo dispositivo."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Inverter",
+      "battery_modbus": "Batteria",
+      "meter_modbus": "Contatore"
+    },
+    "manualEntry": "Manuale",
+    "manual": {
+      "connect": "Connetti",
+      "intro": "Inserisci l'indirizzo IP del dongle ShineWiLan-X2. Assegnagli prima un indirizzo IP fisso nel router.",
+      "title": "Inserisci indirizzo IP",
+      "legend": "Connessione"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Inserisci l'indirizzo che il dispositivo usa ora.",
+      "title": "Cambia indirizzo IP"
+    },
+    "current": "attuale"
+  },
+  "settings": {
+    "host": "Indirizzo IP",
+    "port": "Porta",
+    "unitId": "ID unità",
+    "energyManagerNone": "Non trovato"
   }
 }

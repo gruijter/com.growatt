@@ -11,7 +11,20 @@
     "commandRejected": "De omvormer heeft de opdracht geweigerd. Mogelijk staat afstandsbediening uit op de omvormer, of is een slimme meter vereist.",
     "commandRejectedOrOffline": "De omvormer heeft de opdracht geweigerd of reageert niet. Mogelijk staat afstandsbediening uit op de omvormer, of is hij offline.",
     "actionNotSupported": "__action__ wordt niet ondersteund door dit apparaat.",
-    "deviceNotOnAccount": "Dit apparaat staat niet op dat Growatt-account."
+    "deviceNotOnAccount": "Dit apparaat staat niet op dat Growatt-account.",
+    "hostMissing": "Geen IP-adres ingesteld.",
+    "hostRequired": "Voer een IP-adres in.",
+    "modbusNoData": "Geen data ontvangen.",
+    "modbusUnreachable": "Apparaat niet bereikbaar:",
+    "modbusProbeFailed": "Geen compatibel apparaat reageerde op dit adres.",
+    "modbusWriteFailed": "Kon de opdracht niet versturen:",
+    "notSupported": "Dit apparaat ondersteunt dat niet.",
+    "modbusNoUnits": "Op dit adres is niets van deze soort gevonden.",
+    "notPairable": {
+      "inverter_modbus": "Dit Growatt-model wordt niet ondersteund via Modbus.",
+      "battery_modbus": "De omvormer reageerde, maar er is geen batterij op aangesloten.",
+      "meter_modbus": "De omvormer reageerde, maar er is geen meter op aangesloten."
+    }
   },
   "status": {
     "migrating": "Bezig met migreren. Even geduld...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt geeft dit apparaat nu als __type__. Repareer het apparaat om het bij te werken.",
     "deprecatedDevice": "Verouderd testapparaat. Verwijder het en voeg het opnieuw toe.",
     "batteryMerged": "Samengevoegd met het batterijapparaat van de unit. Verwijder dit apparaat."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Omvormer",
+      "battery_modbus": "Batterij",
+      "meter_modbus": "Meter"
+    },
+    "manualEntry": "Handmatig",
+    "manual": {
+      "connect": "Verbinden",
+      "intro": "Vul het IP-adres van de ShineWiLan-X2-dongle in. Geef hem eerst een vast IP-adres in je router.",
+      "title": "IP-adres invoeren",
+      "legend": "Verbinding"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Voer het adres in dat het apparaat nu gebruikt.",
+      "title": "IP-adres wijzigen"
+    },
+    "current": "huidig"
+  },
+  "settings": {
+    "host": "IP-adres",
+    "port": "Poort",
+    "unitId": "Unit-ID",
+    "energyManagerNone": "Niet gevonden"
   }
 }

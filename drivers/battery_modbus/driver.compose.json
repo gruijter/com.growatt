@@ -1,0 +1,106 @@
+{
+  "$extends": [
+    "modbus"
+  ],
+  "name": {
+    "en": "Battery (Modbus)",
+    "nl": "Batterij (Modbus)",
+    "da": "Batteri (Modbus)",
+    "de": "Batterie (Modbus)",
+    "es": "Batería (Modbus)",
+    "fr": "Batterie (Modbus)",
+    "it": "Batteria (Modbus)",
+    "no": "Batteri (Modbus)",
+    "sv": "Batteri (Modbus)",
+    "pl": "Bateria (Modbus)",
+    "ru": "Батарея (Modbus)",
+    "ko": "배터리 (Modbus)",
+    "ar": "بطارية (Modbus)"
+  },
+  "class": "battery",
+  "capabilities": [
+    "measure_power",
+    "measure_battery",
+    "battery_charging_state",
+    "meter_power.charged",
+    "meter_power.discharged",
+    "measure_voltage",
+    "measure_temperature",
+    "measure_soh"
+  ],
+  "capabilitiesOptions": {
+    "meter_power.charged": {
+      "title": {
+        "en": "Charged Energy",
+        "de": "Geladene Energie",
+        "fr": "Énergie chargée",
+        "it": "Energia caricata",
+        "es": "Energía cargada",
+        "pl": "Naładowana energia",
+        "sv": "Laddad energi",
+        "no": "Ladet energi",
+        "da": "Opladet energi",
+        "ru": "Заряженная энергия",
+        "ko": "충전된 에너지",
+        "ar": "الطاقة المشحونة",
+        "nl": "Geladen energie"
+      }
+    },
+    "meter_power.discharged": {
+      "title": {
+        "en": "Discharged Energy",
+        "de": "Entladene Energie",
+        "fr": "Énergie déchargée",
+        "it": "Energia scaricata",
+        "es": "Energía descargada",
+        "pl": "Rozładowana energia",
+        "sv": "Urladdad energi",
+        "no": "Utladet energi",
+        "da": "Afladet energi",
+        "ru": "Разряженная энергия",
+        "ko": "방전된 에너지",
+        "ar": "الطاقة المفرغة",
+        "nl": "Ontladen energie"
+      }
+    },
+    "measure_voltage": {
+      "title": {
+        "en": "Battery voltage",
+        "nl": "Batterijspanning",
+        "de": "Batteriespannung",
+        "fr": "Tension batterie",
+        "es": "Voltaje de batería",
+        "it": "Tensione batteria",
+        "da": "Batterispænding",
+        "sv": "Batterispänning",
+        "no": "Batterispenning",
+        "pl": "Napięcie akumulatora",
+        "ru": "Напряжение батареи",
+        "ar": "جهد البطارية",
+        "ko": "배터리 전압"
+      }
+    },
+    "measure_temperature": {
+      "title": {
+        "en": "Ambient temperature",
+        "nl": "Omgevingstemperatuur",
+        "de": "Umgebungstemperatur",
+        "fr": "Température ambiante",
+        "es": "Temperatura ambiente",
+        "it": "Temperatura ambiente",
+        "da": "Omgivelsestemperatur",
+        "sv": "Omgivningstemperatur",
+        "no": "Omgivelsestemperatur",
+        "pl": "Temperatura otoczenia",
+        "ru": "Температура окружающей среды",
+        "ar": "درجة الحرارة المحيطة",
+        "ko": "주변 온도"
+      }
+    }
+  },
+  "energy": {
+    "homeBattery": true,
+    "meterPowerImportedCapability": "meter_power.charged",
+    "meterPowerExportedCapability": "meter_power.discharged"
+  }
+}

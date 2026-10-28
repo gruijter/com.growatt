@@ -11,7 +11,20 @@
     "commandRejected": "Falownik odrzucił polecenie. Sterowanie zdalne może być wyłączone w falowniku lub wymagany jest inteligentny licznik.",
     "commandRejectedOrOffline": "Falownik odrzucił polecenie lub nie odpowiada. Sterowanie zdalne może być wyłączone lub urządzenie jest offline.",
     "actionNotSupported": "__action__ nie jest obsługiwane przez to urządzenie.",
-    "deviceNotOnAccount": "To urządzenie nie jest na tym koncie Growatt."
+    "deviceNotOnAccount": "To urządzenie nie jest na tym koncie Growatt.",
+    "hostMissing": "Nie ustawiono adresu IP.",
+    "hostRequired": "Wpisz adres IP.",
+    "modbusNoData": "Nie otrzymano danych.",
+    "modbusUnreachable": "Urządzenie nieosiągalne:",
+    "modbusProbeFailed": "Pod tym adresem nie odpowiedziało żadne zgodne urządzenie.",
+    "modbusWriteFailed": "Nie udało się wysłać polecenia:",
+    "notSupported": "To urządzenie tego nie obsługuje.",
+    "modbusNoUnits": "Pod tym adresem nie znaleziono niczego tego typu.",
+    "notPairable": {
+      "inverter_modbus": "Ten model Growatt nie jest obsługiwany przez Modbus.",
+      "battery_modbus": "Falownik odpowiedział, ale nie jest do niego podłączony akumulator.",
+      "meter_modbus": "Falownik odpowiedział, ale nie jest do niego podłączony licznik."
+    }
   },
   "status": {
     "migrating": "Trwa migracja. Proszę czekać...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt wyświetla teraz to urządzenie jako __type__. Napraw urządzenie, aby je zaktualizować.",
     "deprecatedDevice": "Przestarzałe urządzenie testowe. Usuń je i dodaj ponownie.",
     "batteryMerged": "Połączono z urządzeniem baterii tej jednostki. Usuń to urządzenie."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Inwerter",
+      "battery_modbus": "Akumulator",
+      "meter_modbus": "Licznik"
+    },
+    "manualEntry": "Ręcznie",
+    "manual": {
+      "connect": "Połącz",
+      "intro": "Wpisz adres IP klucza ShineWiLan-X2. Najpierw nadaj mu stały adres IP w routerze.",
+      "title": "Wpisz adres IP",
+      "legend": "Połączenie"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Wpisz adres, którego urządzenie używa teraz.",
+      "title": "Zmień adres IP"
+    },
+    "current": "bieżące"
+  },
+  "settings": {
+    "host": "Adres IP",
+    "port": "Port",
+    "unitId": "ID jednostki",
+    "energyManagerNone": "Nie znaleziono"
   }
 }

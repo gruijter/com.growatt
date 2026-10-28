@@ -11,7 +11,20 @@
     "commandRejected": "인버터가 명령을 거부했습니다. 인버터에서 원격 제어가 꺼져 있거나 스마트 미터가 필요할 수 있습니다.",
     "commandRejectedOrOffline": "인버터가 명령을 거부했거나 응답하지 않습니다. 원격 제어가 꺼져 있거나 오프라인일 수 있습니다.",
     "actionNotSupported": "이 기기는 __action__을(를) 지원하지 않습니다.",
-    "deviceNotOnAccount": "이 기기는 해당 Growatt 계정에 없습니다."
+    "deviceNotOnAccount": "이 기기는 해당 Growatt 계정에 없습니다.",
+    "hostMissing": "IP 주소가 설정되지 않았습니다.",
+    "hostRequired": "IP 주소를 입력하세요.",
+    "modbusNoData": "데이터를 받지 못했습니다.",
+    "modbusUnreachable": "장치에 연결할 수 없습니다:",
+    "modbusProbeFailed": "이 주소에서 호환되는 장치가 응답하지 않았습니다.",
+    "modbusWriteFailed": "명령을 보낼 수 없습니다:",
+    "notSupported": "이 장치는 이 기능을 지원하지 않습니다.",
+    "modbusNoUnits": "이 주소에서 이 유형의 장치를 찾지 못했습니다.",
+    "notPairable": {
+      "inverter_modbus": "이 Growatt 모델은 Modbus를 통해 지원되지 않습니다.",
+      "battery_modbus": "인버터가 응답했지만 연결된 배터리가 없습니다.",
+      "meter_modbus": "인버터가 응답했지만 연결된 계량기가 없습니다."
+    }
   },
   "status": {
     "migrating": "마이그레이션 중입니다. 잠시 기다려 주세요...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt에서 이 기기를 이제 __type__(으)로 표시합니다. 기기를 복구하여 업데이트하세요.",
     "deprecatedDevice": "사용 중단된 테스트 기기입니다. 제거한 뒤 다시 추가하세요.",
     "batteryMerged": "장치의 배터리 기기에 통합되었습니다. 이 기기를 삭제하세요."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "인버터",
+      "battery_modbus": "배터리",
+      "meter_modbus": "계량기"
+    },
+    "manualEntry": "직접 입력",
+    "manual": {
+      "connect": "연결",
+      "intro": "ShineWiLan-X2 동글의 IP 주소를 입력하세요. 먼저 라우터에서 고정 IP 주소를 지정하세요.",
+      "title": "IP 주소 입력",
+      "legend": "연결"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "장치가 현재 사용하는 주소를 입력하세요.",
+      "title": "IP 주소 변경"
+    },
+    "current": "현재"
+  },
+  "settings": {
+    "host": "IP 주소",
+    "port": "포트",
+    "unitId": "유닛 ID",
+    "energyManagerNone": "찾을 수 없음"
   }
 }

@@ -11,7 +11,20 @@
     "commandRejected": "رفض العاكس الأمر. قد يكون التحكم عن بُعد معطلاً في العاكس، أو أن هناك حاجة إلى عداد ذكي.",
     "commandRejectedOrOffline": "رفض العاكس الأمر أو لا يستجيب. قد يكون التحكم عن بُعد معطلاً، أو أن الجهاز غير متصل.",
     "actionNotSupported": "الجهاز لا يدعم __action__.",
-    "deviceNotOnAccount": "هذا الجهاز غير موجود في حساب Growatt هذا."
+    "deviceNotOnAccount": "هذا الجهاز غير موجود في حساب Growatt هذا.",
+    "hostMissing": "لم يتم تعيين عنوان IP.",
+    "hostRequired": "أدخل عنوان IP.",
+    "modbusNoData": "لم يتم استلام أي بيانات.",
+    "modbusUnreachable": "الجهاز غير قابل للوصول:",
+    "modbusProbeFailed": "لم يستجب أي جهاز متوافق على هذا العنوان.",
+    "modbusWriteFailed": "تعذر إرسال الأمر:",
+    "notSupported": "هذا الجهاز لا يدعم ذلك.",
+    "modbusNoUnits": "لم يتم العثور على شيء من هذا النوع على هذا العنوان.",
+    "notPairable": {
+      "inverter_modbus": "طراز Growatt هذا غير مدعوم عبر Modbus.",
+      "battery_modbus": "استجاب العاكس، لكن لا توجد بطارية متصلة به.",
+      "meter_modbus": "استجاب العاكس، لكن لا يوجد عداد متصل به."
+    }
   },
   "status": {
     "migrating": "جارٍ الترحيل. يرجى الانتظار...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "يعرض Growatt هذا الجهاز الآن كـ __type__. قم بإصلاح الجهاز لتحديثه.",
     "deprecatedDevice": "جهاز اختبار مهجور. يرجى إزالته وإضافته من جديد.",
     "batteryMerged": "تم دمجه في جهاز البطارية الخاص بالوحدة. يرجى إزالة هذا الجهاز."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "عاكس",
+      "battery_modbus": "بطارية",
+      "meter_modbus": "عداد"
+    },
+    "manualEntry": "يدويًا",
+    "manual": {
+      "connect": "اتصال",
+      "intro": "أدخل عنوان IP لمحول ShineWiLan-X2. امنحه أولاً عنوان IP ثابتاً في جهاز التوجيه.",
+      "title": "إدخال عنوان IP",
+      "legend": "الاتصال"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "أدخل العنوان الذي يستخدمه الجهاز الآن.",
+      "title": "تغيير عنوان IP"
+    },
+    "current": "الحالي"
+  },
+  "settings": {
+    "host": "عنوان IP",
+    "port": "المنفذ",
+    "unitId": "معرّف الوحدة",
+    "energyManagerNone": "لم يُعثر عليه"
   }
 }

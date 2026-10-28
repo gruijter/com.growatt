@@ -1,0 +1,20 @@
+{
+  "id": "deviceSn",
+  "type": "label",
+  "value": "",
+  "label": {
+    "en": "Serial number",
+    "nl": "Serienummer",
+    "de": "Seriennummer",
+    "fr": "Numéro de série",
+    "es": "Número de serie",
+    "it": "Numero di serie",
+    "da": "Serienummer",
+    "sv": "Serienummer",
+    "no": "Serienummer",
+    "pl": "Numer seryjny",
+    "ru": "Серийный номер",
+    "ar": "الرقم التسلسلي",
+    "ko": "일련 번호"
+  }
+}

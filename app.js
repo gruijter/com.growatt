@@ -25,6 +25,8 @@ const Api = require('./lib/growatt_api'); // v2 API
 const growattMap = require('./lib/growattMap');
 const capture = require('./lib/growattCapture');
 const timing = require('./lib/growattTiming');
+const ModbusPool = require('./lib/ModbusPool');
+const { pollEvent: MODBUS_POLL_EVENT } = require('./lib/modbusBrand');
 
 module.exports = class MyApp extends Homey.App {
 
@@ -37,6 +39,8 @@ module.exports = class MyApp extends Homey.App {
     this.everyXminutes(5); // reconciles the per-device schedules; the polls themselves are theirs
     this.pendingPolls = {}; // prevents concurrent polling
     this.cooldownNotified = {}; // one log line per rate-limit cooldown, not per skipped poll
+    // the local Modbus devices on one inverter share its Modbus TCP connection
+    this.pool = new ModbusPool();
     this.registerFlowListeners();
 
     // remove a settings key no longer used
@@ -282,6 +286,7 @@ module.exports = class MyApp extends Homey.App {
           if (action.id === 'force_poll') {
             this.log(`Flow action ${action.id} called.`); // an app card: no device argument
             this.everyXminutesHandler(true).catch(this.error);
+            this.homey.emit(MODBUS_POLL_EVENT);
 
             // DEPRECATED V1
             this.everyXminutesHandlerV1().catch(this.error);

@@ -1,0 +1,35 @@
+{
+  "id": "host",
+  "type": "text",
+  "value": "",
+  "label": {
+    "en": "IP address",
+    "nl": "IP-adres",
+    "de": "IP-Adresse",
+    "fr": "Adresse IP",
+    "es": "Dirección IP",
+    "it": "Indirizzo IP",
+    "da": "IP-adresse",
+    "sv": "IP-adress",
+    "no": "IP-adresse",
+    "pl": "Adres IP",
+    "ru": "IP-адрес",
+    "ar": "عنوان IP",
+    "ko": "IP 주소"
+  },
+  "hint": {
+    "en": "Address of the device on your network.",
+    "nl": "Adres van het apparaat in je netwerk.",
+    "de": "Adresse des Geräts in deinem Netzwerk.",
+    "fr": "Adresse de l'appareil sur votre réseau.",
+    "es": "Dirección del dispositivo en tu red.",
+    "it": "Indirizzo del dispositivo nella tua rete.",
+    "da": "Enhedens adresse på dit netværk.",
+    "sv": "Enhetens adress i ditt nätverk.",
+    "no": "Enhetens adresse i nettverket ditt.",
+    "pl": "Adres urządzenia w Twojej sieci.",
+    "ru": "Адрес устройства в вашей сети.",
+    "ar": "عنوان الجهاز في شبكتك.",
+    "ko": "네트워크에서 장치의 주소입니다."
+  }
+}

@@ -11,7 +11,20 @@
     "commandRejected": "Växelriktaren avvisade kommandot. Fjärrstyrning kan vara avstängd på växelriktaren, eller så krävs en smart mätare.",
     "commandRejectedOrOffline": "Växelriktaren avvisade kommandot eller svarar inte. Fjärrstyrning kan vara avstängd, eller så är den offline.",
     "actionNotSupported": "__action__ stöds inte av den här enheten.",
-    "deviceNotOnAccount": "Den här enheten finns inte på det Growatt-kontot."
+    "deviceNotOnAccount": "Den här enheten finns inte på det Growatt-kontot.",
+    "hostMissing": "Ingen IP-adress angiven.",
+    "hostRequired": "Ange en IP-adress.",
+    "modbusNoData": "Ingen data mottagen.",
+    "modbusUnreachable": "Enheten kan inte nås:",
+    "modbusProbeFailed": "Ingen kompatibel enhet svarade på den här adressen.",
+    "modbusWriteFailed": "Kunde inte skicka kommandot:",
+    "notSupported": "Den här enheten stöder inte det.",
+    "modbusNoUnits": "Inget av den här typen hittades på den här adressen.",
+    "notPairable": {
+      "inverter_modbus": "Den här Growatt-modellen stöds inte via Modbus.",
+      "battery_modbus": "Växelriktaren svarade, men inget batteri är anslutet.",
+      "meter_modbus": "Växelriktaren svarade, men ingen mätare är ansluten."
+    }
   },
   "status": {
     "migrating": "Migrerar. Vänta...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt listar nu den här enheten som __type__. Reparera enheten för att uppdatera den.",
     "deprecatedDevice": "Föråldrad testenhet. Ta bort den och lägg till den igen.",
     "batteryMerged": "Sammanslagen med enhetens batterienhet. Ta bort den här enheten."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Växelriktare",
+      "battery_modbus": "Batteri",
+      "meter_modbus": "Mätare"
+    },
+    "manualEntry": "Manuellt",
+    "manual": {
+      "connect": "Anslut",
+      "intro": "Ange IP-adressen till ShineWiLan-X2-donglen. Ge den först en fast IP-adress i din router.",
+      "title": "Ange IP-adress",
+      "legend": "Anslutning"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Ange adressen som enheten använder nu.",
+      "title": "Ändra IP-adress"
+    },
+    "current": "nuvarande"
+  },
+  "settings": {
+    "host": "IP-adress",
+    "port": "Port",
+    "unitId": "Enhets-ID",
+    "energyManagerNone": "Hittades inte"
   }
 }

@@ -1,0 +1,38 @@
+{
+  "id": "unitId",
+  "type": "number",
+  "value": 1,
+  "min": 1,
+  "max": 255,
+  "step": 1,
+  "label": {
+    "en": "Unit ID",
+    "nl": "Unit-ID",
+    "de": "Unit-ID",
+    "fr": "ID d'unité",
+    "es": "ID de unidad",
+    "it": "ID unità",
+    "da": "Enheds-ID",
+    "sv": "Enhets-ID",
+    "no": "Enhets-ID",
+    "pl": "ID jednostki",
+    "ru": "ID устройства",
+    "ar": "معرّف الوحدة",
+    "ko": "유닛 ID"
+  },
+  "hint": {
+    "en": "Modbus slave address. Normally 1.",
+    "nl": "Modbus slave-adres. Normaal 1.",
+    "de": "Modbus-Slave-Adresse. Normalerweise 1.",
+    "fr": "Adresse esclave Modbus. Normalement 1.",
+    "es": "Dirección de esclavo Modbus. Normalmente 1.",
+    "it": "Indirizzo slave Modbus. Normalmente 1.",
+    "da": "Modbus slave-adresse. Normalt 1.",
+    "sv": "Modbus slavadress. Normalt 1.",
+    "no": "Modbus slaveadresse. Vanligvis 1.",
+    "pl": "Adres slave Modbus. Zwykle 1.",
+    "ru": "Адрес slave Modbus. Обычно 1.",
+    "ar": "عنوان تابع Modbus. عادة 1.",
+    "ko": "Modbus 슬레이브 주소. 일반적으로 1입니다."
+  }
+}

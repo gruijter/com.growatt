@@ -11,7 +11,20 @@
     "commandRejected": "Der Wechselrichter hat den Befehl abgelehnt. Möglicherweise ist die Fernsteuerung deaktiviert oder ein Smart Meter erforderlich.",
     "commandRejectedOrOffline": "Der Wechselrichter hat den Befehl abgelehnt oder antwortet nicht. Möglicherweise ist die Fernsteuerung deaktiviert oder das Gerät ist offline.",
     "actionNotSupported": "__action__ wird von diesem Gerät nicht unterstützt.",
-    "deviceNotOnAccount": "Dieses Gerät gehört nicht zu diesem Growatt-Konto."
+    "deviceNotOnAccount": "Dieses Gerät gehört nicht zu diesem Growatt-Konto.",
+    "hostMissing": "Keine IP-Adresse eingestellt.",
+    "hostRequired": "Gib eine IP-Adresse ein.",
+    "modbusNoData": "Keine Daten empfangen.",
+    "modbusUnreachable": "Gerät nicht erreichbar:",
+    "modbusProbeFailed": "Unter dieser Adresse hat kein kompatibles Gerät geantwortet.",
+    "modbusWriteFailed": "Befehl konnte nicht gesendet werden:",
+    "notSupported": "Dieses Gerät unterstützt das nicht.",
+    "modbusNoUnits": "Unter dieser Adresse wurde nichts dieser Art gefunden.",
+    "notPairable": {
+      "inverter_modbus": "Dieses Growatt-Modell wird über Modbus nicht unterstützt.",
+      "battery_modbus": "Der Wechselrichter hat geantwortet, aber es ist keine Batterie angeschlossen.",
+      "meter_modbus": "Der Wechselrichter hat geantwortet, aber es ist kein Zähler angeschlossen."
+    }
   },
   "status": {
     "migrating": "Migration läuft. Bitte warten...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt führt dieses Gerät jetzt als __type__. Reparieren Sie das Gerät, um es zu aktualisieren.",
     "deprecatedDevice": "Veraltetes Testgerät. Bitte entfernen und neu hinzufügen.",
     "batteryMerged": "Mit dem Batteriegerät der Einheit zusammengeführt. Bitte entferne dieses Gerät."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Wechselrichter",
+      "battery_modbus": "Batterie",
+      "meter_modbus": "Zähler"
+    },
+    "manualEntry": "Manuell",
+    "manual": {
+      "connect": "Verbinden",
+      "intro": "Gib die IP-Adresse des ShineWiLan-X2-Dongles ein. Gib ihm zuerst eine feste IP-Adresse in deinem Router.",
+      "title": "IP-Adresse eingeben",
+      "legend": "Verbindung"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Gib die Adresse ein, die das Gerät jetzt verwendet.",
+      "title": "IP-Adresse ändern"
+    },
+    "current": "aktuell"
+  },
+  "settings": {
+    "host": "IP-Adresse",
+    "port": "Port",
+    "unitId": "Unit-ID",
+    "energyManagerNone": "Nicht gefunden"
   }
 }

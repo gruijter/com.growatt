@@ -1,0 +1,20 @@
+{
+  "id": "firmware",
+  "type": "label",
+  "value": "",
+  "label": {
+    "en": "Firmware version",
+    "nl": "Firmwareversie",
+    "de": "Firmware-Version",
+    "fr": "Version du firmware",
+    "es": "Versión de firmware",
+    "it": "Versione firmware",
+    "da": "Firmwareversion",
+    "sv": "Firmwareversion",
+    "no": "Firmwareversjon",
+    "pl": "Wersja firmware",
+    "ru": "Версия прошивки",
+    "ar": "إصدار البرنامج الثابت",
+    "ko": "펌웨어 버전"
+  }
+}

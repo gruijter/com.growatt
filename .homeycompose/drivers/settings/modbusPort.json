@@ -1,0 +1,38 @@
+{
+  "id": "port",
+  "type": "number",
+  "value": 502,
+  "min": 1,
+  "max": 65535,
+  "step": 1,
+  "label": {
+    "en": "Port",
+    "nl": "Poort",
+    "de": "Port",
+    "fr": "Port",
+    "es": "Puerto",
+    "it": "Porta",
+    "da": "Port",
+    "sv": "Port",
+    "no": "Port",
+    "pl": "Port",
+    "ru": "Порт",
+    "ar": "المنفذ",
+    "ko": "포트"
+  },
+  "hint": {
+    "en": "Modbus TCP port. Normally 502.",
+    "nl": "Modbus TCP-poort. Normaal 502.",
+    "de": "Modbus-TCP-Port. Normalerweise 502.",
+    "fr": "Port Modbus TCP. Normalement 502.",
+    "es": "Puerto Modbus TCP. Normalmente 502.",
+    "it": "Porta Modbus TCP. Normalmente 502.",
+    "da": "Modbus TCP-port. Normalt 502.",
+    "sv": "Modbus TCP-port. Normalt 502.",
+    "no": "Modbus TCP-port. Vanligvis 502.",
+    "pl": "Port Modbus TCP. Zwykle 502.",
+    "ru": "Порт Modbus TCP. Обычно 502.",
+    "ar": "منفذ Modbus TCP. عادة 502.",
+    "ko": "Modbus TCP 포트. 일반적으로 502입니다."
+  }
+}

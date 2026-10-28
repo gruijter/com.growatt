@@ -1,0 +1,69 @@
+{
+  "$extends": [
+    "modbus"
+  ],
+  "name": {
+    "en": "Meter (Modbus)",
+    "nl": "Meter (Modbus)",
+    "da": "Måler (Modbus)",
+    "de": "Zähler (Modbus)",
+    "es": "Medidor (Modbus)",
+    "fr": "Compteur (Modbus)",
+    "it": "Contatore (Modbus)",
+    "no": "Måler (Modbus)",
+    "sv": "Mätare (Modbus)",
+    "pl": "Miernik (Modbus)",
+    "ru": "Счетчик (Modbus)",
+    "ko": "미터 (Modbus)",
+    "ar": "عداد (Modbus)"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_power",
+    "meter_power.imported",
+    "meter_power.exported"
+  ],
+  "capabilitiesOptions": {
+    "meter_power.imported": {
+      "title": {
+        "en": "Imported energy",
+        "nl": "Energie import",
+        "de": "Importierte Energie",
+        "fr": "Énergie importée",
+        "it": "Energia importata",
+        "es": "Energía importada",
+        "pl": "Energia importowana",
+        "sv": "Importerad energi",
+        "no": "Importert energi",
+        "da": "Importeret energi",
+        "ru": "Импортированная энергия",
+        "ko": "가져온 에너지",
+        "ar": "الطاقة المستوردة"
+      },
+      "decimals": 2
+    },
+    "meter_power.exported": {
+      "title": {
+        "en": "Exported energy",
+        "nl": "Energie export",
+        "de": "Exportierte Energie",
+        "fr": "Énergie exportée",
+        "it": "Energia esportata",
+        "es": "Energía exportada",
+        "pl": "Energia eksportowana",
+        "sv": "Exporterad energi",
+        "no": "Eksportert energi",
+        "da": "Eksporteret energi",
+        "ru": "Экспортированная энергия",
+        "ko": "내보낸 에너지",
+        "ar": "الطاقة المصدرة"
+      },
+      "decimals": 2
+    }
+  },
+  "energy": {
+    "cumulative": true,
+    "cumulativeImportedCapability": "meter_power.imported",
+    "cumulativeExportedCapability": "meter_power.exported"
+  }
+}

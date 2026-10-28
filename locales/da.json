@@ -11,7 +11,20 @@
     "commandRejected": "Inverteren afviste kommandoen. Fjernstyring kan være deaktiveret på inverteren, eller en smart måler er påkrævet.",
     "commandRejectedOrOffline": "Inverteren afviste kommandoen eller svarer ikke. Fjernstyring kan være deaktiveret på inverteren, eller den er offline.",
     "actionNotSupported": "__action__ understøttes ikke af denne enhed.",
-    "deviceNotOnAccount": "Denne enhed er ikke på den Growatt-konto."
+    "deviceNotOnAccount": "Denne enhed er ikke på den Growatt-konto.",
+    "hostMissing": "Ingen IP-adresse angivet.",
+    "hostRequired": "Indtast en IP-adresse.",
+    "modbusNoData": "Ingen data modtaget.",
+    "modbusUnreachable": "Enheden kan ikke nås:",
+    "modbusProbeFailed": "Ingen kompatibel enhed svarede på denne adresse.",
+    "modbusWriteFailed": "Kunne ikke sende kommandoen:",
+    "notSupported": "Denne enhed understøtter det ikke.",
+    "modbusNoUnits": "Der blev ikke fundet noget af denne type på denne adresse.",
+    "notPairable": {
+      "inverter_modbus": "Denne Growatt-model understøttes ikke via Modbus.",
+      "battery_modbus": "Inverteren svarede, men der er intet batteri tilsluttet.",
+      "meter_modbus": "Inverteren svarede, men der er ingen måler tilsluttet."
+    }
   },
   "status": {
     "migrating": "Migrerer. Vent venligst...",
@@ -20,5 +33,32 @@
     "deviceTypeChanged": "Growatt angiver nu denne enhed som __type__. Reparer enheden for at opdatere den.",
     "deprecatedDevice": "Forældet testenhed. Fjern den, og tilføj den igen.",
     "batteryMerged": "Slået sammen med enhedens batterienhed. Fjern denne enhed."
+  },
+  "pair": {
+    "deviceName": {
+      "inverter_modbus": "Inverter",
+      "battery_modbus": "Batteri",
+      "meter_modbus": "Måler"
+    },
+    "manualEntry": "Manuelt",
+    "manual": {
+      "connect": "Forbind",
+      "intro": "Indtast IP-adressen på ShineWiLan-X2-donglen. Giv den først en fast IP-adresse i din router.",
+      "title": "Indtast IP-adresse",
+      "legend": "Forbindelse"
+    }
+  },
+  "repair": {
+    "manual": {
+      "intro": "Indtast den adresse, enheden bruger nu.",
+      "title": "Skift IP-adresse"
+    },
+    "current": "nuværende"
+  },
+  "settings": {
+    "host": "IP-adresse",
+    "port": "Port",
+    "unitId": "Enheds-ID",
+    "energyManagerNone": "Ikke fundet"
   }
 }
