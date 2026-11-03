@@ -3,7 +3,7 @@
 /* deviceHelpers.monotonic: few store writes while a counter grows, and no dip after a restart
    although the stored last reading lags (the capability value persists, the store does not keep up). */
 
-const { monotonic, rebase } = require('../../lib/deviceHelpers');
+const { monotonic, rebase, saveCounters } = require('../../lib/deviceHelpers');
 
 const MIN = 60 * 1000;
 
@@ -14,13 +14,14 @@ const fakeDevice = (kept = { store: {}, values: {} }) => {
     kept,
     writes,
     log: () => {},
+    error: () => {},
     getName: () => 'test',
     getStoreValue: (key) => kept.store[key] ?? null,
     setStoreValue: async (key, value) => {
       writes.push(key);
       kept.store[key] = value;
     },
-    hasCapability: (cap) => cap === 'meter_power',
+    hasCapability: (cap) => cap in kept.values || cap === 'meter_power',
     getCapabilityValue: (cap) => kept.values[cap] ?? null,
   };
   // as a device does with the result
@@ -78,6 +79,46 @@ module.exports = async (t) => {
     await b.count(22); // inside the save interval: not stored
     await rebase(b, 'meter_power', 500);
     t.eq(await b.count(501), 23, 'a rebase continues from the last reading counted, not the stored one');
+
+    // concurrent calls see each other's changes before the store writes finish
+    const cr = fakeDevice({ store: { meter_powerLast: 100 }, values: { meter_power: 100 } });
+    await Promise.all([rebase(cr, 'meter_power', 500), rebase(cr, 'meter_power', 500)]);
+    t.eq(await cr.count(501), 101, 'two concurrent rebases count once');
+    const cf = fakeDevice({ store: { meter_powerLast: 100 }, values: { meter_power: 100 } });
+    t.eq(await cf.count(50), 100, 'a fall is held once');
+    const both = await Promise.all([cf.count(50), cf.count(50)]);
+    t.eq(both.join(), '100,100', 'two concurrent calls confirm the fall once');
+    t.eq(await cf.count(51), 101, 'and count on from there');
+
+    // a restart between the two writes of a fall: the fall is seen again, not twice
+    const crash = fakeDevice({ store: { meter_powerLast: 50 }, values: { meter_power: 100 } });
+    t.eq(await crash.count(50), 100, 'after a crash between the writes the fall is held');
+    t.eq(await crash.count(50), 100, 'then counted once');
+    t.eq(await crash.count(51), 101, 'and counts on');
+
+    // rebase as the first call after a restart continues from the shown value
+    const rr = fakeDevice({ store: { meter_powerLast: 20, meter_powerOffset: 5 }, values: { meter_power: 30 } });
+    await rebase(rr, 'meter_power', 7);
+    t.eq(await rr.count(8), 31, 'a rebase after a restart continues from the shown value');
+
+    // store name and capability differ (com.solaredge 'charged')
+    const named = fakeDevice({ store: { chargedLast: 4 }, values: { 'meter_power.charged': 9 } });
+    t.eq(await monotonic(named, 'charged', 9, 'meter_power.charged'), 9, 'the capability value is read by its own id');
+    t.eq(await monotonic(named, 'charged', 1, 'meter_power.charged'), 9, 'and a fall from it is held');
+
+    // onUninit stores what the save interval held back
+    const flush = fakeDevice({ store: { meter_powerLast: 1 }, values: { meter_power: 1 } });
+    await flush.count(2);
+    await flush.count(3);
+    await saveCounters(flush);
+    t.eq(flush.kept.store.meter_powerLast, 3, 'saveCounters stores the last reading');
+
+    // a clock set back does not stop the saves
+    const clock = fakeDevice();
+    await clock.count(1);
+    now -= 60 * MIN;
+    await clock.count(2);
+    t.eq(clock.kept.store.meter_powerLast, 2, 'after the clock is set back the reading is still stored');
   } finally {
     Date.now = realNow;
   }
