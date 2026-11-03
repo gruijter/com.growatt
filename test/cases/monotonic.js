@@ -38,7 +38,6 @@ module.exports = async (t) => {
   let now = 1792462237436;
   Date.now = () => now;
   try {
-    // growing every 10 s for an hour: the last reading is stored once per 15 minutes
     const d = fakeDevice();
     for (let n = 0; n < 360; n += 1) {
       await d.count(100 + n * 0.001); // eslint-disable-line no-await-in-loop
@@ -48,13 +47,11 @@ module.exports = async (t) => {
     t.eq(d.kept.values.meter_power, 100.359, 'and counts every reading');
     t.ok(d.kept.store.meter_powerLast < 100.359, 'the stored last reading lags');
 
-    // restart: the stored reading is behind, the capability is not
     const r = fakeDevice(d.kept);
     t.eq(await r.count(100.359), 100.359, 'after a restart a counter that stood still shows the same');
     t.eq(r.kept.store.meter_powerOffset ?? null, null, 'and is no fall');
     t.eq(await r.count(100.4), 100.4, 'and counts on');
 
-    // a real reset after a restart continues from what was shown, not from the stored reading
     now += 20 * MIN;
     const reset = fakeDevice(r.kept);
     reset.kept.values.meter_power = 100.5; // shown last, while the store still has an older reading
@@ -63,24 +60,20 @@ module.exports = async (t) => {
     t.eq(reset.kept.store.meter_powerLast, 2, 'and stores the fall at once');
     t.eq(await reset.count(3), 101.5, 'and grows on from there');
 
-    // with offset: the shown value minus the offset is the last reading
     const o = fakeDevice({ store: { meter_powerLast: 10, meter_powerOffset: 50.3 }, values: { meter_power: 60.4 } });
     t.eq(await o.count(10.1), 60.4, 'with an offset a counter that stood still shows the same');
 
-    // a tiny dip is held, not a fall, and is not stored
     const tiny = fakeDevice({ store: { meter_powerLast: 5 }, values: { meter_power: 5 } });
     t.eq(await tiny.count(4.9995), 5, 'a dip under 0.001 is held');
     t.eq(await tiny.count(4.9995), 5, 'also twice');
     t.eq(tiny.kept.store.meter_powerOffset ?? null, null, 'without an offset');
 
-    // rebase uses the counted reading, not the lagging stored one
     const b = fakeDevice({ store: { meter_powerLast: 20 }, values: { meter_power: 20 } });
     await b.count(21);
     await b.count(22); // inside the save interval: not stored
     await rebase(b, 'meter_power', 500);
     t.eq(await b.count(501), 23, 'a rebase continues from the last reading counted, not the stored one');
 
-    // concurrent calls see each other's changes before the store writes finish
     const cr = fakeDevice({ store: { meter_powerLast: 100 }, values: { meter_power: 100 } });
     await Promise.all([rebase(cr, 'meter_power', 500), rebase(cr, 'meter_power', 500)]);
     t.eq(await cr.count(501), 101, 'two concurrent rebases count once');
@@ -90,30 +83,25 @@ module.exports = async (t) => {
     t.eq(both.join(), '100,100', 'two concurrent calls confirm the fall once');
     t.eq(await cf.count(51), 101, 'and count on from there');
 
-    // a restart between the two writes of a fall: the fall is seen again, not twice
     const crash = fakeDevice({ store: { meter_powerLast: 50 }, values: { meter_power: 100 } });
     t.eq(await crash.count(50), 100, 'after a crash between the writes the fall is held');
     t.eq(await crash.count(50), 100, 'then counted once');
     t.eq(await crash.count(51), 101, 'and counts on');
 
-    // rebase as the first call after a restart continues from the shown value
     const rr = fakeDevice({ store: { meter_powerLast: 20, meter_powerOffset: 5 }, values: { meter_power: 30 } });
     await rebase(rr, 'meter_power', 7);
     t.eq(await rr.count(8), 31, 'a rebase after a restart continues from the shown value');
 
-    // store name and capability differ (com.solaredge 'charged')
     const named = fakeDevice({ store: { chargedLast: 4 }, values: { 'meter_power.charged': 9 } });
-    t.eq(await monotonic(named, 'charged', 9, 'meter_power.charged'), 9, 'the capability value is read by its own id');
+    t.eq(await monotonic(named, 'charged', 9, 'meter_power.charged'), 9, 'a capability id other than the store name is read');
     t.eq(await monotonic(named, 'charged', 1, 'meter_power.charged'), 9, 'and a fall from it is held');
 
-    // onUninit stores what the save interval held back
     const flush = fakeDevice({ store: { meter_powerLast: 1 }, values: { meter_power: 1 } });
     await flush.count(2);
     await flush.count(3);
     await saveCounters(flush);
     t.eq(flush.kept.store.meter_powerLast, 3, 'saveCounters stores the last reading');
 
-    // a clock set back does not stop the saves
     const clock = fakeDevice();
     await clock.count(1);
     now -= 60 * MIN;
