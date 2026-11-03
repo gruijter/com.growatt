@@ -78,6 +78,6 @@
     "en": "Breaking: combine all batteries on same inverter into a single device. Breaking: replace alarm_generic with alarm_problem and alarm_connectivity. Add battery SoH and temperature. Better detection of sleeping inverters. Stability improvements."
   },
   "3.0.0": {
-    "en": "Added local Modbus drivers for inverter, battery and meter through the ShineWiLan-X2 dongle. Fixed double polling when a username was entered in a different case. Minor other fixes and improvements."
+    "en": "Added local Modbus drivers for inverter, battery and meter through the ShineWiLan-X2 dongle. Solar titles now show AC or DC. Fixed double polling when a username was entered in a different case. Minor other fixes and improvements."
   }
 }
