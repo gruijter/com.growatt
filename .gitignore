@@ -12,3 +12,4 @@ AGENTS.md
 CLAUDE.md
 # captured API responses (serial numbers, plant names); the test code itself is tracked
 /zzz_responses/
+/node_modules/
