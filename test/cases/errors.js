@@ -74,6 +74,7 @@ module.exports = async (t) => {
           if (answer instanceof Error) throw answer;
           return answer;
         },
+        getDeviceInfo: async () => ({}),
       },
     });
     return dev;
