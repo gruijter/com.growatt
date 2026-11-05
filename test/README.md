@@ -12,7 +12,7 @@ Exit code is non-zero if anything fails, so it drops straight into CI or a pre-c
 
 ## How it works
 
-`zzz_collect.js` captures live responses into `zzz_responses/`. `test/fixtures.js` installs a
+`zzz_responses/collect.js` captures live responses into `zzz_responses/`. `test/fixtures.js` installs a
 `fetch` stub that replays them, matched on the same `(endpoint, parameters)` pair that Growatt
 keys its own rate limit on. Nothing else is mocked: a test drives `growatt_api.js` exactly as the
 app does, so a change that breaks parsing, caching or limiting fails here.
@@ -34,13 +34,13 @@ published app bundle.
 **Every case that needs fixtures skips instead of failing when they are absent**, so the suite still
 runs if the archive is cleared or captured on another machine.
 
-Recapture with `node zzz_collect.js` (~4 minutes; it spends one of the ten daily
+Recapture with `node zzz_responses/collect.js` (~4 minutes; it spends one of the ten daily
 `user_plant_list` calls per account, see `zzz_docs/cloud-api/API-FIELD-NOTES.md` §11).
 
 A user's diagnostics report works too: `lib/growattCapture.js` logs each read request's answer once
 per app start, device init, pairing and repair, with location and contact details redacted.
 `node test/from-logs.js <report.txt> --account <name>` writes those into `zzz_responses/<name>/`
-under the same names and index entries as `zzz_collect.js` (`--dry` to look first, `--force` to
+under the same names and index entries as `zzz_responses/collect.js` (`--dry` to look first, `--force` to
 overwrite).
 
 The local Modbus drivers have their own route. `lib/registerCapture.js` logs the raw registers of

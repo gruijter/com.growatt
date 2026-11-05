@@ -36,7 +36,7 @@ module.exports = async (t) => {
     t.eq(capture.parseLog(report.split('\n').filter((l) => !l.includes('c1|2|')).join('\n')).errors.length, 1, 'a missing chunk is reported');
 
     // the real client on replayed fixtures: what it logs equals what it was served
-    if (!fixtures.available) return t.skip('no zzz_responses/ - run `node zzz_collect.js` to capture');
+    if (!fixtures.available) return t.skip('no zzz_responses/ - run `node zzz_responses/collect.js` to capture');
     const net = fixtures.install();
     try {
       const dev = fixtures.devices()[0];

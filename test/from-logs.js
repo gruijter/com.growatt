@@ -1,6 +1,6 @@
 'use strict';
 
-/* Turn a user's diagnostics report into replayable fixtures, as zzz_collect.js writes them.
+/* Turn a user's diagnostics report into replayable fixtures, as zzz_responses/collect.js writes them.
 
      node test/from-logs.js <report.txt> --account <name>          write zzz_responses/<name>/*.json
      node test/from-logs.js <report.txt> --account <name> --dry    show what it found, write nothing
@@ -34,7 +34,7 @@ if (!file || !account) {
 
 const slug = (s) => String(s).replace(/[^a-zA-Z0-9._@-]/g, '_');
 
-// zzz_collect.js's file names
+// zzz_responses/collect.js's file names
 const fixtureName = ({ endpoint, request }) => {
   const name = capture.NAMES[endpoint];
   if (request.plant_id) return `plant_${request.plant_id}__${name}`;

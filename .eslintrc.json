@@ -4,7 +4,7 @@
     {
       "files": [
         "test/**/*.js",
-        "zzz_*.js"
+        "zzz*/**/*.js"
       ],
       "rules": {
         "no-console": "off",

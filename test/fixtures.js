@@ -123,7 +123,7 @@ function client(account, extra) {
 }
 
 const accounts = () => (store ? Object.keys(store.index.accounts || {}) : []);
-// Which section of zzz_creds.txt an account came from: 'working', 'no-devices' or 'rejected'.
+// Which section of zzz_docs/cloud-api/creds.txt an account came from: 'working', 'no-devices' or 'rejected'.
 const accountsByTier = (tier) => (store
   ? Object.entries(store.index.tiers || {}).filter(([, v]) => v === tier).map(([k]) => k)
   : []);

@@ -145,7 +145,7 @@ async function clockCases(t, Device) {
 module.exports = async (t) => {
   const Device = loadDevice();
   await clockCases(t, Device);
-  if (!fixtures.available) return t.skip('no zzz_responses/ - run `node zzz_collect.js` to capture');
+  if (!fixtures.available) return t.skip('no zzz_responses/ - run `node zzz_responses/collect.js` to capture');
 
   const net = fixtures.install();
   try {

@@ -6,7 +6,7 @@ const Api = require('../../lib/growatt_api');
 const fixtures = require('../fixtures');
 
 module.exports = async (t) => {
-  if (!fixtures.available) return t.skip('no zzz_responses/ - run `node zzz_collect.js` to capture');
+  if (!fixtures.available) return t.skip('no zzz_responses/ - run `node zzz_responses/collect.js` to capture');
 
   const net = fixtures.install();
   try {
