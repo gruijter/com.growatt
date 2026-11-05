@@ -49,7 +49,14 @@ module.exports = async (t) => {
         if (!started) continue;
         const { device, offer } = started;
         const detected = (captures[`${prefix}Detection`] || captures[`${prefix}PairDetection`])?.detected;
-        if (detected) t.eq(JSON.stringify(offer.store.detected), JSON.stringify(detected), `${site}: ${id} detects as it did`);
+        if (detected) {
+          // a fact detection learned after the capture is new, not a difference
+          const now = offer.store.detected;
+          const same = Object.fromEntries(Object.keys(detected).map((key) => [key, now[key]]));
+          t.eq(JSON.stringify(same), JSON.stringify(detected), `${site}: ${id} detects as it did`);
+          const added = Object.keys(now).filter((key) => !(key in detected));
+          if (added.length) t.log(`${site}: ${id} detects more now: ${added.map((key) => `${key}=${JSON.stringify(now[key])}`).join(', ')}`);
+        }
         t.eq(device.migrations.join(' '), '', `${site}: ${id} does not migrate right after pairing`);
         t.eq(device.problems.join('; '), '', `${site}: ${id} started without problems`);
         for (const [cap, value] of Object.entries(expect[id])) {

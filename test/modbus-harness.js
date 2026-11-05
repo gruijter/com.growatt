@@ -142,7 +142,8 @@ const { INPUT } = requireStubbed(path.join(ROOT, 'lib', 'registers.js'), stubs);
 
 const homey = {
   manifest,
-  __: (key) => key.split('.').reduce((node, part) => node?.[part], en) ?? key,
+  __: (key, tokens = {}) => String(key.split('.').reduce((node, part) => node?.[part], en) ?? key)
+    .replace(/__(\w+)__/g, (match, token) => (token in tokens ? tokens[token] : match)),
   i18n: { getLanguage: () => 'en' },
   setTimeout: () => ({}),
   clearTimeout() {},

@@ -47,6 +47,7 @@ const MIN_XH = (() => {
   put(holding, 3036, [100, 10, 0xa005, 0x1737]);
   put(holding, 3047, [100, 100, 0]);
   put(holding, 3111, [25]);
+  put(holding, 122, [1, 1000]); // export limitation by an RS485 meter, at 100 %
   const input = {};
   put(input, 3000, [1]); // normal
   put(input, 3001, u32(30000)); // PV 3000 W
@@ -113,6 +114,37 @@ const capturesOf = (unit) => {
   const asServed = Object.values(captures).every((capture) => [...registerCapture.fromRuns(capture.registers)]
     .every(([address, word]) => (address >= INPUT ? unit.input[address - INPUT] : unit.holding[address]) === word));
   return { captures, errors, asServed };
+};
+
+/** Export limit (holding 123, only with 122 on), status, temperature derating, fault codes. */
+const exportAndStatus = async (t, unitCase, device, writes) => {
+  const name = `${unitCase.name}: inverter`;
+  const { holding, input } = unitCase.unit;
+  const exportControl = brand.pointMap.inverter_modbus.controls.find((item) => item.capabilities.includes('export_limit'));
+  writes.length = 0;
+  await device.writeControl(exportControl, { export_limit: 0 });
+  t.eq(JSON.stringify(writes), '[[123,0]]', `${name}: export limit 0 W writes 0 to 123`);
+  writes.length = 0;
+  await device.writeControl(exportControl, { export_limit: 0 });
+  t.eq(writes.length, 0, `${name}: the same export limit writes nothing`);
+  holding[122] = 0;
+  const off = await device.writeControl(exportControl, { export_limit: 2500 }).then(() => null, (error) => error);
+  t.ok(off?.refusal && /ShinePhone/.test(off.message), `${name}: refused while export limitation is off in the inverter`);
+  Object.assign(holding, { 122: 1, 123: 1000 });
+
+  Object.assign(input, {
+    3000: 0x0503, 3086: 6, 3105: 302, 3106: 401,
+  });
+  await device.poll();
+  t.eq(device.getCapabilityValue('running_state'), 'fault', `${name}: status from the low byte of 3000`);
+  t.eq(device.getCapabilityValue('alarm_heat'), true, `${name}: temperature derating (3086 = 6) raises alarm_heat`);
+  t.eq(device.getCapabilityValue('active_faults'), 'Fault code 302, Warning code 401', `${name}: fault and warning codes`);
+  Object.assign(input, {
+    3000: 1, 3086: 0, 3105: 0, 3106: 0,
+  });
+  await device.poll();
+  t.eq(device.getCapabilityValue('active_faults'), null, `${name}: no codes clears active_faults`);
+  device.problems.length = 0; // the refused export limit, not a poll problem
 };
 
 // --- battery control ----------------------------------------------------------------------
@@ -249,7 +281,11 @@ module.exports = async (t) => {
           'measure_power.pv1': 1600,
           measure_temperature: 45.2,
           target_power: 5000,
+          export_limit: 5000,
+          running_state: 'on_grid',
           alarm_problem: false,
+          alarm_heat: false,
+          active_faults: null,
         },
         battery_modbus: {
           measure_power: 450,
@@ -341,6 +377,7 @@ module.exports = async (t) => {
           t.eq(JSON.stringify(writes[2]), '[3,100]', `${unitCase.name}: the rated power writes "not limited"`);
           await device.poll(); // eslint-disable-line no-await-in-loop
           t.eq(writes.length, 3, `${unitCase.name}: no limit is reapplied once unlimited`);
+          await exportAndStatus(t, unitCase, device, writes); // eslint-disable-line no-await-in-loop
 
           // off for the night: power 0 rather than the last reading, one logged failure per hour
           const { readBlocks } = device;

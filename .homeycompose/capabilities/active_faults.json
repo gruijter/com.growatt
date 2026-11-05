@@ -1,0 +1,23 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Active faults",
+    "nl": "Actieve storingen",
+    "de": "Aktive Störungen",
+    "fr": "Défauts actifs",
+    "es": "Fallos activos",
+    "it": "Guasti attivi",
+    "da": "Aktive fejl",
+    "sv": "Aktiva fel",
+    "no": "Aktive feil",
+    "pl": "Aktywne usterki",
+    "ru": "Активные неисправности",
+    "ar": "الأعطال النشطة",
+    "ko": "활성 고장"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": false,
+  "icon": "./assets/active_faults.svg"
+}

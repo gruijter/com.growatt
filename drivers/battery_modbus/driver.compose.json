@@ -20,17 +20,17 @@
   "class": "battery",
   "capabilities": [
     "measure_power",
+    "target_power",
+    "target_power_mode",
     "measure_battery",
     "battery_charging_state",
+    "battery_min_soc",
+    "battery_max_soc",
     "meter_power.charged",
     "meter_power.discharged",
     "measure_voltage",
     "measure_temperature",
     "measure_soh",
-    "target_power",
-    "target_power_mode",
-    "battery_min_soc",
-    "battery_max_soc",
     "alarm_generic.control"
   ],
   "capabilitiesOptions": {

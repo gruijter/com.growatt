@@ -437,6 +437,83 @@
       },
       {
         "title": {
+          "en": "Set export limit",
+          "nl": "Stel terugleverlimiet in",
+          "de": "Einspeiselimit einstellen",
+          "fr": "Définir la limite d'injection",
+          "es": "Establecer límite de inyección",
+          "it": "Imposta limite di immissione",
+          "da": "Indstil leveringsgrænse",
+          "sv": "Ställ in inmatningsgräns",
+          "no": "Still inn innmatingsgrense",
+          "pl": "Ustaw limit oddawania do sieci",
+          "ru": "Установить предел отдачи в сеть",
+          "ar": "تعيين حد التصدير للشبكة",
+          "ko": "송전 한도 설정"
+        },
+        "titleFormatted": {
+          "en": "Set export limit to [[watts]] W",
+          "nl": "Stel terugleverlimiet in op [[watts]] W",
+          "de": "Einspeiselimit auf [[watts]] W einstellen",
+          "fr": "Définir la limite d'injection à [[watts]] W",
+          "es": "Establecer límite de inyección en [[watts]] W",
+          "it": "Imposta limite di immissione a [[watts]] W",
+          "da": "Indstil leveringsgrænse til [[watts]] W",
+          "sv": "Ställ in inmatningsgräns på [[watts]] W",
+          "no": "Still inn innmatingsgrense til [[watts]] W",
+          "pl": "Ustaw limit oddawania do sieci na [[watts]] W",
+          "ru": "Установить предел отдачи в сеть [[watts]] Вт",
+          "ar": "تعيين حد التصدير إلى [[watts]] واط",
+          "ko": "송전 한도를 [[watts]] W로 설정"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=inverter_modbus&capabilities=export_limit"
+          },
+          {
+            "type": "number",
+            "name": "watts",
+            "min": 0,
+            "max": 60000,
+            "step": 1,
+            "placeholder": {
+              "en": "0",
+              "nl": "0",
+              "de": "0",
+              "fr": "0",
+              "es": "0",
+              "it": "0",
+              "da": "0",
+              "sv": "0",
+              "no": "0",
+              "pl": "0",
+              "ru": "0",
+              "ar": "0",
+              "ko": "0"
+            },
+            "title": {
+              "en": "Limit",
+              "nl": "Limiet",
+              "de": "Limit",
+              "fr": "Limite",
+              "es": "Límite",
+              "it": "Limite",
+              "da": "Grænse",
+              "sv": "Gräns",
+              "no": "Grense",
+              "pl": "Limit",
+              "ru": "Предел",
+              "ar": "الحد",
+              "ko": "한도"
+            }
+          }
+        ],
+        "id": "set_export_limit"
+      },
+      {
+        "title": {
           "en": "Set SoC limits",
           "nl": "Stel SoC-grenzen in",
           "de": "SoC-Grenzen einstellen",
@@ -1478,17 +1555,17 @@
       "class": "battery",
       "capabilities": [
         "measure_power",
+        "target_power",
+        "target_power_mode",
         "measure_battery",
         "battery_charging_state",
+        "battery_min_soc",
+        "battery_max_soc",
         "meter_power.charged",
         "meter_power.discharged",
         "measure_voltage",
         "measure_temperature",
         "measure_soh",
-        "target_power",
-        "target_power_mode",
-        "battery_min_soc",
-        "battery_max_soc",
         "alarm_generic.control"
       ],
       "capabilitiesOptions": {
@@ -3153,6 +3230,7 @@
       "capabilities": [
         "measure_power",
         "target_power",
+        "export_limit",
         "measure_power.dc_solar",
         "measure_power.ac_inverter",
         "measure_efficiency",
@@ -3179,7 +3257,10 @@
         "measure_power.pv4",
         "measure_voltage.pv4",
         "measure_current.pv4",
-        "alarm_problem"
+        "running_state",
+        "alarm_problem",
+        "alarm_heat",
+        "active_faults"
       ],
       "capabilitiesOptions": {
         "measure_power": {
@@ -5282,6 +5363,29 @@
     }
   ],
   "capabilities": {
+    "active_faults": {
+      "type": "string",
+      "title": {
+        "en": "Active faults",
+        "nl": "Actieve storingen",
+        "de": "Aktive Störungen",
+        "fr": "Défauts actifs",
+        "es": "Fallos activos",
+        "it": "Guasti attivi",
+        "da": "Aktive fejl",
+        "sv": "Aktiva fel",
+        "no": "Aktive feil",
+        "pl": "Aktywne usterki",
+        "ru": "Активные неисправности",
+        "ar": "الأعطال النشطة",
+        "ko": "활성 고장"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "./assets/active_faults.svg"
+    },
     "battery_max_soc": {
       "type": "number",
       "title": {
@@ -5408,6 +5512,48 @@
       "uiComponent": "slider",
       "icon": "./assets/charge_setpoint.svg"
     },
+    "export_limit": {
+      "type": "number",
+      "title": {
+        "en": "Export limit",
+        "nl": "Terugleverlimiet",
+        "de": "Einspeiselimit",
+        "fr": "Limite d'injection",
+        "es": "Límite de inyección",
+        "it": "Limite di immissione",
+        "da": "Leveringsgrænse",
+        "sv": "Inmatningsgräns",
+        "no": "Innmatingsgrense",
+        "pl": "Limit oddawania do sieci",
+        "ru": "Предел отдачи в сеть",
+        "ar": "حد التصدير للشبكة",
+        "ko": "송전 한도"
+      },
+      "units": {
+        "en": "W",
+        "nl": "W",
+        "de": "W",
+        "fr": "W",
+        "es": "W",
+        "it": "W",
+        "da": "W",
+        "sv": "W",
+        "no": "W",
+        "pl": "W",
+        "ru": "W",
+        "ar": "W",
+        "ko": "W"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 8000,
+      "step": 100,
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "uiComponent": "slider",
+      "icon": "./assets/export_limit.svg"
+    },
     "measure_efficiency": {
       "type": "number",
       "title": {
@@ -5487,6 +5633,246 @@
       "insights": true,
       "uiComponent": "sensor",
       "icon": "./assets/measure_soh.svg"
+    },
+    "running_state": {
+      "type": "enum",
+      "title": {
+        "en": "Inverter status",
+        "nl": "Omvormerstatus",
+        "de": "Wechselrichterstatus",
+        "fr": "État de l'onduleur",
+        "es": "Estado del inversor",
+        "it": "Stato inverter",
+        "da": "Inverterstatus",
+        "sv": "Växelriktarstatus",
+        "no": "Vekselretterstatus",
+        "pl": "Stan inwertera",
+        "ru": "Состояние инвертора",
+        "ar": "حالة العاكس",
+        "ko": "인버터 상태"
+      },
+      "values": [
+        {
+          "id": "self_test",
+          "title": {
+            "en": "Self-test",
+            "nl": "Zelftest",
+            "de": "Selbsttest",
+            "fr": "Autotest",
+            "es": "Autoprueba",
+            "it": "Autotest",
+            "da": "Selvtest",
+            "sv": "Självtest",
+            "no": "Selvtest",
+            "pl": "Autotest",
+            "ru": "Самотестирование",
+            "ar": "اختبار ذاتي",
+            "ko": "자가 진단"
+          }
+        },
+        {
+          "id": "waiting",
+          "title": {
+            "en": "Waiting",
+            "nl": "Wachten",
+            "de": "Wartend",
+            "fr": "En attente",
+            "es": "Esperando",
+            "it": "In attesa",
+            "da": "Venter",
+            "sv": "Väntar",
+            "no": "Venter",
+            "pl": "Oczekiwanie",
+            "ru": "Ожидание",
+            "ar": "انتظار",
+            "ko": "대기 중"
+          }
+        },
+        {
+          "id": "checking",
+          "title": {
+            "en": "Checking",
+            "nl": "Controleren",
+            "de": "Prüfung",
+            "fr": "Vérification",
+            "es": "Comprobando",
+            "it": "Verifica",
+            "da": "Kontrollerer",
+            "sv": "Kontrollerar",
+            "no": "Kontrollerer",
+            "pl": "Sprawdzanie",
+            "ru": "Проверка",
+            "ar": "فحص",
+            "ko": "점검 중"
+          }
+        },
+        {
+          "id": "on_grid",
+          "title": {
+            "en": "On-grid",
+            "nl": "Netgekoppeld",
+            "de": "Netzbetrieb",
+            "fr": "Sur réseau",
+            "es": "Conectado a red",
+            "it": "In rete",
+            "da": "Nettilsluttet",
+            "sv": "Nätansluten",
+            "no": "Nettilkoblet",
+            "pl": "Praca sieciowa",
+            "ru": "Сетевой режим",
+            "ar": "متصل بالشبكة",
+            "ko": "계통 연계"
+          }
+        },
+        {
+          "id": "off_grid",
+          "title": {
+            "en": "Off-grid",
+            "nl": "Eilandbedrijf",
+            "de": "Inselbetrieb",
+            "fr": "Hors réseau",
+            "es": "Fuera de red",
+            "it": "Fuori rete",
+            "da": "Ø-drift",
+            "sv": "Ödrift",
+            "no": "Øydrift",
+            "pl": "Praca wyspowa",
+            "ru": "Автономный режим",
+            "ar": "خارج الشبكة",
+            "ko": "독립 운전"
+          }
+        },
+        {
+          "id": "fault",
+          "title": {
+            "en": "Fault",
+            "nl": "Storing",
+            "de": "Fehler",
+            "fr": "Défaut",
+            "es": "Fallo",
+            "it": "Guasto",
+            "da": "Fejl",
+            "sv": "Fel",
+            "no": "Feil",
+            "pl": "Usterka",
+            "ru": "Неисправность",
+            "ar": "عطل",
+            "ko": "고장"
+          }
+        },
+        {
+          "id": "permanent_fault",
+          "title": {
+            "en": "Permanent fault",
+            "nl": "Permanente storing",
+            "de": "Dauerhafter Fehler",
+            "fr": "Défaut permanent",
+            "es": "Fallo permanente",
+            "it": "Guasto permanente",
+            "da": "Permanent fejl",
+            "sv": "Permanent fel",
+            "no": "Permanent feil",
+            "pl": "Trwała usterka",
+            "ru": "Постоянная неисправность",
+            "ar": "عطل دائم",
+            "ko": "영구 고장"
+          }
+        },
+        {
+          "id": "standby",
+          "title": {
+            "en": "Standby",
+            "nl": "Stand-by",
+            "de": "Standby",
+            "fr": "Veille",
+            "es": "Reposo",
+            "it": "Standby",
+            "da": "Standby",
+            "sv": "Standby",
+            "no": "Standby",
+            "pl": "Czuwanie",
+            "ru": "Режим ожидания",
+            "ar": "وضع الاستعداد",
+            "ko": "대기 모드"
+          }
+        },
+        {
+          "id": "upgrading",
+          "title": {
+            "en": "Upgrading",
+            "nl": "Bijwerken",
+            "de": "Aktualisierung",
+            "fr": "Mise à jour",
+            "es": "Actualizando",
+            "it": "Aggiornamento",
+            "da": "Opdaterer",
+            "sv": "Uppdaterar",
+            "no": "Oppdaterer",
+            "pl": "Aktualizacja",
+            "ru": "Обновление",
+            "ar": "جارٍ التحديث",
+            "ko": "업데이트 중"
+          }
+        },
+        {
+          "id": "fct",
+          "title": {
+            "en": "Factory test",
+            "nl": "Fabriekstest",
+            "de": "Werkstest",
+            "fr": "Test d'usine",
+            "it": "Test di fabbrica",
+            "es": "Prueba de fábrica",
+            "pl": "Test fabryczny",
+            "sv": "Fabrikstest",
+            "no": "Fabrikktest",
+            "da": "Fabrikstest",
+            "ru": "Заводской тест",
+            "ko": "공장 테스트",
+            "ar": "اختبار المصنع"
+          }
+        },
+        {
+          "id": "illegal",
+          "title": {
+            "en": "Invalid state",
+            "nl": "Ongeldige status",
+            "de": "Ungültiger Zustand",
+            "fr": "État invalide",
+            "es": "Estado no válido",
+            "it": "Stato non valido",
+            "da": "Ugyldig tilstand",
+            "sv": "Ogiltigt läge",
+            "no": "Ugyldig tilstand",
+            "pl": "Nieprawidłowy stan",
+            "ru": "Недопустимое состояние",
+            "ar": "حالة غير صالحة",
+            "ko": "잘못된 상태"
+          }
+        },
+        {
+          "id": "unknown",
+          "title": {
+            "en": "Unknown",
+            "nl": "Onbekend",
+            "de": "Unbekannt",
+            "fr": "Inconnu",
+            "es": "Desconocido",
+            "it": "Sconosciuto",
+            "da": "Ukendt",
+            "sv": "Okänd",
+            "no": "Ukjent",
+            "pl": "Nieznany",
+            "ru": "Неизвестно",
+            "ar": "غير معروف",
+            "ko": "알 수 없음"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "./assets/running_state.svg"
     }
   }
 }

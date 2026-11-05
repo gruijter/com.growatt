@@ -21,4 +21,11 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 
 const ModbusDevice = require('../../lib/modbus_device');
 
-module.exports = class GrowattInverterModbusDevice extends ModbusDevice {};
+module.exports = class GrowattInverterModbusDevice extends ModbusDevice {
+
+  /** The 'Set export limit' Flow card (app.js). */
+  async setExportLimit(watts) {
+    await this.setControl({ export_limit: watts });
+  }
+
+};

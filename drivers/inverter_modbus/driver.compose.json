@@ -21,6 +21,7 @@
   "capabilities": [
     "measure_power",
     "target_power",
+    "export_limit",
     "measure_power.dc_solar",
     "measure_power.ac_inverter",
     "measure_efficiency",
@@ -47,7 +48,10 @@
     "measure_power.pv4",
     "measure_voltage.pv4",
     "measure_current.pv4",
-    "alarm_problem"
+    "running_state",
+    "alarm_problem",
+    "alarm_heat",
+    "active_faults"
   ],
   "capabilitiesOptions": {
     "measure_power": {

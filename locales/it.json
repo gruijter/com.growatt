@@ -27,7 +27,8 @@
     },
     "otherEms": "Un altro gestore di energia controlla la batteria; impostala prima su autoconsumo.",
     "writeLimit": "Impostazioni della batteria modificate troppo spesso (max __count__ al giorno). Riprova più tardi.",
-    "socRange": "Il SoC minimo deve essere 10–50% e il SoC massimo 50–100%."
+    "socRange": "Il SoC minimo deve essere 10–50% e il SoC massimo 50–100%.",
+    "exportLimitOff": "La limitazione di immissione è disattivata nell'inverter. Attivala prima nell'app ShinePhone."
   },
   "status": {
     "migrating": "Migrazione in corso. Attendere...",
@@ -67,5 +68,9 @@
   "notifications": {
     "controlOverridden": "**__name__**: il controllo della batteria da parte di Homey è stato preso altrove, ad esempio in ShinePhone o da un fornitore di energia.",
     "controlOverriddenBy": "**__name__**: un gestore energetico esterno (__manager__) sovrascrive il controllo di Homey. Homey e il gestore energetico cercano entrambi di controllare questo dispositivo."
+  },
+  "inverterFaults": {
+    "fault": "Codice di guasto __code__",
+    "warning": "Codice di avviso __code__"
   }
 }

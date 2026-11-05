@@ -1,0 +1,76 @@
+{
+  "title": {
+    "en": "Set export limit",
+    "nl": "Stel terugleverlimiet in",
+    "de": "Einspeiselimit einstellen",
+    "fr": "Définir la limite d'injection",
+    "es": "Establecer límite de inyección",
+    "it": "Imposta limite di immissione",
+    "da": "Indstil leveringsgrænse",
+    "sv": "Ställ in inmatningsgräns",
+    "no": "Still inn innmatingsgrense",
+    "pl": "Ustaw limit oddawania do sieci",
+    "ru": "Установить предел отдачи в сеть",
+    "ar": "تعيين حد التصدير للشبكة",
+    "ko": "송전 한도 설정"
+  },
+  "titleFormatted": {
+    "en": "Set export limit to [[watts]] W",
+    "nl": "Stel terugleverlimiet in op [[watts]] W",
+    "de": "Einspeiselimit auf [[watts]] W einstellen",
+    "fr": "Définir la limite d'injection à [[watts]] W",
+    "es": "Establecer límite de inyección en [[watts]] W",
+    "it": "Imposta limite di immissione a [[watts]] W",
+    "da": "Indstil leveringsgrænse til [[watts]] W",
+    "sv": "Ställ in inmatningsgräns på [[watts]] W",
+    "no": "Still inn innmatingsgrense til [[watts]] W",
+    "pl": "Ustaw limit oddawania do sieci na [[watts]] W",
+    "ru": "Установить предел отдачи в сеть [[watts]] Вт",
+    "ar": "تعيين حد التصدير إلى [[watts]] واط",
+    "ko": "송전 한도를 [[watts]] W로 설정"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=inverter_modbus&capabilities=export_limit"
+    },
+    {
+      "type": "number",
+      "name": "watts",
+      "min": 0,
+      "max": 60000,
+      "step": 1,
+      "placeholder": {
+        "en": "0",
+        "nl": "0",
+        "de": "0",
+        "fr": "0",
+        "es": "0",
+        "it": "0",
+        "da": "0",
+        "sv": "0",
+        "no": "0",
+        "pl": "0",
+        "ru": "0",
+        "ar": "0",
+        "ko": "0"
+      },
+      "title": {
+        "en": "Limit",
+        "nl": "Limiet",
+        "de": "Limit",
+        "fr": "Limite",
+        "es": "Límite",
+        "it": "Limite",
+        "da": "Grænse",
+        "sv": "Gräns",
+        "no": "Grense",
+        "pl": "Limit",
+        "ru": "Предел",
+        "ar": "الحد",
+        "ko": "한도"
+      }
+    }
+  ]
+}

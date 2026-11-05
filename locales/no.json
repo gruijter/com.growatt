@@ -27,7 +27,8 @@
     },
     "otherEms": "En annen energistyring styrer batteriet; sett det først til egetforbruk.",
     "writeLimit": "Batteriinnstillinger endret for ofte (maks. __count__ per dag). Prøv igjen senere.",
-    "socRange": "Minimum SoC må være 10–50 % og maksimum SoC 50–100 %."
+    "socRange": "Minimum SoC må være 10–50 % og maksimum SoC 50–100 %.",
+    "exportLimitOff": "Eksportbegrensning er slått av i omformeren. Slå den først på i ShinePhone-appen."
   },
   "status": {
     "migrating": "Migrerer. Vent litt...",
@@ -67,5 +68,9 @@
   "notifications": {
     "controlOverridden": "**__name__**: Homeys batteristyring er overtatt et annet sted, for eksempel i ShinePhone eller av en energileverandør.",
     "controlOverriddenBy": "**__name__**: en ekstern energistyring (__manager__) overstyrer styringen fra Homey. Homey og energistyringen prøver begge å styre denne enheten."
+  },
+  "inverterFaults": {
+    "fault": "Feilkode __code__",
+    "warning": "Varselkode __code__"
   }
 }

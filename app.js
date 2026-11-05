@@ -63,6 +63,8 @@ module.exports = class MyApp extends Homey.App {
     // the local Modbus devices on one inverter share its Modbus TCP connection
     this.pool = new ModbusPool();
     this.registerFlowListeners();
+    this.homey.flow.getActionCard('set_export_limit')
+      .registerRunListener(({ device, watts }) => device.setExportLimit(watts));
     this.homey.flow.getActionCard('set_soc_limits')
       .registerRunListener(({ device, min, max }) => device.setSocLimits({ min, max }));
     // Homey makes no "is on" condition for a boolean sub-capability

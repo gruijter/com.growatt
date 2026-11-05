@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <g fill="#000000">
+    <!-- feed-in arrow stopped under a bar: capped export -->
+    <rect x="80" y="48" width="352" height="48" rx="24"/>
+    <path d="M256 136l136 136h-88v168c0 13-11 24-24 24h-48c-13 0-24-11-24-24V272h-88z"/>
+  </g>
+</svg>

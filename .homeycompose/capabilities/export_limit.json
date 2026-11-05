@@ -1,0 +1,42 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Export limit",
+    "nl": "Terugleverlimiet",
+    "de": "Einspeiselimit",
+    "fr": "Limite d'injection",
+    "es": "Límite de inyección",
+    "it": "Limite di immissione",
+    "da": "Leveringsgrænse",
+    "sv": "Inmatningsgräns",
+    "no": "Innmatingsgrense",
+    "pl": "Limit oddawania do sieci",
+    "ru": "Предел отдачи в сеть",
+    "ar": "حد التصدير للشبكة",
+    "ko": "송전 한도"
+  },
+  "units": {
+    "en": "W",
+    "nl": "W",
+    "de": "W",
+    "fr": "W",
+    "es": "W",
+    "it": "W",
+    "da": "W",
+    "sv": "W",
+    "no": "W",
+    "pl": "W",
+    "ru": "W",
+    "ar": "W",
+    "ko": "W"
+  },
+  "decimals": 0,
+  "min": 0,
+  "max": 8000,
+  "step": 100,
+  "getable": true,
+  "setable": true,
+  "insights": false,
+  "uiComponent": "slider",
+  "icon": "./assets/export_limit.svg"
+}
