@@ -23,7 +23,7 @@ const holdingBlock = ({
 }) => {
   const h = {};
   for (let a = 0; a < 125; a += 1) h[a] = 0;
-  put(h, 3, [255]); // not limited
+  put(h, 3, [100]); // not limited (a MIN TL-XH starts at 100)
   put(h, 6, u32(pmax * 10));
   put(h, 9, ascii('DM1.0 ZBAA'.padEnd(12, ' ')));
   put(h, 23, ascii(serial));
@@ -57,7 +57,7 @@ const MIN_XH = (() => {
   put(input, 3118, [1]); // BDC1 connected
   put(input, 3127, u32(3210)); // discharged total 321.0 kWh
   put(input, 3131, u32(3456)); // charged total 345.6 kWh
-  put(input, 3169, [5230, 0, 67]); // 52.3 V, SoC 67 %
+  put(input, 3169, [4015, 0, 67]); // 401.5 V, SoC 67 %
   put(input, 3178, [...u32(0), ...u32(4500)]); // charging 450 W
   put(input, 3218, [251]);
   put(input, 3222, [98]);
@@ -141,7 +141,7 @@ module.exports = async (t) => {
           battery_charging_state: 'charging',
           'meter_power.charged': 345.6,
           'meter_power.discharged': 321,
-          measure_voltage: 52.3,
+          measure_voltage: 401.5,
           measure_soh: 98,
         },
         meter_modbus: { measure_power: -300, 'meter_power.imported': 987.6, 'meter_power.exported': 543.2 },
@@ -218,11 +218,11 @@ module.exports = async (t) => {
           const control = brand.pointMap[id].controls[0];
           await device.writeControl(control, { target_power: 2500 }); // eslint-disable-line no-await-in-loop
           t.eq(JSON.stringify(writes), '[[3,50]]', `${unitCase.name}: a 2500 W limit writes 50 % to holding 3`);
-          unitCase.unit.holding[3] = 255; // the inverter restarted
+          unitCase.unit.holding[3] = 100; // the inverter restarted
           await device.poll(); // eslint-disable-line no-await-in-loop
           t.eq(JSON.stringify(writes), '[[3,50],[3,50]]', `${unitCase.name}: a limit lost in a restart is written again`);
           await device.writeControl(control, { target_power: 5000 }); // eslint-disable-line no-await-in-loop
-          t.eq(JSON.stringify(writes[2]), '[3,255]', `${unitCase.name}: the rated power writes "not limited"`);
+          t.eq(JSON.stringify(writes[2]), '[3,100]', `${unitCase.name}: the rated power writes "not limited"`);
           await device.poll(); // eslint-disable-line no-await-in-loop
           t.eq(writes.length, 3, `${unitCase.name}: no limit is reapplied once unlimited`);
 
