@@ -24,7 +24,10 @@
       "inverter_modbus": "Dieses Growatt-Modell wird über Modbus nicht unterstützt.",
       "battery_modbus": "Der Wechselrichter hat geantwortet, aber es ist keine Batterie angeschlossen.",
       "meter_modbus": "Der Wechselrichter hat geantwortet, aber es ist kein Zähler angeschlossen."
-    }
+    },
+    "otherEms": "Ein anderer Energiemanager steuert die Batterie; stelle sie zuerst auf Eigenverbrauch.",
+    "writeLimit": "Batterieeinstellungen zu oft geändert (max. __count__ pro Tag). Versuche es später erneut.",
+    "socRange": "Der minimale SoC muss 10–50 % und der maximale SoC 50–100 % sein."
   },
   "status": {
     "migrating": "Migration läuft. Bitte warten...",
@@ -60,5 +63,9 @@
     "port": "Port",
     "unitId": "Unit-ID",
     "energyManagerNone": "Nicht gefunden"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: Die Batteriesteuerung durch Homey wurde anderswo übernommen, zum Beispiel in ShinePhone oder von einem Energieversorger.",
+    "controlOverriddenBy": "**__name__**: Ein externer Energiemanager (__manager__) überschreibt die Steuerung durch Homey. Homey und der Energiemanager versuchen beide, dieses Gerät zu steuern."
   }
 }

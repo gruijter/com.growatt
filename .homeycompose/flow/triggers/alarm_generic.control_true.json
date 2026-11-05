@@ -1,0 +1,25 @@
+{
+  "title": {
+    "en": "Control was overridden",
+    "nl": "Sturing werd overschreven",
+    "de": "Steuerung wurde überschrieben",
+    "fr": "Le pilotage a été écrasé",
+    "es": "El control fue anulado",
+    "it": "Il controllo è stato sovrascritto",
+    "da": "Styringen blev overskrevet",
+    "sv": "Styrningen skrevs över",
+    "no": "Styringen ble overstyrt",
+    "pl": "Sterowanie zostało nadpisane",
+    "ru": "Управление перехвачено",
+    "ar": "تم تجاوز التحكم",
+    "ko": "제어가 덮어써짐"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=battery_modbus&capabilities=alarm_generic.control"
+    }
+  ]
+}

@@ -42,6 +42,11 @@ const MIN_XH = (() => {
     }),
     30000: 5100,
   };
+  // battery settings as on a MIN 6000TL-XH with APX: period 1 battery first 00:05-23:55, BDC 2.5 kW
+  fill(holding, 3000, 125);
+  put(holding, 3036, [100, 10, 0xa005, 0x1737]);
+  put(holding, 3047, [100, 100, 0]);
+  put(holding, 3111, [25]);
   const input = {};
   put(input, 3000, [1]); // normal
   put(input, 3001, u32(30000)); // PV 3000 W
@@ -108,6 +113,117 @@ const capturesOf = (unit) => {
   const asServed = Object.values(captures).every((capture) => [...registerCapture.fromRuns(capture.registers)]
     .every(([address, word]) => (address >= INPUT ? unit.input[address - INPUT] : unit.holding[address]) === word));
   return { captures, errors, asServed };
+};
+
+// --- battery control ----------------------------------------------------------------------
+
+const control = brand.pointMap.battery_modbus.controls[0];
+const MINUTE = 60 * 1000;
+
+/** TL-XH without VPP: stored settings, so rounded, spaced, limited per day and written back. */
+const legacyControl = async (t, unitCase, device, writes) => {
+  const name = `${unitCase.name}: battery control without VPP`;
+  const { holding } = unitCase.unit;
+  t.ok(device.hasCapability('target_power_mode'), `${name}: offered (3111 gives ${device.detected.bdcPower} W)`);
+  t.eq(device.detected.bdcPower, 2500, `${name}: battery power from BDC module 1 (3111)`);
+
+  writes.length = 0;
+  await device.writeControl(control, { target_power: 600 });
+  t.eq(JSON.stringify(writes), '[[3038,[40960,5947]],[3047,20]]', `${name}: 600 W is battery first all day at 20 % (10 % steps of 2500 W)`);
+  t.eq(device.getStoreValue('legacyOriginal')[3038], 0xa005, `${name}: the user's own period 1 is kept`);
+
+  writes.length = 0;
+  await device.writeControl(control, { target_power: 1200 });
+  t.eq(writes.length, 0, `${name}: a new setpoint within 5 minutes waits`);
+  await device.setStoreValue('storedWrites', [Date.now() - 6 * MINUTE]);
+  await device.keepAlive();
+  t.eq(JSON.stringify(writes), '[[3047,50]]', `${name}: the waiting setpoint is written after 5 minutes, only what changed`);
+
+  writes.length = 0;
+  await device.setStoreValue('storedWrites', [Date.now() - 6 * MINUTE]);
+  await device.writeControl(control, { target_power: 1150 });
+  t.eq(writes.length, 0, `${name}: a setpoint in the same 10 % step writes nothing`);
+
+  await device.setStoreValue('storedWrites', Array.from({ length: 24 }, (_, i) => Date.now() - (i + 6) * MINUTE));
+  const refused = await device.writeControl(control, { target_power_mode: 'force_discharge' }).then(() => null, (error) => error);
+  t.ok(refused?.refusal && /a day/.test(refused.message), `${name}: refused after 24 writes in 24 hours`);
+  t.eq(writes.length, 0, `${name}: nothing written over the daily limit`);
+
+  await device.writeControl(control, { target_power_mode: 'self_consumption' });
+  t.eq(JSON.stringify(writes), '[[3038,[40965,5943]],[3047,100]]', `${name}: self-consumption writes the user's settings back, also over the limit`);
+  t.eq(device.getStoreValue('legacyOriginal'), null, `${name}: nothing left to write back`);
+
+  // SoC limits: grid first stop SoC (3037) and battery first stop SoC (3048)
+  await device.setStoreValue('storedWrites', []);
+  t.eq(device.getCapabilityValue('battery_min_soc'), 0.1, `${name}: minimum SoC from 3037`);
+  t.eq(device.getCapabilityValue('battery_max_soc'), 1, `${name}: maximum SoC from 3048`);
+  writes.length = 0;
+  await device.setSocLimits({ min: 20, max: 90 });
+  t.eq(JSON.stringify(writes), '[[3037,20],[3048,90]]', `${name}: the SoC limits card writes 3037 and 3048`);
+  writes.length = 0;
+  await device.setSocLimits({ min: 20, max: 90 });
+  t.eq(writes.length, 0, `${name}: the same SoC limits write nothing`);
+  const outside = await device.setSocLimits({ min: 5, max: 90 }).then(() => null, (error) => error);
+  t.ok(outside?.refusal, `${name}: a minimum below 10 % is refused`);
+  Object.assign(holding, { 3037: 10, 3048: 100 });
+
+  // another writer (the ShinePhone app) changes what this app wrote
+  await device.setStoreValue('storedWrites', []);
+  await device.writeControl(control, { target_power_mode: 'force_discharge' });
+  t.eq(holding[3038], 0xc000, `${name}: force discharge is grid first all day`);
+  holding[3036] = 50;
+  device.controlEndedAt = 0;
+  device.rereadBlocks();
+  await device.poll();
+  t.eq(device.getCapabilityValue('alarm_generic.control'), true, `${name}: a change made elsewhere raises the alarm`);
+  t.eq(device.getStoreValue('remoteMode'), false, `${name}: and this app stops controlling`);
+  // back as the user had it, for the cases after this one
+  Object.assign(holding, {
+    3036: 100, 3038: 0xa005, 3039: 0x1737, 3047: 100,
+  });
+};
+
+/** VPP: control authority once, then the setpoint in 30407-30409, which are not stored. */
+const vppControl = async (t) => {
+  const name = 'MIN TL-XH with VPP: battery control';
+  const unit = { holding: { ...MIN_XH.holding }, input: { ...MIN_XH.input } };
+  put(unit.holding, 30099, [201]);
+  put(unit.holding, 30100, [0]);
+  put(unit.holding, 30404, [100, 10, 10, 0, 0, 0]);
+  const { server, writes, port } = await serve(unit);
+  try {
+    const started = await pairAndStart('battery_modbus', port);
+    t.ok(started, `${name}: offered`);
+    if (!started) return;
+    const { device } = started;
+    t.eq(device.detected.vppControl, true, `${name}: VPP detected from 30099`);
+    writes.length = 0;
+    await device.writeControl(control, { target_power: -1250 });
+    t.eq(JSON.stringify(writes), `[[30100,1],[30407,[1,5,${-50 & 0xffff}]]]`, `${name}: -1250 W is -50 % of 2500 W, for 5 minutes`);
+    writes.length = 0;
+    await device.writeControl(control, { target_power: 500 });
+    t.eq(JSON.stringify(writes), '[[30407,[1,5,20]]]', `${name}: a new setpoint writes only 30407-30409`);
+    writes.length = 0;
+    await device.keepAlive();
+    t.eq(JSON.stringify(writes), '[[30407,[1,5,20]]]', `${name}: kept alive`);
+    writes.length = 0;
+    await device.writeControl(control, { target_power_mode: 'self_consumption' });
+    t.eq(JSON.stringify(writes), '[[30407,0],[30100,0]]', `${name}: self-consumption clears 30407 and 30100`);
+
+    writes.length = 0;
+    await device.setSocLimits({ min: 15, max: 95 });
+    t.eq(JSON.stringify(writes), '[[30405,15],[30404,95]]', `${name}: the SoC limits card writes 30405 and 30404`);
+
+    // another VPP holds control authority
+    unit.holding[30100] = 1;
+    writes.length = 0;
+    const refused = await device.writeControl(control, { target_power_mode: 'force_charge' }).then(() => null, (error) => error);
+    t.ok(refused?.refusal, `${name}: refused while another VPP has control authority`);
+    t.eq(writes.length, 0, `${name}: nothing written then`);
+    stop(device);
+  } finally {
+    server.close();
+  }
 };
 
 module.exports = async (t) => {
@@ -240,11 +356,13 @@ module.exports = async (t) => {
           device.readBlocks = readBlocks;
           device.problems.length = 0;
         }
+        if (id === 'battery_modbus' && unitCase.unit === MIN_XH) await legacyControl(t, unitCase, device, writes);
         stop(device);
       }
     } finally {
       server.close();
     }
   }
+  await vppControl(t);
   homey.app.pool.destroy();
 };

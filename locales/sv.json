@@ -24,7 +24,10 @@
       "inverter_modbus": "Den här Growatt-modellen stöds inte via Modbus.",
       "battery_modbus": "Växelriktaren svarade, men inget batteri är anslutet.",
       "meter_modbus": "Växelriktaren svarade, men ingen mätare är ansluten."
-    }
+    },
+    "otherEms": "En annan energistyrning styr batteriet; ställ det först på egenanvändning.",
+    "writeLimit": "Batteriinställningar ändrade för ofta (max __count__ per dag). Försök igen senare.",
+    "socRange": "Lägsta SoC måste vara 10–50 % och högsta SoC 50–100 %."
   },
   "status": {
     "migrating": "Migrerar. Vänta...",
@@ -60,5 +63,9 @@
     "port": "Port",
     "unitId": "Enhets-ID",
     "energyManagerNone": "Hittades inte"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: Homeys batteristyrning har tagits över någon annanstans, till exempel i ShinePhone eller av ett energibolag.",
+    "controlOverriddenBy": "**__name__**: en extern energihanterare (__manager__) skriver över styrningen från Homey. Homey och energihanteraren försöker båda styra den här enheten."
   }
 }

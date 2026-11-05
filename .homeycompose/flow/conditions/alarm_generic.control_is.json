@@ -1,0 +1,39 @@
+{
+  "title": {
+    "en": "Control is overridden",
+    "nl": "Sturing is overschreven",
+    "de": "Steuerung ist überschrieben",
+    "fr": "Le pilotage est écrasé",
+    "es": "El control está anulado",
+    "it": "Il controllo è sovrascritto",
+    "da": "Styringen er overskrevet",
+    "sv": "Styrningen är överskriven",
+    "no": "Styringen er overstyrt",
+    "pl": "Sterowanie jest nadpisane",
+    "ru": "Управление перехвачено",
+    "ar": "التحكم متجاوز",
+    "ko": "제어가 덮어써진 상태"
+  },
+  "titleFormatted": {
+    "en": "Control !{{is|is not}} overridden",
+    "nl": "Sturing !{{is|is niet}} overschreven",
+    "de": "Steuerung !{{ist|ist nicht}} überschrieben",
+    "fr": "Le pilotage !{{est|n'est pas}} écrasé",
+    "es": "El control !{{está|no está}} anulado",
+    "it": "Il controllo !{{è|non è}} sovrascritto",
+    "da": "Styringen !{{er|er ikke}} overskrevet",
+    "sv": "Styrningen !{{är|är inte}} överskriven",
+    "no": "Styringen !{{er|er ikke}} overstyrt",
+    "pl": "Sterowanie !{{jest|nie jest}} nadpisane",
+    "ru": "Управление !{{перехвачено|не перехвачено}}",
+    "ar": "التحكم !{{متجاوز|غير متجاوز}}",
+    "ko": "제어가 덮어써진 상태!{{이다|가 아니다}}"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=battery_modbus&capabilities=alarm_generic.control"
+    }
+  ]
+}

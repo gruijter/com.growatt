@@ -154,7 +154,7 @@ const homey = {
   app: { pool: new ModbusPool() },
 };
 
-/** Answers 0x03/0x04 inside the given registers, exception 2 outside; 0x06 writes into holding. */
+/** Answers 0x03/0x04 inside the given registers, exception 2 outside; 0x06 and 0x10 write into holding. */
 const serve = (unit) => new Promise((resolve) => {
   const writes = [];
   const reads = [];
@@ -167,6 +167,17 @@ const serve = (unit) => new Promise((resolve) => {
         unit.holding[address] = frame.readUInt16BE(10);
         writes.push([address, frame.readUInt16BE(10)]);
         socket.write(Buffer.from(frame.subarray(0, 12)));
+        return;
+      }
+      if (fc === 0x10) {
+        const words = Array.from({ length: frame.readUInt16BE(10) }, (_, i) => frame.readUInt16BE(13 + i * 2));
+        words.forEach((word, i) => {
+          unit.holding[address + i] = word;
+        });
+        writes.push([address, words]);
+        const reply = Buffer.from(frame.subarray(0, 12));
+        reply.writeUInt16BE(6, 4);
+        socket.write(reply);
         return;
       }
       const count = frame.readUInt16BE(10);

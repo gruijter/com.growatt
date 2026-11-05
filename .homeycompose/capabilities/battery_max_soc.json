@@ -1,0 +1,42 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Maximum SoC",
+    "nl": "Maximale SoC",
+    "de": "Maximaler SoC",
+    "fr": "SoC maximal",
+    "es": "SoC máximo",
+    "it": "SoC massimo",
+    "da": "Maksimum SoC",
+    "sv": "Högsta SoC",
+    "no": "Maksimum SoC",
+    "pl": "Maksymalny SoC",
+    "ru": "Максимальный SoC",
+    "ar": "الحد الأقصى للشحن",
+    "ko": "최대 SoC"
+  },
+  "units": {
+    "en": "%",
+    "nl": "%",
+    "de": "%",
+    "fr": "%",
+    "es": "%",
+    "it": "%",
+    "da": "%",
+    "sv": "%",
+    "no": "%",
+    "pl": "%",
+    "ru": "%",
+    "ar": "%",
+    "ko": "%"
+  },
+  "decimals": 2,
+  "min": 0.1,
+  "max": 1,
+  "step": 0.01,
+  "getable": true,
+  "setable": true,
+  "insights": false,
+  "uiComponent": "slider",
+  "icon": "./assets/battery_soc_limit.svg"
+}

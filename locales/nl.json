@@ -24,7 +24,10 @@
       "inverter_modbus": "Dit Growatt-model wordt niet ondersteund via Modbus.",
       "battery_modbus": "De omvormer reageerde, maar er is geen batterij op aangesloten.",
       "meter_modbus": "De omvormer reageerde, maar er is geen meter op aangesloten."
-    }
+    },
+    "otherEms": "Een andere energiemanager stuurt de batterij; zet hem eerst op eigen verbruik.",
+    "writeLimit": "Batterij-instellingen te vaak gewijzigd (max. __count__ per dag). Probeer het later opnieuw.",
+    "socRange": "Minimale SoC moet 10–50% zijn en maximale SoC 50–100%."
   },
   "status": {
     "migrating": "Bezig met migreren. Even geduld...",
@@ -60,5 +63,9 @@
     "port": "Poort",
     "unitId": "Unit-ID",
     "energyManagerNone": "Niet gevonden"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: de batterijsturing door Homey is elders overgenomen, bijvoorbeeld in ShinePhone of door een energieleverancier.",
+    "controlOverriddenBy": "**__name__**: een externe energiebeheerder (__manager__) overschrijft de sturing vanuit Homey. Homey en de energiebeheerder proberen dit apparaat allebei aan te sturen."
   }
 }

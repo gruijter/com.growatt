@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- battery body and terminal, shared by the battery icons -->
+  <rect x="118" y="106" width="276" height="358" rx="40" fill="none" stroke="#000000" stroke-width="36" stroke-linejoin="round"/>
+  <rect x="196" y="40" width="120" height="48" rx="14" fill="#000000"/>
+  <!-- SoC window: the max and min marks with the range between them -->
+  <g fill="none" stroke="#000000" stroke-width="32" stroke-linecap="round">
+    <path d="M176 196h160M176 374h160"/>
+    <path d="M256 250v70"/>
+  </g>
+  <path fill="#000000" d="M256 226l34 40h-68zM256 344l34-40h-68z"/>
+</svg>

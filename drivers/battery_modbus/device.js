@@ -21,4 +21,11 @@ along with com.growatt.  If not, see <http://www.gnu.org/licenses/>.
 
 const ModbusDevice = require('../../lib/modbus_device');
 
-module.exports = class GrowattBatteryModbusDevice extends ModbusDevice {};
+module.exports = class GrowattBatteryModbusDevice extends ModbusDevice {
+
+  /** The 'Set SoC limits' Flow card (app.js); its arguments are 0-100. */
+  async setSocLimits({ min, max }) {
+    await this.setControl({ battery_min_soc: min / 100, battery_max_soc: max / 100 });
+  }
+
+};

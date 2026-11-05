@@ -164,6 +164,58 @@
     "triggers": [
       {
         "title": {
+          "en": "Control override cleared",
+          "nl": "Overschreven sturing opgeheven",
+          "de": "Überschriebene Steuerung aufgehoben",
+          "fr": "Écrasement du pilotage levé",
+          "es": "Anulación del control eliminada",
+          "it": "Sovrascrittura del controllo annullata",
+          "da": "Overskrevet styring ophævet",
+          "sv": "Överskriven styrning upphävd",
+          "no": "Overstyrt styring opphevet",
+          "pl": "Nadpisanie sterowania anulowane",
+          "ru": "Перехват управления снят",
+          "ar": "تم إلغاء تجاوز التحكم",
+          "ko": "제어 덮어쓰기 해제됨"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery_modbus&capabilities=alarm_generic.control"
+          }
+        ],
+        "id": "alarm_generic.control_false"
+      },
+      {
+        "title": {
+          "en": "Control was overridden",
+          "nl": "Sturing werd overschreven",
+          "de": "Steuerung wurde überschrieben",
+          "fr": "Le pilotage a été écrasé",
+          "es": "El control fue anulado",
+          "it": "Il controllo è stato sovrascritto",
+          "da": "Styringen blev overskrevet",
+          "sv": "Styrningen skrevs över",
+          "no": "Styringen ble overstyrt",
+          "pl": "Sterowanie zostało nadpisane",
+          "ru": "Управление перехвачено",
+          "ar": "تم تجاوز التحكم",
+          "ko": "제어가 덮어써짐"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery_modbus&capabilities=alarm_generic.control"
+          }
+        ],
+        "id": "alarm_generic.control_true"
+      },
+      {
+        "title": {
           "en": "Inverter power (AC) changed",
           "nl": "Omvormer vermogen (AC) is gewijzigd",
           "da": "Inverter effekt (AC) ændret",
@@ -307,6 +359,48 @@
         "id": "meter_power.today_changed"
       }
     ],
+    "conditions": [
+      {
+        "title": {
+          "en": "Control is overridden",
+          "nl": "Sturing is overschreven",
+          "de": "Steuerung ist überschrieben",
+          "fr": "Le pilotage est écrasé",
+          "es": "El control está anulado",
+          "it": "Il controllo è sovrascritto",
+          "da": "Styringen er overskrevet",
+          "sv": "Styrningen är överskriven",
+          "no": "Styringen er overstyrt",
+          "pl": "Sterowanie jest nadpisane",
+          "ru": "Управление перехвачено",
+          "ar": "التحكم متجاوز",
+          "ko": "제어가 덮어써진 상태"
+        },
+        "titleFormatted": {
+          "en": "Control !{{is|is not}} overridden",
+          "nl": "Sturing !{{is|is niet}} overschreven",
+          "de": "Steuerung !{{ist|ist nicht}} überschrieben",
+          "fr": "Le pilotage !{{est|n'est pas}} écrasé",
+          "es": "El control !{{está|no está}} anulado",
+          "it": "Il controllo !{{è|non è}} sovrascritto",
+          "da": "Styringen !{{er|er ikke}} overskrevet",
+          "sv": "Styrningen !{{är|är inte}} överskriven",
+          "no": "Styringen !{{er|er ikke}} overstyrt",
+          "pl": "Sterowanie !{{jest|nie jest}} nadpisane",
+          "ru": "Управление !{{перехвачено|не перехвачено}}",
+          "ar": "التحكم !{{متجاوز|غير متجاوز}}",
+          "ko": "제어가 덮어써진 상태!{{이다|가 아니다}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery_modbus&capabilities=alarm_generic.control"
+          }
+        ],
+        "id": "alarm_generic.control_is"
+      }
+    ],
     "actions": [
       {
         "title": {
@@ -340,6 +434,96 @@
           "ar": "سيحاول هذا تحديث حالة جميع الأجهزة على الفور. احذر: كثرة التحديثات ستؤدي إلى حظرك مؤقتاً من قبل الخادم."
         },
         "id": "force_poll"
+      },
+      {
+        "title": {
+          "en": "Set SoC limits",
+          "nl": "Stel SoC-grenzen in",
+          "de": "SoC-Grenzen einstellen",
+          "fr": "Définir les limites de SoC",
+          "es": "Establecer límites de SoC",
+          "it": "Imposta limiti di SoC",
+          "da": "Indstil SoC-grænser",
+          "sv": "Ställ in SoC-gränser",
+          "no": "Still inn SoC-grenser",
+          "pl": "Ustaw limity SoC",
+          "ru": "Установить пределы SoC",
+          "ar": "تعيين حدود الشحن",
+          "ko": "SoC 한도 설정"
+        },
+        "titleFormatted": {
+          "en": "Set SoC limits to minimum [[min]]%, maximum [[max]]%",
+          "nl": "Stel SoC-grenzen in op minimum [[min]]%, maximum [[max]]%",
+          "de": "SoC-Grenzen auf Minimum [[min]] %, Maximum [[max]] % einstellen",
+          "fr": "Définir les limites de SoC à minimum [[min]] %, maximum [[max]] %",
+          "es": "Establecer límites de SoC en mínimo [[min]] %, máximo [[max]] %",
+          "it": "Imposta limiti di SoC a minimo [[min]]%, massimo [[max]]%",
+          "da": "Indstil SoC-grænser til minimum [[min]] %, maksimum [[max]] %",
+          "sv": "Ställ in SoC-gränser på minimum [[min]] %, maximum [[max]] %",
+          "no": "Still inn SoC-grenser til minimum [[min]] %, maksimum [[max]] %",
+          "pl": "Ustaw limity SoC na minimum [[min]]%, maksimum [[max]]%",
+          "ru": "Установить пределы SoC: минимум [[min]] %, максимум [[max]] %",
+          "ar": "تعيين حدود الشحن إلى حد أدنى [[min]]% وحد أقصى [[max]]%",
+          "ko": "SoC 한도를 최소 [[min]]%, 최대 [[max]]%로 설정"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery_modbus&capabilities=battery_min_soc"
+          },
+          {
+            "type": "range",
+            "name": "min",
+            "min": 10,
+            "max": 50,
+            "step": 1,
+            "label": "%",
+            "labelMultiplier": 1,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Minimum",
+              "nl": "Minimum",
+              "de": "Minimum",
+              "fr": "Minimum",
+              "es": "Mínimo",
+              "it": "Minimo",
+              "da": "Minimum",
+              "sv": "Minimum",
+              "no": "Minimum",
+              "pl": "Minimum",
+              "ru": "Минимум",
+              "ar": "الحد الأدنى",
+              "ko": "최소"
+            }
+          },
+          {
+            "type": "range",
+            "name": "max",
+            "min": 50,
+            "max": 100,
+            "step": 1,
+            "label": "%",
+            "labelMultiplier": 1,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Maximum",
+              "nl": "Maximum",
+              "de": "Maximum",
+              "fr": "Maximum",
+              "es": "Máximo",
+              "it": "Massimo",
+              "da": "Maksimum",
+              "sv": "Maximum",
+              "no": "Maksimum",
+              "pl": "Maksimum",
+              "ru": "Максимум",
+              "ar": "الحد الأقصى",
+              "ko": "최대"
+            }
+          }
+        ],
+        "id": "set_soc_limits"
       }
     ]
   },
@@ -1300,7 +1484,12 @@
         "meter_power.discharged",
         "measure_voltage",
         "measure_temperature",
-        "measure_soh"
+        "measure_soh",
+        "target_power",
+        "target_power_mode",
+        "battery_min_soc",
+        "battery_max_soc",
+        "alarm_generic.control"
       ],
       "capabilitiesOptions": {
         "meter_power.charged": {
@@ -1353,6 +1542,140 @@
             "ar": "جهد البطارية",
             "ko": "배터리 전압"
           }
+        },
+        "target_power_mode": {
+          "title": {
+            "en": "Mode",
+            "nl": "Modus",
+            "de": "Modus",
+            "fr": "Mode",
+            "es": "Modo",
+            "it": "Modalità",
+            "da": "Tilstand",
+            "sv": "Läge",
+            "no": "Modus",
+            "pl": "Tryb",
+            "ru": "Режим",
+            "ar": "الوضع",
+            "ko": "모드"
+          },
+          "values": [
+            {
+              "id": "homey",
+              "title": {
+                "en": "Homey",
+                "nl": "Homey",
+                "de": "Homey",
+                "fr": "Homey",
+                "it": "Homey",
+                "es": "Homey",
+                "pl": "Homey",
+                "sv": "Homey",
+                "no": "Homey",
+                "da": "Homey",
+                "ru": "Homey",
+                "ko": "Homey",
+                "ar": "Homey"
+              }
+            },
+            {
+              "id": "self_consumption",
+              "title": {
+                "en": "Self-use",
+                "nl": "Eigen verbruik",
+                "de": "Eigenverbrauch",
+                "fr": "Autoconsommation",
+                "it": "Autoconsumo",
+                "es": "Autoconsumo",
+                "pl": "Autokonsumpcja",
+                "sv": "Egenanvändning",
+                "no": "Egetforbruk",
+                "da": "Eget forbrug",
+                "ru": "Собственное потребление",
+                "ko": "자가 소비",
+                "ar": "الاستهلاك الذاتي"
+              }
+            },
+            {
+              "id": "force_charge",
+              "title": {
+                "en": "Force charge",
+                "nl": "Geforceerd laden",
+                "de": "Zwangsladung",
+                "fr": "Charge forcée",
+                "es": "Carga forzada",
+                "it": "Carica forzata",
+                "da": "Tvungen opladning",
+                "sv": "Tvingad laddning",
+                "no": "Tvungen lading",
+                "pl": "Wymuszone ładowanie",
+                "ru": "Принудительный заряд",
+                "ar": "شحن إجباري",
+                "ko": "강제 충전"
+              }
+            },
+            {
+              "id": "force_discharge",
+              "title": {
+                "en": "Force discharge",
+                "nl": "Geforceerd ontladen",
+                "de": "Zwangsentladung",
+                "fr": "Décharge forcée",
+                "es": "Descarga forzada",
+                "it": "Scarica forzata",
+                "da": "Tvungen afladning",
+                "sv": "Tvingad urladdning",
+                "no": "Tvungen utlading",
+                "pl": "Wymuszone rozładowanie",
+                "ru": "Принудительный разряд",
+                "ar": "تفريغ إجباري",
+                "ko": "강제 방전"
+              }
+            },
+            {
+              "id": "external",
+              "title": {
+                "en": "Other control",
+                "nl": "Andere sturing",
+                "de": "Andere Steuerung",
+                "fr": "Autre pilotage",
+                "es": "Otro control",
+                "it": "Altro controllo",
+                "da": "Anden styring",
+                "sv": "Annan styrning",
+                "no": "Annen styring",
+                "pl": "Inne sterowanie",
+                "ru": "Другое управление",
+                "ar": "تحكم آخر",
+                "ko": "다른 제어"
+              }
+            }
+          ]
+        },
+        "alarm_generic.control": {
+          "title": {
+            "en": "Control overridden",
+            "nl": "Sturing overschreven",
+            "de": "Steuerung überschrieben",
+            "fr": "Pilotage écrasé",
+            "es": "Control anulado",
+            "it": "Controllo sovrascritto",
+            "da": "Styring overskrevet",
+            "sv": "Styrning överskriven",
+            "no": "Styring overstyrt",
+            "pl": "Sterowanie nadpisane",
+            "ru": "Управление перехвачено",
+            "ar": "تم تجاوز التحكم",
+            "ko": "제어 덮어씀"
+          }
+        },
+        "battery_min_soc": {
+          "min": 0.1,
+          "max": 0.5
+        },
+        "battery_max_soc": {
+          "min": 0.5,
+          "max": 1
         }
       },
       "energy": {
@@ -4959,6 +5282,90 @@
     }
   ],
   "capabilities": {
+    "battery_max_soc": {
+      "type": "number",
+      "title": {
+        "en": "Maximum SoC",
+        "nl": "Maximale SoC",
+        "de": "Maximaler SoC",
+        "fr": "SoC maximal",
+        "es": "SoC máximo",
+        "it": "SoC massimo",
+        "da": "Maksimum SoC",
+        "sv": "Högsta SoC",
+        "no": "Maksimum SoC",
+        "pl": "Maksymalny SoC",
+        "ru": "Максимальный SoC",
+        "ar": "الحد الأقصى للشحن",
+        "ko": "최대 SoC"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%",
+        "de": "%",
+        "fr": "%",
+        "es": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "pl": "%",
+        "ru": "%",
+        "ar": "%",
+        "ko": "%"
+      },
+      "decimals": 2,
+      "min": 0.1,
+      "max": 1,
+      "step": 0.01,
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "uiComponent": "slider",
+      "icon": "./assets/battery_soc_limit.svg"
+    },
+    "battery_min_soc": {
+      "type": "number",
+      "title": {
+        "en": "Minimum SoC",
+        "nl": "Minimale SoC",
+        "de": "Minimaler SoC",
+        "fr": "SoC minimal",
+        "es": "SoC mínimo",
+        "it": "SoC minimo",
+        "da": "Minimum SoC",
+        "sv": "Lägsta SoC",
+        "no": "Minimum SoC",
+        "pl": "Minimalny SoC",
+        "ru": "Минимальный SoC",
+        "ar": "الحد الأدنى للشحن",
+        "ko": "최소 SoC"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%",
+        "de": "%",
+        "fr": "%",
+        "es": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "pl": "%",
+        "ru": "%",
+        "ar": "%",
+        "ko": "%"
+      },
+      "decimals": 2,
+      "min": 0.1,
+      "max": 1,
+      "step": 0.01,
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "uiComponent": "slider",
+      "icon": "./assets/battery_soc_limit.svg"
+    },
     "charge_setpoint": {
       "type": "number",
       "title": {

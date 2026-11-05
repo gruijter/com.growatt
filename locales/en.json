@@ -24,7 +24,10 @@
       "inverter_modbus": "This Growatt model is not supported over Modbus.",
       "battery_modbus": "The inverter answered, but no battery is connected to it.",
       "meter_modbus": "The inverter answered, but no meter is connected to it."
-    }
+    },
+    "otherEms": "Another energy manager controls the battery; set it to self-consumption first.",
+    "writeLimit": "Battery settings changed too often (max __count__ a day). Try again later.",
+    "socRange": "Minimum SoC must be 10–50% and maximum SoC 50–100%."
   },
   "status": {
     "migrating": "Migrating. Please wait...",
@@ -60,5 +63,9 @@
     "port": "Port",
     "unitId": "Unit ID",
     "energyManagerNone": "None found"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: battery control by Homey was taken over elsewhere, for example in ShinePhone or by an energy provider.",
+    "controlOverriddenBy": "**__name__**: an external energy manager (__manager__) overrides control from Homey. Homey and the energy manager are both trying to control this device."
   }
 }

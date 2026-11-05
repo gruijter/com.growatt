@@ -1,0 +1,25 @@
+{
+  "title": {
+    "en": "Control override cleared",
+    "nl": "Overschreven sturing opgeheven",
+    "de": "Überschriebene Steuerung aufgehoben",
+    "fr": "Écrasement du pilotage levé",
+    "es": "Anulación del control eliminada",
+    "it": "Sovrascrittura del controllo annullata",
+    "da": "Overskrevet styring ophævet",
+    "sv": "Överskriven styrning upphävd",
+    "no": "Overstyrt styring opphevet",
+    "pl": "Nadpisanie sterowania anulowane",
+    "ru": "Перехват управления снят",
+    "ar": "تم إلغاء تجاوز التحكم",
+    "ko": "제어 덮어쓰기 해제됨"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=battery_modbus&capabilities=alarm_generic.control"
+    }
+  ]
+}

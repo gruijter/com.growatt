@@ -24,7 +24,10 @@
       "inverter_modbus": "Ce modèle Growatt n'est pas pris en charge via Modbus.",
       "battery_modbus": "L'onduleur a répondu, mais aucune batterie n'y est raccordée.",
       "meter_modbus": "L'onduleur a répondu, mais aucun compteur n'y est raccordé."
-    }
+    },
+    "otherEms": "Un autre gestionnaire d'énergie pilote la batterie ; passez-la d'abord en autoconsommation.",
+    "writeLimit": "Réglages de la batterie modifiés trop souvent (max. __count__ par jour). Réessayez plus tard.",
+    "socRange": "Le SoC minimal doit être de 10 à 50 % et le SoC maximal de 50 à 100 %."
   },
   "status": {
     "migrating": "Migration en cours. Veuillez patienter...",
@@ -60,5 +63,9 @@
     "port": "Port",
     "unitId": "ID d'unité",
     "energyManagerNone": "Aucun trouvé"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__** : le pilotage de la batterie par Homey a été repris ailleurs, par exemple dans ShinePhone ou par un fournisseur d'énergie.",
+    "controlOverriddenBy": "**__name__** : un gestionnaire d'énergie externe (__manager__) écrase le pilotage par Homey. Homey et le gestionnaire d'énergie essaient tous deux de piloter cet appareil."
   }
 }

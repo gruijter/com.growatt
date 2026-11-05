@@ -26,7 +26,12 @@
     "meter_power.discharged",
     "measure_voltage",
     "measure_temperature",
-    "measure_soh"
+    "measure_soh",
+    "target_power",
+    "target_power_mode",
+    "battery_min_soc",
+    "battery_max_soc",
+    "alarm_generic.control"
   ],
   "capabilitiesOptions": {
     "meter_power.charged": {
@@ -79,6 +84,140 @@
         "ar": "جهد البطارية",
         "ko": "배터리 전압"
       }
+    },
+    "target_power_mode": {
+      "title": {
+        "en": "Mode",
+        "nl": "Modus",
+        "de": "Modus",
+        "fr": "Mode",
+        "es": "Modo",
+        "it": "Modalità",
+        "da": "Tilstand",
+        "sv": "Läge",
+        "no": "Modus",
+        "pl": "Tryb",
+        "ru": "Режим",
+        "ar": "الوضع",
+        "ko": "모드"
+      },
+      "values": [
+        {
+          "id": "homey",
+          "title": {
+            "en": "Homey",
+            "nl": "Homey",
+            "de": "Homey",
+            "fr": "Homey",
+            "it": "Homey",
+            "es": "Homey",
+            "pl": "Homey",
+            "sv": "Homey",
+            "no": "Homey",
+            "da": "Homey",
+            "ru": "Homey",
+            "ko": "Homey",
+            "ar": "Homey"
+          }
+        },
+        {
+          "id": "self_consumption",
+          "title": {
+            "en": "Self-use",
+            "nl": "Eigen verbruik",
+            "de": "Eigenverbrauch",
+            "fr": "Autoconsommation",
+            "it": "Autoconsumo",
+            "es": "Autoconsumo",
+            "pl": "Autokonsumpcja",
+            "sv": "Egenanvändning",
+            "no": "Egetforbruk",
+            "da": "Eget forbrug",
+            "ru": "Собственное потребление",
+            "ko": "자가 소비",
+            "ar": "الاستهلاك الذاتي"
+          }
+        },
+        {
+          "id": "force_charge",
+          "title": {
+            "en": "Force charge",
+            "nl": "Geforceerd laden",
+            "de": "Zwangsladung",
+            "fr": "Charge forcée",
+            "es": "Carga forzada",
+            "it": "Carica forzata",
+            "da": "Tvungen opladning",
+            "sv": "Tvingad laddning",
+            "no": "Tvungen lading",
+            "pl": "Wymuszone ładowanie",
+            "ru": "Принудительный заряд",
+            "ar": "شحن إجباري",
+            "ko": "강제 충전"
+          }
+        },
+        {
+          "id": "force_discharge",
+          "title": {
+            "en": "Force discharge",
+            "nl": "Geforceerd ontladen",
+            "de": "Zwangsentladung",
+            "fr": "Décharge forcée",
+            "es": "Descarga forzada",
+            "it": "Scarica forzata",
+            "da": "Tvungen afladning",
+            "sv": "Tvingad urladdning",
+            "no": "Tvungen utlading",
+            "pl": "Wymuszone rozładowanie",
+            "ru": "Принудительный разряд",
+            "ar": "تفريغ إجباري",
+            "ko": "강제 방전"
+          }
+        },
+        {
+          "id": "external",
+          "title": {
+            "en": "Other control",
+            "nl": "Andere sturing",
+            "de": "Andere Steuerung",
+            "fr": "Autre pilotage",
+            "es": "Otro control",
+            "it": "Altro controllo",
+            "da": "Anden styring",
+            "sv": "Annan styrning",
+            "no": "Annen styring",
+            "pl": "Inne sterowanie",
+            "ru": "Другое управление",
+            "ar": "تحكم آخر",
+            "ko": "다른 제어"
+          }
+        }
+      ]
+    },
+    "alarm_generic.control": {
+      "title": {
+        "en": "Control overridden",
+        "nl": "Sturing overschreven",
+        "de": "Steuerung überschrieben",
+        "fr": "Pilotage écrasé",
+        "es": "Control anulado",
+        "it": "Controllo sovrascritto",
+        "da": "Styring overskrevet",
+        "sv": "Styrning överskriven",
+        "no": "Styring overstyrt",
+        "pl": "Sterowanie nadpisane",
+        "ru": "Управление перехвачено",
+        "ar": "تم تجاوز التحكم",
+        "ko": "제어 덮어씀"
+      }
+    },
+    "battery_min_soc": {
+      "min": 0.1,
+      "max": 0.5
+    },
+    "battery_max_soc": {
+      "min": 0.5,
+      "max": 1
     }
   },
   "energy": {

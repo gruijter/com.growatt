@@ -1,0 +1,89 @@
+{
+  "title": {
+    "en": "Set SoC limits",
+    "nl": "Stel SoC-grenzen in",
+    "de": "SoC-Grenzen einstellen",
+    "fr": "Définir les limites de SoC",
+    "es": "Establecer límites de SoC",
+    "it": "Imposta limiti di SoC",
+    "da": "Indstil SoC-grænser",
+    "sv": "Ställ in SoC-gränser",
+    "no": "Still inn SoC-grenser",
+    "pl": "Ustaw limity SoC",
+    "ru": "Установить пределы SoC",
+    "ar": "تعيين حدود الشحن",
+    "ko": "SoC 한도 설정"
+  },
+  "titleFormatted": {
+    "en": "Set SoC limits to minimum [[min]]%, maximum [[max]]%",
+    "nl": "Stel SoC-grenzen in op minimum [[min]]%, maximum [[max]]%",
+    "de": "SoC-Grenzen auf Minimum [[min]] %, Maximum [[max]] % einstellen",
+    "fr": "Définir les limites de SoC à minimum [[min]] %, maximum [[max]] %",
+    "es": "Establecer límites de SoC en mínimo [[min]] %, máximo [[max]] %",
+    "it": "Imposta limiti di SoC a minimo [[min]]%, massimo [[max]]%",
+    "da": "Indstil SoC-grænser til minimum [[min]] %, maksimum [[max]] %",
+    "sv": "Ställ in SoC-gränser på minimum [[min]] %, maximum [[max]] %",
+    "no": "Still inn SoC-grenser til minimum [[min]] %, maksimum [[max]] %",
+    "pl": "Ustaw limity SoC na minimum [[min]]%, maksimum [[max]]%",
+    "ru": "Установить пределы SoC: минимум [[min]] %, максимум [[max]] %",
+    "ar": "تعيين حدود الشحن إلى حد أدنى [[min]]% وحد أقصى [[max]]%",
+    "ko": "SoC 한도를 최소 [[min]]%, 최대 [[max]]%로 설정"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=battery_modbus&capabilities=battery_min_soc"
+    },
+    {
+      "type": "range",
+      "name": "min",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "label": "%",
+      "labelMultiplier": 1,
+      "labelDecimals": 0,
+      "title": {
+        "en": "Minimum",
+        "nl": "Minimum",
+        "de": "Minimum",
+        "fr": "Minimum",
+        "es": "Mínimo",
+        "it": "Minimo",
+        "da": "Minimum",
+        "sv": "Minimum",
+        "no": "Minimum",
+        "pl": "Minimum",
+        "ru": "Минимум",
+        "ar": "الحد الأدنى",
+        "ko": "최소"
+      }
+    },
+    {
+      "type": "range",
+      "name": "max",
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "label": "%",
+      "labelMultiplier": 1,
+      "labelDecimals": 0,
+      "title": {
+        "en": "Maximum",
+        "nl": "Maximum",
+        "de": "Maximum",
+        "fr": "Maximum",
+        "es": "Máximo",
+        "it": "Massimo",
+        "da": "Maksimum",
+        "sv": "Maximum",
+        "no": "Maksimum",
+        "pl": "Maksimum",
+        "ru": "Максимум",
+        "ar": "الحد الأقصى",
+        "ko": "최대"
+      }
+    }
+  ]
+}

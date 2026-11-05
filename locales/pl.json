@@ -24,7 +24,10 @@
       "inverter_modbus": "Ten model Growatt nie jest obsługiwany przez Modbus.",
       "battery_modbus": "Falownik odpowiedział, ale nie jest do niego podłączony akumulator.",
       "meter_modbus": "Falownik odpowiedział, ale nie jest do niego podłączony licznik."
-    }
+    },
+    "otherEms": "Baterią steruje inny menedżer energii; najpierw ustaw autokonsumpcję.",
+    "writeLimit": "Ustawienia baterii zmieniane zbyt często (maks. __count__ dziennie). Spróbuj później.",
+    "socRange": "Minimalny SoC musi wynosić 10–50%, a maksymalny 50–100%."
   },
   "status": {
     "migrating": "Trwa migracja. Proszę czekać...",
@@ -60,5 +63,9 @@
     "port": "Port",
     "unitId": "ID jednostki",
     "energyManagerNone": "Nie znaleziono"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: sterowanie baterią przez Homey zostało przejęte gdzie indziej, na przykład w ShinePhone lub przez dostawcę energii.",
+    "controlOverriddenBy": "**__name__**: zewnętrzny menedżer energii (__manager__) nadpisuje sterowanie z Homey. Homey i menedżer energii próbują jednocześnie sterować tym urządzeniem."
   }
 }
