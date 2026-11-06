@@ -215,13 +215,33 @@ const legacyControl = async (t, unitCase, device, writes) => {
   });
 };
 
+/** MIN TL-XH on ALBA18010122 reports VPP version 0, but its VPP clock runs and control works. */
+const vppVersionZero = async (t) => {
+  for (const [year, route] of [[26, true], [0, false]]) {
+    const name = `MIN TL-XH, VPP version 0, clock year ${year}`;
+    const unit = { holding: { ...MIN_XH.holding }, input: { ...MIN_XH.input } };
+    put(unit.holding, 30099, [0]);
+    put(unit.holding, 30100, [0, 1, 62, 0, year, 11, 6, 11, 9, 4]);
+    // eslint-disable-next-line no-await-in-loop
+    const { server, port } = await serve(unit);
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      const started = await pairAndStart('battery_modbus', port);
+      t.eq(started?.device.detected.vppControl, route, `${name}: VPP ${route ? 'detected' : 'not detected'}`);
+      if (started) stop(started.device);
+    } finally {
+      server.close();
+    }
+  }
+};
+
 /** VPP: control authority once, then the setpoint in 30407-30409, which are not stored. */
 const vppControl = async (t) => {
   const name = 'MIN TL-XH with VPP: battery control';
   const unit = { holding: { ...MIN_XH.holding }, input: { ...MIN_XH.input } };
   put(unit.holding, 30099, [201]);
   put(unit.holding, 30100, [0]);
-  put(unit.holding, 30404, [100, 10, 10, 0, 0, 0]);
+  put(unit.holding, 30404, [100, 10, 10, 0, 0, 0, 0]);
   const { server, writes, port } = await serve(unit);
   try {
     const started = await pairAndStart('battery_modbus', port);
@@ -234,6 +254,9 @@ const vppControl = async (t) => {
     t.eq(JSON.stringify(writes), `[[30100,1],[30407,[1,5,${-50 & 0xffff}]]]`, `${name}: -1250 W is -50 % of 2500 W, for 5 minutes`);
     writes.length = 0;
     await device.writeControl(control, { target_power: 500 });
+    t.eq(JSON.stringify(writes), '[[30410,1],[30407,[1,5,20]]]', `${name}: charging allows the grid once`);
+    writes.length = 0;
+    await device.writeControl(control, { target_power: 500 });
     t.eq(JSON.stringify(writes), '[[30407,[1,5,20]]]', `${name}: a new setpoint writes only 30407-30409`);
     writes.length = 0;
     await device.keepAlive();
@@ -242,10 +265,10 @@ const vppControl = async (t) => {
     // the app stops and starts again: the store keeps the mode, 30100 was cleared
     writes.length = 0;
     await device.releaseControls();
-    t.eq(JSON.stringify(writes), '[[30407,0],[30100,0]]', `${name}: an app stop hands back control`);
+    t.eq(JSON.stringify(writes), '[[30407,0],[30100,0],[30410,0]]', `${name}: an app stop hands back control and grid charging`);
     writes.length = 0;
     await device.keepAlive();
-    t.eq(JSON.stringify(writes), '[[30100,1],[30407,[1,5,20]]]', `${name}: after a restart keep-alive takes control authority back`);
+    t.eq(JSON.stringify(writes), '[[30100,1],[30410,1],[30407,[1,5,20]]]', `${name}: after a restart keep-alive takes control authority back`);
 
     // another VPP took control authority while the app was stopped
     await device.releaseControls();
@@ -260,7 +283,7 @@ const vppControl = async (t) => {
 
     writes.length = 0;
     await device.writeControl(control, { target_power_mode: 'self_consumption' });
-    t.eq(JSON.stringify(writes), '[[30407,0],[30100,0]]', `${name}: self-consumption clears 30407 and 30100`);
+    t.eq(JSON.stringify(writes), '[[30407,0],[30100,0],[30410,0]]', `${name}: self-consumption clears 30407, 30100 and 30410`);
 
     writes.length = 0;
     await device.setSocLimits({ min: 15, max: 95 });
@@ -421,5 +444,6 @@ module.exports = async (t) => {
     }
   }
   await vppControl(t);
+  await vppVersionZero(t);
   homey.app.pool.destroy();
 };
