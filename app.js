@@ -33,27 +33,6 @@ module.exports = class MyApp extends Homey.App {
   async onInit() {
     capture.setLog((line) => this.log(line));
     capture.arm('app start', { force: true });
-    // ZZZ TEMP DEBUG (AvL5 test build only, revert before commit)
-    const zzzRc = require('./lib/registerCapture');
-    const zzzRecord = zzzRc.record;
-    const zzzLines = [];
-    zzzRc.record = (name, payload, log) => zzzRecord(name, payload, (line) => {
-      log(line);
-      zzzLines.push(line);
-      this.homey.settings.set('zzzCaptures', zzzLines.slice(-400));
-    });
-    const zzzLog = [];
-    const zzzPush = (line) => {
-      zzzLog.push(`${new Date().toISOString()} ${line}`);
-      this.homey.settings.set('zzzLog', zzzLog.slice(-300));
-    };
-    for (const method of ['log', 'error']) {
-      const original = Homey.Device.prototype[method];
-      Homey.Device.prototype[method] = function zzz(...args) {
-        original.apply(this, args);
-        if (this.driver?.id?.endsWith('_modbus')) zzzPush(`[${method}] [${this.getName()}] ${args.map(String).join(' ')}`);
-      };
-    }
     this.devices = {}; // pollKey: { username, token, host, deviceSn, deviceType }
     this.apiSessions = {}; // token: apiSession
     this.pollSchedules = {}; // pollKey: { timeoutId, cadence, lastUploadAt, lastPollAt }

@@ -79,5 +79,8 @@
   },
   "3.0.0": {
     "en": "Added local Modbus drivers for inverter, battery and meter through the ShineWiLan-X2 dongle. Solar titles now show AC or DC. Fixed double polling when a username was entered in a different case. Minor other fixes and improvements."
+  },
+  "3.1.0": {
+    "en": "Added experimental battery control over Modbus: mode, power and SoC limits. Added export limit, inverter status, heat alarm and fault codes to the Modbus inverter. Fixed battery voltage, firmware text and the power limit on MIN TL-XH. Minor other fixes and improvements."
   }
 }

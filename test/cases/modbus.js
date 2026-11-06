@@ -238,6 +238,26 @@ const vppControl = async (t) => {
     writes.length = 0;
     await device.keepAlive();
     t.eq(JSON.stringify(writes), '[[30407,[1,5,20]]]', `${name}: kept alive`);
+
+    // the app stops and starts again: the store keeps the mode, 30100 was cleared
+    writes.length = 0;
+    await device.releaseControls();
+    t.eq(JSON.stringify(writes), '[[30407,0],[30100,0]]', `${name}: an app stop hands back control`);
+    writes.length = 0;
+    await device.keepAlive();
+    t.eq(JSON.stringify(writes), '[[30100,1],[30407,[1,5,20]]]', `${name}: after a restart keep-alive takes control authority back`);
+
+    // another VPP took control authority while the app was stopped
+    await device.releaseControls();
+    unit.holding[30100] = 1;
+    writes.length = 0;
+    await device.keepAlive();
+    t.eq(writes.length, 0, `${name}: control taken while stopped is not overwritten`);
+    t.eq(device.getStoreValue('remoteMode'), false, `${name}: and this app stops controlling`);
+    unit.holding[30100] = 0;
+    await device.writeControl(control, { target_power: 500 });
+    t.eq(device.getStoreValue('controlOverridden'), false, `${name}: setting a value again clears the override`);
+
     writes.length = 0;
     await device.writeControl(control, { target_power_mode: 'self_consumption' });
     t.eq(JSON.stringify(writes), '[[30407,0],[30100,0]]', `${name}: self-consumption clears 30407 and 30100`);
