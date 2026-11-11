@@ -47,7 +47,7 @@
     "manualEntry": "직접 입력",
     "manual": {
       "connect": "연결",
-      "intro": "ShineWiLan-X2 동글의 IP 주소를 입력하세요. 먼저 라우터에서 고정 IP 주소를 지정하세요.",
+      "intro": "ShineWiLan-X2 데이터로거의 IP 주소를 입력하세요. 먼저 라우터에서 고정 IP 주소를 지정하세요.",
       "title": "IP 주소 입력",
       "legend": "연결"
     }

@@ -18,7 +18,22 @@
     },
     "children": [
       {
-        "$extends": "modbusHost"
+        "$extends": "modbusHost",
+        "hint": {
+          "en": "IP address of the ShineWiLan-X2 datalogger. Give it a fixed IP address in your router.",
+          "nl": "IP-adres van de ShineWiLan-X2-datalogger. Geef hem een vast IP-adres in je router.",
+          "de": "IP-Adresse des ShineWiLan-X2-Dataloggers. Gib ihm im Router eine feste IP-Adresse.",
+          "fr": "Adresse IP du datalogger ShineWiLan-X2. Attribuez-lui une adresse IP fixe dans votre routeur.",
+          "es": "Dirección IP del datalogger ShineWiLan-X2. Dale una IP fija en tu router.",
+          "it": "Indirizzo IP del datalogger ShineWiLan-X2. Assegnagli un IP fisso nel router.",
+          "da": "IP-adresse på ShineWiLan-X2-dataloggeren. Giv den en fast IP-adresse i din router.",
+          "sv": "IP-adress till ShineWiLan-X2-dataloggern. Ge den en fast IP-adress i din router.",
+          "no": "IP-adressen til ShineWiLan-X2-dataloggeren. Gi den en fast IP-adresse i ruteren.",
+          "pl": "Adres IP dataloggera ShineWiLan-X2. Przypisz mu stały adres IP w routerze.",
+          "ru": "IP-адрес даталоггера ShineWiLan-X2. Задайте ему постоянный IP-адрес в роутере.",
+          "ar": "عنوان IP لمسجل البيانات ShineWiLan-X2. خصص له عنوان IP ثابتًا في الراوتر.",
+          "ko": "ShineWiLan-X2 데이터로거의 IP 주소입니다. 공유기에서 고정 IP를 지정하세요."
+        }
       },
       {
         "$extends": "modbusPort"

@@ -47,7 +47,7 @@
     "manualEntry": "Manuelt",
     "manual": {
       "connect": "Forbind",
-      "intro": "Indtast IP-adressen på ShineWiLan-X2-donglen. Giv den først en fast IP-adresse i din router.",
+      "intro": "Indtast IP-adressen på ShineWiLan-X2-dataloggeren. Giv den først en fast IP-adresse i din router.",
       "title": "Indtast IP-adresse",
       "legend": "Forbindelse"
     }

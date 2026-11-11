@@ -47,7 +47,7 @@
     "manualEntry": "Manual",
     "manual": {
       "connect": "Conectar",
-      "intro": "Introduce la dirección IP del dongle ShineWiLan-X2. Asígnale primero una dirección IP fija en tu router.",
+      "intro": "Introduce la dirección IP del datalogger ShineWiLan-X2. Asígnale primero una dirección IP fija en tu router.",
       "title": "Introducir dirección IP",
       "legend": "Conexión"
     }

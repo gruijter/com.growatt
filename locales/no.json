@@ -47,7 +47,7 @@
     "manualEntry": "Manuelt",
     "manual": {
       "connect": "Koble til",
-      "intro": "Skriv inn IP-adressen til ShineWiLan-X2-donglen. Gi den først en fast IP-adresse i ruteren.",
+      "intro": "Skriv inn IP-adressen til ShineWiLan-X2-dataloggeren. Gi den først en fast IP-adresse i ruteren.",
       "title": "Skriv inn IP-adresse",
       "legend": "Tilkobling"
     }

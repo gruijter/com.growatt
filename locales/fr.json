@@ -47,7 +47,7 @@
     "manualEntry": "Manuel",
     "manual": {
       "connect": "Connecter",
-      "intro": "Saisissez l'adresse IP du dongle ShineWiLan-X2. Attribuez-lui d'abord une adresse IP fixe dans votre routeur.",
+      "intro": "Saisissez l'adresse IP du datalogger ShineWiLan-X2. Attribuez-lui d'abord une adresse IP fixe dans votre routeur.",
       "title": "Saisir l'adresse IP",
       "legend": "Connexion"
     }

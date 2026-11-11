@@ -47,7 +47,7 @@
     "manualEntry": "Ręcznie",
     "manual": {
       "connect": "Połącz",
-      "intro": "Wpisz adres IP klucza ShineWiLan-X2. Najpierw nadaj mu stały adres IP w routerze.",
+      "intro": "Wpisz adres IP dataloggera ShineWiLan-X2. Najpierw nadaj mu stały adres IP w routerze.",
       "title": "Wpisz adres IP",
       "legend": "Połączenie"
     }

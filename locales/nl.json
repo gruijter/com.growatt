@@ -47,7 +47,7 @@
     "manualEntry": "Handmatig",
     "manual": {
       "connect": "Verbinden",
-      "intro": "Vul het IP-adres van de ShineWiLan-X2-dongle in. Geef hem eerst een vast IP-adres in je router.",
+      "intro": "Vul het IP-adres van de ShineWiLan-X2-datalogger in. Geef hem eerst een vast IP-adres in je router.",
       "title": "IP-adres invoeren",
       "legend": "Verbinding"
     }
