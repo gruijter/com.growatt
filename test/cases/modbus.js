@@ -333,6 +333,8 @@ const vppControl = async (t) => {
     writes.length = 0;
     await device.keepAlive();
     t.eq(JSON.stringify(writes), '[[30407,[1,5,20]]]', `${name}: kept alive`);
+    await device.poll();
+    t.eq(device.warning, homey.__('warnings.homeyMode'), `${name}: mode Homey shows a warning`);
 
     // the app stops and starts again: the store keeps the mode, 30100 was cleared
     writes.length = 0;
@@ -356,6 +358,8 @@ const vppControl = async (t) => {
     writes.length = 0;
     await device.writeControl(control, { target_power_mode: 'self_consumption' });
     t.eq(JSON.stringify(writes), '[[30407,0],[30100,0],[30410,0]]', `${name}: self-consumption clears 30407, 30100 and 30410`);
+    await device.poll();
+    t.eq(device.warning, null, `${name}: and self-consumption clears it`);
 
     // a leave that fails halfway: 30407 cleared, 30100 not
     await device.writeControl(control, { target_power: 500 });

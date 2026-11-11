@@ -78,5 +78,8 @@
   "inverterFaults": {
     "fault": "Fejlkode __code__",
     "warning": "Advarselskode __code__"
+  },
+  "warnings": {
+    "homeyMode": "Styring kun via Flows!"
   }
 }

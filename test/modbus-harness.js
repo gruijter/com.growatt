@@ -121,6 +121,10 @@ class Device extends SimpleClass {
     this.available = true;
   }
 
+  async setWarning(message) {
+    this.warning = message;
+  }
+
   async setUnavailable(message) {
     this.available = false;
     this.problems.push(`unavailable: ${message}`);

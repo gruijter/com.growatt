@@ -78,5 +78,8 @@
   "inverterFaults": {
     "fault": "오류 코드 __code__",
     "warning": "경고 코드 __code__"
+  },
+  "warnings": {
+    "homeyMode": "Flow로만 제어!"
   }
 }

@@ -78,5 +78,8 @@
   "inverterFaults": {
     "fault": "Codice di guasto __code__",
     "warning": "Codice di avviso __code__"
+  },
+  "warnings": {
+    "homeyMode": "Controllo solo tramite Flow!"
   }
 }

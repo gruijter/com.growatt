@@ -78,5 +78,8 @@
   "inverterFaults": {
     "fault": "Foutcode __code__",
     "warning": "Waarschuwingscode __code__"
+  },
+  "warnings": {
+    "homeyMode": "Sturing alleen via flows!"
   }
 }

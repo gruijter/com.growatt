@@ -78,5 +78,8 @@
   "inverterFaults": {
     "fault": "رمز العطل __code__",
     "warning": "رمز التحذير __code__"
+  },
+  "warnings": {
+    "homeyMode": "التحكم عبر التدفقات فقط!"
   }
 }
