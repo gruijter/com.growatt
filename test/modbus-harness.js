@@ -151,7 +151,10 @@ const homey = {
   clearInterval() {},
   on() {},
   removeListener() {},
-  settings: { get: () => undefined, set() {} },
+  settings: (() => {
+    const values = new Map();
+    return { get: (key) => (values.has(key) ? values.get(key) : null), set: (key, value) => values.set(key, value), unset: (key) => values.delete(key) };
+  })(),
   app: { pool: new ModbusPool() },
 };
 

@@ -215,6 +215,50 @@ const legacyControl = async (t, unitCase, device, writes) => {
   });
 };
 
+/** VPP with a meter: export limitation in 30200-30208, sharing control authority with the battery. */
+const vppExport = async (t) => {
+  const name = 'MIN TL-XH with VPP: export limit';
+  const unit = { holding: { ...MIN_XH.holding }, input: { ...MIN_XH.input } };
+  put(unit.holding, 30099, [201]);
+  put(unit.holding, 30100, [0]);
+  put(unit.holding, 30200, [0, 0, 0, 30, 0, 0, 27, 0, 0]);
+  put(unit.holding, 30404, [100, 10, 10, 0, 0, 0, 0]);
+  const { server, writes, port } = await serve(unit);
+  try {
+    const inverter = await pairAndStart('inverter_modbus', port);
+    const battery = await pairAndStart('battery_modbus', port);
+    t.ok(inverter && battery, `${name}: inverter and battery offered`);
+    if (!inverter || !battery) return;
+    const exportControl = brand.pointMap.inverter_modbus.controls.find((c) => c.capabilities.includes('export_limit'));
+    t.ok(inverter.device.hasCapability('export_limit'), `${name}: offered with VPP and a meter, 122 not needed`);
+    t.eq(inverter.device.getCapabilityValue('export_limit'), 5000, `${name}: off reads as the rated power`);
+
+    writes.length = 0;
+    await inverter.device.writeControl(exportControl, { export_limit: 1000 });
+    t.eq(JSON.stringify(writes), '[[30100,1],[30208,2],[30202,20],[30201,20],[30200,1]]', `${name}: 1000 W is 20 %, software protection, the same limit when the meter fails`);
+    writes.length = 0;
+    await inverter.device.writeControl(exportControl, { export_limit: 1500 });
+    t.eq(JSON.stringify(writes), '[[30202,30],[30201,30]]', `${name}: a new limit writes only what changed`);
+    await inverter.device.poll();
+    t.eq(inverter.device.getCapabilityValue('export_limit'), 1500, `${name}: read back from 30201`);
+
+    // the battery leaves VPP while the export limit needs 30100
+    await battery.device.writeControl(control, { target_power: -1250 });
+    t.eq(battery.device.getStoreValue('controlOverridden') || false, false, `${name}: the export limit's authority is not another VPP`);
+    writes.length = 0;
+    await battery.device.writeControl(control, { target_power_mode: 'self_consumption' });
+    t.eq(JSON.stringify(writes), '[[30407,0]]', `${name}: self-consumption keeps 30100 for the export limit`);
+
+    writes.length = 0;
+    await inverter.device.writeControl(exportControl, { export_limit: 5000 });
+    t.eq(JSON.stringify(writes), '[[30200,0],[30202,0],[30208,0],[30100,0]]', `${name}: the rated power lifts the limit, restores 30202 and 30208, and hands back 30100`);
+    stop(inverter.device);
+    stop(battery.device);
+  } finally {
+    server.close();
+  }
+};
+
 /** MIN TL-XH on ALBA18010122 reports VPP version 0, but its VPP clock runs and control works. */
 const vppVersionZero = async (t) => {
   for (const [year, route] of [[26, true], [0, false]]) {
@@ -444,6 +488,7 @@ module.exports = async (t) => {
     }
   }
   await vppControl(t);
+  await vppExport(t);
   await vppVersionZero(t);
   homey.app.pool.destroy();
 };
