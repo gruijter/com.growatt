@@ -10,10 +10,10 @@
     "test": "node test/run.js && (test ! -f ../.agents/sync/sync-shared.js || node ../.agents/sync/sync-shared.js check com.growatt)"
   },
   "devDependencies": {
-    "@types/homey": "npm:homey-apps-sdk-v3-types@beta",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^1.8.3",
     "eslint": "^8.57.1",
     "eslint-config-athom": "^4.0.2",
-    "homey-lib": "^2.52.3"
+    "homey-lib": "^2.53.0"
   },
   "dependencies": {
     "growatt": "^0.7.7"
