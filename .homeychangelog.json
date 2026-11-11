@@ -82,5 +82,8 @@
   },
   "3.1.0": {
     "en": "Added experimental battery control over Modbus: mode, power and SoC limits. Added export limit, inverter status, heat alarm and fault codes to the Modbus inverter. Fixed battery voltage, firmware text and the power limit on MIN TL-XH. Minor other fixes and improvements."
+  },
+  "3.1.1": {
+    "en": "Added export limit and grid charging for batteries in VPP mode. Fixed min SoC on newer MIN TL-XH firmware. Retry on Modbus timeouts. Minor other fixes and improvements."
   }
 }
