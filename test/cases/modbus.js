@@ -8,6 +8,7 @@
 const {
   DRIVERS, manifest, brand, homey, logs, registerCapture, INPUT, serve, pairAndStart, stop,
 } = require('../modbus-harness');
+const ModbusClient = require('../../lib/ModbusClient');
 
 // --- fake inverters -----------------------------------------------------------------------
 
@@ -259,6 +260,29 @@ const vppExport = async (t) => {
   }
 };
 
+/** A request the server does not answer is sent again `retries` times, on a new socket. */
+const timeoutRetry = async (t) => {
+  const name = 'Modbus client';
+  const unit = { holding: { 0: 0x1234 }, input: {} };
+  const { server, port } = await serve(unit);
+  try {
+    t.eq(brand.pointMap.battery_modbus.timeoutRetries, 1, `${name}: Growatt retries a timeout once`);
+    for (const retries of [0, 1]) {
+      unit.drop = 1;
+      const client = new ModbusClient({
+        host: '127.0.0.1', port, timeout: 200, retries,
+      });
+      // eslint-disable-next-line no-await-in-loop
+      const result = await client.readRegisters(0, 1).then((data) => data.readUInt16BE(0), (error) => error);
+      client.destroy();
+      if (retries) t.eq(result, 0x1234, `${name}: a dropped request succeeds on the retry`);
+      else t.ok(result?.timedOut, `${name}: without retries a dropped request times out`);
+    }
+  } finally {
+    server.close();
+  }
+};
+
 /** MIN TL-XH on ALBA18010122 reports VPP version 0, but its VPP clock runs and control works. */
 const vppVersionZero = async (t) => {
   for (const [year, route] of [[26, true], [0, false]]) {
@@ -332,6 +356,25 @@ const vppControl = async (t) => {
     writes.length = 0;
     await device.writeControl(control, { target_power_mode: 'self_consumption' });
     t.eq(JSON.stringify(writes), '[[30407,0],[30100,0],[30410,0]]', `${name}: self-consumption clears 30407, 30100 and 30410`);
+
+    // a leave that fails halfway: 30407 cleared, 30100 not
+    await device.writeControl(control, { target_power: 500 });
+    unit.refuseWrites = new Set([30100]);
+    writes.length = 0;
+    const failed = await device.writeControl(control, { target_power_mode: 'self_consumption' }).then(() => null, (error) => error);
+    t.ok(failed, `${name}: a failed leave is reported`);
+    t.eq(JSON.stringify(writes), '[[30407,0]]', `${name}: 30407 cleared before 30100 failed`);
+    writes.length = 0;
+    await device.keepAlive();
+    t.eq(JSON.stringify(writes), '[[30407,0]]', `${name}: keep-alive retries the leave, not the setpoint`);
+    unit.refuseWrites = null;
+    writes.length = 0;
+    await device.keepAlive();
+    t.eq(JSON.stringify(writes), '[[30407,0],[30100,0],[30410,0]]', `${name}: and finishes it`);
+    t.eq(device.getStoreValue('vppLeaving'), false, `${name}: then nothing is pending`);
+    writes.length = 0;
+    await device.keepAlive();
+    t.eq(writes.length, 0, `${name}: and keep-alive writes nothing more`);
 
     writes.length = 0;
     await device.setSocLimits({ min: 15, max: 95 });
@@ -494,5 +537,6 @@ module.exports = async (t) => {
   await vppControl(t);
   await vppExport(t);
   await vppVersionZero(t);
+  await timeoutRetry(t);
   homey.app.pool.destroy();
 };

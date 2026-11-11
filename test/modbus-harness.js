@@ -164,7 +164,10 @@ const homey = {
   },
 };
 
-/** Answers 0x03/0x04 inside the given registers, exception 2 outside; 0x06 and 0x10 write into holding. */
+/**
+ * Answers 0x03/0x04 inside the given registers, exception 2 outside; 0x06 and 0x10 write into holding.
+ * `unit.drop`: this many requests get no answer. `unit.refuseWrites`: addresses whose write gets exception 4.
+ */
 const serve = (unit) => new Promise((resolve) => {
   const writes = [];
   const reads = [];
@@ -173,6 +176,20 @@ const serve = (unit) => new Promise((resolve) => {
     socket.on('data', (frame) => {
       const fc = frame.readUInt8(7);
       const address = frame.readUInt16BE(8);
+      if (unit.drop > 0) {
+        unit.drop -= 1;
+        return;
+      }
+      if ([0x06, 0x10].includes(fc) && unit.refuseWrites?.has(address)) {
+        const reply = Buffer.alloc(9);
+        frame.copy(reply, 0, 0, 4);
+        reply.writeUInt16BE(3, 4);
+        reply.writeUInt8(frame.readUInt8(6), 6);
+        reply.writeUInt8(fc | 0x80, 7);
+        reply.writeUInt8(4, 8);
+        socket.write(reply);
+        return;
+      }
       if (fc === 0x06) {
         unit.holding[address] = frame.readUInt16BE(10);
         writes.push([address, frame.readUInt16BE(10)]);
