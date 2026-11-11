@@ -198,7 +198,12 @@ const legacyControl = async (t, unitCase, device, writes) => {
   t.eq(writes.length, 0, `${name}: the same SoC limits write nothing`);
   const outside = await device.setSocLimits({ min: 5, max: 90 }).then(() => null, (error) => error);
   t.ok(outside?.refusal, `${name}: a minimum below 10 % is refused`);
-  Object.assign(holding, { 3037: 10, 3048: 100 });
+  t.eq(holding[3067], 0, `${name}: 3067 at 0 (older firmware) is not written`);
+  holding[3067] = 10;
+  writes.length = 0;
+  await device.setSocLimits({ min: 30, max: 90 });
+  t.eq(JSON.stringify(writes), '[[3037,30],[3067,30]]', `${name}: newer firmware also gets the minimum in 3067`);
+  Object.assign(holding, { 3037: 10, 3048: 100, 3067: 0 });
 
   // another writer (the ShinePhone app) changes what this app wrote
   await device.setStoreValue('storedWrites', []);
