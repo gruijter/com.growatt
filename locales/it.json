@@ -63,11 +63,17 @@
     "host": "Indirizzo IP",
     "port": "Porta",
     "unitId": "ID unità",
-    "energyManagerNone": "Non trovato"
+    "energyManagerNone": "Non trovato",
+    "batteryControl": {
+      "vpp": "Diretto (VPP)",
+      "legacy": "Limitato: firmware senza VPP",
+      "none": "Non possibile: firmware senza VPP"
+    }
   },
   "notifications": {
     "controlOverridden": "**__name__**: il controllo della batteria da parte di Homey è stato preso altrove, ad esempio in ShinePhone o da un fornitore di energia.",
-    "controlOverriddenBy": "**__name__**: un gestore energetico esterno (__manager__) sovrascrive il controllo di Homey. Homey e il gestore energetico cercano entrambi di controllare questo dispositivo."
+    "controlOverriddenBy": "**__name__**: un gestore energetico esterno (__manager__) sovrascrive il controllo di Homey. Homey e il gestore energetico cercano entrambi di controllare questo dispositivo.",
+    "noVpp": "**__name__**: questo firmware non ha VPP, quindi il controllo della batteria è limitato o impossibile. Chiedi a Growatt un aggiornamento del firmware con VPP."
   },
   "inverterFaults": {
     "fault": "Codice di guasto __code__",

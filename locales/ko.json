@@ -63,11 +63,17 @@
     "host": "IP 주소",
     "port": "포트",
     "unitId": "유닛 ID",
-    "energyManagerNone": "찾을 수 없음"
+    "energyManagerNone": "찾을 수 없음",
+    "batteryControl": {
+      "vpp": "직접 제어 (VPP)",
+      "legacy": "제한됨: VPP 없는 펌웨어",
+      "none": "불가: VPP 없는 펌웨어"
+    }
   },
   "notifications": {
     "controlOverridden": "**__name__**: Homey의 배터리 제어가 다른 곳(예: ShinePhone 또는 에너지 공급업체)에서 넘겨받아졌습니다.",
-    "controlOverriddenBy": "**__name__**: 외부 에너지 관리자(__manager__)가 Homey의 제어를 덮어씁니다. Homey와 에너지 관리자가 모두 이 장치를 제어하려고 합니다."
+    "controlOverriddenBy": "**__name__**: 외부 에너지 관리자(__manager__)가 Homey의 제어를 덮어씁니다. Homey와 에너지 관리자가 모두 이 장치를 제어하려고 합니다.",
+    "noVpp": "**__name__**: 이 펌웨어에는 VPP가 없어 배터리 제어가 제한되거나 불가능합니다. Growatt에 VPP 지원 펌웨어 업데이트를 요청하세요."
   },
   "inverterFaults": {
     "fault": "오류 코드 __code__",

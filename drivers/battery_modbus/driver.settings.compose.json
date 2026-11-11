@@ -58,6 +58,9 @@
       },
       {
         "$extends": "modbusFirmware"
+      },
+      {
+        "$extends": "batteryControl"
       }
     ]
   }

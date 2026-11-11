@@ -269,9 +269,13 @@ const vppVersionZero = async (t) => {
     // eslint-disable-next-line no-await-in-loop
     const { server, port } = await serve(unit);
     try {
+      homey.notifications.sent.length = 0;
+      homey.app.noVppNotified = null; // a new app start
       // eslint-disable-next-line no-await-in-loop
       const started = await pairAndStart('battery_modbus', port);
       t.eq(started?.device.detected.vppControl, route, `${name}: VPP ${route ? 'detected' : 'not detected'}`);
+      t.eq(started?.device.getSetting('batteryControl'), homey.__(`settings.batteryControl.${route ? 'vpp' : 'legacy'}`), `${name}: control route shown in the settings`);
+      t.eq(homey.notifications.sent.some((text) => /no VPP/.test(text)), !route, `${name}: ${route ? 'no' : 'a'} timeline notice about the firmware`);
       if (started) stop(started.device);
     } finally {
       server.close();

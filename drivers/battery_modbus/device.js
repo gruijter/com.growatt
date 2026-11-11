@@ -23,6 +23,18 @@ const ModbusDevice = require('../../lib/modbus_device');
 
 module.exports = class GrowattBatteryModbusDevice extends ModbusDevice {
 
+  /** Firmware without VPP limits battery control: a timeline notice once per app start (and at pairing). */
+  async showDetectedSettings(detected) {
+    await super.showDetectedSettings(detected);
+    if (!(detected.hasBattery && detected.vppControl === false)) return;
+    const { app } = this.homey;
+    app.noVppNotified = app.noVppNotified || new Set();
+    if (app.noVppNotified.has(this.getData().id)) return;
+    app.noVppNotified.add(this.getData().id);
+    await this.homey.notifications.createNotification({ excerpt: this.homey.__('notifications.noVpp', { name: this.getName() }) })
+      .catch((error) => this.error(error));
+  }
+
   /** The 'Set SoC limits' Flow card (app.js); its arguments are 0-100. */
   async setSocLimits({ min, max }) {
     await this.setControl({ battery_min_soc: min / 100, battery_max_soc: max / 100 });

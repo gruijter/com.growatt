@@ -63,11 +63,17 @@
     "host": "عنوان IP",
     "port": "المنفذ",
     "unitId": "معرّف الوحدة",
-    "energyManagerNone": "لم يُعثر عليه"
+    "energyManagerNone": "لم يُعثر عليه",
+    "batteryControl": {
+      "vpp": "مباشر (VPP)",
+      "legacy": "محدود: برنامج ثابت بدون VPP",
+      "none": "غير ممكن: برنامج ثابت بدون VPP"
+    }
   },
   "notifications": {
     "controlOverridden": "**__name__**: تم الاستيلاء على تحكم Homey في البطارية من مكان آخر، مثل ShinePhone أو مزود الطاقة.",
-    "controlOverriddenBy": "**__name__**: يتجاوز مدير طاقة خارجي (__manager__) التحكم من Homey. يحاول Homey ومدير الطاقة كلاهما التحكم في هذا الجهاز."
+    "controlOverriddenBy": "**__name__**: يتجاوز مدير طاقة خارجي (__manager__) التحكم من Homey. يحاول Homey ومدير الطاقة كلاهما التحكم في هذا الجهاز.",
+    "noVpp": "**__name__**: هذا البرنامج الثابت لا يدعم VPP، لذا التحكم بالبطارية محدود أو غير ممكن. اطلب من Growatt تحديثًا يدعم VPP."
   },
   "inverterFaults": {
     "fault": "رمز العطل __code__",

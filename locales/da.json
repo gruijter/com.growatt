@@ -63,11 +63,17 @@
     "host": "IP-adresse",
     "port": "Port",
     "unitId": "Enheds-ID",
-    "energyManagerNone": "Ikke fundet"
+    "energyManagerNone": "Ikke fundet",
+    "batteryControl": {
+      "vpp": "Direkte (VPP)",
+      "legacy": "Begrænset: firmware uden VPP",
+      "none": "Ikke muligt: firmware uden VPP"
+    }
   },
   "notifications": {
     "controlOverridden": "**__name__**: Homeys batteristyring er overtaget et andet sted, for eksempel i ShinePhone eller af et energiselskab.",
-    "controlOverriddenBy": "**__name__**: en ekstern energistyring (__manager__) overskriver styringen fra Homey. Homey og energistyringen forsøger begge at styre denne enhed."
+    "controlOverriddenBy": "**__name__**: en ekstern energistyring (__manager__) overskriver styringen fra Homey. Homey og energistyringen forsøger begge at styre denne enhed.",
+    "noVpp": "**__name__**: denne firmware har ikke VPP, så batteristyring er begrænset eller umulig. Bed Growatt om en firmwareopdatering med VPP."
   },
   "inverterFaults": {
     "fault": "Fejlkode __code__",

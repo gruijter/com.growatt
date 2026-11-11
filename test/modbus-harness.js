@@ -156,6 +156,12 @@ const homey = {
     return { get: (key) => (values.has(key) ? values.get(key) : null), set: (key, value) => values.set(key, value), unset: (key) => values.delete(key) };
   })(),
   app: { pool: new ModbusPool() },
+  notifications: {
+    sent: [],
+    async createNotification({ excerpt }) {
+      this.sent.push(excerpt);
+    },
+  },
 };
 
 /** Answers 0x03/0x04 inside the given registers, exception 2 outside; 0x06 and 0x10 write into holding. */
