@@ -26,9 +26,10 @@
       "meter_modbus": "L'onduleur a répondu, mais aucun compteur n'y est raccordé."
     },
     "otherEms": "Un autre gestionnaire d'énergie pilote la batterie ; passez-la d'abord en autoconsommation.",
-    "writeLimit": "Réglages de la batterie modifiés trop souvent (max. __count__ par jour). Réessayez plus tard.",
+    "writeLimit": "Les réglages de la batterie ne peuvent changer que __count__ fois par jour ; réessayez plus tard.",
     "socRange": "Le SoC minimal doit être de 10 à 50 % et le SoC maximal de 50 à 100 %.",
-    "exportLimitOff": "La limitation d'injection est désactivée dans l'onduleur. Activez-la d'abord dans l'app ShinePhone."
+    "exportLimitOff": "Activez d'abord la limitation d'injection dans l'app ShinePhone.",
+    "writeLimitExport": "La limite d'injection ne peut changer que __count__ fois par jour ; réessayez plus tard."
   },
   "status": {
     "migrating": "Migration en cours. Veuillez patienter...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__** : le pilotage de la batterie par Homey a été repris ailleurs, par exemple dans ShinePhone ou par un fournisseur d'énergie.",
-    "controlOverriddenBy": "**__name__** : un gestionnaire d'énergie externe (__manager__) écrase le pilotage par Homey. Homey et le gestionnaire d'énergie essaient tous deux de piloter cet appareil.",
-    "noVpp": "**__name__** : ce firmware n'a pas de VPP, le pilotage de la batterie est donc limité ou impossible. Demandez à Growatt une mise à jour du firmware avec VPP."
+    "controlOverriddenBy": "**__name__** : __manager__ pilote aussi cet appareil.",
+    "noVpp": "**__name__** : le pilotage de la batterie est limité ; demandez une mise à jour du firmware à Growatt."
   },
   "inverterFaults": {
     "fault": "Code de défaut __code__",
     "warning": "Code d'avertissement __code__"
   },
   "warnings": {
-    "homeyMode": "Contrôle uniquement via les Flows !"
+    "homeyMode": "Contrôle uniquement via les Flows !",
+    "exportIdle": "Batterie à l'arrêt tant que l'injection est limitée"
   }
 }

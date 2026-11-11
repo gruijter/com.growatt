@@ -162,7 +162,7 @@ const legacyControl = async (t, unitCase, device, writes) => {
 
   writes.length = 0;
   await device.writeControl(control, { target_power: 600 });
-  t.eq(JSON.stringify(writes), '[[3038,[40960,5947]],[3047,20]]', `${name}: 600 W is battery first all day at 20 % (10 % steps of 2500 W)`);
+  t.eq(JSON.stringify(writes), '[[3038,[40960,5947]],[3047,20],[3049,1]]', `${name}: 600 W is battery first all day at 20 % (10 % steps of 2500 W)`);
   t.eq(device.getStoreValue('legacyOriginal')[3038], 0xa005, `${name}: the user's own period 1 is kept`);
 
   writes.length = 0;
@@ -183,7 +183,7 @@ const legacyControl = async (t, unitCase, device, writes) => {
   t.eq(writes.length, 0, `${name}: nothing written over the daily limit`);
 
   await device.writeControl(control, { target_power_mode: 'self_consumption' });
-  t.eq(JSON.stringify(writes), '[[3038,[40965,5943]],[3047,100]]', `${name}: self-consumption writes the user's settings back, also over the limit`);
+  t.eq(JSON.stringify(writes), '[[3038,[40965,5943]],[3047,100],[3049,0]]', `${name}: self-consumption writes the user's settings back, also over the limit`);
   t.eq(device.getStoreValue('legacyOriginal'), null, `${name}: nothing left to write back`);
 
   // SoC limits: grid first stop SoC (3037) and battery first stop SoC (3048)
@@ -254,10 +254,41 @@ const vppExport = async (t) => {
     writes.length = 0;
     await battery.device.writeControl(control, { target_power_mode: 'self_consumption' });
     t.eq(JSON.stringify(writes), '[[30407,0]]', `${name}: self-consumption keeps 30100 for the export limit`);
+    await battery.device.poll();
+    t.eq(battery.device.warning, homey.__('warnings.exportIdle'), `${name}: the battery warns it idles while only the export limit holds 30100`);
+
+    await inverter.device.setStoreValue('storedWrites', Array.from({ length: 24 }, () => Date.now()));
+    const tooOften = await inverter.device.writeControl(exportControl, { export_limit: 2000 }).then(() => null, (error) => error);
+    t.eq(tooOften?.message, homey.__('errors.writeLimitExport', { count: 24 }), `${name}: the daily limit names the export limit`);
+    await inverter.device.setStoreValue('storedWrites', []);
 
     writes.length = 0;
     await inverter.device.writeControl(exportControl, { export_limit: 5000 });
-    t.eq(JSON.stringify(writes), '[[30200,0],[30202,0],[30208,0],[30100,0]]', `${name}: the rated power lifts the limit, restores 30202 and 30208, and hands back 30100`);
+    t.eq(JSON.stringify(writes), '[[30200,0],[30201,0],[30202,0],[30208,0],[30100,0]]', `${name}: the rated power puts 30200-30208 back and hands back 30100`);
+    await battery.device.poll();
+    t.eq(battery.device.warning, null, `${name}: no warning once the limit is lifted`);
+    writes.length = 0;
+    await inverter.device.writeControl(exportControl, { export_limit: 5000 });
+    t.eq(writes.length, 0, `${name}: lifting a limit this app did not set writes nothing`);
+
+    // a limit set by the installer or the cloud comes back
+    put(unit.holding, 30200, [1, 5]);
+    await inverter.device.writeControl(exportControl, { export_limit: 1000 });
+    writes.length = 0;
+    await inverter.device.writeControl(exportControl, { export_limit: 5000 });
+    t.eq(JSON.stringify(writes), '[[30200,0],[30201,5],[30202,0],[30208,0],[30200,1],[30100,0]]', `${name}: the installer's own limit is back`);
+
+    // another VPP changes the battery's setpoint: control and 30100 are no longer ours
+    await battery.device.writeControl(control, { target_power: -1250 });
+    unit.holding[30409] = 7;
+    battery.device.controlEndedAt = 0;
+    battery.device.rereadBlocks();
+    await battery.device.poll();
+    t.eq(battery.device.getStoreValue('remoteMode'), false, `${name}: handed over to the other VPP`);
+    t.ok(!Object.values(homey.settings.get('vppAuthorityHolders') || {}).flat().includes('battery'), `${name}: the battery no longer holds 30100`);
+    t.ok(!(battery.device.getStoreValue('writtenRegisters') || {})[30100], `${name}: 30100 is no longer counted as written by this app`);
+    const retake = await battery.device.writeControl(control, { target_power: 500 }).then(() => null, (error) => error);
+    t.eq(retake?.message, homey.__('errors.otherEms'), `${name}: taking control back from the other VPP is refused`);
     stop(inverter.device);
     stop(battery.device);
   } finally {
@@ -288,6 +319,58 @@ const timeoutRetry = async (t) => {
   }
 };
 
+/** Detection, override check, SoC guard and pairing budget edge cases. */
+const edgeCases = async (t) => {
+  const name = 'Edge cases';
+  const { detect } = brand.pointMap.battery_modbus;
+  const version0 = new Map([[30099, 0]]);
+  t.eq(detect(version0, {}, 0, new Set()).vppControl, undefined, `${name}: VPP version 0 with 30100 timed out stays unknown`);
+  t.eq(detect(version0, {}, 0, new Set([30100])).vppControl, false, `${name}: VPP version 0 with 30100 refused is no VPP`);
+
+  const unit = { holding: { ...MIN_XH.holding }, input: { ...MIN_XH.input } };
+  const { server, port } = await serve(unit);
+  try {
+    const started = await pairAndStart('battery_modbus', port);
+    t.ok(started, `${name}: battery offered`);
+    if (!started) return;
+    const { device, driver } = started;
+
+    device.controlEndedAt = 0;
+    await device.noteWrites({ 1: 7 });
+    t.ok(device.controlEndedAt > 0, `${name}: a new own write (e.g. by keep-alive) counts as a control, so a poll that read before it sees no override`);
+    device.controlEndedAt = 0;
+    await device.noteWrites({ 1: 7 });
+    t.eq(device.controlEndedAt, 0, `${name}: the same value again does not`);
+    await device.noteWrites({ 1: null });
+
+    const socControl = brand.pointMap.battery_modbus.controls.find((c) => c.capabilities.includes('battery_min_soc'));
+    await device.setCapabilityValue('battery_max_soc', null);
+    t.eq(await socControl.guard({ device, values: { battery_min_soc: 0.2 } }), null, `${name}: a maximum not read yet does not block a valid minimum`);
+    t.eq(await socControl.guard({ device, values: { battery_min_soc: 0.05 } }), 'errors.socRange', `${name}: an invalid minimum is still refused`);
+    stop(device);
+
+    // each read takes 3 s: detection gives up past its budget, the device detects at its start
+    const realNow = Date.now;
+    let now = realNow();
+    Date.now = () => now;
+    try {
+      const slow = {
+        readRegisters: async (start, count) => {
+          now += 3000;
+          return Buffer.alloc(count * 2);
+        },
+      };
+      const pairing = { detect: true };
+      t.eq(await driver.pairDetection(slow, 0, pairing, null), undefined, `${name}: pairing detection stops past its budget`);
+      t.eq(pairing.detect, false, `${name}: and the next units of this pairing skip it`);
+    } finally {
+      Date.now = realNow;
+    }
+  } finally {
+    server.close();
+  }
+};
+
 /** MIN TL-XH on ALBA18010122 reports VPP version 0, but its VPP clock runs and control works. */
 const vppVersionZero = async (t) => {
   for (const [year, route] of [[26, true], [0, false]]) {
@@ -304,7 +387,7 @@ const vppVersionZero = async (t) => {
       const started = await pairAndStart('battery_modbus', port);
       t.eq(started?.device.detected.vppControl, route, `${name}: VPP ${route ? 'detected' : 'not detected'}`);
       t.eq(started?.device.getSetting('batteryControl'), homey.__(`settings.batteryControl.${route ? 'vpp' : 'legacy'}`), `${name}: control route shown in the settings`);
-      t.eq(homey.notifications.sent.some((text) => /no VPP/.test(text)), !route, `${name}: ${route ? 'no' : 'a'} timeline notice about the firmware`);
+      t.eq(homey.notifications.sent.some((text) => /firmware update/.test(text)), !route, `${name}: ${route ? 'no' : 'a'} timeline notice about the firmware`);
       if (started) stop(started.device);
     } finally {
       server.close();
@@ -546,6 +629,7 @@ module.exports = async (t) => {
   await vppControl(t);
   await vppExport(t);
   await vppVersionZero(t);
+  await edgeCases(t);
   await timeoutRetry(t);
   homey.app.pool.destroy();
 };

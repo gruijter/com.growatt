@@ -26,9 +26,10 @@
       "meter_modbus": "Falownik odpowiedział, ale nie jest do niego podłączony licznik."
     },
     "otherEms": "Baterią steruje inny menedżer energii; najpierw ustaw autokonsumpcję.",
-    "writeLimit": "Ustawienia baterii zmieniane zbyt często (maks. __count__ dziennie). Spróbuj później.",
+    "writeLimit": "Ustawienia baterii można zmienić tylko __count__ razy dziennie; spróbuj później.",
     "socRange": "Minimalny SoC musi wynosić 10–50%, a maksymalny 50–100%.",
-    "exportLimitOff": "Ograniczenie eksportu jest wyłączone w falowniku. Najpierw włącz je w aplikacji ShinePhone."
+    "exportLimitOff": "Najpierw włącz ograniczenie eksportu w aplikacji ShinePhone.",
+    "writeLimitExport": "Limit eksportu można zmienić tylko __count__ razy dziennie; spróbuj później."
   },
   "status": {
     "migrating": "Trwa migracja. Proszę czekać...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__**: sterowanie baterią przez Homey zostało przejęte gdzie indziej, na przykład w ShinePhone lub przez dostawcę energii.",
-    "controlOverriddenBy": "**__name__**: zewnętrzny menedżer energii (__manager__) nadpisuje sterowanie z Homey. Homey i menedżer energii próbują jednocześnie sterować tym urządzeniem.",
-    "noVpp": "**__name__**: ten firmware nie ma VPP, więc sterowanie baterią jest ograniczone lub niemożliwe. Poproś Growatt o aktualizację firmware z obsługą VPP."
+    "controlOverriddenBy": "**__name__**: __manager__ również steruje tym urządzeniem.",
+    "noVpp": "**__name__**: sterowanie baterią jest ograniczone; poproś Growatt o aktualizację firmware."
   },
   "inverterFaults": {
     "fault": "Kod błędu __code__",
     "warning": "Kod ostrzeżenia __code__"
   },
   "warnings": {
-    "homeyMode": "Sterowanie tylko przez Flow!"
+    "homeyMode": "Sterowanie tylko przez Flow!",
+    "exportIdle": "Bateria bezczynna, gdy eksport jest ograniczony"
   }
 }

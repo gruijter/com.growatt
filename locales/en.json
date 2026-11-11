@@ -26,9 +26,10 @@
       "meter_modbus": "The inverter answered, but no meter is connected to it."
     },
     "otherEms": "Another energy manager controls the battery; set it to self-consumption first.",
-    "writeLimit": "Battery settings changed too often (max __count__ a day). Try again later.",
+    "writeLimit": "Battery settings can change only __count__ times a day; try again later.",
     "socRange": "Minimum SoC must be 10–50% and maximum SoC 50–100%.",
-    "exportLimitOff": "Export limitation is off in the inverter. Turn it on in the ShinePhone app first."
+    "exportLimitOff": "Turn on export limitation in the ShinePhone app first.",
+    "writeLimitExport": "The export limit can change only __count__ times a day; try again later."
   },
   "status": {
     "migrating": "Migrating. Please wait...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__**: battery control by Homey was taken over elsewhere, for example in ShinePhone or by an energy provider.",
-    "controlOverriddenBy": "**__name__**: an external energy manager (__manager__) overrides control from Homey. Homey and the energy manager are both trying to control this device.",
-    "noVpp": "**__name__**: this firmware has no VPP, so battery control is limited or not possible. Ask Growatt for a firmware update with VPP support."
+    "controlOverriddenBy": "**__name__**: __manager__ is also controlling this device.",
+    "noVpp": "**__name__**: battery control is limited; ask Growatt for a firmware update."
   },
   "inverterFaults": {
     "fault": "Fault code __code__",
     "warning": "Warning code __code__"
   },
   "warnings": {
-    "homeyMode": "Control via Flows only!"
+    "homeyMode": "Control via Flows only!",
+    "exportIdle": "Battery idle while export is limited"
   }
 }

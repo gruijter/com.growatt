@@ -26,9 +26,10 @@
       "meter_modbus": "De omvormer reageerde, maar er is geen meter op aangesloten."
     },
     "otherEms": "Een andere energiemanager stuurt de batterij; zet hem eerst op eigen verbruik.",
-    "writeLimit": "Batterij-instellingen te vaak gewijzigd (max. __count__ per dag). Probeer het later opnieuw.",
+    "writeLimit": "Batterij-instellingen kunnen maar __count__ keer per dag wijzigen; probeer het later opnieuw.",
     "socRange": "Minimale SoC moet 10–50% zijn en maximale SoC 50–100%.",
-    "exportLimitOff": "Exportbeperking staat uit in de omvormer. Zet die eerst aan in de ShinePhone-app."
+    "exportLimitOff": "Zet eerst exportbeperking aan in de ShinePhone-app.",
+    "writeLimitExport": "De exportlimiet kan maar __count__ keer per dag wijzigen; probeer het later opnieuw."
   },
   "status": {
     "migrating": "Bezig met migreren. Even geduld...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__**: de batterijsturing door Homey is elders overgenomen, bijvoorbeeld in ShinePhone of door een energieleverancier.",
-    "controlOverriddenBy": "**__name__**: een externe energiebeheerder (__manager__) overschrijft de sturing vanuit Homey. Homey en de energiebeheerder proberen dit apparaat allebei aan te sturen.",
-    "noVpp": "**__name__**: deze firmware heeft geen VPP, dus de batterij is beperkt of niet te sturen. Vraag Growatt om een firmware-update met VPP-ondersteuning."
+    "controlOverriddenBy": "**__name__**: __manager__ stuurt dit apparaat ook aan.",
+    "noVpp": "**__name__**: batterijsturing is beperkt; vraag Growatt om een firmware-update."
   },
   "inverterFaults": {
     "fault": "Foutcode __code__",
     "warning": "Waarschuwingscode __code__"
   },
   "warnings": {
-    "homeyMode": "Sturing alleen via flows!"
+    "homeyMode": "Sturing alleen via flows!",
+    "exportIdle": "Batterij staat stil zolang export beperkt is"
   }
 }

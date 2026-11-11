@@ -26,9 +26,10 @@
       "meter_modbus": "L'inverter ha risposto, ma non è collegato alcun contatore."
     },
     "otherEms": "Un altro gestore di energia controlla la batteria; impostala prima su autoconsumo.",
-    "writeLimit": "Impostazioni della batteria modificate troppo spesso (max __count__ al giorno). Riprova più tardi.",
+    "writeLimit": "Le impostazioni della batteria possono cambiare solo __count__ volte al giorno; riprova più tardi.",
     "socRange": "Il SoC minimo deve essere 10–50% e il SoC massimo 50–100%.",
-    "exportLimitOff": "La limitazione di immissione è disattivata nell'inverter. Attivala prima nell'app ShinePhone."
+    "exportLimitOff": "Attiva prima la limitazione di immissione nell'app ShinePhone.",
+    "writeLimitExport": "Il limite di immissione può cambiare solo __count__ volte al giorno; riprova più tardi."
   },
   "status": {
     "migrating": "Migrazione in corso. Attendere...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__**: il controllo della batteria da parte di Homey è stato preso altrove, ad esempio in ShinePhone o da un fornitore di energia.",
-    "controlOverriddenBy": "**__name__**: un gestore energetico esterno (__manager__) sovrascrive il controllo di Homey. Homey e il gestore energetico cercano entrambi di controllare questo dispositivo.",
-    "noVpp": "**__name__**: questo firmware non ha VPP, quindi il controllo della batteria è limitato o impossibile. Chiedi a Growatt un aggiornamento del firmware con VPP."
+    "controlOverriddenBy": "**__name__**: anche __manager__ controlla questo dispositivo.",
+    "noVpp": "**__name__**: il controllo della batteria è limitato; chiedi a Growatt un aggiornamento del firmware."
   },
   "inverterFaults": {
     "fault": "Codice di guasto __code__",
     "warning": "Codice di avviso __code__"
   },
   "warnings": {
-    "homeyMode": "Controllo solo tramite Flow!"
+    "homeyMode": "Controllo solo tramite Flow!",
+    "exportIdle": "Batteria ferma finché l'immissione è limitata"
   }
 }

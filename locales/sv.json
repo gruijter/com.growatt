@@ -26,9 +26,10 @@
       "meter_modbus": "Växelriktaren svarade, men ingen mätare är ansluten."
     },
     "otherEms": "En annan energistyrning styr batteriet; ställ det först på egenanvändning.",
-    "writeLimit": "Batteriinställningar ändrade för ofta (max __count__ per dag). Försök igen senare.",
+    "writeLimit": "Batteriinställningar kan bara ändras __count__ gånger per dag; försök igen senare.",
     "socRange": "Lägsta SoC måste vara 10–50 % och högsta SoC 50–100 %.",
-    "exportLimitOff": "Exportbegränsningen är avstängd i växelriktaren. Slå först på den i ShinePhone-appen."
+    "exportLimitOff": "Slå först på exportbegränsning i ShinePhone-appen.",
+    "writeLimitExport": "Exportgränsen kan bara ändras __count__ gånger per dag; försök igen senare."
   },
   "status": {
     "migrating": "Migrerar. Vänta...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__**: Homeys batteristyrning har tagits över någon annanstans, till exempel i ShinePhone eller av ett energibolag.",
-    "controlOverriddenBy": "**__name__**: en extern energihanterare (__manager__) skriver över styrningen från Homey. Homey och energihanteraren försöker båda styra den här enheten.",
-    "noVpp": "**__name__**: denna firmware saknar VPP, så batteristyrningen är begränsad eller omöjlig. Be Growatt om en firmwareuppdatering med VPP."
+    "controlOverriddenBy": "**__name__**: __manager__ styr också den här enheten.",
+    "noVpp": "**__name__**: batteristyrningen är begränsad; be Growatt om en firmwareuppdatering."
   },
   "inverterFaults": {
     "fault": "Felkod __code__",
     "warning": "Varningskod __code__"
   },
   "warnings": {
-    "homeyMode": "Styrning endast via Flows!"
+    "homeyMode": "Styrning endast via Flows!",
+    "exportIdle": "Batteriet vilar medan exporten är begränsad"
   }
 }

@@ -26,9 +26,10 @@
       "meter_modbus": "Der Wechselrichter hat geantwortet, aber es ist kein Zähler angeschlossen."
     },
     "otherEms": "Ein anderer Energiemanager steuert die Batterie; stelle sie zuerst auf Eigenverbrauch.",
-    "writeLimit": "Batterieeinstellungen zu oft geändert (max. __count__ pro Tag). Versuche es später erneut.",
+    "writeLimit": "Batterieeinstellungen lassen sich nur __count__-mal am Tag ändern; versuche es später erneut.",
     "socRange": "Der minimale SoC muss 10–50 % und der maximale SoC 50–100 % sein.",
-    "exportLimitOff": "Die Einspeisebegrenzung ist im Wechselrichter aus. Schalte sie zuerst in der ShinePhone-App ein."
+    "exportLimitOff": "Schalte zuerst die Einspeisebegrenzung in der ShinePhone-App ein.",
+    "writeLimitExport": "Die Einspeisegrenze lässt sich nur __count__-mal am Tag ändern; versuche es später erneut."
   },
   "status": {
     "migrating": "Migration läuft. Bitte warten...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__**: Die Batteriesteuerung durch Homey wurde anderswo übernommen, zum Beispiel in ShinePhone oder von einem Energieversorger.",
-    "controlOverriddenBy": "**__name__**: Ein externer Energiemanager (__manager__) überschreibt die Steuerung durch Homey. Homey und der Energiemanager versuchen beide, dieses Gerät zu steuern.",
-    "noVpp": "**__name__**: Diese Firmware hat kein VPP, daher ist die Batteriesteuerung eingeschränkt oder nicht möglich. Bitte Growatt um ein Firmware-Update mit VPP-Unterstützung."
+    "controlOverriddenBy": "**__name__**: __manager__ steuert dieses Gerät ebenfalls.",
+    "noVpp": "**__name__**: Die Batteriesteuerung ist eingeschränkt; bitte Growatt um ein Firmware-Update."
   },
   "inverterFaults": {
     "fault": "Fehlercode __code__",
     "warning": "Warncode __code__"
   },
   "warnings": {
-    "homeyMode": "Steuerung nur über Flows!"
+    "homeyMode": "Steuerung nur über Flows!",
+    "exportIdle": "Batterie ruht, solange die Einspeisung begrenzt ist"
   }
 }

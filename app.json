@@ -2044,19 +2044,19 @@
                 "ko": "배터리 제어"
               },
               "hint": {
-                "en": "With VPP firmware Homey controls the battery directly. Without it only in 10 % steps at most every 5 minutes, or not at all. Growatt can update the firmware remotely.",
-                "nl": "Met VPP-firmware stuurt Homey de batterij direct. Zonder alleen in stappen van 10 % en hoogstens elke 5 minuten, of helemaal niet. Growatt kan de firmware op afstand updaten.",
-                "de": "Mit VPP-Firmware steuert Homey die Batterie direkt. Ohne nur in 10-%-Schritten höchstens alle 5 Minuten oder gar nicht. Growatt kann die Firmware aus der Ferne aktualisieren.",
-                "fr": "Avec un firmware VPP, Homey pilote la batterie directement. Sans, seulement par pas de 10 % au plus toutes les 5 minutes, ou pas du tout. Growatt peut mettre à jour le firmware à distance.",
-                "es": "Con firmware VPP, Homey controla la batería directamente. Sin él, solo en pasos del 10 % como máximo cada 5 minutos, o nada. Growatt puede actualizar el firmware a distancia.",
-                "it": "Con il firmware VPP Homey controlla la batteria direttamente. Senza, solo a passi del 10 % al massimo ogni 5 minuti, o per niente. Growatt può aggiornare il firmware da remoto.",
-                "da": "Med VPP-firmware styrer Homey batteriet direkte. Uden kun i trin på 10 % højst hvert 5. minut eller slet ikke. Growatt kan opdatere firmwaren eksternt.",
-                "sv": "Med VPP-firmware styr Homey batteriet direkt. Utan bara i steg om 10 % högst var 5:e minut eller inte alls. Growatt kan uppdatera firmwaren på distans.",
-                "no": "Med VPP-firmware styrer Homey batteriet direkte. Uten bare i trinn på 10 % høyst hvert 5. minutt eller ikke i det hele tatt. Growatt kan oppdatere firmwaren eksternt.",
-                "pl": "Z firmware VPP Homey steruje baterią bezpośrednio. Bez niego tylko w krokach po 10 % najwyżej co 5 minut albo wcale. Growatt może zdalnie zaktualizować firmware.",
-                "ru": "С прошивкой VPP Homey управляет батареей напрямую. Без неё — только шагами по 10 % не чаще раза в 5 минут или никак. Growatt может обновить прошивку удалённо.",
-                "ar": "مع برنامج VPP الثابت يتحكم Homey بالبطارية مباشرة. وبدونه فقط بخطوات 10 % مرة كل 5 دقائق على الأكثر أو لا يتحكم إطلاقًا. يمكن لـ Growatt تحديث البرنامج الثابت عن بُعد.",
-                "ko": "VPP 펌웨어가 있으면 Homey가 배터리를 직접 제어합니다. 없으면 최대 5분마다 10 % 단위로만 제어하거나 전혀 제어할 수 없습니다. Growatt가 펌웨어를 원격으로 업데이트할 수 있습니다."
+                "en": "If this is limited, ask Growatt for a firmware update.",
+                "nl": "Is dit beperkt, vraag Growatt dan om een firmware-update.",
+                "de": "Ist dies eingeschränkt, bitte Growatt um ein Firmware-Update.",
+                "fr": "Si c'est limité, demandez une mise à jour du firmware à Growatt.",
+                "es": "Si está limitado, pide a Growatt una actualización del firmware.",
+                "it": "Se è limitato, chiedi a Growatt un aggiornamento del firmware.",
+                "da": "Er det begrænset, så bed Growatt om en firmwareopdatering.",
+                "sv": "Om det är begränsat, be Growatt om en firmwareuppdatering.",
+                "no": "Er det begrenset, be Growatt om en fastvareoppdatering.",
+                "pl": "Jeśli jest ograniczone, poproś Growatt o aktualizację firmware.",
+                "ru": "Если управление ограничено, попросите Growatt обновить прошивку.",
+                "ar": "إذا كان التحكم محدودًا، فاطلب من Growatt تحديث البرنامج الثابت.",
+                "ko": "제한된 경우 Growatt에 펌웨어 업데이트를 요청하세요."
               }
             }
           ]

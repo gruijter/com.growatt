@@ -26,9 +26,10 @@
       "meter_modbus": "Vekselretteren svarte, men ingen måler er tilkoblet."
     },
     "otherEms": "En annen energistyring styrer batteriet; sett det først til egetforbruk.",
-    "writeLimit": "Batteriinnstillinger endret for ofte (maks. __count__ per dag). Prøv igjen senere.",
+    "writeLimit": "Batteriinnstillinger kan bare endres __count__ ganger per dag; prøv igjen senere.",
     "socRange": "Minimum SoC må være 10–50 % og maksimum SoC 50–100 %.",
-    "exportLimitOff": "Eksportbegrensning er slått av i omformeren. Slå den først på i ShinePhone-appen."
+    "exportLimitOff": "Slå først på eksportbegrensning i ShinePhone-appen.",
+    "writeLimitExport": "Eksportgrensen kan bare endres __count__ ganger per dag; prøv igjen senere."
   },
   "status": {
     "migrating": "Migrerer. Vent litt...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__**: Homeys batteristyring er overtatt et annet sted, for eksempel i ShinePhone eller av en energileverandør.",
-    "controlOverriddenBy": "**__name__**: en ekstern energistyring (__manager__) overstyrer styringen fra Homey. Homey og energistyringen prøver begge å styre denne enheten.",
-    "noVpp": "**__name__**: denne firmwaren har ikke VPP, så batteristyring er begrenset eller umulig. Be Growatt om en firmwareoppdatering med VPP."
+    "controlOverriddenBy": "**__name__**: __manager__ styrer også denne enheten.",
+    "noVpp": "**__name__**: batteristyringen er begrenset; be Growatt om en fastvareoppdatering."
   },
   "inverterFaults": {
     "fault": "Feilkode __code__",
     "warning": "Varselkode __code__"
   },
   "warnings": {
-    "homeyMode": "Styring kun via Flows!"
+    "homeyMode": "Styring kun via Flows!",
+    "exportIdle": "Batteriet hviler mens eksporten er begrenset"
   }
 }

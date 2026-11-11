@@ -26,9 +26,10 @@
       "meter_modbus": "El inversor respondió, pero no tiene ningún medidor conectado."
     },
     "otherEms": "Otro gestor de energía controla la batería; ponla primero en autoconsumo.",
-    "writeLimit": "Ajustes de la batería cambiados demasiadas veces (máx. __count__ al día). Inténtalo más tarde.",
+    "writeLimit": "Los ajustes de la batería solo pueden cambiar __count__ veces al día; inténtalo más tarde.",
     "socRange": "El SoC mínimo debe ser 10–50 % y el SoC máximo 50–100 %.",
-    "exportLimitOff": "La limitación de exportación está desactivada en el inversor. Actívala primero en la app ShinePhone."
+    "exportLimitOff": "Activa primero la limitación de exportación en la app ShinePhone.",
+    "writeLimitExport": "El límite de exportación solo puede cambiar __count__ veces al día; inténtalo más tarde."
   },
   "status": {
     "migrating": "Migrando. Espera...",
@@ -72,14 +73,15 @@
   },
   "notifications": {
     "controlOverridden": "**__name__**: el control de la batería por Homey se ha asumido en otro lugar, por ejemplo en ShinePhone o por un proveedor de energía.",
-    "controlOverriddenBy": "**__name__**: un gestor de energía externo (__manager__) anula el control de Homey. Homey y el gestor de energía intentan controlar este dispositivo a la vez.",
-    "noVpp": "**__name__**: este firmware no tiene VPP, así que el control de la batería es limitado o imposible. Pide a Growatt una actualización de firmware con VPP."
+    "controlOverriddenBy": "**__name__**: __manager__ también controla este dispositivo.",
+    "noVpp": "**__name__**: el control de la batería es limitado; pide a Growatt una actualización del firmware."
   },
   "inverterFaults": {
     "fault": "Código de fallo __code__",
     "warning": "Código de aviso __code__"
   },
   "warnings": {
-    "homeyMode": "¡Control solo mediante Flows!"
+    "homeyMode": "¡Control solo mediante Flows!",
+    "exportIdle": "Batería en reposo mientras la exportación está limitada"
   }
 }
