@@ -85,5 +85,8 @@
   },
   "3.1.1": {
     "en": "Added export limit and grid charging for batteries in VPP mode. Fixed min SoC on newer MIN TL-XH firmware. Retry on Modbus timeouts. Minor other fixes and improvements."
+  },
+  "3.1.2": {
+    "en": "Fixed pairing of Modbus inverters that report their serial number elsewhere."
   }
 }
