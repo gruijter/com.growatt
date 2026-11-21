@@ -171,6 +171,8 @@ const homey = {
 /**
  * Answers 0x03/0x04 inside the given registers, exception 2 outside; 0x06 and 0x10 write into holding.
  * `unit.drop`: this many requests get no answer. `unit.refuseWrites`: addresses whose write gets exception 4.
+ * `unit.window`: reads must lie inside one window of this many registers (Growatt's legacy protocol
+ * V3.14: 45), else exception 1.
  */
 const serve = (unit) => new Promise((resolve) => {
   const writes = [];
@@ -215,13 +217,14 @@ const serve = (unit) => new Promise((resolve) => {
       reads.push(`${fc}:${address}:${count}`);
       const map = fc === 0x04 ? unit.input : unit.holding;
       const words = Array.from({ length: count }, (_, i) => map[address + i]);
-      if (words.some((w) => w === undefined)) {
+      const outsideWindow = unit.window && Math.floor(address / unit.window) !== Math.floor((address + count - 1) / unit.window);
+      if (outsideWindow || words.some((w) => w === undefined)) {
         const reply = Buffer.alloc(9);
         frame.copy(reply, 0, 0, 4);
         reply.writeUInt16BE(3, 4);
         reply.writeUInt8(frame.readUInt8(6), 6);
         reply.writeUInt8(fc | 0x80, 7);
-        reply.writeUInt8(2, 8);
+        reply.writeUInt8(outsideWindow ? 1 : 2, 8);
         socket.write(reply);
         return;
       }
